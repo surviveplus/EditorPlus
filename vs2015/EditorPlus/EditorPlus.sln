@@ -1,0 +1,53 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditorPlus", "EditorPlus\EditorPlus.csproj", "{F2F0AC99-BDC8-4FC8-8FD1-C3395328B221}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Surviveplus.VsixExtensions", "Surviveplus.VsixExtensions\Surviveplus.VsixExtensions.csproj", "{4DF03DAD-5BAE-4458-934C-CBB3B4C27610}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Surviveplus.TextMacro", "Surviveplus.TextMacro\Surviveplus.TextMacro.csproj", "{2FD59BCD-E11B-4A15-B2C7-9472E6F015A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditorPlus.UI", "EditorPlus.UI\EditorPlus.UI.csproj", "{1D3F2B9C-8DCA-4F37-B161-60A109E59204}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditorPlus.UI.Test", "EditorPlus.UI.Test\EditorPlus.UI.Test.csproj", "{9741FAEE-A6DC-4BD9-8167-41B87C32B80B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Surviveplus.TextMacro.Test", "Surviveplus.TextMacro.Test\Surviveplus.TextMacro.Test.csproj", "{9BA57EC3-CDF8-48B1-AE66-B0A843381490}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F2F0AC99-BDC8-4FC8-8FD1-C3395328B221}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2F0AC99-BDC8-4FC8-8FD1-C3395328B221}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2F0AC99-BDC8-4FC8-8FD1-C3395328B221}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2F0AC99-BDC8-4FC8-8FD1-C3395328B221}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DF03DAD-5BAE-4458-934C-CBB3B4C27610}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DF03DAD-5BAE-4458-934C-CBB3B4C27610}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DF03DAD-5BAE-4458-934C-CBB3B4C27610}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DF03DAD-5BAE-4458-934C-CBB3B4C27610}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FD59BCD-E11B-4A15-B2C7-9472E6F015A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FD59BCD-E11B-4A15-B2C7-9472E6F015A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FD59BCD-E11B-4A15-B2C7-9472E6F015A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FD59BCD-E11B-4A15-B2C7-9472E6F015A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D3F2B9C-8DCA-4F37-B161-60A109E59204}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D3F2B9C-8DCA-4F37-B161-60A109E59204}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D3F2B9C-8DCA-4F37-B161-60A109E59204}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D3F2B9C-8DCA-4F37-B161-60A109E59204}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9741FAEE-A6DC-4BD9-8167-41B87C32B80B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9741FAEE-A6DC-4BD9-8167-41B87C32B80B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9741FAEE-A6DC-4BD9-8167-41B87C32B80B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9741FAEE-A6DC-4BD9-8167-41B87C32B80B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BA57EC3-CDF8-48B1-AE66-B0A843381490}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BA57EC3-CDF8-48B1-AE66-B0A843381490}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BA57EC3-CDF8-48B1-AE66-B0A843381490}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BA57EC3-CDF8-48B1-AE66-B0A843381490}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+
+EndGlobal
