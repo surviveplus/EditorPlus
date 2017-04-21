@@ -62,22 +62,22 @@ Values should be separated by Tab character, like coping from Excel sheet, for e
 1. Text lines of working text file is formatted. Copy text and paste to other text file.
 
 ### [ VIEW ] Insert Text 
-1. Click **VIEW** > **Other Windows** > ![Insert Text ](images-VS-en\image6-1-InsertText.png) menu command to show tool window.
+1. Click **VIEW** > **Other Windows** > ![Insert Text ](images-VS-en/image6-1-InsertText.png) menu command to show tool window.
 1. Open a target text file.
 1. Input a text to **Insert Text** tool window. The text will be inserted to the active text editor.
-![Input Text](images-VS-en\image6-2-InputText.png)
+![Input Text](images-VS-en/image6-2-InputText.png)
 1. Select taget text lines.
 1. Click **Insert to Head** button or  **Insert to End** button of **Insert Text** tool window.
 1. Text are inserted to selection.
-![Text Inserted](images-VS-en\image6-3-Inserted.png)
+![Text Inserted](images-VS-en/image6-3-Inserted.png)
 
 ### [ VIEW ] Insert Serial Number 
-1. Click **VIEW** > **Other Windows** > ![Insert Serial Number ](images-VS-en\image7-1-InsertSerialNumber.png)menu command to show tool window.
+1. Click **VIEW** > **Other Windows** > ![Insert Serial Number ](images-VS-en/image7-1-InsertSerialNumber.png)menu command to show tool window.
 menu command to show tool window.
 1. Open a target text file.
 1. Input **Start number** to **Insert Serial Number** tool window. 
-![](images-VS-en\image7-2-InputText.png)
+![](images-VS-en/image7-2-InputText.png)
 1. Select taget text lines.
 1. Click **Insert to Head** button or  **Insert to End** button of **Insert Serial Number** tool window.
 1. Serial numbers are inserted to selection.
-![](images-VS-en\image7-3-Inserted.png)
+![](images-VS-en/image7-3-Inserted.png)
