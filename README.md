@@ -17,3 +17,9 @@ Some of text editor extensions, Format Text, Insert Serial Numbers and others, a
 - Insert Text 
 - Insert Serial Number 
 
+## Installation & How to use
+See [HowToUse-VS-en.md](HowToUse/HowToUse-VS-en.md)
+
+## Screen Captures
+![Insert Serial Number and Insert Text](HowToUse/images-VS-en/image7-4-mix.png)
+![Format Text](HowToUse/images-VS-en/image5-2-InsertFormat.png)
