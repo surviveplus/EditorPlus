@@ -2,6 +2,9 @@
 ![EditorPlus](ResourceSources/EditorPlus-95.png)
 Some of text editor extensions, Format Text, Insert Serial Numbers and others, are userd in Surviveplus.net Developer Team.
 
+- [Download For Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=SHIN-ICHIKOGA.EditorPlusforVisualStudio2017)
+- [Download For Visual Studio 2015](https://marketplace.visualstudio.com/items?itemName=SHIN-ICHIKOGA.EditorPlus)
+
 ## Features
 ### [ FILE ] Menu Commands
 - Create New Working Text File 
