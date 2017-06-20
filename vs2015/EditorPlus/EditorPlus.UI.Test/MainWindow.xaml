@@ -6,7 +6,10 @@
         <StackPanel>
             <StackPanel Height="40" Margin="0,0,0,10" Orientation="Horizontal"  >
                 <Button x:Name="CurrentUICultureButton" Width="250" Click="CurrentUICultureButton_Click" Margin="0,0,10,0">CurrentUICulture : ja-JP</Button>
-                <Button x:Name="ExecutableButton" Click="ExecutableButton_Click" Content="Executable" Width="100"/>
+                <Button x:Name="ExecutableButton" Click="ExecutableButton_Click" Content="Executable" Width="100" Margin="0,0,10,0"/>
+                <RadioButton x:Name="BuleRadio" Margin="0,0,10,0" Checked="BuleRadio_Checked">Blue</RadioButton>
+                <RadioButton x:Name="LightRadio" Margin="0,0,10,0" Checked="LightRadio_Checked">Light</RadioButton>
+                <RadioButton x:Name="DarkRadio" Margin="0,0,10,0" Checked="DarkRadio_Checked" IsChecked="True">Dark</RadioButton>
             </StackPanel>
             <Button x:Name="AboutButton" Height="40" Margin="0,0,0,5" Click="AboutButton_Click">About ...</Button>
             <Button x:Name="TextFormatButton" Height="40"  Margin="0,0,0,5" Click="TextFormatButton_Click" >Text Format ...</Button>

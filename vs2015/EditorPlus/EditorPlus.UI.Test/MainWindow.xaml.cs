@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.Shell;
+using Net.Surviveplus.EditorPlus.UI.Test.Properties;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -82,6 +84,7 @@ namespace Net.Surviveplus.EditorPlus.UI.Test
             };
 
             var w = new ToolWindow() { Title = "Text Format", Content = c };
+            this.UpdateResoures(w);
             toolWindows.Add(w);
             w.Show();
 
@@ -115,6 +118,7 @@ namespace Net.Surviveplus.EditorPlus.UI.Test
             };
 
             var w = new ToolWindow() { Title = "Insert Text", Content = c };
+            this.UpdateResoures(w);
             toolWindows.Add(w);
             w.Show();
         }
@@ -128,7 +132,7 @@ namespace Net.Surviveplus.EditorPlus.UI.Test
             // ボタンが押されたら、Text プロパティを表示してみます。
             c.Executed += (s2, e2) =>
             {
-                MessageBox.Show("挿入:" + e2.InsertPosition.ToString() + " / スキップ:" + e2.Skip.ToString()  + " / 埋め：" +  e2.PaddingKind.ToString() + "\r\n" + "\r\n" + e2.StartNumberText );
+                MessageBox.Show("挿入:" + e2.InsertPosition.ToString() + " / スキップ:" + e2.Skip.ToString() + " / 埋め：" + e2.PaddingKind.ToString() + "\r\n" + "\r\n" + e2.StartNumberText);
             };
 
             // メインウィンドウの Executable ボタンと連動して、ボタンの有効・無効を切り替えます。
@@ -138,10 +142,38 @@ namespace Net.Surviveplus.EditorPlus.UI.Test
             };
 
             var w = new ToolWindow() { Title = "Insert Serial Number", Content = c };
+            this.UpdateResoures(w);
             toolWindows.Add(w);
             w.Show();
         }
 
+        private void UpdateResoures(ToolWindow w)
+        {
+            if (this.BuleRadio.IsChecked.Value)
+            {
+                w.Resources[VsBrushes.WindowKey] = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
+                w.Resources[VsBrushes.WindowTextKey] = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
+                w.Resources[VsBrushes.ButtonFaceKey] = new SolidColorBrush(Color.FromArgb(255, 240, 240, 240));
+                w.Resources[VsBrushes.ButtonTextKey] = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
+                w.Resources[VsBrushes.ButtonShadowKey] = new SolidColorBrush(Color.FromArgb(255, 160, 160, 160));
+            }
+            else if (this.LightRadio.IsChecked.Value)
+            {
+                w.Resources[VsBrushes.WindowKey] = new SolidColorBrush(Color.FromArgb(255, 245, 245, 245));
+                w.Resources[VsBrushes.WindowTextKey] = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
+                w.Resources[VsBrushes.ButtonFaceKey] = new SolidColorBrush(Color.FromArgb(255, 204, 206, 219));
+                w.Resources[VsBrushes.ButtonTextKey] = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
+                w.Resources[VsBrushes.ButtonShadowKey] = new SolidColorBrush(Color.FromArgb(255, 204, 206, 219));
+            }
+            else if (this.DarkRadio.IsChecked.Value)
+            {
+                w.Resources[VsBrushes.WindowKey] = new SolidColorBrush(Color.FromArgb(255, 37, 37, 38));
+                w.Resources[VsBrushes.WindowTextKey] = new SolidColorBrush(Color.FromArgb(255, 241, 241, 241));
+                w.Resources[VsBrushes.ButtonFaceKey] = new SolidColorBrush(Color.FromArgb(255, 63, 63, 70));
+                w.Resources[VsBrushes.ButtonTextKey] = new SolidColorBrush(Color.FromArgb(255, 241, 241, 241));
+                w.Resources[VsBrushes.ButtonShadowKey] = new SolidColorBrush(Color.FromArgb(255, 63, 63, 70));
+            }
+        }
 
         private List<ToolWindow> toolWindows = new List<ToolWindow>();
 
@@ -176,8 +208,29 @@ namespace Net.Surviveplus.EditorPlus.UI.Test
             if (this.ExecutableChanged != null) this.ExecutableChanged(this, EventArgs.Empty);
         }
 
+        private void BuleRadio_Checked(object sender, RoutedEventArgs e)
+        {
+            foreach (var w in this.toolWindows.ToList())
+            {
+                this.UpdateResoures(w);
+            } // next w
+        }
 
+        private void LightRadio_Checked(object sender, RoutedEventArgs e)
+        {
+            foreach (var w in this.toolWindows.ToList())
+            {
+                this.UpdateResoures(w);
+            } // next w
+        }
 
+        private void DarkRadio_Checked(object sender, RoutedEventArgs e)
+        {
+            foreach (var w in this.toolWindows.ToList())
+            {
+                this.UpdateResoures(w);
+            } // next w
 
+        }
     } // end class
 } // end namespace
