@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
   <PropertyGroup>
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
@@ -183,12 +183,20 @@
       <IncludeInVSIX>true</IncludeInVSIX>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="EditorPlus-64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="Resources\Package.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EditorPlus.UI\EditorPlus.UI.csproj">
       <Project>{1d3f2b9c-8dca-4f37-b161-60a109e59204}</Project>
       <Name>EditorPlus.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SakuraMacaron.Core\SakuraMacaron.Core\SakuraMacaron.Core.vbproj">
+      <Project>{df2e20e1-9015-4d8d-9972-90374cadd658}</Project>
+      <Name>SakuraMacaron.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Surviveplus.TextMacro\Surviveplus.TextMacro.csproj">
       <Project>{2fd59bcd-e11b-4a15-b2c7-9472e6f015a4}</Project>

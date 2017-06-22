@@ -40,7 +40,7 @@ namespace Net.Surviveplus.VsixExtensions
 					var menu = new MenuCommand((sender, e) => { method.Invoke(me, new object[] { sender, e }); }, new CommandID(menuGroup, id));
 
 					mcs.AddCommand(menu);
-					Macro.MenuCommands.Add(ma.Attribute.Id, menu);
+                    VisualStudioMacaron.MenuCommands.Add(ma.Attribute.Id, menu);
 				}
 			} // end if
 

@@ -133,7 +133,6 @@
   <ItemGroup>
     <Compile Include="ActiveDocumentIsNullException.cs" />
     <Compile Include="IServiceProviderExtensions.cs" />
-    <Compile Include="Macro.cs" />
     <Compile Include="MenuCommandAttribute.cs" />
     <Compile Include="PackageExtensions.cs" />
     <Compile Include="ProjectExtensions.cs" />
@@ -145,6 +144,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="TextEditingArgs.cs" />
+    <Compile Include="VisualStudioMacaron.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="surviveplus.team.snk" />
@@ -155,6 +155,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SakuraMacaron.Core\SakuraMacaron.Core\SakuraMacaron.Core.vbproj">
+      <Project>{df2e20e1-9015-4d8d-9972-90374cadd658}</Project>
+      <Name>SakuraMacaron.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

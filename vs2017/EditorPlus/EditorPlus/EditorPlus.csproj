@@ -78,7 +78,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="EditorPlus-32.png">
-      <IncludeInVSIX>true</IncludeInVSIX>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <VSCTCompile Include="EditorPlus.en-US.vsct">
@@ -89,6 +88,10 @@
       <ResourceName>Menus.ctmenu</ResourceName>
       <DependentUpon>EditorPlus.en-US.vsct</DependentUpon>
     </VSCTCompile>
+    <Content Include="EditorPlus-64.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="index.html" />
     <Content Include="LICENSE.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -226,6 +229,10 @@
     <ProjectReference Include="..\..\..\vs2015\EditorPlus\Surviveplus.TextMacro\Surviveplus.TextMacro.csproj">
       <Project>{2fd59bcd-e11b-4a15-b2c7-9472e6f015a4}</Project>
       <Name>Surviveplus.TextMacro</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SakuraMacaron.Core\SakuraMacaron.Core\SakuraMacaron.Core.vbproj">
+      <Project>{df2e20e1-9015-4d8d-9972-90374cadd658}</Project>
+      <Name>SakuraMacaron.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Surviveplus.VsixExtensions\Surviveplus.VsixExtensions.csproj">
       <Project>{6ce7e330-2721-4e1b-8f2d-e1321c57966a}</Project>

@@ -58,17 +58,17 @@ namespace Net.Surviveplus.EditorPlus.ToolWindows
         {
             var c = sender as InsertText;
 
-            var macro = new Macro(this);
+            var macaron = new VisualStudioMacaron(this);
             bool skip = c.Skip;
             var text = c.Text;
 
             try
             {
-                macro.ExecuteLineEditing(null, (a) =>
+                macaron.ReplaceSelectionParagraphs(null, (a) =>
                 {
                     if (skip && a.Text.StartsWith(text))
                     {
-                        a.Cancel = true;
+                        a.IsCanceled = true;
                     }
                     else
                     {
@@ -79,7 +79,7 @@ namespace Net.Surviveplus.EditorPlus.ToolWindows
             }
             catch (ActiveDocumentIsNullException)
             {
-                macro.ShowMessageBox(Resources.InsertTextCaption, Resources.MessageActivateTextEditorForInsertText);
+                macaron.ShowMessageBox(Resources.InsertTextCaption, Resources.MessageActivateTextEditorForInsertText);
             } // end try
 
         }
@@ -89,15 +89,15 @@ namespace Net.Surviveplus.EditorPlus.ToolWindows
         {
             var c = sender as InsertText;
 
-            var macro = new Macro(this);
+            var macaron = new VisualStudioMacaron(this);
             bool skip = c.Skip;
             var text = c.Text;
 
 			try {
-				macro.ExecuteLineEditing(null, (a) =>
+				macaron.ReplaceSelectionParagraphs(null, (a) =>
 				{
 					if (skip && a.Text.EndsWith(text)) {
-						a.Cancel = true;
+						a.IsCanceled = true;
 					}
 					else { 
 						a.Text = a.Text + text;
@@ -107,7 +107,7 @@ namespace Net.Surviveplus.EditorPlus.ToolWindows
 
 			}
 			catch (ActiveDocumentIsNullException) {
-                macro.ShowMessageBox(Resources.InsertTextCaption, Resources.MessageActivateTextEditorForInsertText);
+                macaron.ShowMessageBox(Resources.InsertTextCaption, Resources.MessageActivateTextEditorForInsertText);
 			} // end try
         } 
 

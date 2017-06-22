@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="56c6c02c-1679-4aea-8aee-af0b64d9c887" Version="1.0.2.4" Language="en-US" Publisher="Shinichi Koga" />
+    <Identity Id="56c6c02c-1679-4aea-8aee-af0b64d9c887" Version="1.0.3.5" Language="en-US" Publisher="Shinichi Koga" />
     <DisplayName>EditorPlus for Visual Studio 2017</DisplayName>
     <Description xml:space="preserve">Some of text editor extensions, Format Text, Insert Serial Numbers and others, are userd in Surviveplus.net Developer Team.</Description>
     <MoreInfo>https://github.com/surviveplus/EditorPlus</MoreInfo>
     <License>LICENSE.txt</License>
-    <Icon>EditorPlus-32.png</Icon>
+    <Icon>EditorPlus-64.png</Icon>
     <PreviewImage>EditorPlus-200.png</PreviewImage>
   </Metadata>
   <Installation>

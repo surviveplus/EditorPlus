@@ -60,10 +60,10 @@ namespace Net.Surviveplus.EditorPlus.ToolWindows
         private void MainControl_Executed(object sender, EventArgs e)
         {
             var c = sender as TextFormat;
-            var macro = new Macro(this);
+            var macaron = new VisualStudioMacaron(this);
             try
             {
-                macro.ExecuteLineEditing(null, (a) => 
+                macaron.ReplaceSelectionParagraphs(null, (a) => 
                 {
                     // c（ツールウィンドウ）Text をフォーマット、a（エディタ）選択行を値として、フォーマット変換を実行します。
                     a.Text = TextFormatMacro.Format(c.Text, a.Text);
@@ -72,7 +72,7 @@ namespace Net.Surviveplus.EditorPlus.ToolWindows
             }
             catch (ActiveDocumentIsNullException)
             {
-                macro.ShowMessageBox(Resources.TextFormatCaption, Resources.MessageActivateTextEditorForFormatText);
+                macaron.ShowMessageBox(Resources.TextFormatCaption, Resources.MessageActivateTextEditorForFormatText);
             } // end try
         
         } // end sub 

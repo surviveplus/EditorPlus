@@ -1,20 +1,13 @@
-﻿//------------------------------------------------------------------------------
-// <copyright file="MyToolWindowPackage.cs" company="Company">
-//     Copyright (c) Company.  All rights reserved.
-// </copyright>
-//------------------------------------------------------------------------------
-
-using System;
-using System.ComponentModel.Design;
+﻿using System;
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.InteropServices;
+using System.ComponentModel.Design;
+using Microsoft.Win32;
 using Microsoft.VisualStudio;
+using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.Shell;
-using Microsoft.VisualStudio.Shell.Interop;
-using Microsoft.Win32;
 
 using Net.Surviveplus.VsixExtensions;
 using Net.Surviveplus.EditorPlus.Core;
@@ -55,8 +48,8 @@ namespace Net.Surviveplus.EditorPlus
 
             this.InitializeCommands(GuidList.guidEditorPlusCmdSet);
 
-            var macro = new Macro(this);
-            macro.Events.WindowEvents.WindowActivated += WindowEvents_WindowActivated;
+            var macaron = new VisualStudioMacaron(this);
+            macaron.Events.WindowEvents.WindowActivated += WindowEvents_WindowActivated;
 
         } // end sub
 
@@ -84,13 +77,13 @@ namespace Net.Surviveplus.EditorPlus
         public void CreateWorkTextFile(object sender, EventArgs e)
         {
 
-            var macro = new Macro(this);
+            var macaron = new VisualStudioMacaron(this);
 
             var file = FileMacro.GetNewWorkTextFile();
             FileMacro.CreateFile(file);
 
-            macro.Dte.ItemOperations.OpenFile(file.FullName);
-            macro.Dte.ActiveDocument.Activate();
+            macaron.Dte.ItemOperations.OpenFile(file.FullName);
+            macaron.Dte.ActiveDocument.Activate();
         } // end function
 
         /// <summary>
@@ -104,7 +97,7 @@ namespace Net.Surviveplus.EditorPlus
         /// ファイルが選択されていない時は、アクティブなプロジェクトのパスを開きます。
         /// また、ソリューションツリーでセットアッププロジェクトを選択しているときは、そのプロジェクトのパスを開きます。
         /// </remarks>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes"),
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes"), 
          MenuCommand(0x0107)]
         public void OpenActiveFileFolder(object sender, EventArgs e)
         {
@@ -112,16 +105,16 @@ namespace Net.Surviveplus.EditorPlus
             FileInfo file = null;
             DirectoryInfo folder = null;
 
-            var macro = new Macro(this);
-            if (macro.Dte == null) return;
+            var macaron = new VisualStudioMacaron(this);
+            if (macaron.Dte == null) return;
 
-            if (macro.Dte.ActiveDocument != null)
+            if (macaron.Dte.ActiveDocument != null)
             {
-                file = new FileInfo(macro.Dte.ActiveDocument.FullName);
+                file = new FileInfo(macaron.Dte.ActiveDocument.FullName);
                 if (file.Exists == false) file = null;
             } // end if
 
-            var project = macro.ActiveSolutionProjects.FirstOrDefault();
+            var project = macaron.ActiveSolutionProjects.FirstOrDefault();
             if (project != null &&
                 string.IsNullOrWhiteSpace(project.FullName) == false)
             {
@@ -143,11 +136,11 @@ namespace Net.Surviveplus.EditorPlus
 
             if (file == null &&
                 folder == null &&
-                macro.Dte.Solution != null &&
-                string.IsNullOrWhiteSpace(macro.Dte.Solution.FullName) == false)
+                macaron.Dte.Solution != null &&
+                string.IsNullOrWhiteSpace(macaron.Dte.Solution.FullName) == false)
             {
 
-                file = new FileInfo(macro.Dte.Solution.FullName);
+                file = new FileInfo(macaron.Dte.Solution.FullName);
                 if (file.Exists == false) file = null;
             } // end if
 
@@ -163,7 +156,7 @@ namespace Net.Surviveplus.EditorPlus
             }
             else
             {
-                macro.ShowMessageBox(Resources.OpenActiveFolderCaption, Resources.MessageCanNotOpenFolder);
+                macaron.ShowMessageBox(Resources.OpenActiveFolderCaption, Resources.MessageCanNotOpenFolder);
             } // end if
 
         } // end function
@@ -178,42 +171,42 @@ namespace Net.Surviveplus.EditorPlus
         ///  ブロックの後ろに Visual Basic の "End Class" に似せたコメントを挿入することで、
         ///  Visual Basic 開発者への視認性・訴求力を高め、高速リーディングを可能にします。
         /// </remarks>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA1303:Do not pass literals as localized parameters", MessageId = "EnvDTE.TextSelection.Insert(System.String,System.Int32)"),
-        System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes"),
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA1303:Do not pass literals as localized parameters", MessageId = "EnvDTE.TextSelection.Insert(System.String,System.Int32)"), 
+        System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes"),  
          MenuCommand(0x0102)]
         public void InsertCommentOnEndOfFunction(object sender, EventArgs e)
         {
-            var macro = new Macro(this);
+            var macaron = new VisualStudioMacaron(this);
 
             // アクティブドキュメントがない場合は処理を抜けます。
-            if (macro.DocumentIsActive == false) return;
+            if (macaron.DocumentIsActive == false) return;
 
             // C# 以外の場合はコメントを挿入せずに、処理を抜けます。
-            var project = macro.Dte.ActiveDocument.ProjectItem.ContainingProject;
+            var project = macaron.Dte.ActiveDocument.ProjectItem.ContainingProject;
             if (project == null || project.KnownKind() != ProjectKnownKind.CSharp) return;
 
-            var textSelection = macro.Dte.ActiveDocument.Selection as EnvDTE.TextSelection;
+            var textSelection = macaron.Dte.ActiveDocument.Selection as EnvDTE.TextSelection;
             textSelection.StartOfLine(EnvDTE.vsStartOfLineOptions.vsStartOfLineOptionsFirstText);
 
             var elements = new EnvDTE.vsCMElement[]{
-                EnvDTE.vsCMElement.vsCMElementFunction,
-                EnvDTE.vsCMElement.vsCMElementProperty,
-                EnvDTE.vsCMElement.vsCMElementClass,
-                EnvDTE.vsCMElement.vsCMElementInterface,
-                EnvDTE.vsCMElement.vsCMElementStruct,
-                EnvDTE.vsCMElement.vsCMElementEnum,
-                EnvDTE.vsCMElement.vsCMElementModule,
-                EnvDTE.vsCMElement.vsCMElementNamespace };
+				EnvDTE.vsCMElement.vsCMElementFunction,
+				EnvDTE.vsCMElement.vsCMElementProperty,
+				EnvDTE.vsCMElement.vsCMElementClass,
+				EnvDTE.vsCMElement.vsCMElementInterface,
+				EnvDTE.vsCMElement.vsCMElementStruct,
+				EnvDTE.vsCMElement.vsCMElementEnum,
+				EnvDTE.vsCMElement.vsCMElementModule,
+				EnvDTE.vsCMElement.vsCMElementNamespace };
 
-            var comments = new string[] {
-                " // end sub" ,
-                " // end property" ,
-                " // end class" ,
-                " // end interface" ,
-                " // end structure" ,
-                " // end enum" ,
-                " // end module" ,
-                " // end namespace"};
+            var comments = new string[] { 
+				" // end sub" ,
+				" // end property" ,
+				" // end class" ,
+				" // end interface" ,
+				" // end structure" ,
+				" // end enum" ,
+				" // end module" ,
+				" // end namespace"};
 
             var i = 0;
 
@@ -319,18 +312,18 @@ namespace Net.Surviveplus.EditorPlus
             // インデントの空白
             var indentSpace = string.Empty;
 
-            var macro = new Macro(this);
-            if (macro.DocumentIsActive == false) return;
+            var macaron = new VisualStudioMacaron(this);
+            if (macaron.DocumentIsActive == false) return;
 
-            var project = macro.Dte.ActiveDocument.ProjectItem.ContainingProject;
+            var project = macaron.Dte.ActiveDocument.ProjectItem.ContainingProject;
             if (project == null) return;
 
-            var activeSelection = macro.Dte.ActiveDocument.Selection as EnvDTE.TextSelection;
+            var activeSelection = macaron.Dte.ActiveDocument.Selection as EnvDTE.TextSelection;
 
             var kind = project.KnownKind();
             try
             {
-                var extension = System.IO.Path.GetExtension(macro.Dte.ActiveDocument.FullName);
+                var extension = System.IO.Path.GetExtension(macaron.Dte.ActiveDocument.FullName);
                 switch (extension)
                 {
                     case ".ts":
@@ -407,9 +400,21 @@ namespace Net.Surviveplus.EditorPlus
             //カーソル位置を移動します。
             activeSelection.MoveToLineAndOffset(activeSelection.TopPoint.Line, indentSpace.Length + offsetOfRegionExplanation + 1);
 
-            macro.Dte.ActiveDocument.Activate();
+            macaron.Dte.ActiveDocument.Activate();
         } // end sub
 
+        [MenuCommand(0x0110)]
+        public void ToCSharpText(object sender, EventArgs e)
+        {
+            var macaron = new VisualStudioMacaron(this);
+            if (macaron.DocumentIsActive == false) return;
+            
+            macaron.ReplaceSelectionText(null, (a) =>
+            {
+                a.Text = @""""+ a.Text.Replace( @"\", @"\\" ).Replace(@"""", @"\""").Replace("\r\n", @"\r\n"" + " + "\r\n" + @"""") + @"""";
+            });
+
+        } // end sub
 
         [MenuCommand(0x101)]
         public void TextFormat(object sender, EventArgs e)
@@ -431,15 +436,15 @@ namespace Net.Surviveplus.EditorPlus
 
 
         #endregion
-
+        
         #region WindowEvents イベント処理
 
         void WindowEvents_WindowActivated(EnvDTE.Window GotFocus, EnvDTE.Window LostFocus)
         {
-            var macro = new Macro(this);
+            var macaron = new VisualStudioMacaron(this);
 
-            var executable = macro.DocumentIsActive;
-            var menuCommandIsEnabled = macro.DocumentIsActiveWindow;
+            var executable = macaron.DocumentIsActive;
+            var menuCommandIsEnabled = macaron.DocumentIsActiveWindow;
 
 
             if (TextFormatToolWindow.MainControl != null) TextFormatToolWindow.MainControl.Executable = executable;
@@ -449,12 +454,12 @@ namespace Net.Surviveplus.EditorPlus
 
             // InsertCommentOnEndOfFunction MenuCoomand
             {
-                var m = Macro.MenuCommands[0x0102];
+                var m = VisualStudioMacaron.MenuCommands[0x0102];
                 var enabled = false;
 
                 if (menuCommandIsEnabled)
                 {
-                    var project = macro.Dte.ActiveDocument.ProjectItem.ContainingProject;
+                    var project = macaron.Dte.ActiveDocument.ProjectItem.ContainingProject;
                     enabled = (project != null && project.KnownKind() == ProjectKnownKind.CSharp);
                 }// end if
 
@@ -463,7 +468,7 @@ namespace Net.Surviveplus.EditorPlus
 
             // WriteOutline MenuCommand
             {
-                var m = Macro.MenuCommands[0x0103];
+                var m = VisualStudioMacaron.MenuCommands[0x0103];
                 m.Enabled = menuCommandIsEnabled;
             }
 

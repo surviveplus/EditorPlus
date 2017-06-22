@@ -59,12 +59,12 @@ namespace Net.Surviveplus.EditorPlus.ToolWindows
        {
            if (e.InsertPosition== InsertPosition.None) return;
 
-           var macro = new Macro(this);
+           var macaron = new VisualStudioMacaron(this);
            long number = 0;
            if (long.TryParse(e.StartNumberText, out number) == false)
            {
                // TODO: ローカライズ
-               macro.ShowMessageBox(Resources.InsertSerialNumberCaption, Resources.MessageInputNumber);
+               macaron.ShowMessageBox(Resources.InsertSerialNumberCaption, Resources.MessageInputNumber);
 
                //this.MainControl.Focus();
                return;
@@ -75,7 +75,7 @@ namespace Net.Surviveplus.EditorPlus.ToolWindows
 
            try
            {
-               macro.ExecuteLineEditing(
+               macaron.ReplaceSelectionParagraphs(
                    (a) =>
                    {
                        numberCounter += 1;
@@ -107,7 +107,7 @@ namespace Net.Surviveplus.EditorPlus.ToolWindows
                             e.InsertPosition == InsertPosition.EndOfLine && a.Text.EndsWith(text))
                            )
                        {
-                           a.Cancel = true;
+                           a.IsCanceled = true;
                        }
                        else
                        {
@@ -130,7 +130,7 @@ namespace Net.Surviveplus.EditorPlus.ToolWindows
            }
            catch (ActiveDocumentIsNullException)
            {
-               macro.ShowMessageBox(Resources.InsertSerialNumberCaption, Resources.MessageActivateTextEditorForInsertText);
+               macaron.ShowMessageBox(Resources.InsertSerialNumberCaption, Resources.MessageActivateTextEditorForInsertText);
            } // end try       
        } // end sub
 
