@@ -11,7 +11,8 @@ Some of text editor extensions, Format Text, Insert Serial Numbers and others, a
 - Open Folder for the Active File 
 ### [ EDIT > Advanced ] Menu commands
 - Insert Visual Basic Like Comments into End of Block ( for C# only ) 
-- Enclose Selection in #region ( for C#, Visual Basic, JavaScript, TypeScript ) 
+- Enclose Selection in #region ( for C#, Visual Basic, JavaScript, TypeScript )
+- Escape Selection to C# Text
 ### [ VIEW > Other Windows ] Tool Windows
 - Format Text 
 - Insert Text 
