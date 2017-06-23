@@ -19,7 +19,7 @@ namespace Net.Surviveplus.VsixExtensions
         public override void ReplaceSelectionParagraphs(Action<TextActionsParameters> prepare, Action<TextActionsParameters> act)
         {
             // 引数の検証
-            // acting は null で構いません。
+            // prepare は null で構いません。
             if (act == null) throw new ArgumentNullException("act");
 
             // アクティブドキュメントがない場合は例外
@@ -99,7 +99,7 @@ namespace Net.Surviveplus.VsixExtensions
         {
 
             // 引数の検証
-            // acting は null で構いません。
+            // prepare は null で構いません。
             if (act == null) throw new ArgumentNullException("act");
 
             // アクティブドキュメントがない場合は例外
@@ -130,7 +130,7 @@ namespace Net.Surviveplus.VsixExtensions
         public override void ReplaceSelectionWords(Action<TextActionsParameters> prepare, Action<TextActionsParameters> act)
         {
             // 引数の検証
-            // acting は null で構いません。
+            // prepare は null で構いません。
             if (act == null) throw new ArgumentNullException("act");
 
             // アクティブドキュメントがない場合は例外
@@ -151,12 +151,13 @@ namespace Net.Surviveplus.VsixExtensions
             if (prepare != null) prepare(a);
 
             a.Text = activeSelection.Text;
+            var endWithSpace = a.Text.EndsWith(" ");
             a.IsCanceled = false;
             act(a);
 
             if (a.IsCanceled == false)
             {
-                activeSelection.Insert(a.Text, (int)vsInsertFlags.vsInsertFlagsContainNewText);
+                activeSelection.Insert(a.Text + (endWithSpace ? " " : ""), (int)vsInsertFlags.vsInsertFlagsContainNewText);
                 this.Dte.ActiveDocument.Activate();
             } // end if
         } // end sub

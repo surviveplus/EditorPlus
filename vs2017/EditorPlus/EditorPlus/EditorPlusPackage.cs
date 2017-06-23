@@ -416,6 +416,44 @@ namespace Net.Surviveplus.EditorPlus
 
         } // end sub
 
+        [MenuCommand(0x0111)]
+        public void ToVisualBasicText(object sender, EventArgs e)
+        {
+            var macaron = new VisualStudioMacaron(this);
+            if (macaron.DocumentIsActive == false) return;
+
+            macaron.ReplaceSelectionText(null, (a) =>
+            {
+                a.Text = @"""" + a.Text.Replace(@"""", @"""""").Replace("\r\n", @""" & vbCrLf & " + "\r\n" + @"""") + @"""";
+            });
+
+        } // end sub
+
+        [MenuCommand(0x0112)]
+        public void ToUpperCamel(object sender, EventArgs e)
+        {
+            var macaron = new VisualStudioMacaron(this);
+            if (macaron.DocumentIsActive == false) return;
+
+            macaron.ReplaceSelectionWords(null, (a) =>
+            {
+                a.Text = TextMacro.CamelWords.GetUpperCamelWord(a.Text);
+            });
+
+        } // end sub
+
+        [MenuCommand(0x0113)]
+        public void ToLowerCamel(object sender, EventArgs e)
+        {
+            var macaron = new VisualStudioMacaron(this);
+            if (macaron.DocumentIsActive == false) return;
+
+            macaron.ReplaceSelectionWords(null, (a) =>
+            {
+                a.Text = TextMacro.CamelWords.GetLowerCamelWord(a.Text);
+            });
+
+        } // end sub
         [MenuCommand(0x101)]
         public void TextFormat(object sender, EventArgs e)
         {
