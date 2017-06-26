@@ -63,6 +63,16 @@ Namespace My.Resources
         '''<summary>
         '''  型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         '''</summary>
+        Friend ReadOnly Property FormatText() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("FormatText", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        '''</summary>
         Friend ReadOnly Property IncrementActiveIcon() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("IncrementActiveIcon", resourceCulture)
@@ -86,6 +96,36 @@ Namespace My.Resources
         Friend ReadOnly Property IncrementMaxIcon() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("IncrementMaxIcon", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        '''</summary>
+        Friend ReadOnly Property InsertNow() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("InsertNow", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        '''</summary>
+        Friend ReadOnly Property InsertNumbers() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("InsertNumbers", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        '''</summary>
+        Friend ReadOnly Property InsertText() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("InsertText", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

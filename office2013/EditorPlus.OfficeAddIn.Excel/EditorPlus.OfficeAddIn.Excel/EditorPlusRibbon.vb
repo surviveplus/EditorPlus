@@ -77,7 +77,6 @@ Public Class EditorPlusRibbon
             End If
 
         Catch ex2 As Exception
-            'MsgBox("インクリメント出来ません", MsgBoxStyle.OkOnly Or MsgBoxStyle.Exclamation)
             MsgBox(My.Resources.Message1CannotIncrement, MsgBoxStyle.OkOnly Or MsgBoxStyle.Exclamation)
         End Try
 

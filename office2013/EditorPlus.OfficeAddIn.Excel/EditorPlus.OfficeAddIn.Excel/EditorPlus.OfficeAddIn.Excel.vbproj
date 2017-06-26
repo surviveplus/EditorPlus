@@ -206,9 +206,9 @@
     <Compile Include="ThisAddIn.vb">
       <SubType>Code</SubType>
     </Compile>
-    <EmbeddedResource Include="My Project\Resources.ja.resx" >
+    <EmbeddedResource Include="My Project\Resources.ja.resx">
       <DependentUpon>Resources.resx</DependentUpon>
-</EmbeddedResource >
+    </EmbeddedResource>
     <None Include="EditorPlus.OfficeAddIn.Excel_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="ThisAddIn.Designer.xml">
@@ -249,9 +249,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\FormatText.png" />
     <Content Include="Resources\IncrementActiveIcon.png" />
     <Content Include="Resources\IncrementIcon.png" />
     <Content Include="Resources\IncrementMaxIcon.png" />
+    <Content Include="Resources\InsertNow.png" />
+    <Content Include="Resources\InsertNumbers.png" />
+    <Content Include="Resources\InsertText.png" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -62,8 +62,10 @@
         '
         'InsertTextButton
         '
+        Me.InsertTextButton.Image = Global.EditorPlus.OfficeAddIn.Word.My.Resources.Resources.InsertText
         Me.InsertTextButton.Label = "Insert Text"
         Me.InsertTextButton.Name = "InsertTextButton"
+        Me.InsertTextButton.ShowImage = True
         '
         'EditorPlusRibbon
         '

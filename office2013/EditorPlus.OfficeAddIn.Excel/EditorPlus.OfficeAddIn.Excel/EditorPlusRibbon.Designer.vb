@@ -44,8 +44,8 @@
         Me.EditorPlus = Me.Factory.CreateRibbonTab
         Me.EditSelectionGroup = Me.Factory.CreateRibbonGroup
         Me.IncrementButton = Me.Factory.CreateRibbonButton
-        Me.InsertTextButton = Me.Factory.CreateRibbonButton
         Me.InsertNowButton = Me.Factory.CreateRibbonButton
+        Me.InsertTextButton = Me.Factory.CreateRibbonButton
         Me.EditorPlus.SuspendLayout()
         Me.EditSelectionGroup.SuspendLayout()
         Me.SuspendLayout()
@@ -74,15 +74,19 @@
         Me.IncrementButton.ShowImage = True
         Me.IncrementButton.SuperTip = "Increment the number from cell above. Target is most right value of the text."
         '
-        'InsertTextButton
-        '
-        Me.InsertTextButton.Label = "Insert Text"
-        Me.InsertTextButton.Name = "InsertTextButton"
-        '
         'InsertNowButton
         '
+        Me.InsertNowButton.Image = Global.EditorPlus.OfficeAddIn.Excel.My.Resources.Resources.InsertNow
         Me.InsertNowButton.Label = "Insert Now"
         Me.InsertNowButton.Name = "InsertNowButton"
+        Me.InsertNowButton.ShowImage = True
+        '
+        'InsertTextButton
+        '
+        Me.InsertTextButton.Image = Global.EditorPlus.OfficeAddIn.Excel.My.Resources.Resources.InsertText
+        Me.InsertTextButton.Label = "Insert Text"
+        Me.InsertTextButton.Name = "InsertTextButton"
+        Me.InsertTextButton.ShowImage = True
         '
         'EditorPlusRibbon
         '
