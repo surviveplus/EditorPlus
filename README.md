@@ -13,6 +13,9 @@ Some of text editor extensions, Format Text, Insert Serial Numbers and others, a
 - Insert Visual Basic Like Comments into End of Block ( for C# only ) 
 - Enclose Selection in #region ( for C#, Visual Basic, JavaScript, TypeScript )
 - Escape Selection to C# Text
+- Escape Selection to Visual Basic Text 
+- To Upper Camel
+- To Lower Camel
 ### [ VIEW > Other Windows ] Tool Windows
 - Format Text 
 - Insert Text 
