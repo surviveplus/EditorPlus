@@ -206,6 +206,9 @@
     <Compile Include="ThisAddIn.vb">
       <SubType>Code</SubType>
     </Compile>
+    <EmbeddedResource Include="My Project\Resources.ja.resx" >
+      <DependentUpon>Resources.resx</DependentUpon>
+</EmbeddedResource >
     <None Include="EditorPlus.OfficeAddIn.Excel_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="ThisAddIn.Designer.xml">

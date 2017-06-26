@@ -64,11 +64,12 @@ Public Class EditorPlusRibbon
 
         Dim app = ThisAddIn.Current.Application
         Dim target As Microsoft.Office.Interop.Excel.Range = app.Selection
-        Dim upperCell As Microsoft.Office.Interop.Excel.Range = target.Offset(-1, 0)
-        Dim nextCell As Microsoft.Office.Interop.Excel.Range = target.Offset(1, 0)
 
-        Dim text As String = upperCell.Text
         Try
+            Dim upperCell As Microsoft.Office.Interop.Excel.Range = target.Offset(-1, 0)
+            Dim nextCell As Microsoft.Office.Interop.Excel.Range = target.Offset(1, 0)
+            Dim text As String = upperCell.Text
+
             Dim newText = Core.EditorString.IncrementText(text)
             If newText IsNot Nothing Then
                 target.Formula = newText
@@ -76,7 +77,8 @@ Public Class EditorPlusRibbon
             End If
 
         Catch ex2 As Exception
-            MsgBox("インクリメント出来ません", MsgBoxStyle.OkOnly Or MsgBoxStyle.Exclamation)
+            'MsgBox("インクリメント出来ません", MsgBoxStyle.OkOnly Or MsgBoxStyle.Exclamation)
+            MsgBox(My.Resources.Message1CannotIncrement, MsgBoxStyle.OkOnly Or MsgBoxStyle.Exclamation)
         End Try
 
     End Sub

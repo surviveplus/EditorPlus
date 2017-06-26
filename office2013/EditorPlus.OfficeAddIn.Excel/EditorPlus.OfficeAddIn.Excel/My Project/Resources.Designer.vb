@@ -89,5 +89,14 @@ Namespace My.Resources
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
+        
+        '''<summary>
+        '''  Cannot increment に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property Message1CannotIncrement() As String
+            Get
+                Return ResourceManager.GetString("Message1CannotIncrement", resourceCulture)
+            End Get
+        End Property
     End Module
 End Namespace
