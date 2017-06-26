@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "EditorPlus.OfficeAddIn.Excel", "EditorPlus.OfficeAddIn.Excel\EditorPlus.OfficeAddIn.Excel.vbproj", "{553DD58A-F488-43ED-83CF-5D0543EC55C4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "References", "References", "{09F3B687-49A3-4753-A727-63984E97A83F}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "EditorPlus.UI", "..\EditorPlus.UI\EditorPlus.UI\EditorPlus.UI.vbproj", "{DD2126B7-21AA-4453-951D-55C5C6F3A9C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditorPlus.OfficeAddIn.Excel.Tests", "EditorPlus.OfficeAddIn.Excel.Tests\EditorPlus.OfficeAddIn.Excel.Tests.csproj", "{A3C8FD7C-B7F1-4AA5-A4AD-DDB6667864A9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{553DD58A-F488-43ED-83CF-5D0543EC55C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{553DD58A-F488-43ED-83CF-5D0543EC55C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{553DD58A-F488-43ED-83CF-5D0543EC55C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{553DD58A-F488-43ED-83CF-5D0543EC55C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD2126B7-21AA-4453-951D-55C5C6F3A9C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD2126B7-21AA-4453-951D-55C5C6F3A9C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD2126B7-21AA-4453-951D-55C5C6F3A9C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD2126B7-21AA-4453-951D-55C5C6F3A9C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3C8FD7C-B7F1-4AA5-A4AD-DDB6667864A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3C8FD7C-B7F1-4AA5-A4AD-DDB6667864A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3C8FD7C-B7F1-4AA5-A4AD-DDB6667864A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3C8FD7C-B7F1-4AA5-A4AD-DDB6667864A9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DD2126B7-21AA-4453-951D-55C5C6F3A9C8} = {09F3B687-49A3-4753-A727-63984E97A83F}
+	EndGlobalSection
+EndGlobal

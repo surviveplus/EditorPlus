@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="InsertText"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EditorPlus.UI"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}"
+             >
+    <UserControl.Resources>
+        <Style TargetType="StackPanel">
+        </Style>
+        <Style TargetType="Button" >
+            <Setter Property="Margin" Value="0 0 5 0" />
+            <Setter Property="Padding" Value="10 0 10 0" />
+        </Style>
+       
+    </UserControl.Resources> 
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="68" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0"  Margin="0 8 0 24">
+            <Button x:Name="InsertToHeadButton"  Click="InsertToHeadButton_Click" Content="Head" ToolTip="Insert to head of selection." />
+            <Button x:Name="InsertToLineHeadButton" Click="InsertToLineHeadButton_Click" Content="Line Head" ToolTip="Insert to head of each lines of selection." />
+            <Button x:Name="InsertToLineEndButton" Click="InsertToLineEndButton_Click" Content="Line End" ToolTip="Insert to end of each lines of selection." />
+            <Button x:Name="InsertToEndButton" Click="InsertToEndButton_Click" Content="End" ToolTip="Insert to end of selection."/>
+        </StackPanel>
+        <CheckBox x:Name="SkipIfStartedOrEndWithTextCheckBox" Content="Skip if started/end with text" ToolTip="Skip if started/end with text"   Grid.Row="0" Margin="0 48 0 0" />
+
+        <TextBox x:Name="TextBox" Grid.Row="1" 
+                 AcceptsReturn="True"  AcceptsTab="True" 
+                 SpellCheck.IsEnabled="True" Language="en-us" 
+                 TabIndex="0" FontSize="11" />
+    </Grid>
+</UserControl>
