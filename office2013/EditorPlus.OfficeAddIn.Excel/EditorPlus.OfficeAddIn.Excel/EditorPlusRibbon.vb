@@ -83,4 +83,14 @@ Public Class EditorPlusRibbon
 
     End Sub
 
+    Private Sub InsertNowButton_Click(sender As Object, e As RibbonControlEventArgs) Handles InsertNowButton.Click
+
+        Dim macaron As New ExcelMacaron(ThisAddIn.Current.Application)
+        macaron.ReplaceSelectionText(
+            Nothing,
+            Sub(a)
+                a.Text = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss.FFF")
+            End Sub)
+
+    End Sub
 End Class

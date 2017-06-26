@@ -45,6 +45,7 @@
         Me.EditSelectionGroup = Me.Factory.CreateRibbonGroup
         Me.IncrementButton = Me.Factory.CreateRibbonButton
         Me.InsertTextButton = Me.Factory.CreateRibbonButton
+        Me.InsertNowButton = Me.Factory.CreateRibbonButton
         Me.EditorPlus.SuspendLayout()
         Me.EditSelectionGroup.SuspendLayout()
         Me.SuspendLayout()
@@ -59,6 +60,7 @@
         '
         Me.EditSelectionGroup.Items.Add(Me.IncrementButton)
         Me.EditSelectionGroup.Items.Add(Me.InsertTextButton)
+        Me.EditSelectionGroup.Items.Add(Me.InsertNowButton)
         Me.EditSelectionGroup.Label = "Edit Selection"
         Me.EditSelectionGroup.Name = "EditSelectionGroup"
         '
@@ -77,6 +79,11 @@
         Me.InsertTextButton.Label = "Insert Text"
         Me.InsertTextButton.Name = "InsertTextButton"
         '
+        'InsertNowButton
+        '
+        Me.InsertNowButton.Label = "Insert Now"
+        Me.InsertNowButton.Name = "InsertNowButton"
+        '
         'EditorPlusRibbon
         '
         Me.Name = "EditorPlusRibbon"
@@ -94,6 +101,7 @@
     Friend WithEvents EditSelectionGroup As Microsoft.Office.Tools.Ribbon.RibbonGroup
     Friend WithEvents InsertTextButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents IncrementButton As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents InsertNowButton As Microsoft.Office.Tools.Ribbon.RibbonButton
 End Class
 
 Partial Class ThisRibbonCollection
