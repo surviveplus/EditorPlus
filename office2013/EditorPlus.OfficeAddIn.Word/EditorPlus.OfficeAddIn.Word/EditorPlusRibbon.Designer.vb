@@ -51,7 +51,7 @@
         'EditorPlusTab
         '
         Me.EditorPlusTab.Groups.Add(Me.EditSelectionGroup)
-        Me.EditorPlusTab.Label = "EditorPlus"
+        Me.EditorPlusTab.Label = "Editor Plus"
         Me.EditorPlusTab.Name = "EditorPlusTab"
         '
         'EditSelectionGroup

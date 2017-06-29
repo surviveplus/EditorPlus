@@ -44,8 +44,8 @@
         Me.EditorPlusTab = Me.Factory.CreateRibbonTab
         Me.EditSelectionGroup = Me.Factory.CreateRibbonGroup
         Me.InsertTextButton = Me.Factory.CreateRibbonButton
-        Me.CopyTextButton = Me.Factory.CreateRibbonButton
         Me.ClipboardGroup = Me.Factory.CreateRibbonGroup
+        Me.CopyTextButton = Me.Factory.CreateRibbonButton
         Me.EditorPlusTab.SuspendLayout()
         Me.EditSelectionGroup.SuspendLayout()
         Me.ClipboardGroup.SuspendLayout()
@@ -55,7 +55,7 @@
         '
         Me.EditorPlusTab.Groups.Add(Me.EditSelectionGroup)
         Me.EditorPlusTab.Groups.Add(Me.ClipboardGroup)
-        Me.EditorPlusTab.Label = "EditorPlus"
+        Me.EditorPlusTab.Label = "Editor Plus"
         Me.EditorPlusTab.Name = "EditorPlusTab"
         '
         'EditSelectionGroup
@@ -71,16 +71,16 @@
         Me.InsertTextButton.Name = "InsertTextButton"
         Me.InsertTextButton.ShowImage = True
         '
-        'CopyTextButton
-        '
-        Me.CopyTextButton.Label = "Copy Text"
-        Me.CopyTextButton.Name = "CopyTextButton"
-        '
         'ClipboardGroup
         '
         Me.ClipboardGroup.Items.Add(Me.CopyTextButton)
         Me.ClipboardGroup.Label = "Clipboard"
         Me.ClipboardGroup.Name = "ClipboardGroup"
+        '
+        'CopyTextButton
+        '
+        Me.CopyTextButton.Label = "Copy Text"
+        Me.CopyTextButton.Name = "CopyTextButton"
         '
         'EditorPlusRibbon
         '
