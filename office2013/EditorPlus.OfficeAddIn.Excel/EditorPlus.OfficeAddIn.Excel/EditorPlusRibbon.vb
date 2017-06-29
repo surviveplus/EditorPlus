@@ -92,4 +92,31 @@ Public Class EditorPlusRibbon
             End Sub)
 
     End Sub
+
+    Private Sub CopyNoLineBreakTextButton_Click(sender As Object, e As RibbonControlEventArgs) Handles CopyNoLineBreakTextButton.Click
+        Dim result = New StringBuilder
+        Dim app = ThisAddIn.Current.Application
+
+        ' セルの形（左右　表としての位置、タブ区切りと改行で表現）を維持したままのコピー
+
+        Dim getNewText =
+            Function(text As String) As String
+                Dim newText = text?.Replace(vbLf, "")
+                Return newText
+            End Function
+
+        Dim macaron As New ExcelMacaron(app)
+        macaron.ReplaceSelectionText(
+            Nothing,
+            Sub(a)
+                If a.ColumnIndex > 1 Then
+                    result.Append(vbTab)
+                Else
+                    If a.IsBox AndAlso a.RowIndex > 1 Then result.AppendLine("")
+                End If
+                result.Append(getNewText(a.Text))
+            End Sub)
+
+        System.Windows.Forms.Clipboard.SetText(result.ToString())
+    End Sub
 End Class

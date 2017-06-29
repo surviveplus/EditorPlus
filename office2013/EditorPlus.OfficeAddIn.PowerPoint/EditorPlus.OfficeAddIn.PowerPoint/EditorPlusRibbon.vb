@@ -72,4 +72,23 @@ Public Class EditorPlusRibbon
         System.Windows.Forms.Clipboard.SetText(text.ToString())
 
     End Sub
+
+    Private Sub CopyNoLineBreakTextButton_Click(sender As Object, e As RibbonControlEventArgs) Handles CopyNoLineBreakTextButton.Click
+
+        Dim getNewText =
+            Function(t As String) As String
+                Dim newText = t?.Replace(vbLf, "").Replace(vbCr, "").Replace(vbVerticalTab, "")
+                Return newText
+            End Function
+
+        Dim text As New StringBuilder
+        Dim macaron As New PowerPointMacaron(ThisAddIn.Current.Application)
+        macaron.ReplaceSelectionText(
+            Nothing,
+            Sub(a)
+                text.AppendLine(getNewText(a.Text))
+            End Sub)
+
+        System.Windows.Forms.Clipboard.SetText(text.ToString())
+    End Sub
 End Class

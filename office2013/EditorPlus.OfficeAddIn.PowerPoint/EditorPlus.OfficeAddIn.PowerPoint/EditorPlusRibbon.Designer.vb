@@ -46,6 +46,7 @@
         Me.InsertTextButton = Me.Factory.CreateRibbonButton
         Me.ClipboardGroup = Me.Factory.CreateRibbonGroup
         Me.CopyTextButton = Me.Factory.CreateRibbonButton
+        Me.CopyNoLineBreakTextButton = Me.Factory.CreateRibbonButton
         Me.EditorPlusTab.SuspendLayout()
         Me.EditSelectionGroup.SuspendLayout()
         Me.ClipboardGroup.SuspendLayout()
@@ -74,6 +75,7 @@
         'ClipboardGroup
         '
         Me.ClipboardGroup.Items.Add(Me.CopyTextButton)
+        Me.ClipboardGroup.Items.Add(Me.CopyNoLineBreakTextButton)
         Me.ClipboardGroup.Label = "Clipboard"
         Me.ClipboardGroup.Name = "ClipboardGroup"
         '
@@ -81,6 +83,11 @@
         '
         Me.CopyTextButton.Label = "Copy Text"
         Me.CopyTextButton.Name = "CopyTextButton"
+        '
+        'CopyNoLineBreakTextButton
+        '
+        Me.CopyNoLineBreakTextButton.Label = "Copy No Line break Text"
+        Me.CopyNoLineBreakTextButton.Name = "CopyNoLineBreakTextButton"
         '
         'EditorPlusRibbon
         '
@@ -102,6 +109,7 @@
     Friend WithEvents InsertTextButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents ClipboardGroup As Microsoft.Office.Tools.Ribbon.RibbonGroup
     Friend WithEvents CopyTextButton As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents CopyNoLineBreakTextButton As Microsoft.Office.Tools.Ribbon.RibbonButton
 End Class
 
 Partial Class ThisRibbonCollection
