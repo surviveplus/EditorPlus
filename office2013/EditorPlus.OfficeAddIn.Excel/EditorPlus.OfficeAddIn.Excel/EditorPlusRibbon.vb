@@ -173,4 +173,14 @@ Public Class EditorPlusRibbon
         End Try
 
     End Sub
+
+    Private Sub TrimEndButton_Click(sender As Object, e As RibbonControlEventArgs) Handles TrimEndButton.Click
+        Dim app = ThisAddIn.Current.Application
+        Dim myMacaron As New ExcelMacaron(app)
+        myMacaron.ReplaceSelectionParagraphs(
+            Nothing,
+            Sub(a)
+                a.Text = a.Text.TrimEnd()
+            End Sub)
+    End Sub
 End Class

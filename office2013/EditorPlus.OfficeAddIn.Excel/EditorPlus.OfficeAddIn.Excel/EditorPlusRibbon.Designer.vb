@@ -44,12 +44,13 @@
         Me.EditorPlus = Me.Factory.CreateRibbonTab
         Me.EditSelectionGroup = Me.Factory.CreateRibbonGroup
         Me.IncrementButton = Me.Factory.CreateRibbonButton
-        Me.InsertTextButton = Me.Factory.CreateRibbonButton
-        Me.InsertNowButton = Me.Factory.CreateRibbonButton
-        Me.ClipboardGroup = Me.Factory.CreateRibbonGroup
-        Me.CopyNoLineBreakTextButton = Me.Factory.CreateRibbonButton
         Me.IncrementActiveButton = Me.Factory.CreateRibbonButton
         Me.IncrementMaxButton = Me.Factory.CreateRibbonButton
+        Me.InsertTextButton = Me.Factory.CreateRibbonButton
+        Me.InsertNowButton = Me.Factory.CreateRibbonButton
+        Me.TrimEndButton = Me.Factory.CreateRibbonButton
+        Me.ClipboardGroup = Me.Factory.CreateRibbonGroup
+        Me.CopyNoLineBreakTextButton = Me.Factory.CreateRibbonButton
         Me.EditorPlus.SuspendLayout()
         Me.EditSelectionGroup.SuspendLayout()
         Me.ClipboardGroup.SuspendLayout()
@@ -69,6 +70,7 @@
         Me.EditSelectionGroup.Items.Add(Me.IncrementMaxButton)
         Me.EditSelectionGroup.Items.Add(Me.InsertTextButton)
         Me.EditSelectionGroup.Items.Add(Me.InsertNowButton)
+        Me.EditSelectionGroup.Items.Add(Me.TrimEndButton)
         Me.EditSelectionGroup.Label = "Edit Selection"
         Me.EditSelectionGroup.Name = "EditSelectionGroup"
         '
@@ -81,31 +83,6 @@
         Me.IncrementButton.ScreenTip = "Increment from Upper cell"
         Me.IncrementButton.ShowImage = True
         Me.IncrementButton.SuperTip = "Increment the number from cell above. Target is most right value of the text."
-        '
-        'InsertTextButton
-        '
-        Me.InsertTextButton.Image = Global.EditorPlus.OfficeAddIn.Excel.My.Resources.Resources.InsertText
-        Me.InsertTextButton.Label = "Insert Text"
-        Me.InsertTextButton.Name = "InsertTextButton"
-        Me.InsertTextButton.ShowImage = True
-        '
-        'InsertNowButton
-        '
-        Me.InsertNowButton.Image = Global.EditorPlus.OfficeAddIn.Excel.My.Resources.Resources.InsertNow
-        Me.InsertNowButton.Label = "Insert Now"
-        Me.InsertNowButton.Name = "InsertNowButton"
-        Me.InsertNowButton.ShowImage = True
-        '
-        'ClipboardGroup
-        '
-        Me.ClipboardGroup.Items.Add(Me.CopyNoLineBreakTextButton)
-        Me.ClipboardGroup.Label = "Clipboard"
-        Me.ClipboardGroup.Name = "ClipboardGroup"
-        '
-        'CopyNoLineBreakTextButton
-        '
-        Me.CopyNoLineBreakTextButton.Label = "Copy No Line break Text"
-        Me.CopyNoLineBreakTextButton.Name = "CopyNoLineBreakTextButton"
         '
         'IncrementActiveButton
         '
@@ -122,6 +99,38 @@
         Me.IncrementMaxButton.Name = "IncrementMaxButton"
         Me.IncrementMaxButton.ScreenTip = "Increment Max in Table column"
         Me.IncrementMaxButton.ShowImage = True
+        '
+        'InsertTextButton
+        '
+        Me.InsertTextButton.Image = Global.EditorPlus.OfficeAddIn.Excel.My.Resources.Resources.InsertText
+        Me.InsertTextButton.Label = "Insert Text"
+        Me.InsertTextButton.Name = "InsertTextButton"
+        Me.InsertTextButton.ShowImage = True
+        '
+        'InsertNowButton
+        '
+        Me.InsertNowButton.Image = Global.EditorPlus.OfficeAddIn.Excel.My.Resources.Resources.InsertNow
+        Me.InsertNowButton.Label = "Insert Now"
+        Me.InsertNowButton.Name = "InsertNowButton"
+        Me.InsertNowButton.ShowImage = True
+        '
+        'TrimEndButton
+        '
+        Me.TrimEndButton.Image = Global.EditorPlus.OfficeAddIn.Excel.My.Resources.Resources.TrimEnd
+        Me.TrimEndButton.Label = "Trim End"
+        Me.TrimEndButton.Name = "TrimEndButton"
+        Me.TrimEndButton.ShowImage = True
+        '
+        'ClipboardGroup
+        '
+        Me.ClipboardGroup.Items.Add(Me.CopyNoLineBreakTextButton)
+        Me.ClipboardGroup.Label = "Clipboard"
+        Me.ClipboardGroup.Name = "ClipboardGroup"
+        '
+        'CopyNoLineBreakTextButton
+        '
+        Me.CopyNoLineBreakTextButton.Label = "Copy No Line break Text"
+        Me.CopyNoLineBreakTextButton.Name = "CopyNoLineBreakTextButton"
         '
         'EditorPlusRibbon
         '
@@ -147,6 +156,7 @@
     Friend WithEvents CopyNoLineBreakTextButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents IncrementActiveButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents IncrementMaxButton As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents TrimEndButton As Microsoft.Office.Tools.Ribbon.RibbonButton
 End Class
 
 Partial Class ThisRibbonCollection

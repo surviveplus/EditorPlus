@@ -256,6 +256,7 @@
     <Content Include="Resources\InsertNow.png" />
     <Content Include="Resources\InsertNumbers.png" />
     <Content Include="Resources\InsertText.png" />
+    <Content Include="Resources\TrimEnd.png" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
