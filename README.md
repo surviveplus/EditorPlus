@@ -6,11 +6,17 @@ Some of text editor extensions, Format Text, Insert Serial Numbers and others fo
 - [Download For Visual Studio 2015](https://marketplace.visualstudio.com/items?itemName=SHIN-ICHIKOGA.EditorPlus)
 - Setup for Office is in preparation.
 
-## Features (For Office)
-### [ Edit Selection ] Ribbon group
-- Increment from cell above
-- Insert Text
-- Insert Now
+## Features (For Office Word, Excel, PowerPoint)
+### [ Edit Selection ] Ribbon Commands
+- Increment from Upper cell (Excel)
+- Increment Active cell (Excel)
+- Increment Menu in Table  column (Excel)
+- Insert Text (Word, Excel, PowerPoint)
+- Insert Now (Excel)
+- Trim End (Excel)
+### [ Clipboard ] Ribbon Commands
+- Copy Text (PowerPoint)
+- Copy No Line break Text  (Excel, PowerPoint)
 
 ## Features (For Visual Studio)
 ### [ FILE ] Menu Commands
