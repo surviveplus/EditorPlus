@@ -48,6 +48,8 @@
         Me.InsertNowButton = Me.Factory.CreateRibbonButton
         Me.ClipboardGroup = Me.Factory.CreateRibbonGroup
         Me.CopyNoLineBreakTextButton = Me.Factory.CreateRibbonButton
+        Me.IncrementActiveButton = Me.Factory.CreateRibbonButton
+        Me.IncrementMaxButton = Me.Factory.CreateRibbonButton
         Me.EditorPlus.SuspendLayout()
         Me.EditSelectionGroup.SuspendLayout()
         Me.ClipboardGroup.SuspendLayout()
@@ -63,6 +65,8 @@
         'EditSelectionGroup
         '
         Me.EditSelectionGroup.Items.Add(Me.IncrementButton)
+        Me.EditSelectionGroup.Items.Add(Me.IncrementActiveButton)
+        Me.EditSelectionGroup.Items.Add(Me.IncrementMaxButton)
         Me.EditSelectionGroup.Items.Add(Me.InsertTextButton)
         Me.EditSelectionGroup.Items.Add(Me.InsertNowButton)
         Me.EditSelectionGroup.Label = "Edit Selection"
@@ -72,9 +76,9 @@
         '
         Me.IncrementButton.Image = Global.EditorPlus.OfficeAddIn.Excel.My.Resources.Resources.IncrementIcon
         Me.IncrementButton.KeyTip = "IN"
-        Me.IncrementButton.Label = "Increment from cell above"
+        Me.IncrementButton.Label = "Increment from Upper cell"
         Me.IncrementButton.Name = "IncrementButton"
-        Me.IncrementButton.ScreenTip = "Increment from cell above"
+        Me.IncrementButton.ScreenTip = "Increment from Upper cell"
         Me.IncrementButton.ShowImage = True
         Me.IncrementButton.SuperTip = "Increment the number from cell above. Target is most right value of the text."
         '
@@ -103,6 +107,22 @@
         Me.CopyNoLineBreakTextButton.Label = "Copy No Line break Text"
         Me.CopyNoLineBreakTextButton.Name = "CopyNoLineBreakTextButton"
         '
+        'IncrementActiveButton
+        '
+        Me.IncrementActiveButton.Image = Global.EditorPlus.OfficeAddIn.Excel.My.Resources.Resources.IncrementActiveIcon
+        Me.IncrementActiveButton.Label = "Increment Active cell"
+        Me.IncrementActiveButton.Name = "IncrementActiveButton"
+        Me.IncrementActiveButton.ScreenTip = "Increment Active cell"
+        Me.IncrementActiveButton.ShowImage = True
+        '
+        'IncrementMaxButton
+        '
+        Me.IncrementMaxButton.Image = Global.EditorPlus.OfficeAddIn.Excel.My.Resources.Resources.IncrementMaxIcon
+        Me.IncrementMaxButton.Label = "Increment Max in Table column"
+        Me.IncrementMaxButton.Name = "IncrementMaxButton"
+        Me.IncrementMaxButton.ScreenTip = "Increment Max in Table column"
+        Me.IncrementMaxButton.ShowImage = True
+        '
         'EditorPlusRibbon
         '
         Me.Name = "EditorPlusRibbon"
@@ -125,6 +145,8 @@
     Friend WithEvents InsertNowButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents ClipboardGroup As Microsoft.Office.Tools.Ribbon.RibbonGroup
     Friend WithEvents CopyNoLineBreakTextButton As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents IncrementActiveButton As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents IncrementMaxButton As Microsoft.Office.Tools.Ribbon.RibbonButton
 End Class
 
 Partial Class ThisRibbonCollection

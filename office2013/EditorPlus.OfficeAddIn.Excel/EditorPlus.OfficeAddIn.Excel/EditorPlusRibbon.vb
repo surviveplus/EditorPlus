@@ -1,4 +1,5 @@
 ﻿Imports EditorPlus.UI
+Imports Microsoft.Office.Interop.Excel
 Imports Microsoft.Office.Tools.Ribbon
 Imports Net.Surviveplus.RegularExpressionQuery
 Imports Net.Surviveplus.SakuraMacaron.Core
@@ -118,5 +119,58 @@ Public Class EditorPlusRibbon
             End Sub)
 
         System.Windows.Forms.Clipboard.SetText(result.ToString())
+    End Sub
+
+    Private Sub IncrementActiveButton_Click(sender As Object, e As RibbonControlEventArgs) Handles IncrementActiveButton.Click
+        Dim app = ThisAddIn.Current.Application
+        Dim target As Microsoft.Office.Interop.Excel.Range = app.Selection
+
+        Dim text As String = target.Text
+        Try
+            Dim newText = Core.EditorString.IncrementText(text)
+            If newText IsNot Nothing Then
+                target.Formula = newText
+            End If
+
+        Catch ex As Exception
+            MsgBox(My.Resources.Message1CannotIncrement, MsgBoxStyle.OkOnly Or MsgBoxStyle.Exclamation)
+        End Try
+    End Sub
+
+    Private Sub IncrementMaxButton_Click(sender As Object, e As RibbonControlEventArgs) Handles IncrementMaxButton.Click
+
+        Dim cell As Range = ThisAddIn.Current.Application.ActiveCell
+
+        Try
+            Dim table As ListObject = cell.ListObject
+            If table IsNot Nothing Then
+                Dim values =
+                From column As ListColumn In table.ListColumns
+                Where column.Range.Column = cell.Column
+                From row As ListRow In table.ListRows
+                Let range As Range = column.DataBodyRange()(row.Index)
+                Let text As String = range.Text
+                Where String.IsNullOrWhiteSpace(text) = False
+                Let a = (From b In text.Matches(Of Core.WithNumberText)(Core.EditorString.Pattern) Select b).FirstOrDefault()
+                Where a IsNot Nothing
+                Order By a.before Descending
+                Order By a.number Descending
+                Select New With {.Text = text, .P = a}
+
+                Dim max = values.FirstOrDefault()
+                If max IsNot Nothing Then
+                    max.P.number += 1
+                    Dim newText = Core.EditorString.IncrementText(max.Text, max.P.number)
+
+                    cell.Formula = newText
+                Else
+                    cell.Formula = "1"
+                End If
+            End If
+
+        Catch ex As Exception
+            MsgBox(My.Resources.Message1CannotIncrement, MsgBoxStyle.OkOnly Or MsgBoxStyle.Exclamation)
+        End Try
+
     End Sub
 End Class

@@ -4,22 +4,28 @@ Imports Net.Surviveplus.RegularExpressionQuery
 Namespace Core
     Public Module EditorString
 
-        Public Function IncrementText(text As String) As String
+        Public Const Pattern As String = "^(?<before>.*?)(?<number>\d+?)(?<after>[^\d]*?)$"
+
+        Public Function IncrementText(text As String, Optional newNumber As Nullable(Of Long) = Nothing) As String
 
 
-            Dim pattern = "^(?<before>.*?)(?<number>\d+?)(?<after>[^\d]*?)$"
-            Dim a = (From b In text.Matches(Of WithNumberText)(pattern) Select b).FirstOrDefault()
-            Dim ab = (From b In text.Matches(Of WithNumberTextB)(pattern) Select b).FirstOrDefault()
+            Dim a = (From b In text.Matches(Of WithNumberText)(Pattern) Select b).FirstOrDefault()
+            Dim ab = (From b In text.Matches(Of WithNumberTextB)(Pattern) Select b).FirstOrDefault()
             If a IsNot Nothing Then
 
-                a.number += 1
+                If newNumber.HasValue Then
+                    a.number = newNumber.Value
+                Else
+                    a.number += 1
+                End If
+
                 Dim zeroCount = ab.number.Length - a.number.ToString().Length
                 If zeroCount < 0 Then
                     zeroCount = 0
                 End If
                 ab.number = New String("0", zeroCount) & a.number
 
-                Dim newText = text.Replace(Of WithNumberTextB)(pattern, ab)
+                Dim newText = text.Replace(Of WithNumberTextB)(Pattern, ab)
                 Return newText
             End If
 
