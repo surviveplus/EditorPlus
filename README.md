@@ -2,9 +2,9 @@
 ![EditorPlus](ResourceSources/EditorPlus-95.png)
 Some of text editor extensions, Format Text, Insert Serial Numbers and others for Microsoft Office and Visual Studio.
 
+- [Download For Office 2016, 2013](https://github.com/surviveplus/EditorPlus/releases/tag/Office1.0.0.0)
 - [Download For Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=SHIN-ICHIKOGA.EditorPlusforVisualStudio2017)
 - [Download For Visual Studio 2015](https://marketplace.visualstudio.com/items?itemName=SHIN-ICHIKOGA.EditorPlus)
-- Setup for Office is in preparation.
 
 ## Features (For Office Word, Excel, PowerPoint)
 ### [ Edit Selection ] Ribbon Commands
