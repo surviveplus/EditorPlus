@@ -117,49 +117,55 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="SkipIfStartedOrEndWithTextCheckBox.Content" xml:space="preserve">
-    <value>Skip if started/ended with text</value>
+  <data name="formatButton.Content" xml:space="preserve">
+    <value>フォーマット</value>
   </data>
-  <data name="SkipIfStartedOrEndWithTextCheckBox.ToolTip" xml:space="preserve">
-    <value>Skip if started/ended with text</value>
+  <data name="formatText.Text" xml:space="preserve">
+    <value>// サンプルテキスト - {0} - {1} - {2}</value>
   </data>
   <data name="InsertTextBox.Text" xml:space="preserve">
-    <value>// sample text</value>
+    <value>// サンプルテキスト</value>
+  </data>
+  <data name="SkipIfStartedOrEndWithTextCheckBox.Content" xml:space="preserve">
+    <value>一致する場合はスキップ</value>
   </data>
   <data name="InsertToEndButton.Content" xml:space="preserve">
-    <value>Insert to End</value>
+    <value>末尾に挿入</value>
   </data>
   <data name="InsertToHeadButton.Content" xml:space="preserve">
-    <value>Insert to Head</value>
+    <value>先頭に挿入</value>
+  </data>
+  <data name="SkipIfStartedOrEndWithTextCheckBox.ToolTip" xml:space="preserve">
+    <value>行頭・行末がテキストと一致する場合はスキップ</value>
   </data>
   <data name="NonePadding.Content" xml:space="preserve">
-    <value>None</value>
-  </data>
-  <data name="NonePadding.ToolTip" xml:space="preserve">
-    <value>None-padding</value>
+    <value>なし</value>
   </data>
   <data name="Padding.Text" xml:space="preserve">
-    <value>Padding:</value>
+    <value>先頭埋め:</value>
   </data>
   <data name="SpacePadding.Content" xml:space="preserve">
-    <value>Space</value>
-  </data>
-  <data name="SpacePadding.ToolTip" xml:space="preserve">
-    <value>Space-padding</value>
+    <value>空白埋め</value>
   </data>
   <data name="StartNumber.Text" xml:space="preserve">
-    <value>Start number:</value>
+    <value>開始値:</value>
   </data>
   <data name="ZeroPadding.Content" xml:space="preserve">
-    <value>Zero</value>
+    <value>0 埋め</value>
+  </data>
+  <data name="NonePadding.ToolTip" xml:space="preserve">
+    <value>先頭埋め なし</value>
+  </data>
+  <data name="SpacePadding.ToolTip" xml:space="preserve">
+    <value>空白埋め</value>
   </data>
   <data name="ZeroPadding.ToolTip" xml:space="preserve">
-    <value>Zero-padding</value>
+    <value>0 埋め</value>
   </data>
   <data name="InsertToLineEndButton.Content" xml:space="preserve">
-    <value>Line End</value>
+    <value>行末に挿入</value>
   </data>
   <data name="InsertToLineHeadButton.Content" xml:space="preserve">
-    <value>Line Head</value>
+    <value>行頭に挿入</value>
   </data>
 </root>

@@ -23,12 +23,12 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0"  Margin="0 8 0 24">
-            <Button x:Name="InsertToHeadButton"  Click="InsertToHeadButton_Click" Content="Head" ToolTip="Insert to head of selection." />
-            <Button x:Name="InsertToLineHeadButton" Click="InsertToLineHeadButton_Click" Content="Line Head" ToolTip="Insert to head of each lines of selection." />
-            <Button x:Name="InsertToLineEndButton" Click="InsertToLineEndButton_Click" Content="Line End" ToolTip="Insert to end of each lines of selection." />
-            <Button x:Name="InsertToEndButton" Click="InsertToEndButton_Click" Content="End" ToolTip="Insert to end of selection."/>
+            <Button x:Name="InsertToHeadButton" x:Uid="InsertToHeadButton" Click="InsertToHeadButton_Click" Content="Head" ToolTip="Insert to head of selection." />
+            <Button x:Name="InsertToLineHeadButton" x:Uid="InsertToLineHeadButton" Click="InsertToLineHeadButton_Click" Content="Line Head" ToolTip="Insert to head of each lines of selection." />
+            <Button x:Name="InsertToLineEndButton" x:Uid="InsertToLineEndButton" Click="InsertToLineEndButton_Click" Content="Line End" ToolTip="Insert to end of each lines of selection." />
+            <Button x:Name="InsertToEndButton" x:Uid="InsertToEndButton" Click="InsertToEndButton_Click" Content="End" ToolTip="Insert to end of selection."/>
         </StackPanel>
-        <CheckBox x:Name="SkipIfStartedOrEndWithTextCheckBox" Content="Skip if started/end with text" ToolTip="Skip if started/end with text"   Grid.Row="0" Margin="0 48 0 0" />
+        <CheckBox x:Name="SkipIfStartedOrEndWithTextCheckBox" x:Uid="SkipIfStartedOrEndWithTextCheckBox" Content="Skip if started/end with text" ToolTip="Skip if started/end with text"   Grid.Row="0" Margin="0 48 0 0" />
 
         <TextBox x:Name="TextBox" Grid.Row="1" 
                  AcceptsReturn="True"  AcceptsTab="True" 

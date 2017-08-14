@@ -1,13 +1,19 @@
 ﻿Imports Net.Surviveplus.Localization
 
-Public Class InsertText
+Public Class InsertSerialNumber
+
     ''' <summary>
     ''' Initializes a new instance of the class.
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub New()
         InitializeComponent()
+
         WpfLocalization.ApplyResources(Me, My.Resources.ResourceManager)
+
+        Me.StartNumberBox.SelectAll()
+        Me.StartNumberBox.Focus()
+
     End Sub
 
     Public Property LineButtonVisible() As Boolean
@@ -25,47 +31,61 @@ Public Class InsertText
         End Set
     End Property
 
+    Private Function GetInsertSerialNumberEventArgs(insertTo As InsertTo) As InsertSerialNumberEventArgs
 
-    Private Function GetInsertTextEventArgs(insertTo As InsertTo) As InsertTextEventArgs
-        Return New InsertTextEventArgs With {
+        Dim p As NumberPadding = NumberPadding.NonePadding
+        If Me.spacePadding.IsChecked Then
+            p = NumberPadding.SpacePadding
+
+        ElseIf Me.zeroPadding.IsChecked Then
+            p = NumberPadding.ZeroPadding
+        End If
+
+        Return New InsertSerialNumberEventArgs With {
             .InsertTo = insertTo,
-            .Text = Me.TextBox.Text,
-            .SkipIfStartedOrEndWithText = Me.SkipIfStartedOrEndWithTextCheckBox.IsChecked}
+            .StartNumber = Convert.ToInt64(Me.StartNumberBox.Text),
+            .SkipIfStartedOrEndWithText = Me.SkipIfStartedOrEndWithTextCheckBox.IsChecked,
+            .Padding = p}
+
     End Function
 
-    Public Event InsertButtonClick As EventHandler(Of InsertTextEventArgs)
+    Public Event InsertButtonClick As EventHandler(Of InsertSerialNumberEventArgs)
 
     Private Sub InsertToHeadButton_Click(sender As Object, e As RoutedEventArgs)
-        RaiseEvent InsertButtonClick(Me, Me.GetInsertTextEventArgs(InsertTo.Head))
+        RaiseEvent InsertButtonClick(Me, Me.GetInsertSerialNumberEventArgs(InsertTo.Head))
     End Sub
 
     Private Sub InsertToLineHeadButton_Click(sender As Object, e As RoutedEventArgs)
-        RaiseEvent InsertButtonClick(Me, Me.GetInsertTextEventArgs(InsertTo.LineHead))
+        RaiseEvent InsertButtonClick(Me, Me.GetInsertSerialNumberEventArgs(InsertTo.LineHead))
     End Sub
 
     Private Sub InsertToLineEndButton_Click(sender As Object, e As RoutedEventArgs)
-        RaiseEvent InsertButtonClick(Me, Me.GetInsertTextEventArgs(InsertTo.LineEnd))
+        RaiseEvent InsertButtonClick(Me, Me.GetInsertSerialNumberEventArgs(InsertTo.LineEnd))
     End Sub
 
     Private Sub InsertToEndButton_Click(sender As Object, e As RoutedEventArgs)
-        RaiseEvent InsertButtonClick(Me, Me.GetInsertTextEventArgs(InsertTo.End))
+        RaiseEvent InsertButtonClick(Me, Me.GetInsertSerialNumberEventArgs(InsertTo.End))
     End Sub
+
 End Class
 
-Public Class InsertTextEventArgs
+
+Public Class InsertSerialNumberEventArgs
     Inherits EventArgs
 
     Public Property InsertTo As InsertTo
-    Public Property Text As String
+
+    Public Property StartNumber As Long
 
     ' Skip if started/end with text
     Public Property SkipIfStartedOrEndWithText As Boolean
 
+    Public Property Padding As NumberPadding
+
 End Class
 
-Public Enum InsertTo
-    Head
-    LineHead
-    LineEnd
-    [End]
+Public Enum NumberPadding
+    NonePadding
+    SpacePadding
+    ZeroPadding
 End Enum
