@@ -21,8 +21,32 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_2015CA250F49CFDC9D972D610E344971"
+        "OwnerKey" = "8:_CC7C75E36E764C7C8020B9EE8E05E107"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_20990347C38D48C090C1DC21BD75C401"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_23BE138A1F7A420C93D32974AB53F7FB"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_285CE141701E381EA4221802B74626E4"
+        "OwnerKey" = "8:_CC7C75E36E764C7C8020B9EE8E05E107"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_285CE141701E381EA4221802B74626E4"
+        "OwnerKey" = "8:_2015CA250F49CFDC9D972D610E344971"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -46,7 +70,13 @@
         "Entry"
         {
         "MsmKey" = "8:_3DE1F7723217CA09F8FFACB8B04E6F59"
-        "OwnerKey" = "8:_A29C2CDAABEEE4F9AAE170753752A2BD"
+        "OwnerKey" = "8:_8F1F1CAB35FF427A95CD2E042C4E013B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3DE1F7723217CA09F8FFACB8B04E6F59"
+        "OwnerKey" = "8:_CC7C75E36E764C7C8020B9EE8E05E107"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -64,19 +94,25 @@
         "Entry"
         {
         "MsmKey" = "8:_3DE1F7723217CA09F8FFACB8B04E6F59"
-        "OwnerKey" = "8:_A814C878ABEC4D61AAA87D61524077AF"
+        "OwnerKey" = "8:_A29C2CDAABEEE4F9AAE170753752A2BD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_3DE1F7723217CA09F8FFACB8B04E6F59"
-        "OwnerKey" = "8:_8F1F1CAB35FF427A95CD2E042C4E013B"
+        "OwnerKey" = "8:_A814C878ABEC4D61AAA87D61524077AF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_41585331B4A657A6776ED91CC4BD52D1"
         "OwnerKey" = "8:_8F1F1CAB35FF427A95CD2E042C4E013B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_46BF7720CD183E64F14FC68623921005"
+        "OwnerKey" = "8:_CC7C75E36E764C7C8020B9EE8E05E107"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -88,6 +124,12 @@
         "Entry"
         {
         "MsmKey" = "8:_4D6F729F5CAE767204DB509633D243E0"
+        "OwnerKey" = "8:_CC7C75E36E764C7C8020B9EE8E05E107"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4D6F729F5CAE767204DB509633D243E0"
         "OwnerKey" = "8:_CA58D8E246F74ED489B9F51BEAC40AFC"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -106,7 +148,13 @@
         "Entry"
         {
         "MsmKey" = "8:_5B0F1CF776EB61D61058A9064EC0673E"
-        "OwnerKey" = "8:_A814C878ABEC4D61AAA87D61524077AF"
+        "OwnerKey" = "8:_8F1F1CAB35FF427A95CD2E042C4E013B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5B0F1CF776EB61D61058A9064EC0673E"
+        "OwnerKey" = "8:_CC7C75E36E764C7C8020B9EE8E05E107"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -118,7 +166,7 @@
         "Entry"
         {
         "MsmKey" = "8:_5B0F1CF776EB61D61058A9064EC0673E"
-        "OwnerKey" = "8:_8F1F1CAB35FF427A95CD2E042C4E013B"
+        "OwnerKey" = "8:_A814C878ABEC4D61AAA87D61524077AF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -178,7 +226,13 @@
         "Entry"
         {
         "MsmKey" = "8:_848933F4239492CEEF14B65A06C59033"
-        "OwnerKey" = "8:_A814C878ABEC4D61AAA87D61524077AF"
+        "OwnerKey" = "8:_8F1F1CAB35FF427A95CD2E042C4E013B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_848933F4239492CEEF14B65A06C59033"
+        "OwnerKey" = "8:_CC7C75E36E764C7C8020B9EE8E05E107"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -190,7 +244,7 @@
         "Entry"
         {
         "MsmKey" = "8:_848933F4239492CEEF14B65A06C59033"
-        "OwnerKey" = "8:_8F1F1CAB35FF427A95CD2E042C4E013B"
+        "OwnerKey" = "8:_A814C878ABEC4D61AAA87D61524077AF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -209,6 +263,12 @@
         {
         "MsmKey" = "8:_9282449CB91D38AAED2500B298418C51"
         "OwnerKey" = "8:_3DE1F7723217CA09F8FFACB8B04E6F59"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9282449CB91D38AAED2500B298418C51"
+        "OwnerKey" = "8:_CC7C75E36E764C7C8020B9EE8E05E107"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -255,6 +315,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_AA558474880CACCA625ACE3810218254"
+        "OwnerKey" = "8:_6A0280C0E05D47B78D730C9C35431BBA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_B0A269BF01494D0CAD92B71289281F1A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -268,7 +334,13 @@
         "Entry"
         {
         "MsmKey" = "8:_B736F75E41300477FE21CB4CEDF62EB8"
-        "OwnerKey" = "8:_A814C878ABEC4D61AAA87D61524077AF"
+        "OwnerKey" = "8:_8F1F1CAB35FF427A95CD2E042C4E013B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B736F75E41300477FE21CB4CEDF62EB8"
+        "OwnerKey" = "8:_CC7C75E36E764C7C8020B9EE8E05E107"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -280,7 +352,7 @@
         "Entry"
         {
         "MsmKey" = "8:_B736F75E41300477FE21CB4CEDF62EB8"
-        "OwnerKey" = "8:_8F1F1CAB35FF427A95CD2E042C4E013B"
+        "OwnerKey" = "8:_A814C878ABEC4D61AAA87D61524077AF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -303,6 +375,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_CC7C75E36E764C7C8020B9EE8E05E107"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_CDE95999DB1FC4A4744DA3987A9F86F2"
         "OwnerKey" = "8:_A814C878ABEC4D61AAA87D61524077AF"
         "MsmSig" = "8:_UNDEFINED"
@@ -311,6 +389,12 @@
         {
         "MsmKey" = "8:_D0F5BE6BF16702BE5FE6995E13E07BB0"
         "OwnerKey" = "8:_8F1F1CAB35FF427A95CD2E042C4E013B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D0F5BE6BF16702BE5FE6995E13E07BB0"
+        "OwnerKey" = "8:_CC7C75E36E764C7C8020B9EE8E05E107"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -339,8 +423,38 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_EC3F6D0ABE9B496CAF90BB278F389E33"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5B0F1CF776EB61D61058A9064EC0673E"
+        "OwnerKey" = "8:_8F1F1CAB35FF427A95CD2E042C4E013B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_CC7C75E36E764C7C8020B9EE8E05E107"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_2015CA250F49CFDC9D972D610E344971"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_46BF7720CD183E64F14FC68623921005"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_285CE141701E381EA4221802B74626E4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -382,24 +496,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D0F5BE6BF16702BE5FE6995E13E07BB0"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_6A0280C0E05D47B78D730C9C35431BBA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_39D14FC2779658C682DE2A8B5FFD6AB5"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_A814C878ABEC4D61AAA87D61524077AF"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -430,7 +526,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_8F1F1CAB35FF427A95CD2E042C4E013B"
+        "OwnerKey" = "8:_D0F5BE6BF16702BE5FE6995E13E07BB0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -481,6 +577,30 @@
         "OwnerKey" = "8:_9282449CB91D38AAED2500B298418C51"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_5B0F1CF776EB61D61058A9064EC0673E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_6A0280C0E05D47B78D730C9C35431BBA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_AA558474880CACCA625ACE3810218254"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_39D14FC2779658C682DE2A8B5FFD6AB5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -499,6 +619,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -580,6 +708,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2015CA250F49CFDC9D972D610E344971"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:SakuraMacaron.OfficeAddIn.Project, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_2015CA250F49CFDC9D972D610E344971"
+                    {
+                    "Name" = "8:SakuraMacaron.OfficeAddIn.Project.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:SakuraMacaron.OfficeAddIn.Project.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_3B17474B07224BDD925A5CAB8FBDA1AF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_20990347C38D48C090C1DC21BD75C401"
             {
             "SourcePath" = "8:..\\..\\EditorPlus.OfficeAddIn.PowerPoint\\EditorPlus.OfficeAddIn.PowerPoint\\bin\\Release\\EditorPlus.OfficeAddIn.PowerPoint.dll.manifest"
@@ -598,6 +757,57 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_23BE138A1F7A420C93D32974AB53F7FB"
+            {
+            "SourcePath" = "8:..\\..\\EditorPlus.OfficeAddIn.Project\\EditorPlus.OfficeAddIn.Project\\bin\\Release\\EditorPlus.OfficeAddIn.Project.dll.manifest"
+            "TargetName" = "8:EditorPlus.OfficeAddIn.Project.dll.manifest"
+            "Tag" = "8:"
+            "Folder" = "8:_3B17474B07224BDD925A5CAB8FBDA1AF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_285CE141701E381EA4221802B74626E4"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:SakuraMacaron.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_285CE141701E381EA4221802B74626E4"
+                    {
+                    "Name" = "8:SakuraMacaron.Core.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:SakuraMacaron.Core.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_3B17474B07224BDD925A5CAB8FBDA1AF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3842E240142B574612D1C20D8826D57C"
@@ -755,6 +965,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_46BF7720CD183E64F14FC68623921005"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:SakuraMacaron.OfficeAddIn, Version=1.0.2.1, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_46BF7720CD183E64F14FC68623921005"
+                    {
+                    "Name" = "8:SakuraMacaron.OfficeAddIn.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:SakuraMacaron.OfficeAddIn.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_3B17474B07224BDD925A5CAB8FBDA1AF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4D6F729F5CAE767204DB509633D243E0"
             {
             "AssemblyRegister" = "3:1"
@@ -844,7 +1085,7 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:TRUE"
+            "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
@@ -957,7 +1198,7 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:TRUE"
+            "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
@@ -1019,7 +1260,7 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:TRUE"
+            "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
@@ -1082,6 +1323,37 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:TRUE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_AA558474880CACCA625ACE3810218254"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Surviveplus.WpfLocalization, Version=1.0.1.0, Culture=neutral, PublicKeyToken=8bef33aba4cdebf4, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_AA558474880CACCA625ACE3810218254"
+                    {
+                    "Name" = "8:Surviveplus.WpfLocalization.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Surviveplus.WpfLocalization.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_3B17474B07224BDD925A5CAB8FBDA1AF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
@@ -1242,7 +1514,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:EditorPlus.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:EditorPlus.UI, Version=1.0.1.1, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_D0F5BE6BF16702BE5FE6995E13E07BB0"
@@ -1316,8 +1588,28 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:TRUE"
+            "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EC3F6D0ABE9B496CAF90BB278F389E33"
+            {
+            "SourcePath" = "8:..\\..\\EditorPlus.OfficeAddIn.Project\\EditorPlus.OfficeAddIn.Project\\bin\\Release\\EditorPlus.OfficeAddIn.Project.vsto"
+            "TargetName" = "8:EditorPlus.OfficeAddIn.Project.vsto"
+            "Tag" = "8:"
+            "Folder" = "8:_3B17474B07224BDD925A5CAB8FBDA1AF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
         }
@@ -1376,15 +1668,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:EditorPlus.OfficeAddIn"
-        "ProductCode" = "8:{C571EB73-C2D9-4A9E-AEEC-F70378B98663}"
-        "PackageCode" = "8:{0D05F869-806B-4902-AA62-7D9D80AAC225}"
+        "ProductCode" = "8:{F1645172-D7D2-471F-B90A-F8329CA07252}"
+        "PackageCode" = "8:{70636520-F2B6-4067-890A-4CE0C2F2B12A}"
         "UpgradeCode" = "8:{0EAD1FBA-69CC-4531-B2CA-603AD6EF1C57}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.0.1"
         "Manufacturer" = "8:Surviveplus.net"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1436,6 +1728,72 @@
                                     "Transitive" = "11:FALSE"
                                         "Keys"
                                         {
+                                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_5CE442D6801946238E6326EDC944D9D7"
+                                            {
+                                            "Name" = "8:MS Project"
+                                            "Condition" = "8:"
+                                            "AlwaysCreate" = "11:FALSE"
+                                            "DeleteAtUninstall" = "11:FALSE"
+                                            "Transitive" = "11:FALSE"
+                                                "Keys"
+                                                {
+                                                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_1CCF2C67816E4ACDA0F6D0EB26018C72"
+                                                    {
+                                                    "Name" = "8:Addins"
+                                                    "Condition" = "8:"
+                                                    "AlwaysCreate" = "11:FALSE"
+                                                    "DeleteAtUninstall" = "11:FALSE"
+                                                    "Transitive" = "11:FALSE"
+                                                        "Keys"
+                                                        {
+                                                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_10241C891B5F4D21AD30D3122CABE3C3"
+                                                            {
+                                                            "Name" = "8:EditorPlus.OfficeAddIn.Project"
+                                                            "Condition" = "8:"
+                                                            "AlwaysCreate" = "11:FALSE"
+                                                            "DeleteAtUninstall" = "11:FALSE"
+                                                            "Transitive" = "11:FALSE"
+                                                                "Keys"
+                                                                {
+                                                                }
+                                                                "Values"
+                                                                {
+                                                                    "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_193DED18042542FFBF890482E6ADE1DE"
+                                                                    {
+                                                                    "Name" = "8:Manifest"
+                                                                    "Condition" = "8:"
+                                                                    "Transitive" = "11:FALSE"
+                                                                    "ValueTypes" = "3:1"
+                                                                    "Value" = "8:[TARGETDIR]EditorPlus.OfficeAddIn.Project.vsto|vstolocal"
+                                                                    }
+                                                                    "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_A4EA7E105E1249CA9002C2AFE01ACE43"
+                                                                    {
+                                                                    "Name" = "8:FriendlyName"
+                                                                    "Condition" = "8:"
+                                                                    "Transitive" = "11:FALSE"
+                                                                    "ValueTypes" = "3:1"
+                                                                    "Value" = "8:EditorPlus for Project"
+                                                                    }
+                                                                    "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_EAAD06954AE645C6916448667D889B5B"
+                                                                    {
+                                                                    "Name" = "8:LoadBehavior"
+                                                                    "Condition" = "8:"
+                                                                    "Transitive" = "11:FALSE"
+                                                                    "ValueTypes" = "3:3"
+                                                                    "Value" = "3:3"
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        "Values"
+                                                        {
+                                                        }
+                                                    }
+                                                }
+                                                "Values"
+                                                {
+                                                }
+                                            }
                                             "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_AEEAB64E8A734C14ACB67C72F568000F"
                                             {
                                             "Name" = "8:Word"
@@ -2264,6 +2622,34 @@
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:Built"
             "OutputProjectGuid" = "8:{553DD58A-F488-43ED-83CF-5D0543EC55C4}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_CC7C75E36E764C7C8020B9EE8E05E107"
+            {
+            "SourcePath" = "8:..\\..\\EditorPlus.OfficeAddIn.Project\\EditorPlus.OfficeAddIn.Project\\obj\\Release\\EditorPlus.OfficeAddIn.Project.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_3B17474B07224BDD925A5CAB8FBDA1AF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{9157122D-88B3-42F4-8D5A-8804EF882315}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {

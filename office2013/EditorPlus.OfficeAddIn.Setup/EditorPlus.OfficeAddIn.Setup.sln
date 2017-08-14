@@ -15,6 +15,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "EditorPlus.OfficeAddIn.Word
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "EditorPlus.UI", "..\EditorPlus.UI\EditorPlus.UI\EditorPlus.UI.vbproj", "{DD2126B7-21AA-4453-951D-55C5C6F3A9C8}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "EditorPlus.OfficeAddIn.Project", "..\EditorPlus.OfficeAddIn.Project\EditorPlus.OfficeAddIn.Project\EditorPlus.OfficeAddIn.Project.vbproj", "{9157122D-88B3-42F4-8D5A-8804EF882315}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{DD2126B7-21AA-4453-951D-55C5C6F3A9C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD2126B7-21AA-4453-951D-55C5C6F3A9C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD2126B7-21AA-4453-951D-55C5C6F3A9C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9157122D-88B3-42F4-8D5A-8804EF882315}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9157122D-88B3-42F4-8D5A-8804EF882315}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9157122D-88B3-42F4-8D5A-8804EF882315}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9157122D-88B3-42F4-8D5A-8804EF882315}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,5 +56,6 @@ Global
 		{2D1ACC1C-3606-4C4E-8282-B82FF2154F9D} = {7DABA143-D6D8-416B-80C8-AF7A994D84D9}
 		{8100EFE8-9106-47DA-B96D-3A3B668F5879} = {7DABA143-D6D8-416B-80C8-AF7A994D84D9}
 		{DD2126B7-21AA-4453-951D-55C5C6F3A9C8} = {7DABA143-D6D8-416B-80C8-AF7A994D84D9}
+		{9157122D-88B3-42F4-8D5A-8804EF882315} = {7DABA143-D6D8-416B-80C8-AF7A994D84D9}
 	EndGlobalSection
 EndGlobal
