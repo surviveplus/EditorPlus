@@ -51,6 +51,7 @@
         Me.TrimEndButton = Me.Factory.CreateRibbonButton
         Me.ClipboardGroup = Me.Factory.CreateRibbonGroup
         Me.CopyNoLineBreakTextButton = Me.Factory.CreateRibbonButton
+        Me.InsertSerialNumberButton = Me.Factory.CreateRibbonButton
         Me.EditorPlus.SuspendLayout()
         Me.EditSelectionGroup.SuspendLayout()
         Me.ClipboardGroup.SuspendLayout()
@@ -69,6 +70,7 @@
         Me.EditSelectionGroup.Items.Add(Me.IncrementActiveButton)
         Me.EditSelectionGroup.Items.Add(Me.IncrementMaxButton)
         Me.EditSelectionGroup.Items.Add(Me.InsertTextButton)
+        Me.EditSelectionGroup.Items.Add(Me.InsertSerialNumberButton)
         Me.EditSelectionGroup.Items.Add(Me.InsertNowButton)
         Me.EditSelectionGroup.Items.Add(Me.TrimEndButton)
         Me.EditSelectionGroup.Label = "Edit Selection"
@@ -132,6 +134,13 @@
         Me.CopyNoLineBreakTextButton.Label = "Copy No Line break Text"
         Me.CopyNoLineBreakTextButton.Name = "CopyNoLineBreakTextButton"
         '
+        'InsertSerialNumberButton
+        '
+        Me.InsertSerialNumberButton.Image = Global.EditorPlus.OfficeAddIn.Excel.My.Resources.Resources.InsertNumbers
+        Me.InsertSerialNumberButton.Label = "Insert Serial Number"
+        Me.InsertSerialNumberButton.Name = "InsertSerialNumberButton"
+        Me.InsertSerialNumberButton.ShowImage = True
+        '
         'EditorPlusRibbon
         '
         Me.Name = "EditorPlusRibbon"
@@ -157,6 +166,7 @@
     Friend WithEvents IncrementActiveButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents IncrementMaxButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents TrimEndButton As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents InsertSerialNumberButton As Microsoft.Office.Tools.Ribbon.RibbonButton
 End Class
 
 Partial Class ThisRibbonCollection

@@ -44,6 +44,7 @@
         Me.EditorPlusTab = Me.Factory.CreateRibbonTab
         Me.EditSelectionGroup = Me.Factory.CreateRibbonGroup
         Me.InsertTextButton = Me.Factory.CreateRibbonButton
+        Me.InsertSerialNumberButton = Me.Factory.CreateRibbonButton
         Me.EditorPlusTab.SuspendLayout()
         Me.EditSelectionGroup.SuspendLayout()
         Me.SuspendLayout()
@@ -57,6 +58,7 @@
         'EditSelectionGroup
         '
         Me.EditSelectionGroup.Items.Add(Me.InsertTextButton)
+        Me.EditSelectionGroup.Items.Add(Me.InsertSerialNumberButton)
         Me.EditSelectionGroup.Label = "Edit Selection"
         Me.EditSelectionGroup.Name = "EditSelectionGroup"
         '
@@ -66,6 +68,13 @@
         Me.InsertTextButton.Label = "Insert Text"
         Me.InsertTextButton.Name = "InsertTextButton"
         Me.InsertTextButton.ShowImage = True
+        '
+        'InsertSerialNumberButton
+        '
+        Me.InsertSerialNumberButton.Image = Global.EditorPlus.OfficeAddIn.Word.My.Resources.Resources.InsertNumbers
+        Me.InsertSerialNumberButton.Label = "Insert Serial Number"
+        Me.InsertSerialNumberButton.Name = "InsertSerialNumberButton"
+        Me.InsertSerialNumberButton.ShowImage = True
         '
         'EditorPlusRibbon
         '
@@ -83,6 +92,7 @@
     Friend WithEvents EditorPlusTab As Microsoft.Office.Tools.Ribbon.RibbonTab
     Friend WithEvents EditSelectionGroup As Microsoft.Office.Tools.Ribbon.RibbonGroup
     Friend WithEvents InsertTextButton As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents InsertSerialNumberButton As Microsoft.Office.Tools.Ribbon.RibbonButton
 End Class
 
 Partial Class ThisRibbonCollection

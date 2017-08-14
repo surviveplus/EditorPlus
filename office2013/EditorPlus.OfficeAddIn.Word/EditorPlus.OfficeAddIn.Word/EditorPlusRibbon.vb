@@ -3,6 +3,7 @@ Imports Microsoft.Office.Tools.Ribbon
 Imports Net.Surviveplus.SakuraMacaron.Core
 Imports Net.Surviveplus.SakuraMacaron.OfficeAddIn.UI
 Imports Net.Surviveplus.SakuraMacaron.OfficeAddIn.Word
+Imports EditorPlus.Core
 
 Public Class EditorPlusRibbon
 
@@ -21,34 +22,7 @@ Public Class EditorPlusRibbon
                 Sub(sender2, e2)
 
                     Dim macaron As New WordMacaron(ThisAddIn.Current.Application)
-
-                    Dim insertAction As Action(Of TextActionsParameters) = Nothing
-                    Select Case e2.InsertTo
-                        Case InsertTo.Head, InsertTo.LineHead
-                            insertAction =
-                                Sub(a)
-                                    If Not (e2.SkipIfStartedOrEndWithText AndAlso a.Text.StartsWith(e2.Text)) Then
-                                        a.InsertBeforeText = e2.Text
-                                    End If
-                                End Sub
-                        Case InsertTo.End, InsertTo.LineEnd
-                            insertAction =
-                                Sub(a)
-                                    If Not (e2.SkipIfStartedOrEndWithText AndAlso a.Text.EndsWith(e2.Text)) Then
-                                        a.InsertAfterText = e2.Text
-                                    End If
-                                End Sub
-                    End Select
-
-                    Select Case e2.InsertTo
-                        Case InsertTo.Head, InsertTo.End
-                            macaron.ReplaceSelectionText(Nothing, insertAction)
-
-                        Case InsertTo.LineHead, InsertTo.LineEnd
-                            macaron.ReplaceSelectionParagraphs(Nothing, insertAction)
-                    End Select
-
-
+                    macaron.InsertText(e2.Text, e2.InsertTo, e2.SkipIfStartedOrEndWithText)
                 End Sub
 
             Me.insertTextPane = New ElementControlPane(Of InsertText)(c)
@@ -57,5 +31,27 @@ Public Class EditorPlusRibbon
         End If
 
         Me.insertTextPane?.Show()
+    End Sub
+
+    Private insertSerialNumberPane As ElementControlPane(Of InsertSerialNumber)
+
+    Private Sub InsertSerialNumberButton_Click(sender As Object, e As RibbonControlEventArgs) Handles InsertSerialNumberButton.Click
+
+        If Me.insertSerialNumberPane Is Nothing Then
+
+            Dim c = New InsertSerialNumber()
+            AddHandler c.InsertButtonClick,
+                Sub(sender2, e2)
+
+                    Dim macaron As New WordMacaron(ThisAddIn.Current.Application)
+                    macaron.InsertSerialNumber(e2.StartNumber, e2.InsertTo, e2.Padding, e2.SkipIfStartedOrEndWithText)
+                End Sub
+
+            Me.insertSerialNumberPane = New ElementControlPane(Of InsertSerialNumber)(c)
+            Me.insertSerialNumberPane.Pane = ThisAddIn.Current.CustomTaskPanes.Add(Me.insertSerialNumberPane.Control, "Insert Serial Number", ThisAddIn.Current.Application.ActiveWindow)
+            Me.insertSerialNumberPane.Pane.Width = 350
+        End If
+
+        Me.insertSerialNumberPane?.Show()
     End Sub
 End Class

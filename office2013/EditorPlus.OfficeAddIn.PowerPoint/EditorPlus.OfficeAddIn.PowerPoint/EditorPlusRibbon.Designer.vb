@@ -47,6 +47,7 @@
         Me.ClipboardGroup = Me.Factory.CreateRibbonGroup
         Me.CopyTextButton = Me.Factory.CreateRibbonButton
         Me.CopyNoLineBreakTextButton = Me.Factory.CreateRibbonButton
+        Me.InsertSerialNumberButton = Me.Factory.CreateRibbonButton
         Me.EditorPlusTab.SuspendLayout()
         Me.EditSelectionGroup.SuspendLayout()
         Me.ClipboardGroup.SuspendLayout()
@@ -62,6 +63,7 @@
         'EditSelectionGroup
         '
         Me.EditSelectionGroup.Items.Add(Me.InsertTextButton)
+        Me.EditSelectionGroup.Items.Add(Me.InsertSerialNumberButton)
         Me.EditSelectionGroup.Label = "Edit Selection"
         Me.EditSelectionGroup.Name = "EditSelectionGroup"
         '
@@ -89,6 +91,13 @@
         Me.CopyNoLineBreakTextButton.Label = "Copy No Line break Text"
         Me.CopyNoLineBreakTextButton.Name = "CopyNoLineBreakTextButton"
         '
+        'InsertSerialNumberButton
+        '
+        Me.InsertSerialNumberButton.Image = Global.EditorPlus.OfficeAddIn.PowerPoint.My.Resources.Resources.InsertNumbers
+        Me.InsertSerialNumberButton.Label = "Insert Serial Number"
+        Me.InsertSerialNumberButton.Name = "InsertSerialNumberButton"
+        Me.InsertSerialNumberButton.ShowImage = True
+        '
         'EditorPlusRibbon
         '
         Me.Name = "EditorPlusRibbon"
@@ -110,6 +119,7 @@
     Friend WithEvents ClipboardGroup As Microsoft.Office.Tools.Ribbon.RibbonGroup
     Friend WithEvents CopyTextButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents CopyNoLineBreakTextButton As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents InsertSerialNumberButton As Microsoft.Office.Tools.Ribbon.RibbonButton
 End Class
 
 Partial Class ThisRibbonCollection

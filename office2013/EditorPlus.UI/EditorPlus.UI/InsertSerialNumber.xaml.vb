@@ -1,4 +1,5 @@
-﻿Imports Net.Surviveplus.Localization
+﻿Imports EditorPlus.Core
+Imports Net.Surviveplus.Localization
 
 Public Class InsertSerialNumber
 
@@ -84,8 +85,3 @@ Public Class InsertSerialNumberEventArgs
 
 End Class
 
-Public Enum NumberPadding
-    NonePadding
-    SpacePadding
-    ZeroPadding
-End Enum

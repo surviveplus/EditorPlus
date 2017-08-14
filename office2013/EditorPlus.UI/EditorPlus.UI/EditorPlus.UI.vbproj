@@ -133,5 +133,11 @@
     <AppDesigner Include="My Project\" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\EditorPlus.Core\EditorPlus.Core\EditorPlus.Core.vbproj">
+      <Project>{a77720c6-9965-44c8-86a1-fb697df92368}</Project>
+      <Name>EditorPlus.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

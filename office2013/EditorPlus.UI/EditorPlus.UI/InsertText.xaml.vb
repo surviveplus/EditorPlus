@@ -1,4 +1,5 @@
-﻿Imports Net.Surviveplus.Localization
+﻿Imports EditorPlus.Core
+Imports Net.Surviveplus.Localization
 
 Public Class InsertText
     ''' <summary>
@@ -63,9 +64,3 @@ Public Class InsertTextEventArgs
 
 End Class
 
-Public Enum InsertTo
-    Head
-    LineHead
-    LineEnd
-    [End]
-End Enum
