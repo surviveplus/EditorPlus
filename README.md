@@ -12,6 +12,7 @@ Some of text editor extensions, Format Text, Insert Serial Numbers and others fo
 - Increment Active cell (Excel)
 - Increment Menu in Table  column (Excel)
 - Insert Text (Word, Excel, PowerPoint, Project)
+- Insert Serial Number (Project)
 - Insert Now (Excel)
 - Trim End (Excel)
 ### [ Clipboard ] Ribbon Commands
