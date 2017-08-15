@@ -20,6 +20,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="68" />
+            <RowDefinition Height="80" />
             <RowDefinition />
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0"  Margin="0 8 0 24">
@@ -33,6 +34,22 @@
         <TextBox x:Name="TextBox" Grid.Row="1" 
                  AcceptsReturn="True"  AcceptsTab="True" 
                  SpellCheck.IsEnabled="True" Language="en-us" 
+                 KeyDown="TextBox_KeyDown"
                  TabIndex="0" FontSize="11" />
+
+        <ListView x:Name="FavoritesList" Grid.Row="2" SelectionChanged="FavoritesList_SelectionChanged" Visibility="Collapsed">
+            <!--<ListView.Resources>
+                <Style TargetType="ListViewItem">
+                    <EventSetter Event="MouseDoubleClick" Handler="FavoritesList_MouseDown" />
+                </Style>
+            </ListView.Resources>-->
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Favorites" DisplayMemberBinding="{Binding Text}" Width="280"  />
+                </GridView>
+            </ListView.View>
+            
+        </ListView>
     </Grid>
 </UserControl>

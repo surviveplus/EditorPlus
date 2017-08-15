@@ -160,6 +160,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Office.Tools.v4.0.Framework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
@@ -253,6 +254,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\EditorPlus.AI\EditorPlus.AI\EditorPlus.AI.csproj">
+      <Project>{16c12d35-47d2-481a-8b72-4d1535ca8430}</Project>
+      <Name>EditorPlus.AI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\EditorPlus.Core\EditorPlus.Core\EditorPlus.Core.vbproj">
       <Project>{a77720c6-9965-44c8-86a1-fb697df92368}</Project>
       <Name>EditorPlus.Core</Name>

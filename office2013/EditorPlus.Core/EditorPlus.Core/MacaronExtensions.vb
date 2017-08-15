@@ -11,7 +11,7 @@ Public Module MacaronExtensions
             Case InsertTo.Head, InsertTo.LineHead
                 insertAction =
                     Sub(a)
-                        If Not (skipIfStartedOrEndWithText AndAlso text.StartsWith(text)) Then
+                        If Not (skipIfStartedOrEndWithText AndAlso a.Text.StartsWith(text)) Then
                             a.InsertBeforeText = text
                         End If
                     End Sub

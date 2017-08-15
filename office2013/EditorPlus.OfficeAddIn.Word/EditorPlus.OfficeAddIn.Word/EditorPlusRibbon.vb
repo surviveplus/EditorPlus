@@ -4,6 +4,7 @@ Imports Net.Surviveplus.SakuraMacaron.Core
 Imports Net.Surviveplus.SakuraMacaron.OfficeAddIn.UI
 Imports Net.Surviveplus.SakuraMacaron.OfficeAddIn.Word
 Imports EditorPlus.Core
+Imports EditorPlus.AI
 
 Public Class EditorPlusRibbon
 
@@ -12,17 +13,27 @@ Public Class EditorPlusRibbon
     End Sub
 
     Private insertTextPane As ElementControlPane(Of InsertText)
+    Private insertTextFavorites As New Favorites(Of String)
 
     Private Sub InsertTextButton_Click(sender As Object, e As RibbonControlEventArgs) Handles InsertTextButton.Click
 
         If Me.insertTextPane Is Nothing Then
 
             Dim c = New InsertText
+            Dim updateFavorites =
+                Sub()
+                    c.Favorites = From f In Me.insertTextFavorites.GetFavorites() Select New InsertTextFavorite With {.Text = f}
+                End Sub
+            updateFavorites()
+
             AddHandler c.InsertButtonClick,
                 Sub(sender2, e2)
 
                     Dim macaron As New WordMacaron(ThisAddIn.Current.Application)
                     macaron.InsertText(e2.Text, e2.InsertTo, e2.SkipIfStartedOrEndWithText)
+
+                    Me.insertTextFavorites.Add(e2.Text)
+                    updateFavorites()
                 End Sub
 
             Me.insertTextPane = New ElementControlPane(Of InsertText)(c)

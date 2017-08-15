@@ -14,8 +14,8 @@ Imports System.Windows
 <Assembly: AssemblyTitle("EditorPlus.UI")> 
 <Assembly: AssemblyDescription("")> 
 <Assembly: AssemblyCompany("")> 
-<Assembly: AssemblyProduct("EditorPlus.UI")> 
-<Assembly: AssemblyCopyright("Copyright @  2016")> 
+<Assembly: AssemblyProduct("EditorPlus.UI")>
+<Assembly: AssemblyCopyright("Copyright @  2016~2017")>
 <Assembly: AssemblyTrademark("")> 
 <Assembly: ComVisible(false)>
 
@@ -55,5 +55,5 @@ Imports System.Windows
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.2.1")>
+<Assembly: AssemblyVersion("1.0.3.2")>
 '<Assembly: AssemblyFileVersion("1.0.0.0")> 

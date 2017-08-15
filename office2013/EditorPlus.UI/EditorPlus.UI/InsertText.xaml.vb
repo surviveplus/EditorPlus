@@ -26,6 +26,23 @@ Public Class InsertText
         End Set
     End Property
 
+    Private valueOfFavorites As IEnumerable(Of InsertTextFavorite)
+
+    Public Property Favorites As IEnumerable(Of InsertTextFavorite)
+        Get
+            Return Me.valueOfFavorites
+        End Get
+        Set(value As IEnumerable(Of InsertTextFavorite))
+            Me.valueOfFavorites = value
+            Me.FavoritesList.ItemsSource = Me.valueOfFavorites
+
+            If Me.valueOfFavorites IsNot Nothing AndAlso Me.valueOfFavorites.Any() Then
+                Me.FavoritesList.Visibility = Visibility.Visible
+            Else
+                Me.FavoritesList.Visibility = Visibility.Collapsed
+            End If
+        End Set
+    End Property
 
     Private Function GetInsertTextEventArgs(insertTo As InsertTo) As InsertTextEventArgs
         Return New InsertTextEventArgs With {
@@ -51,6 +68,33 @@ Public Class InsertText
     Private Sub InsertToEndButton_Click(sender As Object, e As RoutedEventArgs)
         RaiseEvent InsertButtonClick(Me, Me.GetInsertTextEventArgs(InsertTo.End))
     End Sub
+
+    Private Sub FavoritesList_SelectionChanged(sender As Object, e As SelectionChangedEventArgs)
+        Dim item As InsertTextFavorite = Me.FavoritesList.SelectedItem
+        If item IsNot Nothing Then
+            Me.TextBox.Text = item.Text
+        End If
+    End Sub
+
+    Private Sub TextBox_KeyDown(sender As Object, e As KeyEventArgs)
+        If Keyboard.Modifiers = ModifierKeys.Control Then
+            Try
+                Select Case e.Key
+                    Case Key.D1, Key.NumPad1
+                        Me.TextBox.Text = Me.FavoritesList.Items(0).Text
+
+                    Case Key.D2, Key.NumPad2
+                        Me.TextBox.Text = Me.FavoritesList.Items(1).Text
+
+                    Case Key.D3, Key.NumPad3
+                        Me.TextBox.Text = Me.FavoritesList.Items(3).Text
+
+                End Select
+
+            Catch
+            End Try
+        End If
+    End Sub
 End Class
 
 Public Class InsertTextEventArgs
@@ -64,3 +108,8 @@ Public Class InsertTextEventArgs
 
 End Class
 
+Public Class InsertTextFavorite
+
+    Public Property Text As String
+
+End Class

@@ -234,6 +234,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\EditorPlus.AI\EditorPlus.AI\EditorPlus.AI.csproj">
+      <Project>{16c12d35-47d2-481a-8b72-4d1535ca8430}</Project>
+      <Name>EditorPlus.AI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\EditorPlus.Core\EditorPlus.Core\EditorPlus.Core.vbproj">
       <Project>{a77720c6-9965-44c8-86a1-fb697df92368}</Project>
       <Name>EditorPlus.Core</Name>
