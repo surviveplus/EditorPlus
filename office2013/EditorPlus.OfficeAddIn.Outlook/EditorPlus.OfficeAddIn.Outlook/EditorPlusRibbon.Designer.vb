@@ -66,7 +66,9 @@
         Me.TopMostToggleButton.Image = Global.EditorPlus.OfficeAddIn.Outlook.My.Resources.Resources.AlwaysOnTop
         Me.TopMostToggleButton.Label = "Always on Top"
         Me.TopMostToggleButton.Name = "TopMostToggleButton"
+        Me.TopMostToggleButton.ScreenTip = "Always on Top"
         Me.TopMostToggleButton.ShowImage = True
+        Me.TopMostToggleButton.SuperTip = "Keep this window on top. Always."
         '
         'EditorPlusRibbon
         '

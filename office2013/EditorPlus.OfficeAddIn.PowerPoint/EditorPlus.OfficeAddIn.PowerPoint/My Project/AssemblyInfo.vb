@@ -35,7 +35,7 @@ Imports System.Security
 ' 既定値にすることもできます。
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.3.3")>
+<Assembly: AssemblyVersion("1.0.4.4")>
 '<Assembly: AssemblyFileVersion("1.0.0.0")> 
 
 Friend Module DesignTimeConstants

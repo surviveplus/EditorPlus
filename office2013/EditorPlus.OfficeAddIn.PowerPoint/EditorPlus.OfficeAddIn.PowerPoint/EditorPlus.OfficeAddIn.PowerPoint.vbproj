@@ -234,6 +234,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\AlwaysOnTop.png" />
     <Content Include="Resources\InsertNumbers.png" />
     <Content Include="Resources\InsertText.png" />
   </ItemGroup>
@@ -271,7 +272,7 @@
     <ManifestKeyFile>EditorPlus.OfficeAddIn.PowerPoint_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>FEA8130C5489BD2BCDD7BF664A75ADECCFEF4EF1</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>E156D99E114D5636344B7998E78AB73F37A88AAA</ManifestCertificateThumbprint>
   </PropertyGroup>
   <!-- Include the build rules for a Visual Basic project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

@@ -258,6 +258,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\AlwaysOnTop.png" />
     <Content Include="Resources\FormatText.png" />
     <Content Include="Resources\IncrementActiveIcon.png" />
     <Content Include="Resources\IncrementIcon.png" />

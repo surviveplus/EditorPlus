@@ -43,20 +43,24 @@
     Private Sub InitializeComponent()
         Me.EditorPlusTab = Me.Factory.CreateRibbonTab
         Me.EditSelectionGroup = Me.Factory.CreateRibbonGroup
-        Me.InsertTextButton = Me.Factory.CreateRibbonButton
         Me.ClipboardGroup = Me.Factory.CreateRibbonGroup
         Me.CopyTextButton = Me.Factory.CreateRibbonButton
         Me.CopyNoLineBreakTextButton = Me.Factory.CreateRibbonButton
+        Me.Group1 = Me.Factory.CreateRibbonGroup
+        Me.InsertTextButton = Me.Factory.CreateRibbonButton
         Me.InsertSerialNumberButton = Me.Factory.CreateRibbonButton
+        Me.TopMostToggleButton = Me.Factory.CreateRibbonToggleButton
         Me.EditorPlusTab.SuspendLayout()
         Me.EditSelectionGroup.SuspendLayout()
         Me.ClipboardGroup.SuspendLayout()
+        Me.Group1.SuspendLayout()
         Me.SuspendLayout()
         '
         'EditorPlusTab
         '
         Me.EditorPlusTab.Groups.Add(Me.EditSelectionGroup)
         Me.EditorPlusTab.Groups.Add(Me.ClipboardGroup)
+        Me.EditorPlusTab.Groups.Add(Me.Group1)
         Me.EditorPlusTab.Label = "Editor Plus"
         Me.EditorPlusTab.Name = "EditorPlusTab"
         '
@@ -66,13 +70,6 @@
         Me.EditSelectionGroup.Items.Add(Me.InsertSerialNumberButton)
         Me.EditSelectionGroup.Label = "Edit Selection"
         Me.EditSelectionGroup.Name = "EditSelectionGroup"
-        '
-        'InsertTextButton
-        '
-        Me.InsertTextButton.Image = Global.EditorPlus.OfficeAddIn.PowerPoint.My.Resources.Resources.InsertText
-        Me.InsertTextButton.Label = "Insert Text"
-        Me.InsertTextButton.Name = "InsertTextButton"
-        Me.InsertTextButton.ShowImage = True
         '
         'ClipboardGroup
         '
@@ -91,12 +88,34 @@
         Me.CopyNoLineBreakTextButton.Label = "Copy No Line break Text"
         Me.CopyNoLineBreakTextButton.Name = "CopyNoLineBreakTextButton"
         '
+        'Group1
+        '
+        Me.Group1.Items.Add(Me.TopMostToggleButton)
+        Me.Group1.Label = "Window"
+        Me.Group1.Name = "Group1"
+        '
+        'InsertTextButton
+        '
+        Me.InsertTextButton.Image = Global.EditorPlus.OfficeAddIn.PowerPoint.My.Resources.Resources.InsertText
+        Me.InsertTextButton.Label = "Insert Text"
+        Me.InsertTextButton.Name = "InsertTextButton"
+        Me.InsertTextButton.ShowImage = True
+        '
         'InsertSerialNumberButton
         '
         Me.InsertSerialNumberButton.Image = Global.EditorPlus.OfficeAddIn.PowerPoint.My.Resources.Resources.InsertNumbers
         Me.InsertSerialNumberButton.Label = "Insert Serial Number"
         Me.InsertSerialNumberButton.Name = "InsertSerialNumberButton"
         Me.InsertSerialNumberButton.ShowImage = True
+        '
+        'TopMostToggleButton
+        '
+        Me.TopMostToggleButton.Image = Global.EditorPlus.OfficeAddIn.PowerPoint.My.Resources.Resources.AlwaysOnTop
+        Me.TopMostToggleButton.Label = "Always on Top"
+        Me.TopMostToggleButton.Name = "TopMostToggleButton"
+        Me.TopMostToggleButton.ScreenTip = "Always on Top"
+        Me.TopMostToggleButton.ShowImage = True
+        Me.TopMostToggleButton.SuperTip = "Keep this window on top. Always."
         '
         'EditorPlusRibbon
         '
@@ -109,6 +128,8 @@
         Me.EditSelectionGroup.PerformLayout()
         Me.ClipboardGroup.ResumeLayout(False)
         Me.ClipboardGroup.PerformLayout()
+        Me.Group1.ResumeLayout(False)
+        Me.Group1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -120,6 +141,8 @@
     Friend WithEvents CopyTextButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents CopyNoLineBreakTextButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents InsertSerialNumberButton As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents Group1 As Microsoft.Office.Tools.Ribbon.RibbonGroup
+    Friend WithEvents TopMostToggleButton As Microsoft.Office.Tools.Ribbon.RibbonToggleButton
 End Class
 
 Partial Class ThisRibbonCollection

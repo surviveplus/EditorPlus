@@ -52,15 +52,19 @@
         Me.TrimEndButton = Me.Factory.CreateRibbonButton
         Me.ClipboardGroup = Me.Factory.CreateRibbonGroup
         Me.CopyNoLineBreakTextButton = Me.Factory.CreateRibbonButton
+        Me.WindowGroup = Me.Factory.CreateRibbonGroup
+        Me.TopMostToggleButton = Me.Factory.CreateRibbonToggleButton
         Me.EditorPlus.SuspendLayout()
         Me.EditSelectionGroup.SuspendLayout()
         Me.ClipboardGroup.SuspendLayout()
+        Me.WindowGroup.SuspendLayout()
         Me.SuspendLayout()
         '
         'EditorPlus
         '
         Me.EditorPlus.Groups.Add(Me.EditSelectionGroup)
         Me.EditorPlus.Groups.Add(Me.ClipboardGroup)
+        Me.EditorPlus.Groups.Add(Me.WindowGroup)
         Me.EditorPlus.Label = "Editor Plus"
         Me.EditorPlus.Name = "EditorPlus"
         '
@@ -141,6 +145,21 @@
         Me.CopyNoLineBreakTextButton.Label = "Copy No Line break Text"
         Me.CopyNoLineBreakTextButton.Name = "CopyNoLineBreakTextButton"
         '
+        'WindowGroup
+        '
+        Me.WindowGroup.Items.Add(Me.TopMostToggleButton)
+        Me.WindowGroup.Label = "Window"
+        Me.WindowGroup.Name = "WindowGroup"
+        '
+        'TopMostToggleButton
+        '
+        Me.TopMostToggleButton.Image = Global.EditorPlus.OfficeAddIn.Excel.My.Resources.Resources.AlwaysOnTop
+        Me.TopMostToggleButton.Label = "Always on Top"
+        Me.TopMostToggleButton.Name = "TopMostToggleButton"
+        Me.TopMostToggleButton.ScreenTip = "Always on Top"
+        Me.TopMostToggleButton.ShowImage = True
+        Me.TopMostToggleButton.SuperTip = "Keep this window on top. Always."
+        '
         'EditorPlusRibbon
         '
         Me.Name = "EditorPlusRibbon"
@@ -152,6 +171,8 @@
         Me.EditSelectionGroup.PerformLayout()
         Me.ClipboardGroup.ResumeLayout(False)
         Me.ClipboardGroup.PerformLayout()
+        Me.WindowGroup.ResumeLayout(False)
+        Me.WindowGroup.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -167,6 +188,8 @@
     Friend WithEvents IncrementMaxButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents TrimEndButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents InsertSerialNumberButton As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents WindowGroup As Microsoft.Office.Tools.Ribbon.RibbonGroup
+    Friend WithEvents TopMostToggleButton As Microsoft.Office.Tools.Ribbon.RibbonToggleButton
 End Class
 
 Partial Class ThisRibbonCollection

@@ -248,6 +248,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\AlwaysOnTop.png" />
     <Content Include="Resources\InsertNumbers.png" />
     <Content Include="Resources\InsertText.png" />
   </ItemGroup>

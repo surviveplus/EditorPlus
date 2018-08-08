@@ -43,15 +43,19 @@
     Private Sub InitializeComponent()
         Me.EditorPlus = Me.Factory.CreateRibbonTab
         Me.EditSelectionGroup = Me.Factory.CreateRibbonGroup
+        Me.Group1 = Me.Factory.CreateRibbonGroup
         Me.InsertTextButton = Me.Factory.CreateRibbonButton
         Me.Button1 = Me.Factory.CreateRibbonButton
+        Me.TopMostToggleButton = Me.Factory.CreateRibbonToggleButton
         Me.EditorPlus.SuspendLayout()
         Me.EditSelectionGroup.SuspendLayout()
+        Me.Group1.SuspendLayout()
         Me.SuspendLayout()
         '
         'EditorPlus
         '
         Me.EditorPlus.Groups.Add(Me.EditSelectionGroup)
+        Me.EditorPlus.Groups.Add(Me.Group1)
         Me.EditorPlus.Label = "Editor Plus"
         Me.EditorPlus.Name = "EditorPlus"
         '
@@ -61,6 +65,12 @@
         Me.EditSelectionGroup.Items.Add(Me.Button1)
         Me.EditSelectionGroup.Label = "Edit Selection"
         Me.EditSelectionGroup.Name = "EditSelectionGroup"
+        '
+        'Group1
+        '
+        Me.Group1.Items.Add(Me.TopMostToggleButton)
+        Me.Group1.Label = "Window"
+        Me.Group1.Name = "Group1"
         '
         'InsertTextButton
         '
@@ -76,6 +86,15 @@
         Me.Button1.Name = "Button1"
         Me.Button1.ShowImage = True
         '
+        'TopMostToggleButton
+        '
+        Me.TopMostToggleButton.Image = Global.EditorPlus.OfficeAddIn.Project.My.Resources.Resources.AlwaysOnTop
+        Me.TopMostToggleButton.Label = "Always on Top"
+        Me.TopMostToggleButton.Name = "TopMostToggleButton"
+        Me.TopMostToggleButton.ScreenTip = "Always on Top"
+        Me.TopMostToggleButton.ShowImage = True
+        Me.TopMostToggleButton.SuperTip = "Keep this window on top. Always."
+        '
         'EditorPlusRibbon
         '
         Me.Name = "EditorPlusRibbon"
@@ -85,6 +104,8 @@
         Me.EditorPlus.PerformLayout()
         Me.EditSelectionGroup.ResumeLayout(False)
         Me.EditSelectionGroup.PerformLayout()
+        Me.Group1.ResumeLayout(False)
+        Me.Group1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -93,6 +114,8 @@
     Friend WithEvents EditSelectionGroup As Microsoft.Office.Tools.Ribbon.RibbonGroup
     Friend WithEvents InsertTextButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents Button1 As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents Group1 As Microsoft.Office.Tools.Ribbon.RibbonGroup
+    Friend WithEvents TopMostToggleButton As Microsoft.Office.Tools.Ribbon.RibbonToggleButton
 End Class
 
 Partial Class ThisRibbonCollection
