@@ -5,11 +5,13 @@ VisualStudioVersion = 15.0.27703.2000
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "References", "References", "{5806F0AC-EA13-4E78-8664-D54845D2F543}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "EditorPlus.OfficeAddIn.Outlook", "EditorPlus.OfficeAddIn.Outlook\EditorPlus.OfficeAddIn.Outlook.vbproj", "{FCF9DD88-3FE0-4898-BC64-525D38E440DA}"
+EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "EditorPlus.Core", "..\EditorPlus.Core\EditorPlus.Core\EditorPlus.Core.vbproj", "{A77720C6-9965-44C8-86A1-FB697DF92368}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "EditorPlus.UI", "..\EditorPlus.UI\EditorPlus.UI\EditorPlus.UI.vbproj", "{DD2126B7-21AA-4453-951D-55C5C6F3A9C8}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "EditorPlus.OfficeAddIn.Outlook", "EditorPlus.OfficeAddIn.Outlook\EditorPlus.OfficeAddIn.Outlook.vbproj", "{FCF9DD88-3FE0-4898-BC64-525D38E440DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditorPlus.AI", "..\EditorPlus.AI\EditorPlus.AI\EditorPlus.AI.csproj", "{16C12D35-47D2-481A-8B72-4D1535CA8430}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +19,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FCF9DD88-3FE0-4898-BC64-525D38E440DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCF9DD88-3FE0-4898-BC64-525D38E440DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCF9DD88-3FE0-4898-BC64-525D38E440DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCF9DD88-3FE0-4898-BC64-525D38E440DA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A77720C6-9965-44C8-86A1-FB697DF92368}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A77720C6-9965-44C8-86A1-FB697DF92368}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A77720C6-9965-44C8-86A1-FB697DF92368}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -25,10 +31,10 @@ Global
 		{DD2126B7-21AA-4453-951D-55C5C6F3A9C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD2126B7-21AA-4453-951D-55C5C6F3A9C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD2126B7-21AA-4453-951D-55C5C6F3A9C8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FCF9DD88-3FE0-4898-BC64-525D38E440DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FCF9DD88-3FE0-4898-BC64-525D38E440DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FCF9DD88-3FE0-4898-BC64-525D38E440DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FCF9DD88-3FE0-4898-BC64-525D38E440DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16C12D35-47D2-481A-8B72-4D1535CA8430}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16C12D35-47D2-481A-8B72-4D1535CA8430}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16C12D35-47D2-481A-8B72-4D1535CA8430}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16C12D35-47D2-481A-8B72-4D1535CA8430}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -36,6 +42,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{A77720C6-9965-44C8-86A1-FB697DF92368} = {5806F0AC-EA13-4E78-8664-D54845D2F543}
 		{DD2126B7-21AA-4453-951D-55C5C6F3A9C8} = {5806F0AC-EA13-4E78-8664-D54845D2F543}
+		{16C12D35-47D2-481A-8B72-4D1535CA8430} = {5806F0AC-EA13-4E78-8664-D54845D2F543}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F3A7B63C-5C54-4CB9-9EC8-3AC3D9713031}

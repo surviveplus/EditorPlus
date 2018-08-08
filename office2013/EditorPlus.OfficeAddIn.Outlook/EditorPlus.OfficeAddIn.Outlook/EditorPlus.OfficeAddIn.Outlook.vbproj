@@ -113,14 +113,30 @@
   -->
   <ItemGroup>
     <Reference Include="Accessibility" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="SakuraMacaron.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SakuraMacaron.OfficeAddIn.Outlook.1.0.0-bata1\lib\net46\SakuraMacaron.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SakuraMacaron.OfficeAddIn, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SakuraMacaron.OfficeAddIn.Outlook.1.0.0-bata1\lib\net46\SakuraMacaron.OfficeAddIn.dll</HintPath>
+    </Reference>
+    <Reference Include="SakuraMacaron.OfficeAddIn.Outlook, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SakuraMacaron.OfficeAddIn.Outlook.1.0.0-bata1\lib\net46\SakuraMacaron.OfficeAddIn.Outlook.dll</HintPath>
+    </Reference>
+    <Reference Include="SakuraMacaron.OfficeAddIn.Word, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SakuraMacaron.OfficeAddIn.Outlook.1.0.0-bata1\lib\net46\SakuraMacaron.OfficeAddIn.Word.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Office.Tools.v4.0.Framework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -183,6 +199,13 @@
   -->
   <ItemGroup>
     <AppDesigner Include="My Project\" />
+    <Compile Include="Core\AlwaysOnTop.vb" />
+    <Compile Include="EditorPlus.EditRibbon.Designer.vb">
+      <DependentUpon>EditorPlus.EditRibbon.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EditorPlus.EditRibbon.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="EditorPlusRibbon.Designer.vb">
       <DependentUpon>EditorPlusRibbon.vb</DependentUpon>
     </Compile>
@@ -193,6 +216,7 @@
       <SubType>Code</SubType>
     </Compile>
     <None Include="EditorPlus.OfficeAddIn.Outlook_TemporaryKey.pfx" />
+    <None Include="packages.config" />
     <None Include="ThisAddIn.Designer.xml">
       <DependentUpon>ThisAddIn.vb</DependentUpon>
     </None>
@@ -200,6 +224,9 @@
       <DependentUpon>ThisAddIn.Designer.xml</DependentUpon>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
+    <EmbeddedResource Include="EditorPlus.EditRibbon.resx">
+      <DependentUpon>EditorPlus.EditRibbon.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditorPlusRibbon.resx">
       <DependentUpon>EditorPlusRibbon.vb</DependentUpon>
     </EmbeddedResource>
@@ -250,6 +277,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\TrimEnd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\EditorPlus.AI\EditorPlus.AI\EditorPlus.AI.csproj">
+      <Project>{16C12D35-47D2-481A-8B72-4D1535CA8430}</Project>
+      <Name>EditorPlus.AI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EditorPlus.Core\EditorPlus.Core\EditorPlus.Core.vbproj">
+      <Project>{a77720c6-9965-44c8-86a1-fb697df92368}</Project>
+      <Name>EditorPlus.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EditorPlus.UI\EditorPlus.UI\EditorPlus.UI.vbproj">
+      <Project>{dd2126b7-21aa-4453-951d-55c5c6f3a9c8}</Project>
+      <Name>EditorPlus.UI</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

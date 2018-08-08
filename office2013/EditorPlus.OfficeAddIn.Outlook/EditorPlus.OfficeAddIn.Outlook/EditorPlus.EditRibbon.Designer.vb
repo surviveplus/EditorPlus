@@ -1,7 +1,7 @@
-﻿Partial Class EditorPlusRibbon
+﻿Partial Class EditorPlus
     Inherits Microsoft.Office.Tools.Ribbon.RibbonBase
 
-    <System.Diagnostics.DebuggerNonUserCode()>
+    <System.Diagnostics.DebuggerNonUserCode()> _
     Public Sub New(ByVal container As System.ComponentModel.IContainer)
         MyClass.New()
 
@@ -12,7 +12,7 @@
 
     End Sub
 
-    <System.Diagnostics.DebuggerNonUserCode()>
+    <System.Diagnostics.DebuggerNonUserCode()> _
     Public Sub New()
         MyBase.New(Globals.Factory.GetRibbonFactory())
 
@@ -22,7 +22,7 @@
     End Sub
 
     'Component は、コンポーネント一覧に後処理を実行するために dispose をオーバーライドします。
-    <System.Diagnostics.DebuggerNonUserCode()>
+    <System.Diagnostics.DebuggerNonUserCode()> _
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -39,20 +39,46 @@
     'メモ: 以下のプロシージャはコンポーネント デザイナーで必要です。
     'コンポーネント デザイナーを使って変更できます。
     'コード エディターを使って変更しないでください。
-    <System.Diagnostics.DebuggerStepThrough()>
+    <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.EditorPlusTab = Me.Factory.CreateRibbonTab
+        Me.EditSelectionGroup = Me.Factory.CreateRibbonGroup
+        Me.InsertTextButton = Me.Factory.CreateRibbonButton
+        Me.InsertSerialNumberButton = Me.Factory.CreateRibbonButton
         Me.Group1 = Me.Factory.CreateRibbonGroup
         Me.TopMostToggleButton = Me.Factory.CreateRibbonToggleButton
         Me.EditorPlusTab.SuspendLayout()
+        Me.EditSelectionGroup.SuspendLayout()
         Me.Group1.SuspendLayout()
         Me.SuspendLayout()
         '
         'EditorPlusTab
         '
+        Me.EditorPlusTab.Groups.Add(Me.EditSelectionGroup)
         Me.EditorPlusTab.Groups.Add(Me.Group1)
         Me.EditorPlusTab.Label = "Editor Plus"
         Me.EditorPlusTab.Name = "EditorPlusTab"
+        '
+        'EditSelectionGroup
+        '
+        Me.EditSelectionGroup.Items.Add(Me.InsertTextButton)
+        Me.EditSelectionGroup.Items.Add(Me.InsertSerialNumberButton)
+        Me.EditSelectionGroup.Label = "Edit Selection"
+        Me.EditSelectionGroup.Name = "EditSelectionGroup"
+        '
+        'InsertTextButton
+        '
+        Me.InsertTextButton.Image = Global.EditorPlus.OfficeAddIn.Outlook.My.Resources.Resources.InsertText
+        Me.InsertTextButton.Label = "Insert Text"
+        Me.InsertTextButton.Name = "InsertTextButton"
+        Me.InsertTextButton.ShowImage = True
+        '
+        'InsertSerialNumberButton
+        '
+        Me.InsertSerialNumberButton.Image = Global.EditorPlus.OfficeAddIn.Outlook.My.Resources.Resources.InsertNumbers
+        Me.InsertSerialNumberButton.Label = "Insert Serial Number"
+        Me.InsertSerialNumberButton.Name = "InsertSerialNumberButton"
+        Me.InsertSerialNumberButton.ShowImage = True
         '
         'Group1
         '
@@ -69,20 +95,24 @@
         Me.TopMostToggleButton.ShowImage = True
         Me.TopMostToggleButton.SuperTip = "Keep this window on top. Always."
         '
-        'EditorPlusRibbon
+        'EditorPlus
         '
-        Me.Name = "EditorPlusRibbon"
-        Me.RibbonType = "Microsoft.Outlook.Contact, Microsoft.Outlook.Mail.Read, Microsoft.Outlook.Meeting" &
-    "Request.Read, Microsoft.Outlook.MeetingRequest.Send, Microsoft.Outlook.Task"
+        Me.Name = "EditorPlus"
+        Me.RibbonType = "Microsoft.Outlook.Appointment, Microsoft.Outlook.Mail.Compose"
         Me.Tabs.Add(Me.EditorPlusTab)
         Me.EditorPlusTab.ResumeLayout(False)
         Me.EditorPlusTab.PerformLayout()
+        Me.EditSelectionGroup.ResumeLayout(False)
+        Me.EditSelectionGroup.PerformLayout()
         Me.Group1.ResumeLayout(False)
         Me.Group1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents EditorPlusTab As Microsoft.Office.Tools.Ribbon.RibbonTab
+    Friend WithEvents EditSelectionGroup As Microsoft.Office.Tools.Ribbon.RibbonGroup
+    Friend WithEvents InsertTextButton As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents InsertSerialNumberButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents Group1 As Microsoft.Office.Tools.Ribbon.RibbonGroup
     Friend WithEvents TopMostToggleButton As Microsoft.Office.Tools.Ribbon.RibbonToggleButton
 End Class
@@ -90,9 +120,9 @@ End Class
 Partial Class ThisRibbonCollection
 
     <System.Diagnostics.DebuggerNonUserCode()> _
-    Friend ReadOnly Property EditorPlusRibbon() As EditorPlusRibbon
+    Friend ReadOnly Property EditorPlus() As EditorPlus
         Get
-            Return Me.GetRibbon(Of EditorPlusRibbon)()
+            Return Me.GetRibbon(Of EditorPlus)()
         End Get
     End Property
 End Class

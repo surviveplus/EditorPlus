@@ -1,52 +1,15 @@
 ﻿Imports System.Diagnostics
+Imports EditorPlus.Core
+Imports EditorPlus.AI
+Imports EditorPlus.UI
 Imports Microsoft.Office.Tools.Ribbon
+Imports Net.Surviveplus.SakuraMacaron.OfficeAddIn.Outlook
+Imports Net.Surviveplus.SakuraMacaron.OfficeAddIn.UI
 
 Public Class EditorPlusRibbon
 
-    ''' <summary>
-    ''' Allows managed code to call unmanaged functions with Platform Invocation Services (PInvoke).
-    ''' </summary>
-    Friend NotInheritable Class NativeMethods
-
-#Region " Constructors (Can't initializes a new instance of the this class)"
-
-        Private Sub New()
-        End Sub
-
-#End Region
-
-#Region " Win32API Definitions "
-
-        '
-        ' Insert the code of Declare of DllImport. (see static code analysis CA1060)
-        '
-        Declare Function GetActiveWindow Lib "user32" () As IntPtr
-
-        Declare Function SetWindowPos Lib "user32" (ByVal hWnd As IntPtr, ByVal hWndInsertAfter As Integer, ByVal X As Integer, ByVal Y As Integer, ByVal cx As Integer, ByVal cy As Integer, ByVal wFlags As Integer) As IntPtr
-        Public Const HWND_TOPMOST = -1
-        Public Const HWND_NOTOPMOST = -2
-        Public Const SWP_SHOWWINDOW = &H40
-        Public Const SWP_NOSIZE = &H1
-        Public Const SWP_NOMOVE = &H2
-#End Region
-
-    End Class
-
-    Private Sub EditorPlusRibbon_Load(ByVal sender As System.Object, ByVal e As RibbonUIEventArgs) Handles MyBase.Load
-
-    End Sub
-
     Private Sub TopMostToggleButton_Click(sender As Object, e As RibbonControlEventArgs) Handles TopMostToggleButton.Click
-
-        Dim b = CType(sender, RibbonToggleButton)
-        Dim topMost = b.Checked
-        Dim hwnd = NativeMethods.GetActiveWindow()
-
-        If topMost Then
-            Dim r = NativeMethods.SetWindowPos(hwnd, NativeMethods.HWND_TOPMOST, 0, 0, 0, 0, NativeMethods.SWP_SHOWWINDOW Or NativeMethods.SWP_NOMOVE Or NativeMethods.SWP_NOSIZE)
-        Else
-            Dim r = NativeMethods.SetWindowPos(hwnd, NativeMethods.HWND_NOTOPMOST, 0, 0, 0, 0, NativeMethods.SWP_SHOWWINDOW Or NativeMethods.SWP_NOMOVE Or NativeMethods.SWP_NOSIZE)
-        End If
-
+        AlwaysOnTop.EqualizeWithRibbonToggleButton(sender)
     End Sub
+
 End Class
