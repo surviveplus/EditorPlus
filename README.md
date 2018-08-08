@@ -19,7 +19,7 @@ Some of text editor extensions, Format Text, Insert Serial Numbers and others fo
 - Copy Text (PowerPoint)
 - Copy No Line break Text  (Excel, PowerPoint)
 ### [ Window ] Ribbon Commands
-- Always on Top (Outloo, Word, Excel, PowerPoint, Project)
+- Always on Top (Outlook, Word, Excel, PowerPoint, Project)
 
 ## Features (For Visual Studio)
 ### [ FILE ] Menu Commands
