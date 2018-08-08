@@ -47,11 +47,11 @@
         Me.IncrementActiveButton = Me.Factory.CreateRibbonButton
         Me.IncrementMaxButton = Me.Factory.CreateRibbonButton
         Me.InsertTextButton = Me.Factory.CreateRibbonButton
+        Me.InsertSerialNumberButton = Me.Factory.CreateRibbonButton
         Me.InsertNowButton = Me.Factory.CreateRibbonButton
         Me.TrimEndButton = Me.Factory.CreateRibbonButton
         Me.ClipboardGroup = Me.Factory.CreateRibbonGroup
         Me.CopyNoLineBreakTextButton = Me.Factory.CreateRibbonButton
-        Me.InsertSerialNumberButton = Me.Factory.CreateRibbonButton
         Me.EditorPlus.SuspendLayout()
         Me.EditSelectionGroup.SuspendLayout()
         Me.ClipboardGroup.SuspendLayout()
@@ -109,6 +109,13 @@
         Me.InsertTextButton.Name = "InsertTextButton"
         Me.InsertTextButton.ShowImage = True
         '
+        'InsertSerialNumberButton
+        '
+        Me.InsertSerialNumberButton.Image = Global.EditorPlus.OfficeAddIn.Excel.My.Resources.Resources.InsertNumbers
+        Me.InsertSerialNumberButton.Label = "Insert Serial Number"
+        Me.InsertSerialNumberButton.Name = "InsertSerialNumberButton"
+        Me.InsertSerialNumberButton.ShowImage = True
+        '
         'InsertNowButton
         '
         Me.InsertNowButton.Image = Global.EditorPlus.OfficeAddIn.Excel.My.Resources.Resources.InsertNow
@@ -133,13 +140,6 @@
         '
         Me.CopyNoLineBreakTextButton.Label = "Copy No Line break Text"
         Me.CopyNoLineBreakTextButton.Name = "CopyNoLineBreakTextButton"
-        '
-        'InsertSerialNumberButton
-        '
-        Me.InsertSerialNumberButton.Image = Global.EditorPlus.OfficeAddIn.Excel.My.Resources.Resources.InsertNumbers
-        Me.InsertSerialNumberButton.Label = "Insert Serial Number"
-        Me.InsertSerialNumberButton.Name = "InsertSerialNumberButton"
-        Me.InsertSerialNumberButton.ShowImage = True
         '
         'EditorPlusRibbon
         '

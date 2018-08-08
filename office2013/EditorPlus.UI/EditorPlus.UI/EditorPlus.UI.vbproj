@@ -54,7 +54,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Surviveplus.WpfLocalization, Version=1.0.1.0, Culture=neutral, PublicKeyToken=8bef33aba4cdebf4, processorArchitecture=MSIL">
-      <HintPath>..\..\EditorPlus.OfficeAddIn.Project\packages\Surviveplus.WpfLocalization.1.0.1.0\lib\net45\Surviveplus.WpfLocalization.dll</HintPath>
+      <HintPath>..\..\EditorPlus.OfficeAddIn.Excel\packages\Surviveplus.WpfLocalization.1.0.1.0\lib\net45\Surviveplus.WpfLocalization.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Core" />
