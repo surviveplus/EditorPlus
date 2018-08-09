@@ -11,8 +11,8 @@ Some of text editor extensions, Format Text, Insert Serial Numbers and others fo
 - Increment from Upper cell (Excel)
 - Increment Active cell (Excel)
 - Increment Menu in Table  column (Excel)
-- Insert Text (Word, Excel, PowerPoint, Project)
-- Insert Serial Number (Word, Excel, PowerPoint, Project)
+- Insert Text (Outlook, Word, Excel, PowerPoint, Project)
+- Insert Serial Number (Outlook, Word, Excel, PowerPoint, Project)
 - Insert Now (Excel)
 - Trim End (Excel)
 ### [ Clipboard ] Ribbon Commands
