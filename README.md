@@ -8,34 +8,34 @@ Some of text editor extensions, Format Text, Insert Serial Numbers and others fo
 
 ## Features (For Office Outlook, Word, Excel, PowerPoint, Project)
 ### [ Edit Selection ] Ribbon Commands
-- Increment from Upper cell (Excel)
-- Increment Active cell (Excel)
-- Increment Menu in Table  column (Excel)
-- Insert Text (Outlook, Word, Excel, PowerPoint, Project)
-- Insert Serial Number (Outlook, Word, Excel, PowerPoint, Project)
-- Insert Now (Excel)
-- Trim End (Excel)
+- ![Increment from Upper cell](HowToUse/icons/IncrementIcon.png) Increment from Upper cell (Excel)
+- ![Increment Active cell](HowToUse/icons/IncrementActiveIcon.png) Increment Active cell (Excel)
+- ![Increment Max](HowToUse/icons/IncrementMaxIcon.png) Increment Max in Table  column (Excel)
+- ![Insert Text](HowToUse/icons/InsertText.png) Insert Text (Outlook, Word, Excel, PowerPoint, Project)
+- ![Insert Serial Number](HowToUse/icons/InsertNumbers.png) Insert Serial Number (Outlook, Word, Excel, PowerPoint, Project)
+- ![Insert Now](HowToUse/icons/InsertNow.png) Insert Now (Excel)
+- ![Trim End](HowToUse/icons/TrimEnd.png) Trim End (Excel)
 ### [ Clipboard ] Ribbon Commands
 - Copy Text (PowerPoint)
 - Copy No Line break Text  (Excel, PowerPoint)
 ### [ Window ] Ribbon Commands
-- Always on Top (Outlook, Word, Excel, PowerPoint, Project)
+- ![Always on Top](HowToUse/icons/AlwaysOnTop.png) Always on Top (Outlook, Word, Excel, PowerPoint, Project)
 
 ## Features (For Visual Studio)
 ### [ FILE ] Menu Commands
-- Create New Working Text File 
-- Open Folder for the Active File 
+- ![Create New Working Text File](HowToUse/icons/CreateNewWorkingTextFile.png) Create New Working Text File 
+- ![Open Folder for the Active File](HowToUse/icons/OpenFolderfortheActiveFile.png) Open Folder for the Active File 
 ### [ EDIT > Advanced ] Menu commands
-- Insert Visual Basic Like Comments into End of Block ( for C# only ) 
-- Enclose Selection in #region ( for C#, Visual Basic, JavaScript, TypeScript )
-- Escape Selection to C# Text
-- Escape Selection to Visual Basic Text 
-- To Upper Camel
-- To Lower Camel
+- ![Insert Visual Basic Like Comments into End of Block](HowToUse/icons/VisualBasicLikeComments.png) Insert Visual Basic Like Comments into End of Block ( for C# only ) 
+- ![Enclose Selection in #region](HowToUse/icons/EncloseRegion.png) Enclose Selection in #region ( for C#, Visual Basic, JavaScript, TypeScript )
+- ![Escape Selection to C# Text](HowToUse/icons/EscapeCSharpText.png) Escape Selection to C# Text
+- ![Escape Selection to Visual Basic Text](HowToUse/icons/EscapeVisualBasicText.png) Escape Selection to Visual Basic Text 
+- ![To Upper Camel](HowToUse/icons/ToUpperCamel.png) To Upper Camel
+- ![To Lower Camel](HowToUse/icons/ToLowerCamel.png) To Lower Camel
 ### [ VIEW > Other Windows ] Tool Windows
-- Format Text 
-- Insert Text 
-- Insert Serial Number 
+- ![Format Text ](HowToUse/icons/FormatText.png) Format Text 
+- ![Insert Text](HowToUse/icons/InsertText.png)Insert Text 
+- ![Insert Serial Number](HowToUse/icons/InsertNumbers.png) Insert Serial Number 
 
 ## Installation & How to use
 See [HowToUse-VS-en.md](HowToUse/HowToUse-VS-en.md)
