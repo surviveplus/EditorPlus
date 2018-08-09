@@ -34,7 +34,7 @@ Some of text editor extensions, Format Text, Insert Serial Numbers and others fo
 - ![To Lower Camel](HowToUse/icons/ToLowerCamel.png) To Lower Camel
 ### [ VIEW > Other Windows ] Tool Windows
 - ![Format Text ](HowToUse/icons/FormatText.png) Format Text 
-- ![Insert Text](HowToUse/icons/InsertText.png)Insert Text 
+- ![Insert Text](HowToUse/icons/InsertText.png) Insert Text 
 - ![Insert Serial Number](HowToUse/icons/InsertNumbers.png) Insert Serial Number 
 
 ## Installation & How to use
