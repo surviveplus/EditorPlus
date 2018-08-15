@@ -43,13 +43,17 @@
     Private Sub InitializeComponent()
         Me.EditorPlusTab = Me.Factory.CreateRibbonTab
         Me.Group1 = Me.Factory.CreateRibbonGroup
+        Me.Group2 = Me.Factory.CreateRibbonGroup
+        Me.OpenFolderButton = Me.Factory.CreateRibbonButton
         Me.TopMostToggleButton = Me.Factory.CreateRibbonToggleButton
         Me.EditorPlusTab.SuspendLayout()
         Me.Group1.SuspendLayout()
+        Me.Group2.SuspendLayout()
         Me.SuspendLayout()
         '
         'EditorPlusTab
         '
+        Me.EditorPlusTab.Groups.Add(Me.Group2)
         Me.EditorPlusTab.Groups.Add(Me.Group1)
         Me.EditorPlusTab.Label = "Editor Plus"
         Me.EditorPlusTab.Name = "EditorPlusTab"
@@ -59,6 +63,19 @@
         Me.Group1.Items.Add(Me.TopMostToggleButton)
         Me.Group1.Label = "Window"
         Me.Group1.Name = "Group1"
+        '
+        'Group2
+        '
+        Me.Group2.Items.Add(Me.OpenFolderButton)
+        Me.Group2.Label = "Item"
+        Me.Group2.Name = "Group2"
+        '
+        'OpenFolderButton
+        '
+        Me.OpenFolderButton.Image = Global.EditorPlus.OfficeAddIn.Outlook.My.Resources.Resources.OpenFolderfortheActiveFile
+        Me.OpenFolderButton.Label = "Open Folder"
+        Me.OpenFolderButton.Name = "OpenFolderButton"
+        Me.OpenFolderButton.ShowImage = True
         '
         'TopMostToggleButton
         '
@@ -79,12 +96,16 @@
         Me.EditorPlusTab.PerformLayout()
         Me.Group1.ResumeLayout(False)
         Me.Group1.PerformLayout()
+        Me.Group2.ResumeLayout(False)
+        Me.Group2.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents EditorPlusTab As Microsoft.Office.Tools.Ribbon.RibbonTab
     Friend WithEvents Group1 As Microsoft.Office.Tools.Ribbon.RibbonGroup
     Friend WithEvents TopMostToggleButton As Microsoft.Office.Tools.Ribbon.RibbonToggleButton
+    Friend WithEvents Group2 As Microsoft.Office.Tools.Ribbon.RibbonGroup
+    Friend WithEvents OpenFolderButton As Microsoft.Office.Tools.Ribbon.RibbonButton
 End Class
 
 Partial Class ThisRibbonCollection

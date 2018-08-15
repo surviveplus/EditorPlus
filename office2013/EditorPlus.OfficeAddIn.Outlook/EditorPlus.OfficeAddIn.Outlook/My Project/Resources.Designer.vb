@@ -143,6 +143,16 @@ Namespace My.Resources
         '''<summary>
         '''  型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         '''</summary>
+        Friend ReadOnly Property OpenFolderfortheActiveFile() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("OpenFolderfortheActiveFile", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        '''</summary>
         Friend ReadOnly Property TrimEnd() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("TrimEnd", resourceCulture)
