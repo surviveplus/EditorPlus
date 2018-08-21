@@ -1,1 +1,1 @@
-﻿Add "Open Folder" command (Outlook).
+﻿Add "Replace Worksheet Names" command (Excel).

@@ -610,13 +610,19 @@
         "Entry"
         {
         "MsmKey" = "8:_F42E969995F0F9C212CBE310F17D8FA1"
-        "OwnerKey" = "8:_CDE95999DB1FC4A4744DA3987A9F86F2"
+        "OwnerKey" = "8:_2015CA250F49CFDC9D972D610E344971"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_F42E969995F0F9C212CBE310F17D8FA1"
         "OwnerKey" = "8:_B778580F970E9AEA9C68D7960303209F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F42E969995F0F9C212CBE310F17D8FA1"
+        "OwnerKey" = "8:_CDE95999DB1FC4A4744DA3987A9F86F2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -629,12 +635,6 @@
         {
         "MsmKey" = "8:_F42E969995F0F9C212CBE310F17D8FA1"
         "OwnerKey" = "8:_2358E8CF906896EF137344EB3A2A79B3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F42E969995F0F9C212CBE310F17D8FA1"
-        "OwnerKey" = "8:_2015CA250F49CFDC9D972D610E344971"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -677,30 +677,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_8F1F1CAB35FF427A95CD2E042C4E013B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D0F5BE6BF16702BE5FE6995E13E07BB0"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_FBE0822D362DC0076234C018F74CDCF3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_08E9A76099298C7AE35D8FEDFD832626"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F42E969995F0F9C212CBE310F17D8FA1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -820,6 +796,12 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_D0F5BE6BF16702BE5FE6995E13E07BB0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_91E0743CCB62F0BC277DB6A8C22A9F97"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -839,6 +821,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_B95509B7693EA69AC4E88179F036FBC0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_FBE0822D362DC0076234C018F74CDCF3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -899,6 +887,18 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_3CBE61BFC4B94983305AD86A273E580D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_08E9A76099298C7AE35D8FEDFD832626"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_F42E969995F0F9C212CBE310F17D8FA1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -2301,15 +2301,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:EditorPlus.OfficeAddIn"
-        "ProductCode" = "8:{E3A64159-70F5-43C8-A554-FF872904AD73}"
-        "PackageCode" = "8:{96F9B853-33B6-4F46-8823-1D8230999035}"
+        "ProductCode" = "8:{F97DB578-AA46-446D-816F-DBB3B80BEA88}"
+        "PackageCode" = "8:{A1F33CCF-A2F3-44F5-BF6B-9CD6C0E6589B}"
         "UpgradeCode" = "8:{0EAD1FBA-69CC-4531-B2CA-603AD6EF1C57}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.5"
+        "ProductVersion" = "8:1.0.6"
         "Manufacturer" = "8:Surviveplus.net"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
