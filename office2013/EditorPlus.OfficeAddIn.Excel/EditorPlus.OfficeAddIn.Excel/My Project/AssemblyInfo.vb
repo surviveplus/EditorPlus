@@ -13,7 +13,7 @@ Imports System.Security
 <Assembly: AssemblyDescription("")> 
 <Assembly: AssemblyCompany("")> 
 <Assembly: AssemblyProduct("EditorPlus.OfficeAddIn.Excel")>
-<Assembly: AssemblyCopyright("Copyright ©  2016~2017")>
+<Assembly: AssemblyCopyright("Copyright ©  2016~2018")>
 <Assembly: AssemblyTrademark("")> 
 
 ' Setting ComVisible to false makes the types in this assembly not visible 
@@ -35,7 +35,7 @@ Imports System.Security
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.4.4")>
+<Assembly: AssemblyVersion("1.0.6.5")>
 '<Assembly: AssemblyFileVersion("1.0.0.0")> 
 
 Friend Module DesignTimeConstants

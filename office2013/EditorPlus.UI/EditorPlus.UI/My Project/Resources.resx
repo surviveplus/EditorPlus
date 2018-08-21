@@ -162,4 +162,13 @@
   <data name="InsertToLineHeadButton.Content" xml:space="preserve">
     <value>Line Head</value>
   </data>
+  <data name="FindText.Text" xml:space="preserve">
+    <value>Find What:</value>
+  </data>
+  <data name="ReplaceAll.Content" xml:space="preserve">
+    <value>Rplace All</value>
+  </data>
+  <data name="ReplaceText.Text" xml:space="preserve">
+    <value>Replace With:</value>
+  </data>
 </root>

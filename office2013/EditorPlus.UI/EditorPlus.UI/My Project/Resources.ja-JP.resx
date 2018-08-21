@@ -168,4 +168,13 @@
   <data name="InsertToLineHeadButton.Content" xml:space="preserve">
     <value>行頭に挿入</value>
   </data>
+  <data name="FindText.Text" xml:space="preserve">
+    <value>検索する文字列 :</value>
+  </data>
+  <data name="ReplaceAll.Content" xml:space="preserve">
+    <value>すべて置換</value>
+  </data>
+  <data name="ReplaceText.Text" xml:space="preserve">
+    <value>置換後の文字列 :</value>
+  </data>
 </root>

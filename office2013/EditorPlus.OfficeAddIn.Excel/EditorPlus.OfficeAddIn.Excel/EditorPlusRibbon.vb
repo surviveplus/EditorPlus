@@ -232,4 +232,28 @@ Public Class EditorPlusRibbon
             Dim r = NativeMethods.SetWindowPos(hwnd, NativeMethods.HWND_NOTOPMOST, 0, 0, 0, 0, NativeMethods.SWP_SHOWWINDOW Or NativeMethods.SWP_NOMOVE Or NativeMethods.SWP_NOSIZE)
         End If
     End Sub
+
+    Private replacePane As ElementControlPane(Of Replace)
+
+    Private Sub ReplaceWorksheetNamesButton_Click(sender As Object, e As RibbonControlEventArgs) Handles ReplaceWorksheetNamesButton.Click
+
+        If Me.replacePane Is Nothing Then
+            Dim c = New Replace()
+            AddHandler c.RepaceButtonClick,
+                Sub(sender2, e2)
+                    Dim targetSheet As Worksheet
+                    For Each targetSheet In ThisAddIn.Current.Application.ActiveWorkbook.Worksheets
+                        targetSheet.Name = Strings.Replace(targetSheet.Name, e2.FindText, e2.ReplaceText)
+                    Next targetSheet
+
+                End Sub
+
+            Me.replacePane = New ElementControlPane(Of Replace)(c)
+            Me.replacePane.Pane = ThisAddIn.Current.CustomTaskPanes.Add(Me.replacePane.Control, "Replace Worksheet Names", ThisAddIn.Current.Application.ActiveWindow)
+            Me.replacePane.Pane.Width = 350
+        End If
+
+        Me.replacePane?.Show()
+
+    End Sub
 End Class

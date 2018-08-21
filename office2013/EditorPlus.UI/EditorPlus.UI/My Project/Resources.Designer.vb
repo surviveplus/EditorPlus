@@ -22,7 +22,7 @@ Namespace My.Resources
     '''<summary>
     '''  ローカライズされた文字列などを検索するための、厳密に型指定されたリソース クラスです。
     '''</summary>
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0"),  _
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0"),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
      Global.Microsoft.VisualBasic.HideModuleNameAttribute()>  _
@@ -58,6 +58,15 @@ Namespace My.Resources
             Set
                 resourceCulture = value
             End Set
+        End Property
+        
+        '''<summary>
+        '''  Find What: に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property FindText_Text() As String
+            Get
+                Return ResourceManager.GetString("FindText.Text", resourceCulture)
+            End Get
         End Property
         
         '''<summary>
@@ -129,6 +138,24 @@ Namespace My.Resources
         Friend ReadOnly Property Padding_Text() As String
             Get
                 Return ResourceManager.GetString("Padding.Text", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Rplace All に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property ReplaceAll_Content() As String
+            Get
+                Return ResourceManager.GetString("ReplaceAll.Content", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Replace With: に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property ReplaceText_Text() As String
+            Get
+                Return ResourceManager.GetString("ReplaceText.Text", resourceCulture)
             End Get
         End Property
         

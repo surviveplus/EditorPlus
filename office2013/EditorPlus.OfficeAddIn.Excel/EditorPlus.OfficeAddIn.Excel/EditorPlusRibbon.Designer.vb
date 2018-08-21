@@ -50,12 +50,15 @@
         Me.InsertSerialNumberButton = Me.Factory.CreateRibbonButton
         Me.InsertNowButton = Me.Factory.CreateRibbonButton
         Me.TrimEndButton = Me.Factory.CreateRibbonButton
+        Me.NameGroup = Me.Factory.CreateRibbonGroup
+        Me.ReplaceWorksheetNamesButton = Me.Factory.CreateRibbonButton
         Me.ClipboardGroup = Me.Factory.CreateRibbonGroup
         Me.CopyNoLineBreakTextButton = Me.Factory.CreateRibbonButton
         Me.WindowGroup = Me.Factory.CreateRibbonGroup
         Me.TopMostToggleButton = Me.Factory.CreateRibbonToggleButton
         Me.EditorPlus.SuspendLayout()
         Me.EditSelectionGroup.SuspendLayout()
+        Me.NameGroup.SuspendLayout()
         Me.ClipboardGroup.SuspendLayout()
         Me.WindowGroup.SuspendLayout()
         Me.SuspendLayout()
@@ -63,6 +66,7 @@
         'EditorPlus
         '
         Me.EditorPlus.Groups.Add(Me.EditSelectionGroup)
+        Me.EditorPlus.Groups.Add(Me.NameGroup)
         Me.EditorPlus.Groups.Add(Me.ClipboardGroup)
         Me.EditorPlus.Groups.Add(Me.WindowGroup)
         Me.EditorPlus.Label = "Editor Plus"
@@ -134,6 +138,17 @@
         Me.TrimEndButton.Name = "TrimEndButton"
         Me.TrimEndButton.ShowImage = True
         '
+        'NameGroup
+        '
+        Me.NameGroup.Items.Add(Me.ReplaceWorksheetNamesButton)
+        Me.NameGroup.Label = "Name"
+        Me.NameGroup.Name = "NameGroup"
+        '
+        'ReplaceWorksheetNamesButton
+        '
+        Me.ReplaceWorksheetNamesButton.Label = "Replace Worksheet Names"
+        Me.ReplaceWorksheetNamesButton.Name = "ReplaceWorksheetNamesButton"
+        '
         'ClipboardGroup
         '
         Me.ClipboardGroup.Items.Add(Me.CopyNoLineBreakTextButton)
@@ -169,6 +184,8 @@
         Me.EditorPlus.PerformLayout()
         Me.EditSelectionGroup.ResumeLayout(False)
         Me.EditSelectionGroup.PerformLayout()
+        Me.NameGroup.ResumeLayout(False)
+        Me.NameGroup.PerformLayout()
         Me.ClipboardGroup.ResumeLayout(False)
         Me.ClipboardGroup.PerformLayout()
         Me.WindowGroup.ResumeLayout(False)
@@ -190,6 +207,8 @@
     Friend WithEvents InsertSerialNumberButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents WindowGroup As Microsoft.Office.Tools.Ribbon.RibbonGroup
     Friend WithEvents TopMostToggleButton As Microsoft.Office.Tools.Ribbon.RibbonToggleButton
+    Friend WithEvents NameGroup As Microsoft.Office.Tools.Ribbon.RibbonGroup
+    Friend WithEvents ReplaceWorksheetNamesButton As Microsoft.Office.Tools.Ribbon.RibbonButton
 End Class
 
 Partial Class ThisRibbonCollection
