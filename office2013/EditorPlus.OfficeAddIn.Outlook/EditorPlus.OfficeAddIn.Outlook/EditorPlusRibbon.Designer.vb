@@ -42,13 +42,13 @@
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.EditorPlusTab = Me.Factory.CreateRibbonTab
-        Me.Group1 = Me.Factory.CreateRibbonGroup
         Me.Group2 = Me.Factory.CreateRibbonGroup
         Me.OpenFolderButton = Me.Factory.CreateRibbonButton
+        Me.Group1 = Me.Factory.CreateRibbonGroup
         Me.TopMostToggleButton = Me.Factory.CreateRibbonToggleButton
         Me.EditorPlusTab.SuspendLayout()
-        Me.Group1.SuspendLayout()
         Me.Group2.SuspendLayout()
+        Me.Group1.SuspendLayout()
         Me.SuspendLayout()
         '
         'EditorPlusTab
@@ -57,12 +57,6 @@
         Me.EditorPlusTab.Groups.Add(Me.Group1)
         Me.EditorPlusTab.Label = "Editor Plus"
         Me.EditorPlusTab.Name = "EditorPlusTab"
-        '
-        'Group1
-        '
-        Me.Group1.Items.Add(Me.TopMostToggleButton)
-        Me.Group1.Label = "Window"
-        Me.Group1.Name = "Group1"
         '
         'Group2
         '
@@ -76,6 +70,12 @@
         Me.OpenFolderButton.Label = "Open Folder"
         Me.OpenFolderButton.Name = "OpenFolderButton"
         Me.OpenFolderButton.ShowImage = True
+        '
+        'Group1
+        '
+        Me.Group1.Items.Add(Me.TopMostToggleButton)
+        Me.Group1.Label = "Window"
+        Me.Group1.Name = "Group1"
         '
         'TopMostToggleButton
         '
@@ -94,10 +94,10 @@
         Me.Tabs.Add(Me.EditorPlusTab)
         Me.EditorPlusTab.ResumeLayout(False)
         Me.EditorPlusTab.PerformLayout()
-        Me.Group1.ResumeLayout(False)
-        Me.Group1.PerformLayout()
         Me.Group2.ResumeLayout(False)
         Me.Group2.PerformLayout()
+        Me.Group1.ResumeLayout(False)
+        Me.Group1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
