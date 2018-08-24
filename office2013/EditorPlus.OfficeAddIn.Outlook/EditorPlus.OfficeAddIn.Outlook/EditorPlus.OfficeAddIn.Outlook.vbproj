@@ -206,6 +206,12 @@
     <Compile Include="EditorPlus.EditRibbon.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="EditorPlusOutlookRibbon.Designer.vb">
+      <DependentUpon>EditorPlusOutlookRibbon.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EditorPlusOutlookRibbon.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="EditorPlusRibbon.Designer.vb">
       <DependentUpon>EditorPlusRibbon.vb</DependentUpon>
     </Compile>
@@ -226,6 +232,9 @@
     <Compile Include="My Project\AssemblyInfo.vb" />
     <EmbeddedResource Include="EditorPlus.EditRibbon.resx">
       <DependentUpon>EditorPlus.EditRibbon.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditorPlusOutlookRibbon.resx">
+      <DependentUpon>EditorPlusOutlookRibbon.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditorPlusRibbon.resx">
       <DependentUpon>EditorPlusRibbon.vb</DependentUpon>
