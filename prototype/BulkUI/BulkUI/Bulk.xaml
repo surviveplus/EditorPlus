@@ -7,30 +7,60 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="GidLine" Color="Silver" />
+        <SolidColorBrush x:Key="VGidLine" Color="#FFF0F0F0" />
+    </UserControl.Resources>
     <Grid>
 
         <Grid.RowDefinitions>
-
             <RowDefinition Height="32"></RowDefinition>
-
             <RowDefinition></RowDefinition>
-
             <RowDefinition Height="32"></RowDefinition>
-
         </Grid.RowDefinitions>
 
-        <TextBlock Margin="5 5 5 5">Subject
-
-            <TextBlock Foreground="Silver">[tab]</TextBlock> DueDate</TextBlock>
+        <!--<TextBlock Margin="5 5 5 5">Subject
+            <TextBlock Foreground="Silver">[tab]</TextBlock> DueDate</TextBlock>-->
 
         <!--<TextBox x:Name="itemsBox" AcceptsReturn="True" Grid.Row="1" AcceptsTab="True"></TextBox>-->
         <DataGrid x:Name="inputDataGrid"  Grid.Row="1" 
                   AutoGenerateColumns="False"  
                   CanUserAddRows="True" CanUserDeleteRows="True" 
-                  MinRowHeight="24"  PreviewKeyDown="inputDataGrid_PreviewKeyDown">
+                  MinRowHeight="24"  PreviewKeyDown="inputDataGrid_PreviewKeyDown"
+                  VerticalGridLinesBrush="{StaticResource VGidLine}" HorizontalGridLinesBrush="{StaticResource GidLine}">
+            <DataGrid.Resources>
+                <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="#FFFBFBFB" />
+                    <Setter Property="BorderBrush" Value="Silver" />
+                    <Setter Property="BorderThickness" Value="0.5" />
+                    <Setter Property="Foreground" Value="Black" />
+                    <Setter Property="MinHeight" Value="24" />
+                    <Setter Property="Padding" Value="4 0 0 0" />
+                </Style>
+                <Style BasedOn="{StaticResource {x:Type DataGridRowHeader}}" TargetType="{x:Type DataGridRowHeader}">
+                    <Setter Property="Background" Value="#FFFBFBFB" />
+                    <Setter Property="BorderBrush" Value="Silver" />
+                    <Setter Property="BorderThickness" Value="0.5" />
+                    <Setter Property="Foreground" Value="Black" />
+                    <Setter Property="MinWidth" Value="24" />
+                </Style>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="AliceBlue" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                
+            </DataGrid.Resources>
+            <DataGrid.CellStyle>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Style.Triggers>
+                        <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                            <Setter Property="BorderThickness" Value="2.5"/>
+                            <Setter Property="BorderBrush" Value="CornflowerBlue"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.CellStyle>
             <DataGrid.Columns>
                 <DataGridTextColumn Width="200" Header="Subtitle" Binding="{Binding Subtitle}"/>
-                <DataGridTextColumn Width="100" Header="DueDate" Binding="{Binding DueDate, StringFormat=yyyy/MM/dd}"/>
+                <DataGridTextColumn Width="*" Header="DueDate" Binding="{Binding DueDate, StringFormat=yyyy/MM/dd}"/>
                 
             </DataGrid.Columns> 
         </DataGrid>
