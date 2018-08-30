@@ -82,7 +82,29 @@ Public Class Bulk
 
     End Sub
 
+    Public Sub ApplyTheme()
 
+        ControlTeheme.Apply(OfficeTheme.Current)
+        Me.Resources("ControlBackground") = ControlTeheme.Control.Background
+        Me.Resources("ControlForeground") = ControlTeheme.Control.Foreground
+
+        Me.Resources("HorizontalGridLines") = ControlTeheme.Grid.HorizontalGridLines
+        Me.Resources("VerticalGridLines") = ControlTeheme.Grid.VerticalGridLines
+        Me.Resources("GridBackground") = ControlTeheme.Grid.Background
+        Me.Resources("GridForeground") = ControlTeheme.Grid.Foreground
+        Me.Resources("HilightBackground") = ControlTeheme.Grid.HilightBackground
+        Me.Resources("HilightForeground") = ControlTeheme.Grid.HilightForeground
+        Me.Resources("CurrentBorder") = ControlTeheme.Grid.CurrentBorder
+
+        Me.Resources("HeaderlBackground") = ControlTeheme.Header.Background
+        Me.Resources("HeaderForeground") = ControlTeheme.Header.Foreground
+        Me.Resources("HeaderBorder") = ControlTeheme.Header.Border
+
+    End Sub
+
+    Private Sub selectAllCellsButton_MouseDown(sender As Object, e As MouseButtonEventArgs)
+        Me.inputDataGrid.SelectAllCells()
+    End Sub
 End Class
 
 Public Class TaskItem

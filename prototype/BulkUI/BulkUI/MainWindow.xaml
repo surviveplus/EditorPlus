@@ -7,6 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <local:Bulk></local:Bulk>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition ></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Button x:Name="ApplyOfficeTheme" Click="ApplyOfficeTheme_Click">Apply Office Theme</Button>
+        </StackPanel>
+        <local:Bulk x:Name="bulk" Grid.Row="1"></local:Bulk>
     </Grid>
 </Window>

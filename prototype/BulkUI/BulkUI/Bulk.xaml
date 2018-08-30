@@ -6,10 +6,24 @@
              xmlns:local="clr-namespace:BulkUI"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             Loaded="UserControl_Loaded">
+             Loaded="UserControl_Loaded"
+             Background="{DynamicResource ControlBackground}" Foreground="{DynamicResource ControlForeground}"
+             >
     <UserControl.Resources>
-        <SolidColorBrush x:Key="GidLine" Color="Silver" />
-        <SolidColorBrush x:Key="VGidLine" Color="#FFF0F0F0" />
+        <SolidColorBrush x:Key="ControlBackground" Color="#FFE3E3E3" />
+        <SolidColorBrush x:Key="ControlForeground" Color="#FF444444" />
+
+        <SolidColorBrush x:Key="HorizontalGridLines" Color="Silver" />
+        <SolidColorBrush x:Key="VerticalGridLines" Color="#FFF0F0F0" />
+        <Color x:Key="HilightBackground" >#ddf3fe</Color>
+        <Color x:Key="HilightForeground" >Black</Color>
+        <SolidColorBrush x:Key="CurrentBorder" Color="#0d5898" />
+        <Color x:Key="GridBackground" >white</Color>
+        <SolidColorBrush x:Key="GridForeground" Color="#FF444444" />
+
+        <SolidColorBrush x:Key="HeaderlBackground" Color="#FFFBFBFB" />
+        <SolidColorBrush x:Key="HeaderForeground" Color="Black" />
+        <SolidColorBrush x:Key="HeaderBorder" Color="Silver" />
     </UserControl.Resources>
     <Grid>
 
@@ -19,33 +33,30 @@
             <RowDefinition Height="32"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <!--<TextBlock Margin="5 5 5 5">Subject
-            <TextBlock Foreground="Silver">[tab]</TextBlock> DueDate</TextBlock>-->
-
-        <!--<TextBox x:Name="itemsBox" AcceptsReturn="True" Grid.Row="1" AcceptsTab="True"></TextBox>-->
         <DataGrid x:Name="inputDataGrid"  Grid.Row="1" 
                   AutoGenerateColumns="False"  
                   CanUserAddRows="True" CanUserDeleteRows="True" 
                   MinRowHeight="24"  PreviewKeyDown="inputDataGrid_PreviewKeyDown"
-                  VerticalGridLinesBrush="{StaticResource VGidLine}" HorizontalGridLinesBrush="{StaticResource GidLine}">
+                  VerticalGridLinesBrush="{DynamicResource VerticalGridLines}" HorizontalGridLinesBrush="{DynamicResource HorizontalGridLines}"
+                   Background="{DynamicResource ControlBackground}" Foreground="{DynamicResource GridForeground}">
             <DataGrid.Resources>
-                <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
-                    <Setter Property="Background" Value="#FFFBFBFB" />
-                    <Setter Property="BorderBrush" Value="Silver" />
+                <Style  BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="{DynamicResource HeaderlBackground}" />
+                    <Setter Property="BorderBrush" Value="{DynamicResource HeaderBorder}" />
                     <Setter Property="BorderThickness" Value="0.5" />
-                    <Setter Property="Foreground" Value="Black" />
+                    <Setter Property="Foreground" Value="{DynamicResource HeaderForeground}" />
                     <Setter Property="MinHeight" Value="24" />
                     <Setter Property="Padding" Value="4 0 0 0" />
                 </Style>
                 <Style BasedOn="{StaticResource {x:Type DataGridRowHeader}}" TargetType="{x:Type DataGridRowHeader}">
-                    <Setter Property="Background" Value="#FFFBFBFB" />
-                    <Setter Property="BorderBrush" Value="Silver" />
+                    <Setter Property="Background" Value="{DynamicResource HeaderlBackground}" />
+                    <Setter Property="BorderBrush" Value="{DynamicResource HeaderBorder}" />
                     <Setter Property="BorderThickness" Value="0.5" />
-                    <Setter Property="Foreground" Value="Black" />
+                    <Setter Property="Foreground" Value="{DynamicResource HeaderForeground}" />
                     <Setter Property="MinWidth" Value="24" />
                 </Style>
-                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="AliceBlue" />
-                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="{DynamicResource HilightBackground}" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="{DynamicResource HilightForeground}" />
                 
             </DataGrid.Resources>
             <DataGrid.CellStyle>
@@ -53,17 +64,21 @@
                     <Style.Triggers>
                         <Trigger Property="IsKeyboardFocusWithin" Value="True">
                             <Setter Property="BorderThickness" Value="2.5"/>
-                            <Setter Property="BorderBrush" Value="CornflowerBlue"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource CurrentBorder}"/>
                         </Trigger>
                     </Style.Triggers>
                 </Style>
             </DataGrid.CellStyle>
+            <DataGrid.RowBackground>
+                <SolidColorBrush Color="{DynamicResource GridBackground}" />
+            </DataGrid.RowBackground>
             <DataGrid.Columns>
-                <DataGridTextColumn Width="200" Header="Subtitle" Binding="{Binding Subtitle}"/>
-                <DataGridTextColumn Width="*" Header="DueDate" Binding="{Binding DueDate, StringFormat=yyyy/MM/dd}"/>
-                
+                <DataGridTextColumn Width="200" Header="Subject" Binding="{Binding Subtitle}" />
+                <DataGridTextColumn Width="*" Header="Due date" Binding="{Binding DueDate, StringFormat=yyyy/MM/dd}" />
             </DataGrid.Columns> 
         </DataGrid>
+
+        <Rectangle x:Name="selectAllCellsButton" Grid.Row="1" Width="24" Height="24" Fill="{DynamicResource HeaderlBackground}" StrokeThickness="0.5"  Stroke="{DynamicResource HeaderBorder}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1 1 0 0" MouseDown="selectAllCellsButton_MouseDown" />
 
         <Button x:Name="AddButton" Grid.Row="2">Add</Button>            
     </Grid>
