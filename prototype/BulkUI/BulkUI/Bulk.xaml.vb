@@ -43,7 +43,8 @@ Public Class Bulk
 
             Dim text = Clipboard.GetText()
 
-            Dim toDueDate =
+            If text.Contains(vbTab) OrElse text.Contains(vbCr) Then
+                Dim toDueDate =
                 Function(v As String) As DateTime?
                     Dim d As DateTime
                     If DateTime.TryParse(v, d) Then
@@ -52,7 +53,7 @@ Public Class Bulk
                     Return Nothing
                 End Function
 
-            Dim geText =
+                Dim geText =
                 Function(values As IEnumerable(Of String), index As Integer) As String
                     If values.Count >= index + 1 Then
                         Return values(index).Trim()
@@ -60,21 +61,22 @@ Public Class Bulk
                     Return Nothing
                 End Function
 
-            Dim items =
-                From line In text.Split(vbCr)
-                Let values = line.Split(vbTab)
-                Let subtitle = geText(values, 0)
-                Where Not String.IsNullOrWhiteSpace(subtitle)
-                Let duedateText = geText(values, 1)
-                Select New TaskItem With {
-                    .Subtitle = subtitle,
-                    .DueDate = toDueDate(duedateText)
-                    }
+                Dim items =
+                    From line In text.Split(vbCr)
+                    Let values = line.Split(vbTab)
+                    Let subtitle = geText(values, 0)
+                    Where Not String.IsNullOrWhiteSpace(subtitle)
+                    Let duedateText = geText(values, 1)
+                    Select New TaskItem With {
+                        .Subtitle = subtitle,
+                        .DueDate = toDueDate(duedateText)
+                        }
 
-            For Each item In items
-                CType(Me.inputDataGrid.ItemsSource, ObservableCollection(Of TaskItem)).Add(item)
-            Next item
-            e.Handled = True
+                For Each item In items
+                    CType(Me.inputDataGrid.ItemsSource, ObservableCollection(Of TaskItem)).Add(item)
+                Next item
+                e.Handled = True
+            End If
 
         End If
 
