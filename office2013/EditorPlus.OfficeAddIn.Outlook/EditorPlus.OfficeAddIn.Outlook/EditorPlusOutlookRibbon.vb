@@ -6,53 +6,45 @@ Imports Net.Surviveplus.SakuraMacaron.OfficeAddIn.UI
 Public Class EditorPlusOutlookRibbon
 
     Private Sub EditorPlusOutlookRibbon_Load(ByVal sender As System.Object, ByVal e As RibbonUIEventArgs) Handles MyBase.Load
-
     End Sub
 
-    Private bulkAddTasksPane As ElementControlPane(Of BulkAddItems)
+    Private bulkAddTasksPane As ElementControlPane(Of BulkTaskItems)
+    Private bulkTaskItemsControl As BulkTaskItems
+
 
     Private Sub BulkAddTasksButton_Click(sender As Object, e As RibbonControlEventArgs) Handles BulkAddTasksButton.Click
 
         If Me.bulkAddTasksPane Is Nothing Then
 
-            Dim c = New BulkAddItems
+            Dim c = New BulkTaskItems
             AddHandler c.AddButtonClick,
                 Sub(sender2, e2)
 
-                    Dim tasks = From line In e2.Items.Split(vbLf)
-                                Let properties = line.Split(vbTab)
-                                Select New With {
-                                    .Subject = properties(0).Trim(),
-                                    .DueDate = If(properties.Count > 1, properties(1).Trim(), Nothing)
-                                    }
-
-                    'Dim mapi = ThisAddIn.Current.Application.GetNamespace("MAPI")
-                    'Dim view = mapi.GetDefaultFolder(Microsoft.Office.Interop.Outlook.OlDefaultFolders.olFolderTasks)
-                    'view.Display()
-
-                    For Each t In (From a In tasks Where Not String.IsNullOrWhiteSpace(a.Subject))
+                    Dim count As Integer = 0
+                    For Each t In (From a In e2.Items Where Not String.IsNullOrWhiteSpace(a.Subject))
 
                         Dim newItem As TaskItem = ThisAddIn.Current.Application.CreateItem(Microsoft.Office.Interop.Outlook.OlItemType.olTaskItem)
                         newItem.Subject = t.Subject
-
-                        Dim dueDate As DateTime
-                        If DateTime.TryParse(t.DueDate, dueDate) Then 
-                            newItem.DueDate = dueDate
+                        If t.DueDate.HasValue Then
+                            newItem.DueDate = t.DueDate.Value
                         End If
 
                         newItem.Save()
+                        count += 1
 
                         ThisAddIn.Current.Application.ActiveExplorer.CurrentView = CType(newItem.Parent, Folder).CurrentView
                     Next t
 
+                    MsgBox(String.Format("{0} items were saved.", count), MsgBoxStyle.Information, "Bulk Add Tasks")
 
                 End Sub
-
-            Me.bulkAddTasksPane = New ElementControlPane(Of BulkAddItems)(c)
+            Me.bulkTaskItemsControl = c
+            Me.bulkAddTasksPane = New ElementControlPane(Of BulkTaskItems)(c)
             Me.bulkAddTasksPane.Pane = ThisAddIn.Current.CustomTaskPanes.Add(Me.bulkAddTasksPane.Control, "Bulk Add Tasks", ThisAddIn.Current.Application.ActiveWindow)
             Me.bulkAddTasksPane.Pane.Width = 350
         End If
 
+        Me.bulkTaskItemsControl.ApplyTheme()
         Me.bulkAddTasksPane?.Show()
     End Sub
 End Class

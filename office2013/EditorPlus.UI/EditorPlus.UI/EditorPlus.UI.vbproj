@@ -75,10 +75,18 @@
     <Compile Include="BulkAddItems.xaml.vb">
       <DependentUpon>BulkAddItems.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BulkTaskItems.xaml.vb">
+      <DependentUpon>BulkTaskItems.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OfficeTheme.vb" />
     <Compile Include="Replace.xaml.vb">
       <DependentUpon>Replace.xaml</DependentUpon>
     </Compile>
     <Page Include="BulkAddItems.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BulkTaskItems.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

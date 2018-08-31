@@ -7,6 +7,8 @@ Some of text editor extensions, Format Text, Insert Serial Numbers and others fo
 - [Download For Visual Studio 2015](https://marketplace.visualstudio.com/items?itemName=SHIN-ICHIKOGA.EditorPlus)
 
 ## Features (For Office Outlook, Word, Excel, PowerPoint, Project)
+### [ Items ] Ribbon Commands
+- Bulk Add Tasks (Outlook)
 ### [ Edit Selection ] Ribbon Commands
 - ![Increment from Upper cell](HowToUse/icons/IncrementIcon.png) Increment from Upper cell (Excel)
 - ![Increment Active cell](HowToUse/icons/IncrementActiveIcon.png) Increment Active cell (Excel)
@@ -15,6 +17,8 @@ Some of text editor extensions, Format Text, Insert Serial Numbers and others fo
 - ![Insert Serial Number](HowToUse/icons/InsertNumbers.png) Insert Serial Number (Outlook, Word, Excel, PowerPoint, Project)
 - ![Insert Now](HowToUse/icons/InsertNow.png) Insert Now (Excel)
 - ![Trim End](HowToUse/icons/TrimEnd.png) Trim End (Excel)
+### [ Name ] Ribbon Commands
+- Replace Worksheet Names (Excel)
 ### [ Clipboard ] Ribbon Commands
 - Copy Text (PowerPoint)
 - Copy No Line break Text  (Excel, PowerPoint)

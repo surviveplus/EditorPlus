@@ -1,1 +1,1 @@
-﻿Add "Replace Worksheet Names" command (Excel).
+﻿Add "Bulk Add Tasks" command (Excel).

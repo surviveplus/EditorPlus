@@ -1,17 +1,18 @@
 ﻿Imports System.Collections.ObjectModel
-Imports BulkUI.ViewModels
+Imports EditorPlus.UI.ViewModels
 
-Public Class Bulk
+Public Class BulkTaskItems
+
+    Private items As New ObservableCollection(Of TaskItem)()
+
     Private Sub UserControl_Loaded(sender As Object, e As RoutedEventArgs)
 
+        'Me.items = New ObservableCollection(Of TaskItem)({
+        '    New TaskItem With {.Subject = "A"},
+        '    New TaskItem With {.Subject = "B"}
+        '    })
 
-        Dim items As New ObservableCollection(Of TaskItem)({
-            New TaskItem With {.Subject = "A"},
-            New TaskItem With {.Subject = "B"}
-            })
-
-        Me.inputDataGrid.ItemsSource = items
-
+        Me.inputDataGrid.ItemsSource = Me.items
     End Sub
 
 
@@ -65,11 +66,11 @@ Public Class Bulk
                 Dim items =
                     From line In text.Split(vbCr)
                     Let values = line.Split(vbTab)
-                    Let subtitle = geText(values, 0)
-                    Where Not String.IsNullOrWhiteSpace(subtitle)
+                    Let subject = geText(values, 0)
+                    Where Not String.IsNullOrWhiteSpace(subject)
                     Let duedateText = geText(values, 1)
                     Select New TaskItem With {
-                        .Subject = subtitle,
+                        .Subject = subject,
                         .DueDate = toDueDate(duedateText)
                         }
 
@@ -106,11 +107,27 @@ Public Class Bulk
     Private Sub selectAllCellsButton_MouseDown(sender As Object, e As MouseButtonEventArgs)
         Me.inputDataGrid.SelectAllCells()
     End Sub
+
+    Private Sub AddButton_Click(sender As Object, e As RoutedEventArgs) Handles AddButton.Click
+        RaiseEvent AddButtonClick(Me, New BulkTaskItemsEventArgs With {.Items = Me.items})
+
+    End Sub
+
+    Public Event AddButtonClick As EventHandler(Of BulkTaskItemsEventArgs)
+
 End Class
 
 Namespace ViewModels
+
     Public Class TaskItem
         Public Property Subject As String
         Public Property DueDate As DateTime?
     End Class
 End Namespace
+
+Public Class BulkTaskItemsEventArgs
+    Inherits EventArgs
+
+    Public Property Items As IEnumerable(Of TaskItem)
+
+End Class
