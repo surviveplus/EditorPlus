@@ -1,6 +1,8 @@
-﻿Imports EditorPlus.AI
+﻿Imports System.Diagnostics
+Imports EditorPlus.AI
 Imports EditorPlus.Core
 Imports EditorPlus.UI
+Imports Microsoft.Office.Interop.PowerPoint
 Imports Microsoft.Office.Tools.Ribbon
 Imports Net.Surviveplus.SakuraMacaron.Core
 Imports Net.Surviveplus.SakuraMacaron.OfficeAddIn.PowerPoint
@@ -138,5 +140,28 @@ Public Class EditorPlusRibbon
         Else
             Dim r = NativeMethods.SetWindowPos(hwnd, NativeMethods.HWND_NOTOPMOST, 0, 0, 0, 0, NativeMethods.SWP_SHOWWINDOW Or NativeMethods.SWP_NOMOVE Or NativeMethods.SWP_NOSIZE)
         End If
+    End Sub
+
+    Private replacePane As ElementControlPane(Of Replace)
+
+    Private Sub ReplaceObjectNamesButton_Click(sender As Object, e As RibbonControlEventArgs) Handles ReplaceObjectNamesButton.Click
+
+        If Me.replacePane Is Nothing Then
+            Dim c = New Replace()
+            AddHandler c.RepaceButtonClick,
+                Sub(sender2, e2)
+                    For Each targetSlide As Slide In ThisAddIn.Current.Application.ActiveWindow.Selection.SlideRange
+                        For Each targetShape As Shape In targetSlide.Shapes
+                            targetShape.Name = Strings.Replace(targetShape.Name, e2.FindText, e2.ReplaceText)
+                        Next
+                    Next
+                End Sub
+
+            Me.replacePane = New ElementControlPane(Of Replace)(c)
+            Me.replacePane.Pane = ThisAddIn.Current.CustomTaskPanes.Add(Me.replacePane.Control, "Replace Worksheet Names", ThisAddIn.Current.Application.ActiveWindow)
+            Me.replacePane.Pane.Width = 350
+        End If
+
+        Me.replacePane?.Show()
     End Sub
 End Class
