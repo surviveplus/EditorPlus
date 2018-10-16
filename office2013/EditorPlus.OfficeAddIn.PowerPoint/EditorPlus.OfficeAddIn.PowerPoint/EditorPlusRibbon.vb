@@ -173,15 +173,17 @@ Public Class EditorPlusRibbon
             Dim c = New Layer
             AddHandler c.Refresh,
                 Sub(sender2, e2)
-                    Dim t As New Text.StringBuilder
+                    'Dim t As New Text.StringBuilder
+                    Dim d As New List(Of UI.LayerTreeItem)
 
                     Dim w = ThisAddIn.Current.Application.ActiveWindow
                     Dim setup = w.Presentation.PageSetup
                     Dim size As New System.Drawing.Size(setup.SlideWidth, setup.SlideHeight)
-                    t.AppendLine(size.ToString())
+                    't.AppendLine(size.ToString())
 
                     For Each targetSlide As Slide In ThisAddIn.Current.Application.ActiveWindow.Selection.SlideRange
-                        t.AppendLine(targetSlide.Name + " (slide)")
+                        't.AppendLine(targetSlide.Name + " (slide)")
+                        d.Add(New LayerTreeItem With {.Text = targetSlide.Name + " (slide)"})
 
                         Dim items =
                             From item In targetSlide.Shapes.ToEnumerable(Of Shape)
@@ -189,32 +191,62 @@ Public Class EditorPlusRibbon
                             Select item
 
 
-                        Dim g As Action(Of IEnumerable(Of Shape))
-                        Dim indent = 0
-                        g = Sub(s As IEnumerable(Of Shape))
-                                indent += 1
+                        Dim g As Action(Of LayerTreeItem, IEnumerable(Of Shape))
+                        'Dim indent = 0
+                        g = Sub(parent As LayerTreeItem, s As IEnumerable(Of Shape))
+                                'indent += 1
                                 For Each item As Shape In s
                                     Dim isGroup As Boolean = CType(item.Type = Microsoft.Office.Core.MsoShapeType.msoGroup, Boolean)
 
                                     ' & " ( " & item.Left & " , " & item.Top & ") (" & item.Width & " x " & item.Height & ")"
-                                    t.AppendLine(
+                                    't.AppendLine(
+                                    '    If(item.Visible, "👁", "-") &
+                                    '    New String(vbTab, indent) &
+                                    '    If(isGroup, "📁", " ") &
+                                    '    item.Name
+                                    '    )
+
+                                    Dim newItem As New LayerTreeItem(parent) With {.Text =
                                         If(item.Visible, "👁", "-") &
-                                        New String(vbTab, indent) &
                                         If(isGroup, "📁", " ") &
-                                        item.Name
-                                        )
+                                        item.Name,
+                                        .Shape = item
+                                    }
+
+                                    If parent Is Nothing Then
+                                        d.Add(newItem)
+                                    Else
+                                        parent.Children.Add(newItem)
+                                    End If
+
                                     If isGroup Then
-                                        g(item.GroupItems.ToEnumerable(Of Shape))
+                                        g(newItem, item.GroupItems.ToEnumerable(Of Shape))
                                     End If
                                 Next
-                                indent -= 1
+                                'indent -= 1
                             End Sub
 
-                        g(items)
+                        g(Nothing, items)
 
                     Next
-                    e2.Text = t.ToString()
+                    'e2.Text = t.ToString()
+                    e2.Items = d
                 End Sub
+
+            AddHandler c.SelectedItemChanged,
+                Sub(sender3, e3)
+
+                    Dim item = e3.Item
+
+                    If item.Shape IsNot Nothing Then
+                        Dim shape As Shape = CType(item.Shape, Shape)
+                        Dim w = ThisAddIn.Current.Application.ActiveWindow
+                        shape.Select()
+                        w.ScrollIntoView(shape.Left, shape.Top, shape.Width, shape.Height)
+                    End If
+
+                End Sub
+
 
             Me.layerPane = New ElementControlPane(Of Layer)(c)
             Me.layerPane.Pane = ThisAddIn.Current.CustomTaskPanes.Add(Me.layerPane.Control, "Show Objects", ThisAddIn.Current.Application.ActiveWindow)
