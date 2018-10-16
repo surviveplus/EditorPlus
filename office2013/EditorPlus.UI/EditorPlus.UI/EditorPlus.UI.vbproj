@@ -78,6 +78,9 @@
     <Compile Include="BulkTaskItems.xaml.vb">
       <DependentUpon>BulkTaskItems.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Layer.xaml.vb">
+      <DependentUpon>Layer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="OfficeTheme.vb" />
     <Compile Include="Replace.xaml.vb">
       <DependentUpon>Replace.xaml</DependentUpon>
@@ -104,6 +107,10 @@
     <Compile Include="InsertText.xaml.vb">
       <DependentUpon>InsertText.xaml</DependentUpon>
     </Compile>
+    <Page Include="Layer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Replace.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

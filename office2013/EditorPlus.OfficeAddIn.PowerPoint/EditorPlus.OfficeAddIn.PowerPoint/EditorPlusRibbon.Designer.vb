@@ -45,6 +45,8 @@
         Me.EditSelectionGroup = Me.Factory.CreateRibbonGroup
         Me.InsertTextButton = Me.Factory.CreateRibbonButton
         Me.InsertSerialNumberButton = Me.Factory.CreateRibbonButton
+        Me.Group2 = Me.Factory.CreateRibbonGroup
+        Me.LayerButton = Me.Factory.CreateRibbonButton
         Me.NameGroup = Me.Factory.CreateRibbonGroup
         Me.ReplaceObjectNamesButton = Me.Factory.CreateRibbonButton
         Me.ClipboardGroup = Me.Factory.CreateRibbonGroup
@@ -54,6 +56,7 @@
         Me.TopMostToggleButton = Me.Factory.CreateRibbonToggleButton
         Me.EditorPlusTab.SuspendLayout()
         Me.EditSelectionGroup.SuspendLayout()
+        Me.Group2.SuspendLayout()
         Me.NameGroup.SuspendLayout()
         Me.ClipboardGroup.SuspendLayout()
         Me.Group1.SuspendLayout()
@@ -62,6 +65,7 @@
         'EditorPlusTab
         '
         Me.EditorPlusTab.Groups.Add(Me.EditSelectionGroup)
+        Me.EditorPlusTab.Groups.Add(Me.Group2)
         Me.EditorPlusTab.Groups.Add(Me.NameGroup)
         Me.EditorPlusTab.Groups.Add(Me.ClipboardGroup)
         Me.EditorPlusTab.Groups.Add(Me.Group1)
@@ -88,6 +92,17 @@
         Me.InsertSerialNumberButton.Label = "Insert Serial Number"
         Me.InsertSerialNumberButton.Name = "InsertSerialNumberButton"
         Me.InsertSerialNumberButton.ShowImage = True
+        '
+        'Group2
+        '
+        Me.Group2.Items.Add(Me.LayerButton)
+        Me.Group2.Label = "Objects"
+        Me.Group2.Name = "Group2"
+        '
+        'LayerButton
+        '
+        Me.LayerButton.Label = "Show Objects"
+        Me.LayerButton.Name = "LayerButton"
         '
         'NameGroup
         '
@@ -141,6 +156,8 @@
         Me.EditorPlusTab.PerformLayout()
         Me.EditSelectionGroup.ResumeLayout(False)
         Me.EditSelectionGroup.PerformLayout()
+        Me.Group2.ResumeLayout(False)
+        Me.Group2.PerformLayout()
         Me.NameGroup.ResumeLayout(False)
         Me.NameGroup.PerformLayout()
         Me.ClipboardGroup.ResumeLayout(False)
@@ -162,6 +179,8 @@
     Friend WithEvents TopMostToggleButton As Microsoft.Office.Tools.Ribbon.RibbonToggleButton
     Friend WithEvents NameGroup As Microsoft.Office.Tools.Ribbon.RibbonGroup
     Friend WithEvents ReplaceObjectNamesButton As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents Group2 As Microsoft.Office.Tools.Ribbon.RibbonGroup
+    Friend WithEvents LayerButton As Microsoft.Office.Tools.Ribbon.RibbonButton
 End Class
 
 Partial Class ThisRibbonCollection

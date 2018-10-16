@@ -164,4 +164,89 @@ Public Class EditorPlusRibbon
 
         Me.replacePane?.Show()
     End Sub
+
+    Private layerPane As ElementControlPane(Of Layer)
+
+    Private Sub LayerButton_Click(sender As Object, e As RibbonControlEventArgs) Handles LayerButton.Click
+
+        If Me.layerPane Is Nothing Then
+            Dim c = New Layer
+            AddHandler c.Refresh,
+                Sub(sender2, e2)
+                    Dim t As New Text.StringBuilder
+
+                    Dim w = ThisAddIn.Current.Application.ActiveWindow
+                    Dim setup = w.Presentation.PageSetup
+                    Dim size As New System.Drawing.Size(setup.SlideWidth, setup.SlideHeight)
+                    t.AppendLine(size.ToString())
+
+                    For Each targetSlide As Slide In ThisAddIn.Current.Application.ActiveWindow.Selection.SlideRange
+                        t.AppendLine(targetSlide.Name + " (slide)")
+
+                        Dim items =
+                            From item In targetSlide.Shapes.ToEnumerable(Of Shape)
+                            Order By item.ZOrderPosition Descending
+                            Select item
+
+
+                        Dim g As Action(Of IEnumerable(Of Shape))
+                        Dim indent = 0
+                        g = Sub(s As IEnumerable(Of Shape))
+                                indent += 1
+                                For Each item As Shape In s
+                                    Dim isGroup As Boolean = CType(item.Type = Microsoft.Office.Core.MsoShapeType.msoGroup, Boolean)
+
+                                    ' & " ( " & item.Left & " , " & item.Top & ") (" & item.Width & " x " & item.Height & ")"
+                                    t.AppendLine(
+                                        If(item.Visible, "👁", "-") &
+                                        New String(vbTab, indent) &
+                                        If(isGroup, "📁", " ") &
+                                        item.Name
+                                        )
+                                    If isGroup Then
+                                        g(item.GroupItems.ToEnumerable(Of Shape))
+                                    End If
+                                Next
+                                indent -= 1
+                            End Sub
+
+                        g(items)
+
+                    Next
+                    e2.Text = t.ToString()
+                End Sub
+
+            Me.layerPane = New ElementControlPane(Of Layer)(c)
+            Me.layerPane.Pane = ThisAddIn.Current.CustomTaskPanes.Add(Me.layerPane.Control, "Show Objects", ThisAddIn.Current.Application.ActiveWindow)
+            Me.layerPane.Pane.Width = 350
+        End If
+
+        Me.layerPane?.Show()
+
+    End Sub
 End Class
+
+''' <summary>
+''' Static class which is defined extension methods for Object.
+''' </summary>
+''' <remarks></remarks>
+Public Module IEnumerableExtensions
+
+    ''' <summary>
+    ''' Return the IEnumerable&lt;T&gt; for a classic collection that do not implement IEnumerable&lt;T&gt; but it is possible to be set on foreach.
+    ''' </summary>
+    ''' <typeparam name="T">The type of this elements.</typeparam>
+    ''' <param name="this">The instance of the type which is added this extension method. Set a null reference (Nothing in Visual Basic), to return empty IEnumerable&lt;T&gt;.</param>
+    ''' <returns>Return the IEnumerable&lt;T&gt;.</returns>
+    ''' <remarks></remarks>
+    <Runtime.CompilerServices.Extension()>
+    Public Iterator Function ToEnumerable(Of T)(ByVal this As Object) As IEnumerable(Of T)
+        If this IsNot Nothing Then
+
+            For Each item As T In this
+                Yield item
+            Next
+        End If
+    End Function
+
+End Module
