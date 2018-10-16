@@ -17,7 +17,7 @@
         <TreeView x:Name="layers" Grid.Row="1" SelectedItemChanged="layers_SelectedItemChanged">
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate DataType="local:LayerTreeItem"  ItemsSource="{Binding Children}">
-                    <TextBlock Text="{Binding Text}"/>
+                    <TextBlock Text="{Binding Text}" LineHeight="24" FontSize="12"/>
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>

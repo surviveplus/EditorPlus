@@ -173,16 +173,13 @@ Public Class EditorPlusRibbon
             Dim c = New Layer
             AddHandler c.Refresh,
                 Sub(sender2, e2)
-                    'Dim t As New Text.StringBuilder
                     Dim d As New List(Of UI.LayerTreeItem)
 
                     Dim w = ThisAddIn.Current.Application.ActiveWindow
                     Dim setup = w.Presentation.PageSetup
                     Dim size As New System.Drawing.Size(setup.SlideWidth, setup.SlideHeight)
-                    't.AppendLine(size.ToString())
 
                     For Each targetSlide As Slide In ThisAddIn.Current.Application.ActiveWindow.Selection.SlideRange
-                        't.AppendLine(targetSlide.Name + " (slide)")
                         d.Add(New LayerTreeItem With {.Text = targetSlide.Name + " (slide)"})
 
                         Dim items =
@@ -192,24 +189,24 @@ Public Class EditorPlusRibbon
 
 
                         Dim g As Action(Of LayerTreeItem, IEnumerable(Of Shape))
-                        'Dim indent = 0
                         g = Sub(parent As LayerTreeItem, s As IEnumerable(Of Shape))
-                                'indent += 1
                                 For Each item As Shape In s
                                     Dim isGroup As Boolean = CType(item.Type = Microsoft.Office.Core.MsoShapeType.msoGroup, Boolean)
 
-                                    ' & " ( " & item.Left & " , " & item.Top & ") (" & item.Width & " x " & item.Height & ")"
-                                    't.AppendLine(
-                                    '    If(item.Visible, "👁", "-") &
-                                    '    New String(vbTab, indent) &
-                                    '    If(isGroup, "📁", " ") &
-                                    '    item.Name
-                                    '    )
+
+                                    Dim text As String = ""
+                                    Try
+                                        text = item?.TextFrame2?.TextRange?.Text?.Split(vbCr).FirstOrDefault()
+                                        text = " ''" & Strings.Left(text, 15) & "''"
+
+                                    Catch ex As Exception
+                                    End Try
 
                                     Dim newItem As New LayerTreeItem(parent) With {.Text =
                                         If(item.Visible, "👁", "-") &
                                         If(isGroup, "📁", " ") &
-                                        item.Name,
+                                        item.Name &
+                                        text,
                                         .Shape = item
                                     }
 
@@ -223,13 +220,11 @@ Public Class EditorPlusRibbon
                                         g(newItem, item.GroupItems.ToEnumerable(Of Shape))
                                     End If
                                 Next
-                                'indent -= 1
                             End Sub
 
                         g(Nothing, items)
 
                     Next
-                    'e2.Text = t.ToString()
                     e2.Items = d
                 End Sub
 
