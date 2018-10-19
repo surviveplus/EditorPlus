@@ -179,6 +179,8 @@ Public Class EditorPlusRibbon
                     Dim setup = w.Presentation.PageSetup
                     Dim size As New System.Drawing.Size(setup.SlideWidth, setup.SlideHeight)
 
+                    Dim counter As Integer = 0
+
                     For Each targetSlide As Slide In ThisAddIn.Current.Application.ActiveWindow.Selection.SlideRange
                         d.Add(New LayerTreeItem With {.Text = targetSlide.Name + " (slide)"})
 
@@ -215,6 +217,8 @@ Public Class EditorPlusRibbon
                                     Else
                                         parent.Children.Add(newItem)
                                     End If
+                                    counter += 1
+                                    If counter Mod 10 Then e2.DoEvents.Invoke()
 
                                     If isGroup Then
                                         g(newItem, item.GroupItems.ToEnumerable(Of Shape))

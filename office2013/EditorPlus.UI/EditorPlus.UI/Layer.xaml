@@ -16,9 +16,11 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="40" />
             </Grid.ColumnDefinitions>
-            <TextBox x:Name="SearchKeywordBox" KeyDown="SearchKeywordBox_KeyDown"   />
-            <Button Grid.Column="1" x:Name="refreshButton" Click="refreshButton_Click">🔎</Button>
+            <TextBox Grid.ColumnSpan="2" x:Name="SearchKeywordBox" VerticalContentAlignment="Center" KeyDown="SearchKeywordBox_KeyDown"   />
+            <Button Grid.Column="1" x:Name="clearButton" Click="clearButton_Click" Background="White" BorderThickness="0" Margin="1 1 1 1" Foreground="Gray" Visibility="Collapsed">✖</Button>
+            <Button Grid.Column="2" x:Name="refreshButton" Click="refreshButton_Click">🔎</Button>
         </Grid>
         <ProgressBar x:Name="progrressBar"  Grid.Row="1" Height="2" VerticalAlignment="Top" Visibility="Collapsed" IsIndeterminate="True"></ProgressBar>
         <!--<TextBox x:Name="layers" Grid.Row="1" >
