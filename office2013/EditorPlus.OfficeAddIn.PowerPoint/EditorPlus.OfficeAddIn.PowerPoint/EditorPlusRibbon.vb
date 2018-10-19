@@ -233,7 +233,7 @@ Public Class EditorPlusRibbon
 
                     Dim item = e3.Item
 
-                    If item.Shape IsNot Nothing Then
+                    If item?.Shape IsNot Nothing Then
                         Dim shape As Shape = CType(item.Shape, Shape)
                         Dim w = ThisAddIn.Current.Application.ActiveWindow
                         shape.Select()

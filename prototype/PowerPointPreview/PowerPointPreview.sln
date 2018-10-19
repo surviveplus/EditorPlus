@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2046
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerPointPreview", "PowerPointPreview\PowerPointPreview.csproj", "{5B513696-3E4F-4535-802C-450EB8A72F51}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B513696-3E4F-4535-802C-450EB8A72F51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B513696-3E4F-4535-802C-450EB8A72F51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B513696-3E4F-4535-802C-450EB8A72F51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B513696-3E4F-4535-802C-450EB8A72F51}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F77EEA6C-F0FD-4BC8-8AF1-D55EDD518CC0}
+	EndGlobalSection
+EndGlobal
