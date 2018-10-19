@@ -199,10 +199,11 @@ Public Class EditorPlusRibbon
                                     Dim text As String = ""
                                     Try
                                         text = item?.TextFrame2?.TextRange?.Text?.Split(vbCr).FirstOrDefault()
-                                        text = " ''" & Strings.Left(text, 15) & "''"
+                                        text = " ''" & Strings.Left(text, 30) & "''"
 
                                     Catch ex As Exception
                                     End Try
+
 
                                     Dim newItem As New LayerTreeItem(parent) With {.Text =
                                         If(item.Visible, "👁", "-") &
@@ -211,6 +212,13 @@ Public Class EditorPlusRibbon
                                         text,
                                         .Shape = item
                                     }
+
+                                    For Each selectedShape As Shape In ThisAddIn.Current.Application.ActiveWindow.Selection.ShapeRange
+                                        If item Is selectedShape Then
+                                            newItem.IsSelected = True
+                                            Exit For
+                                        End If
+                                    Next
 
                                     If parent Is Nothing Then
                                         d.Add(newItem)
@@ -240,7 +248,7 @@ Public Class EditorPlusRibbon
                     If item?.Shape IsNot Nothing Then
                         Dim shape As Shape = CType(item.Shape, Shape)
                         Dim w = ThisAddIn.Current.Application.ActiveWindow
-                        shape.Select()
+                        shape.Select(If(e3.MustReplaceSelection, Microsoft.Office.Core.MsoTriState.msoTrue, Microsoft.Office.Core.MsoTriState.msoFalse))
                         w.ScrollIntoView(shape.Left, shape.Top, shape.Width, shape.Height)
                     End If
 

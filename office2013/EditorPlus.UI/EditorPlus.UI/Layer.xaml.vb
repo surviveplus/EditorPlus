@@ -43,6 +43,8 @@ Public Class Layer
         Me.clearButton.Visibility = If(keywords.Count > 0, Visibility.Visible, Visibility.Collapsed)
         Me.DoEvents()
 
+        Dim newSelected As New List(Of LayerTreeItem)
+
         Dim filter As Action(Of IEnumerable(Of LayerTreeItem)) =
             Sub(items)
                 For Each item In items
@@ -54,6 +56,8 @@ Public Class Layer
 
                     If item.IsVisible AndAlso item.Parent IsNot Nothing Then item.Parent.IsVisible = True
                     filter(item.Children)
+
+                    If item.IsVisible AndAlso item.IsSelected Then newSelected.Add(item)
                 Next
             End Sub
 
@@ -62,16 +66,19 @@ Public Class Layer
         Me.DoEvents()
 
         Me.layers.ItemsSource = From item In e2.Items Where item.IsVisible
+        Me.selected = newSelected
 
         Me.progrressBar.Visibility = Visibility.Collapsed
         Me.layers.Visibility = Visibility.Visible
     End Sub
 
+    Private selected As List(Of LayerTreeItem)
+
     Public Event Refresh As EventHandler(Of TempEventArgs)
 
     Private Sub layers_SelectedItemChanged(sender As Object, e As RoutedPropertyChangedEventArgs(Of Object))
 
-        RaiseEvent SelectedItemChanged(Me, New ItemEventArgs With {.Item = layers.SelectedItem})
+        'RaiseEvent SelectedItemChanged(Me, New ItemEventArgs With {.Item = layers.SelectedItem})
 
     End Sub
 
@@ -99,6 +106,28 @@ Public Class Layer
         Me.SearchKeywordBox.Text = String.Empty
         Me.ExecuteRefresh()
     End Sub
+
+    Private Sub TextBlock_MouseDown(sender As Object, e As MouseButtonEventArgs)
+        Dim t As TextBlock = sender
+        Dim item As LayerTreeItem = t.Tag
+
+        Dim controlKey As Boolean = CBool((Keyboard.Modifiers And ModifierKeys.Control) = ModifierKeys.Control)
+        Dim mustReplaceSelection As Boolean = Not controlKey
+
+        If mustReplaceSelection Then
+            For Each s As LayerTreeItem In Me.selected
+                s.IsSelected = False
+            Next
+            Me.selected.Clear()
+
+        End If
+        item.IsSelected = True
+        Me.selected.Add(item)
+
+
+        RaiseEvent SelectedItemChanged(Me, New ItemEventArgs With {.Item = item, .MustReplaceSelection = mustReplaceSelection})
+    End Sub
+
 End Class
 
 Public Class TempEventArgs
@@ -109,10 +138,33 @@ Public Class TempEventArgs
 End Class
 
 Public Class LayerTreeItem
+    Inherits BindableBase
 
     Public Property Parent As LayerTreeItem
     Public Property Children As New List(Of LayerTreeItem)
     Public Property IsVisible As Boolean
+
+    Private valueOfIsSelected As Boolean
+    Public Property IsSelected As Boolean
+        Get
+            Return Me.valueOfIsSelected
+        End Get
+        Set(value As Boolean)
+            Me.SetProperty(Of Boolean)(Me.valueOfIsSelected, value)
+            Me.SelectedIsVisibile = If(Me.IsSelected, Visibility.Visible, Visibility.Collapsed)
+        End Set
+    End Property
+
+    Private valueOfSelectedIsVisibile As Visibility = Visibility.Collapsed
+    Public Property SelectedIsVisibile As Visibility
+        Get
+            Return Me.valueOfSelectedIsVisibile
+        End Get
+        Set(value As Visibility)
+            Me.SetProperty(Of Visibility)(Me.valueOfSelectedIsVisibile, value)
+        End Set
+    End Property
+
 
     ''' <summary>
     ''' Initializes a new instance of the class.
@@ -133,6 +185,12 @@ Public Class LayerTreeItem
 
     Public Property Shape As Object
 
+    Public ReadOnly Property Own As LayerTreeItem
+        Get
+            Return Me
+        End Get
+    End Property
+
 End Class
 
 
@@ -140,5 +198,6 @@ Public Class ItemEventArgs
     Inherits EventArgs
 
     Public Property Item As LayerTreeItem
+    Public Property MustReplaceSelection As Boolean
 
 End Class

@@ -85,6 +85,7 @@
     <Compile Include="Replace.xaml.vb">
       <DependentUpon>Replace.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\BindableBase.vb" />
     <Page Include="BulkAddItems.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

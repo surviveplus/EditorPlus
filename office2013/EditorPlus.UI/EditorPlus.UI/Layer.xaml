@@ -28,7 +28,11 @@
         <TreeView x:Name="layers" Grid.Row="1" SelectedItemChanged="layers_SelectedItemChanged">
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate DataType="local:LayerTreeItem"  ItemsSource="{Binding Children}" >
-                    <TextBlock Text="{Binding Text}" LineHeight="24" FontSize="12" />
+                    <Grid>
+                        <Rectangle Fill="White" Margin="-1 0 0 0"></Rectangle>
+                        <Rectangle Fill="Orange" Visibility="{Binding SelectedIsVisibile}"></Rectangle>
+                        <TextBlock Text="{Binding Text}" LineHeight="24" FontSize="12" Tag="{Binding Own}"  MouseDown="TextBlock_MouseDown" />
+                    </Grid>
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>
