@@ -21,6 +21,18 @@ Public Class Layer
 
     End Sub
 
+    Public Sub Update()
+        Me.ExecuteRefresh()
+    End Sub
+
+    Public Sub RefreshSelection()
+        Dim e2 = New TempEventArgs With {.DoEvents = Sub() Me.DoEvents()}
+        'e2.Items = Me.allItems
+        e2.Items = Me.layers.ItemsSource
+        RaiseEvent SelectionChanged(Me, e2)
+    End Sub
+
+    Private allItems As IEnumerable(Of LayerTreeItem)
 
     Private Sub ExecuteRefresh()
 
@@ -31,6 +43,7 @@ Public Class Layer
         Dim e2 = New TempEventArgs With {.DoEvents = Sub() Me.DoEvents()}
 
         RaiseEvent Refresh(Me, e2)
+
 
         Me.DoEvents()
 
@@ -74,6 +87,7 @@ Public Class Layer
 
     Private selected As List(Of LayerTreeItem)
 
+    Public Event SelectionChanged As EventHandler(Of TempEventArgs)
     Public Event Refresh As EventHandler(Of TempEventArgs)
 
     Private Sub layers_SelectedItemChanged(sender As Object, e As RoutedPropertyChangedEventArgs(Of Object))

@@ -170,6 +170,7 @@ Public Class EditorPlusRibbon
     Private Sub LayerButton_Click(sender As Object, e As RibbonControlEventArgs) Handles LayerButton.Click
 
         If Me.layerPane Is Nothing Then
+
             Dim c = New Layer
             AddHandler c.Refresh,
                 Sub(sender2, e2)
@@ -213,12 +214,15 @@ Public Class EditorPlusRibbon
                                         .Shape = item
                                     }
 
-                                    For Each selectedShape As Shape In ThisAddIn.Current.Application.ActiveWindow.Selection.ShapeRange
-                                        If item Is selectedShape Then
-                                            newItem.IsSelected = True
-                                            Exit For
-                                        End If
-                                    Next
+                                    If ThisAddIn.Current.Application.ActiveWindow.Selection.Type = PpSelectionType.ppSelectionShapes OrElse
+                                    ThisAddIn.Current.Application.ActiveWindow.Selection.Type = PpSelectionType.ppSelectionText Then
+                                        For Each selectedShape As Shape In ThisAddIn.Current.Application.ActiveWindow.Selection.ShapeRange
+                                            If item Is selectedShape Then
+                                                newItem.IsSelected = True
+                                                Exit For
+                                            End If
+                                        Next
+                                    End If
 
                                     If parent Is Nothing Then
                                         d.Add(newItem)
@@ -240,6 +244,37 @@ Public Class EditorPlusRibbon
                     e2.Items = d
                 End Sub
 
+            AddHandler c.SelectionChanged,
+                Sub(sender2, e2)
+
+
+
+                    Dim g As Action(Of IEnumerable(Of LayerTreeItem))
+                    g = Sub(s As IEnumerable(Of LayerTreeItem))
+
+                            For Each item As LayerTreeItem In s
+                                g(item.Children)
+
+                                item.IsSelected = False
+                                If ThisAddIn.Current.Application.ActiveWindow.Selection.Type = PpSelectionType.ppSelectionShapes OrElse
+                                    ThisAddIn.Current.Application.ActiveWindow.Selection.Type = PpSelectionType.ppSelectionText Then
+                                    For Each selectedShape As Shape In ThisAddIn.Current.Application.ActiveWindow.Selection.ShapeRange
+                                        If item.Shape Is selectedShape Then
+                                            item.IsSelected = True
+                                            Exit For
+                                        End If
+                                    Next
+                                End If
+
+                            Next
+                        End Sub
+
+                    g(e2.Items)
+
+                End Sub
+
+
+
             AddHandler c.SelectedItemChanged,
                 Sub(sender3, e3)
 
@@ -254,6 +289,40 @@ Public Class EditorPlusRibbon
 
                 End Sub
 
+            Dim mustUpdate As Boolean = False
+            Dim lastEditShape As Shape = Nothing
+            AddHandler ThisAddIn.Current.Application.WindowSelectionChange,
+                Sub(Sel As Selection)
+                    If Sel.Type = PpSelectionType.ppSelectionText Then
+                        Dim shape As Shape = Sel.ShapeRange(1)
+                        'If shape.Type = Microsoft.Office.Core.MsoShapeType.msoPlaceholder Then
+                        If lastEditShape IsNot Nothing AndAlso
+                            lastEditShape IsNot shape Then
+
+                            mustUpdate = True
+                        End If
+                        lastEditShape = shape
+                        'End If
+
+                    Else
+                        If lastEditShape IsNot Nothing Then
+                            mustUpdate = True
+                        End If
+                    End If
+
+                    If mustUpdate Then
+                        c.Update()
+                        mustUpdate = False
+                    Else
+                        c.RefreshSelection()
+
+                    End If
+                End Sub
+
+            AddHandler ThisAddIn.Current.Application.SlideSelectionChanged,
+                Sub(SldRange As SlideRange)
+                    c.Update()
+                End Sub
 
             Me.layerPane = New ElementControlPane(Of Layer)(c)
             Me.layerPane.Pane = ThisAddIn.Current.CustomTaskPanes.Add(Me.layerPane.Control, "Show Objects", ThisAddIn.Current.Application.ActiveWindow)
