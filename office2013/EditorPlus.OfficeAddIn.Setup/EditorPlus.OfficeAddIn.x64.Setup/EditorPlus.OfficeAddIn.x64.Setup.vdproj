@@ -3,7 +3,7 @@
 "VSVersion" = "3:800"
 "ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
 "IsWebType" = "8:FALSE"
-"ProjectName" = "8:EditorPlus.OfficeAddIn.x86.Setup"
+"ProjectName" = "8:EditorPlus.OfficeAddIn.x64.Setup"
 "LanguageId" = "3:1033"
 "CodePage" = "3:1252"
 "UILanguageId" = "3:1033"
@@ -915,7 +915,7 @@
         "DisplayName" = "8:Debug"
         "IsDebugOnly" = "11:TRUE"
         "IsReleaseOnly" = "11:FALSE"
-        "OutputFilename" = "8:Debug\\EditorPlus.OfficeAddIn.x86.Setup.msi"
+        "OutputFilename" = "8:Debug\\EditorPlus.OfficeAddIn.x64.Setup.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -947,7 +947,7 @@
         "DisplayName" = "8:Release"
         "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:TRUE"
-        "OutputFilename" = "8:Release\\EditorPlus.OfficeAddIn.x86.Setup.msi"
+        "OutputFilename" = "8:Release\\EditorPlus.OfficeAddIn.x64.Setup.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -1009,6 +1009,11 @@
             "AssemblyAsmDisplayName" = "8:EditorPlus.Core, Version=1.0.3.1, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_08E9A76099298C7AE35D8FEDFD832626"
+                    {
+                    "Name" = "8:EditorPlus.Core.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:EditorPlus.Core.dll"
             "TargetName" = "8:"
@@ -1055,6 +1060,11 @@
             "AssemblyAsmDisplayName" = "8:Microsoft.Office.Tools, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_10316D2F5BE7341242735239349EDB91"
+                    {
+                    "Name" = "8:Microsoft.Office.Tools.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Microsoft.Office.Tools.dll"
             "TargetName" = "8:"
@@ -1081,6 +1091,11 @@
             "AssemblyAsmDisplayName" = "8:SakuraMacaron.OfficeAddIn.Project, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_2015CA250F49CFDC9D972D610E344971"
+                    {
+                    "Name" = "8:SakuraMacaron.OfficeAddIn.Project.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:SakuraMacaron.OfficeAddIn.Project.dll"
             "TargetName" = "8:"
@@ -1127,6 +1142,11 @@
             "AssemblyAsmDisplayName" = "8:SakuraMacaron.OfficeAddIn.Word, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_2358E8CF906896EF137344EB3A2A79B3"
+                    {
+                    "Name" = "8:SakuraMacaron.OfficeAddIn.Word.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:SakuraMacaron.OfficeAddIn.Word.dll"
             "TargetName" = "8:"
@@ -1173,6 +1193,11 @@
             "AssemblyAsmDisplayName" = "8:SakuraMacaron.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_285CE141701E381EA4221802B74626E4"
+                    {
+                    "Name" = "8:SakuraMacaron.Core.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:SakuraMacaron.Core.dll"
             "TargetName" = "8:"
@@ -1199,6 +1224,11 @@
             "AssemblyAsmDisplayName" = "8:Microsoft.VisualStudio.Tools.Applications.Runtime, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_2D896DE2F67644ADB6724471DF6F049E"
+                    {
+                    "Name" = "8:Microsoft.VisualStudio.Tools.Applications.Runtime.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Microsoft.VisualStudio.Tools.Applications.Runtime.dll"
             "TargetName" = "8:"
@@ -1245,6 +1275,11 @@
             "AssemblyAsmDisplayName" = "8:SakuraMacaron.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_3842E240142B574612D1C20D8826D57C"
+                    {
+                    "Name" = "8:SakuraMacaron.Core.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:SakuraMacaron.Core.dll"
             "TargetName" = "8:"
@@ -1271,6 +1306,11 @@
             "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
+                    "_39D14FC2779658C682DE2A8B5FFD6AB5"
+                    {
+                    "Name" = "8:System.Net.Http.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
@@ -1297,6 +1337,11 @@
             "AssemblyAsmDisplayName" = "8:Surviveplus.RegularExpressionQuery, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_3ABEBA00BB6178105E337028B4093032"
+                    {
+                    "Name" = "8:Surviveplus.RegularExpressionQuery.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Surviveplus.RegularExpressionQuery.dll"
             "TargetName" = "8:"
@@ -1323,6 +1368,11 @@
             "AssemblyAsmDisplayName" = "8:Surviveplus.WpfLocalization, Version=1.0.1.0, Culture=neutral, PublicKeyToken=8bef33aba4cdebf4, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_3CBE61BFC4B94983305AD86A273E580D"
+                    {
+                    "Name" = "8:Surviveplus.WpfLocalization.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Surviveplus.WpfLocalization.dll"
             "TargetName" = "8:"
@@ -1349,6 +1399,11 @@
             "AssemblyAsmDisplayName" = "8:SakuraMacaron.OfficeAddIn, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_41585331B4A657A6776ED91CC4BD52D1"
+                    {
+                    "Name" = "8:SakuraMacaron.OfficeAddIn.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:SakuraMacaron.OfficeAddIn.dll"
             "TargetName" = "8:"
@@ -1375,6 +1430,11 @@
             "AssemblyAsmDisplayName" = "8:SakuraMacaron.OfficeAddIn, Version=1.0.2.1, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_46BF7720CD183E64F14FC68623921005"
+                    {
+                    "Name" = "8:SakuraMacaron.OfficeAddIn.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:SakuraMacaron.OfficeAddIn.dll"
             "TargetName" = "8:"
@@ -1401,6 +1461,11 @@
             "AssemblyAsmDisplayName" = "8:Microsoft.Office.Tools.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_4A60437920DECD1D2E773E55D37E259B"
+                    {
+                    "Name" = "8:Microsoft.Office.Tools.Common.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Microsoft.Office.Tools.Common.dll"
             "TargetName" = "8:"
@@ -1427,6 +1492,11 @@
             "AssemblyAsmDisplayName" = "8:Microsoft.Office.Tools.Common.v4.0.Utilities, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_4E5120A9EAD754B336BCE538A2D05D23"
+                    {
+                    "Name" = "8:Microsoft.Office.Tools.Common.v4.0.Utilities.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Microsoft.Office.Tools.Common.v4.0.Utilities.dll"
             "TargetName" = "8:"
@@ -1453,6 +1523,11 @@
             "AssemblyAsmDisplayName" = "8:SakuraMacaron.OfficeAddIn, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_5C679A12DE2D3AB9C10238D0D32F4C6D"
+                    {
+                    "Name" = "8:SakuraMacaron.OfficeAddIn.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:SakuraMacaron.OfficeAddIn.dll"
             "TargetName" = "8:"
@@ -1479,6 +1554,11 @@
             "AssemblyAsmDisplayName" = "8:SakuraMacaron.OfficeAddIn.PowerPoint, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_71AA45051A77FBDD2FB2BB912659DCB6"
+                    {
+                    "Name" = "8:SakuraMacaron.OfficeAddIn.PowerPoint.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:SakuraMacaron.OfficeAddIn.PowerPoint.dll"
             "TargetName" = "8:"
@@ -1505,6 +1585,11 @@
             "AssemblyAsmDisplayName" = "8:stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
+                    "_73B2DBE9349FE95B98E9509D5C8DAE78"
+                    {
+                    "Name" = "8:stdole.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:stdole.dll"
             "TargetName" = "8:"
@@ -1551,6 +1636,11 @@
             "AssemblyAsmDisplayName" = "8:SakuraMacaron.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_7E1FB3A66FF6D7C7892159A752754429"
+                    {
+                    "Name" = "8:SakuraMacaron.Core.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:SakuraMacaron.Core.dll"
             "TargetName" = "8:"
@@ -1577,6 +1667,11 @@
             "AssemblyAsmDisplayName" = "8:SakuraMacaron.OfficeAddIn, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_88A082902FE177F01E723108549CA1CE"
+                    {
+                    "Name" = "8:SakuraMacaron.OfficeAddIn.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:SakuraMacaron.OfficeAddIn.dll"
             "TargetName" = "8:"
@@ -1603,6 +1698,11 @@
             "AssemblyAsmDisplayName" = "8:SakuraMacaron.OfficeAddIn.Outlook, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_91E0743CCB62F0BC277DB6A8C22A9F97"
+                    {
+                    "Name" = "8:SakuraMacaron.OfficeAddIn.Outlook.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:SakuraMacaron.OfficeAddIn.Outlook.dll"
             "TargetName" = "8:"
@@ -1629,6 +1729,11 @@
             "AssemblyAsmDisplayName" = "8:Microsoft.Office.Tools.v4.0.Framework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_A4BE9CA30E063B53E43030439AC4F45F"
+                    {
+                    "Name" = "8:Microsoft.Office.Tools.v4.0.Framework.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Microsoft.Office.Tools.v4.0.Framework.dll"
             "TargetName" = "8:"
@@ -1695,6 +1800,11 @@
             "AssemblyAsmDisplayName" = "8:Microsoft.Office.Tools.Word, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_B18F788B9648C06C1B7C6F319925B00B"
+                    {
+                    "Name" = "8:Microsoft.Office.Tools.Word.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Microsoft.Office.Tools.Word.dll"
             "TargetName" = "8:"
@@ -1741,6 +1851,11 @@
             "AssemblyAsmDisplayName" = "8:Microsoft.Office.Tools.Outlook.v4.0.Utilities, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_B47618C48D141DEA18045F0239F9BD72"
+                    {
+                    "Name" = "8:Microsoft.Office.Tools.Outlook.v4.0.Utilities.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Microsoft.Office.Tools.Outlook.v4.0.Utilities.dll"
             "TargetName" = "8:"
@@ -1767,6 +1882,11 @@
             "AssemblyAsmDisplayName" = "8:SakuraMacaron.OfficeAddIn.Excel, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_B778580F970E9AEA9C68D7960303209F"
+                    {
+                    "Name" = "8:SakuraMacaron.OfficeAddIn.Excel.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:SakuraMacaron.OfficeAddIn.Excel.dll"
             "TargetName" = "8:"
@@ -1793,6 +1913,11 @@
             "AssemblyAsmDisplayName" = "8:SakuraMacaron.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_B95509B7693EA69AC4E88179F036FBC0"
+                    {
+                    "Name" = "8:SakuraMacaron.Core.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:SakuraMacaron.Core.dll"
             "TargetName" = "8:"
@@ -1839,6 +1964,11 @@
             "AssemblyAsmDisplayName" = "8:Microsoft.Office.Tools.Outlook, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_BFCDAAB1E5E569141A95A66C0B20DE01"
+                    {
+                    "Name" = "8:Microsoft.Office.Tools.Outlook.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Microsoft.Office.Tools.Outlook.dll"
             "TargetName" = "8:"
@@ -1865,6 +1995,11 @@
             "AssemblyAsmDisplayName" = "8:SakuraMacaron.OfficeAddIn, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_C552D1D95F85BAA5EA86D0AADD3979A2"
+                    {
+                    "Name" = "8:SakuraMacaron.OfficeAddIn.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:SakuraMacaron.OfficeAddIn.dll"
             "TargetName" = "8:"
@@ -1891,6 +2026,11 @@
             "AssemblyAsmDisplayName" = "8:SakuraMacaron.OfficeAddIn.Word, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_CDE95999DB1FC4A4744DA3987A9F86F2"
+                    {
+                    "Name" = "8:SakuraMacaron.OfficeAddIn.Word.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:SakuraMacaron.OfficeAddIn.Word.dll"
             "TargetName" = "8:"
@@ -1914,9 +2054,14 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:EditorPlus.UI, Version=1.0.3.2, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:EditorPlus.UI, Version=1.0.7.4, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_D0F5BE6BF16702BE5FE6995E13E07BB0"
+                    {
+                    "Name" = "8:EditorPlus.UI.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:EditorPlus.UI.dll"
             "TargetName" = "8:"
@@ -1963,6 +2108,11 @@
             "AssemblyAsmDisplayName" = "8:SakuraMacaron.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_E865E5BB681CA605A68E7DF1766C2380"
+                    {
+                    "Name" = "8:SakuraMacaron.Core.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:SakuraMacaron.Core.dll"
             "TargetName" = "8:"
@@ -2009,6 +2159,11 @@
             "AssemblyAsmDisplayName" = "8:Microsoft.Office.Tools.Excel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_ED29A61DD33EB1C00B9DD1C252A266EE"
+                    {
+                    "Name" = "8:Microsoft.Office.Tools.Excel.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Microsoft.Office.Tools.Excel.dll"
             "TargetName" = "8:"
@@ -2035,6 +2190,11 @@
             "AssemblyAsmDisplayName" = "8:SakuraMacaron.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_F42E969995F0F9C212CBE310F17D8FA1"
+                    {
+                    "Name" = "8:SakuraMacaron.Core.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:SakuraMacaron.Core.dll"
             "TargetName" = "8:"
@@ -2061,6 +2221,11 @@
             "AssemblyAsmDisplayName" = "8:EditorPlus.AI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_FBE0822D362DC0076234C018F74CDCF3"
+                    {
+                    "Name" = "8:EditorPlus.AI.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:EditorPlus.AI.dll"
             "TargetName" = "8:"
@@ -2088,7 +2253,7 @@
         {
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_3B17474B07224BDD925A5CAB8FBDA1AF"
             {
-            "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
+            "DefaultLocation" = "8:[ProgramFiles64Folder][Manufacturer]\\[ProductName]"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -2136,9 +2301,9 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:EditorPlus.OfficeAddIn"
-        "ProductCode" = "8:{0B89F7D2-DEEA-4DFA-8386-AB008FFDA66D}"
-        "PackageCode" = "8:{EB8FD6DC-392F-4F49-8D28-DE91FF9CD800}"
-        "UpgradeCode" = "8:{0EAD1FBA-69CC-4531-B2CA-603AD6EF1C57}"
+        "ProductCode" = "8:{1A2084A2-0755-4F72-A7F1-67CB16AEFDE0}"
+        "PackageCode" = "8:{0CD4CCF3-85B7-4BD6-A300-9F282CACB380}"
+        "UpgradeCode" = "8:{90D97AB0-D955-471F-BC1E-BD714D29CC77}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
@@ -2158,7 +2323,7 @@
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
-        "TargetPlatform" = "3:0"
+        "TargetPlatform" = "3:1"
         "PreBuildEvent" = "8:"
         "PostBuildEvent" = "8:"
         "RunPostBuildEvent" = "3:0"

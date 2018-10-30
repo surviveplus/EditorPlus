@@ -17,8 +17,11 @@ Some of text editor extensions, Format Text, Insert Serial Numbers and others fo
 - ![Insert Serial Number](HowToUse/icons/InsertNumbers.png) Insert Serial Number (Outlook, Word, Excel, PowerPoint, Project)
 - ![Insert Now](HowToUse/icons/InsertNow.png) Insert Now (Excel)
 - ![Trim End](HowToUse/icons/TrimEnd.png) Trim End (Excel)
+### [ Items ] Ribbon Commands
+- Show Objects (PowerPoint)
 ### [ Name ] Ribbon Commands
 - Replace Worksheet Names (Excel)
+- Replace Object Names (PowerPoint)
 ### [ Clipboard ] Ribbon Commands
 - Copy Text (PowerPoint)
 - Copy No Line break Text  (Excel, PowerPoint)
@@ -45,5 +48,6 @@ Some of text editor extensions, Format Text, Insert Serial Numbers and others fo
 See [HowToUse-VS-en.md](HowToUse/HowToUse-VS-en.md)
 
 ## Screen Captures
+![Show Objects (PowerPoint)](HowToUse/images-Office-en/image1-powerpoint-ShowObjects.png)
 ![Insert Serial Number and Insert Text](HowToUse/images-VS-en/image7-4-mix.png)
 ![Format Text](HowToUse/images-VS-en/image5-2-InsertFormat.png)

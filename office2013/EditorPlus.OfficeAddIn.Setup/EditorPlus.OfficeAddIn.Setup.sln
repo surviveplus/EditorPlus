@@ -29,6 +29,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Release", "Release", "{3362
 		Version.txt = Version.txt
 	EndProjectSection
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "EditorPlus.OfficeAddIn.x64.Setup", "EditorPlus.OfficeAddIn.x64.Setup\EditorPlus.OfficeAddIn.x64.Setup.vdproj", "{331BD697-2DB6-4960-8A99-2809CBF3FC09}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{16C12D35-47D2-481A-8B72-4D1535CA8430}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16C12D35-47D2-481A-8B72-4D1535CA8430}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16C12D35-47D2-481A-8B72-4D1535CA8430}.Release|Any CPU.Build.0 = Release|Any CPU
+		{331BD697-2DB6-4960-8A99-2809CBF3FC09}.Debug|Any CPU.ActiveCfg = Debug
+		{331BD697-2DB6-4960-8A99-2809CBF3FC09}.Debug|Any CPU.Build.0 = Debug
+		{331BD697-2DB6-4960-8A99-2809CBF3FC09}.Release|Any CPU.ActiveCfg = Release
+		{331BD697-2DB6-4960-8A99-2809CBF3FC09}.Release|Any CPU.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
