@@ -275,7 +275,14 @@ namespace Net.Surviveplus.VsixExtensions
         {
             get
             {
-                return !(this.Dte == null || this.Dte.ActiveDocument == null);
+                try
+                {
+                    return !(this.Dte == null || this.Dte.ActiveDocument == null);
+                }
+                catch
+                {
+                    return false;
+                }
             }
         } // end property
 
