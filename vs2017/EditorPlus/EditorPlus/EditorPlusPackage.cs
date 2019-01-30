@@ -108,11 +108,18 @@ namespace Net.Surviveplus.EditorPlus
             var macaron = new VisualStudioMacaron(this);
             if (macaron.Dte == null) return;
 
-            if (macaron.Dte.ActiveDocument != null)
+            try
             {
-                file = new FileInfo(macaron.Dte.ActiveDocument.FullName);
-                if (file.Exists == false) file = null;
-            } // end if
+                if (macaron.Dte.ActiveDocument != null)
+                {
+                    file = new FileInfo(macaron.Dte.ActiveDocument.FullName);
+                    if (file.Exists == false) file = null;
+                } // end if
+            }
+            catch
+            {
+                file = null;
+            }
 
             var project = macaron.ActiveSolutionProjects.FirstOrDefault();
             if (project != null &&
@@ -142,6 +149,12 @@ namespace Net.Surviveplus.EditorPlus
 
                 file = new FileInfo(macaron.Dte.Solution.FullName);
                 if (file.Exists == false) file = null;
+
+                if(file == null)
+                {
+                    folder = new DirectoryInfo(macaron.Dte.Solution.FullName);
+                    if (folder.Exists == false) folder = null;
+                }
             } // end if
 
             if (file != null)
