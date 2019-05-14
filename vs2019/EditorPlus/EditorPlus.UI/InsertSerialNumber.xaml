@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="Net.Surviveplus.EditorPlus.UI.InsertSerialNumber"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             Background="{DynamicResource VsBrush.Window}"
+             Foreground="{DynamicResource VsBrush.WindowText}"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             Name="InsertSerialNumberToolWindow">
+    <UserControl.Resources>
+        <ResourceDictionary Source="Styles.xaml" />
+    </UserControl.Resources>
+    <Grid>
+    	<StackPanel>
+            <StackPanel Height="40" Orientation="Horizontal" Margin="5,5,5,5">
+                <Button x:Name="InsertToHeadButton"  x:Uid="InsertToHeadButton" Content="Insert to _Head" Width="100"  Margin="0,0,5,0" Click="InsertToHeadButton_Click"/>
+                <Button x:Name="InsertToEndButton"  x:Uid="InsertToEndButton" Content="Insert to _End" Width="100" Margin="0,0,5,0" Height="40" VerticalAlignment="Bottom" Click="InsertToEndButton_Click"/>
+                <CheckBox x:Name="checkSkipStartOrEndWith" x:Uid="checkSkipStartOrEndWith" Content="_Skip if started/ended with text"  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,12.5"/>
+            </StackPanel>
+    		<Grid Margin="0,0,0,5" Height="30">
+    			<Grid.ColumnDefinitions>
+    				<ColumnDefinition Width="100"/>
+    				<ColumnDefinition/>
+    			</Grid.ColumnDefinitions>
+    			<TextBlock x:Uid="StartNumber" TextWrapping="Wrap" Text="開始値:" VerticalAlignment="Top" Margin="0,5,10,0" HorizontalAlignment="Right"/>
+                <TextBox x:Name="StartNumberBox" TextWrapping="Wrap" Text="1" Margin="10,0" Grid.Column="1"/>
+    		</Grid>
+    		<Grid Margin="0" Height="30">
+    			<Grid.ColumnDefinitions>
+    				<ColumnDefinition Width="100"/>
+    				<ColumnDefinition/>
+    			</Grid.ColumnDefinitions>
+                <TextBlock x:Uid="Padding" TextWrapping="Wrap" Text="先頭埋め:" VerticalAlignment="Top" Margin="0,5,10,0" HorizontalAlignment="Right"/>
+    			<StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <RadioButton x:Name="nonePadding" x:Uid="NonePadding" Content="なし" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,7.88,10,7.88" GroupName="paddingText" IsChecked="True"/>
+                    <RadioButton x:Name="spacePadding" x:Uid="SpacePadding" Content="空白埋め" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,10,0" GroupName="paddingText"/>
+                    <RadioButton x:Name="zeroPadding" x:Uid="ZeroPadding" Content="0 埋め" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,7.88" GroupName="paddingText"/>
+    			</StackPanel>
+    		</Grid>
+    	</StackPanel>
+            
+    </Grid>
+</UserControl>
