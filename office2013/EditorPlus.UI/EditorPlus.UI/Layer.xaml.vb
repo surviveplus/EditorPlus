@@ -142,6 +142,25 @@ Public Class Layer
         RaiseEvent SelectedItemChanged(Me, New ItemEventArgs With {.Item = item, .MustReplaceSelection = mustReplaceSelection})
     End Sub
 
+    Public Event ShowItems As EventHandler(Of TempEventArgs)
+    Public Event HideItems As EventHandler(Of TempEventArgs)
+
+    Private Sub ShowButton_Click(sender As Object, e As RoutedEventArgs)
+
+        Dim e2 = New TempEventArgs With {.DoEvents = Sub() Me.DoEvents()}
+        e2.Items = Me.selected
+        RaiseEvent ShowItems(Me, e2)
+        Me.Update()
+    End Sub
+
+    Private Sub HideButton_Click(sender As Object, e As RoutedEventArgs)
+
+        Dim e2 = New TempEventArgs With {.DoEvents = Sub() Me.DoEvents()}
+        e2.Items = Me.selected
+        RaiseEvent HideItems(Me, e2)
+        Me.Update()
+    End Sub
+
 End Class
 
 Public Class TempEventArgs

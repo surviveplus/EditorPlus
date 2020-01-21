@@ -261,7 +261,7 @@ Public Class EditorPlusRibbon
                                     For Each selectedShape As Shape In ThisAddIn.Current.Application.ActiveWindow.Selection.ShapeRange
                                         If item.Shape Is selectedShape Then
                                             item.IsSelected = True
-                                            Exit For
+                                            'Exit For
                                         End If
                                     Next
                                 End If
@@ -283,12 +283,38 @@ Public Class EditorPlusRibbon
                     If item?.Shape IsNot Nothing Then
                         Dim shape As Shape = CType(item.Shape, Shape)
                         Dim w = ThisAddIn.Current.Application.ActiveWindow
-                        shape.Select(If(e3.MustReplaceSelection, Microsoft.Office.Core.MsoTriState.msoTrue, Microsoft.Office.Core.MsoTriState.msoFalse))
+
+                        Try
+                            If Not shape.Visible Then
+                                shape.Visible = Microsoft.Office.Core.MsoTriState.msoTrue
+                            End If
+                            shape.Select(If(e3.MustReplaceSelection, Microsoft.Office.Core.MsoTriState.msoTrue, Microsoft.Office.Core.MsoTriState.msoFalse))
+                        Catch ex As Exception
+                        End Try
                         w.ScrollIntoView(shape.Left, shape.Top, shape.Width, shape.Height)
                     End If
 
                 End Sub
 
+            AddHandler c.ShowItems,
+                Sub(sender2, e2)
+                    For Each item In e2.Items
+                        If item?.Shape IsNot Nothing Then
+                            Dim shape As Shape = CType(item.Shape, Shape)
+                            If Not shape.Visible Then shape.Visible = True
+                        End If
+                    Next
+                End Sub
+
+            AddHandler c.HideItems,
+                Sub(sender2, e2)
+                    For Each item In e2.Items
+                        If item?.Shape IsNot Nothing Then
+                            Dim shape As Shape = CType(item.Shape, Shape)
+                            If shape.Visible Then shape.Visible = False
+                        End If
+                    Next
+                End Sub
             Dim mustUpdate As Boolean = False
             Dim lastEditShape As Shape = Nothing
             AddHandler ThisAddIn.Current.Application.WindowSelectionChange,

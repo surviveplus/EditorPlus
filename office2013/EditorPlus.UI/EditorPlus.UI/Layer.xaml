@@ -9,10 +9,15 @@
              Loaded="UserControl_Loaded">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="24"></RowDefinition>
             <RowDefinition Height="32"></RowDefinition>
             <RowDefinition ></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid>
+        <StackPanel Orientation="Horizontal">
+            <Button x:Name="ShowButton" Padding="10 0 10 0" Margin="0 0 5 0" Click="ShowButton_Click">Show</Button>
+            <Button x:Name="HideButton" Padding="10 0 10 0" Margin="0 0 5 0" Click="HideButton_Click">Hide</Button>
+        </StackPanel>
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition Width="40" />
@@ -22,10 +27,10 @@
             <Button Grid.Column="1" x:Name="clearButton" Click="clearButton_Click" Background="White" BorderThickness="0" Margin="1 1 1 1" Foreground="Gray" Visibility="Collapsed">✖</Button>
             <Button Grid.Column="2" x:Name="refreshButton" Click="refreshButton_Click">🔎</Button>
         </Grid>
-        <ProgressBar x:Name="progrressBar"  Grid.Row="1" Height="2" VerticalAlignment="Top" Visibility="Collapsed" IsIndeterminate="True"></ProgressBar>
+        <ProgressBar x:Name="progrressBar"  Grid.Row="2" Height="2" VerticalAlignment="Top" Visibility="Collapsed" IsIndeterminate="True"></ProgressBar>
         <!--<TextBox x:Name="layers" Grid.Row="1" >
         </TextBox>-->
-        <TreeView x:Name="layers" Grid.Row="1" SelectedItemChanged="layers_SelectedItemChanged">
+        <TreeView x:Name="layers" Grid.Row="2" SelectedItemChanged="layers_SelectedItemChanged">
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate DataType="local:LayerTreeItem"  ItemsSource="{Binding Children}" >
                     <Grid>
