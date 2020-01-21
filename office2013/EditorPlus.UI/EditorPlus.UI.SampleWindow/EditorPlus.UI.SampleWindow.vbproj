@@ -1,28 +1,31 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{642975EF-DAC3-4F87-86F7-11DC51455212}</ProjectGuid>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
-    <RootNamespace>EditorPlus.UI</RootNamespace>
-    <AssemblyName>EditorPlus.UI</AssemblyName>
-    <OutputType>Library</OutputType>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>EditorPlus.UI.SampleWindow</RootNamespace>
+    <AssemblyName>EditorPlus.UI.SampleWindow</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MyType>Custom</MyType>
-    <ProjectGuid>{DD2126B7-21AA-4453-951D-55C5C6F3A9C8}</ProjectGuid>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <IncrementalBuild>true</IncrementalBuild>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>EditorPlus.UI.xml</DocumentationFile>
+    <DocumentationFile>EditorPlus.UI.SampleWindow.xml</DocumentationFile>
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <DebugSymbols>false</DebugSymbols>
     <DefineDebug>false</DefineDebug>
@@ -30,7 +33,7 @@
     <IncrementalBuild>false</IncrementalBuild>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>EditorPlus.UI.xml</DocumentationFile>
+    <DocumentationFile>EditorPlus.UI.SampleWindow.xml</DocumentationFile>
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -45,17 +48,7 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>
-    </AssemblyOriginatorKeyFile>
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Surviveplus.WpfLocalization, Version=1.0.4.2, Culture=neutral, PublicKeyToken=8bef33aba4cdebf4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Surviveplus.WpfLocalization.1.0.4.2\lib\net45\Surviveplus.WpfLocalization.dll</HintPath>
-    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -71,50 +64,22 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BulkAddItems.xaml.vb">
-      <DependentUpon>BulkAddItems.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="BulkTaskItems.xaml.vb">
-      <DependentUpon>BulkTaskItems.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Layer.xaml.vb">
-      <DependentUpon>Layer.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="OfficeTheme.vb" />
-    <Compile Include="Replace.xaml.vb">
-      <DependentUpon>Replace.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\BindableBase.vb" />
-    <Page Include="BulkAddItems.xaml">
-      <SubType>Designer</SubType>
+    <ApplicationDefinition Include="Application.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="BulkTaskItems.xaml">
       <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="InsertSerialNumber.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="InsertText.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Compile Include="InsertSerialNumber.xaml.vb">
-      <DependentUpon>InsertSerialNumber.xaml</DependentUpon>
+    <Compile Include="Application.xaml.vb">
+      <DependentUpon>Application.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
-    <Compile Include="InsertText.xaml.vb">
-      <DependentUpon>InsertText.xaml</DependentUpon>
+    <Compile Include="MainWindow.xaml.vb">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
-    <Page Include="Layer.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Replace.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Import Include="System.Threading.Tasks" />
@@ -139,6 +104,10 @@
     <Compile Include="My Project\AssemblyInfo.vb">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="My Project\MyExtensions\MyWpfExtension.vb">
+      <VBMyExtensionTemplateID>Microsoft.VisualBasic.WPF.MyExtension</VBMyExtensionTemplateID>
+      <VBMyExtensionTemplateVersion>1.0.0.0</VBMyExtensionTemplateVersion>
+    </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -149,7 +118,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="My Project\Resources.ja-JP.resx" />
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -159,13 +127,14 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <AppDesigner Include="My Project\" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\EditorPlus.Core\EditorPlus.Core\EditorPlus.Core.vbproj">
-      <Project>{a77720c6-9965-44c8-86a1-fb697df92368}</Project>
-      <Name>EditorPlus.Core</Name>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EditorPlus.UI\EditorPlus.UI.vbproj">
+      <Project>{dd2126b7-21aa-4453-951d-55c5c6f3a9c8}</Project>
+      <Name>EditorPlus.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

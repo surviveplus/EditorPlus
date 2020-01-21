@@ -60,6 +60,8 @@ Public Class Layer
 
         Dim filter As Action(Of IEnumerable(Of LayerTreeItem)) =
             Sub(items)
+                If items Is Nothing Then Exit Sub
+
                 For Each item In items
                     If keywords.Count = 0 Then
                         item.IsVisible = True
@@ -78,7 +80,7 @@ Public Class Layer
 
         Me.DoEvents()
 
-        Me.layers.ItemsSource = From item In e2.Items Where item.IsVisible
+        Me.layers.ItemsSource = If(e2.Items Is Nothing, Nothing, From item In e2.Items Where item.IsVisible)
         Me.selected = newSelected
 
         Me.progrressBar.Visibility = Visibility.Collapsed
