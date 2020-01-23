@@ -226,6 +226,16 @@ Public Class LayerTreeItem
         End Get
     End Property
 
+    Private isExpandedValue As Boolean
+    Public Property IsExpanded() As Boolean
+        Get
+            Return isExpandedValue
+        End Get
+        Set(ByVal value As Boolean)
+            Me.SetProperty(Of Boolean)(Me.isExpandedValue, value)
+        End Set
+    End Property
+
 End Class
 
 

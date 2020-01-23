@@ -31,6 +31,11 @@
         <!--<TextBox x:Name="layers" Grid.Row="1" >
         </TextBox>-->
         <TreeView x:Name="layers" Grid.Row="2" SelectedItemChanged="layers_SelectedItemChanged">
+            <TreeView.Resources>
+                <Style TargetType="TreeViewItem">
+                    <Setter Property="IsExpanded" Value="{Binding Path=IsExpanded, Mode=TwoWay}"></Setter>
+                </Style>
+            </TreeView.Resources>
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate DataType="local:LayerTreeItem"  ItemsSource="{Binding Children}" >
                     <Grid>
