@@ -60,7 +60,12 @@ Public Class ControlTeheme
 
 
 
-                'TODO: Case Theme.Black
+            Case Theme.Black
+                With ControlTeheme.Control
+                    .Background = New SolidColorBrush(Color.FromArgb(&HFF, &H38, &H38, &H38)) '#383838
+                    .Foreground = New SolidColorBrush(Colors.White) 'white
+                End With
+
                 'TODO: Case Theme.White
 
             Case Else 'Theme.Colorful

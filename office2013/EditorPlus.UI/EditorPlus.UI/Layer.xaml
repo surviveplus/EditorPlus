@@ -6,7 +6,16 @@
              xmlns:local="clr-namespace:EditorPlus.UI"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
+             Background="{DynamicResource ControlBackground}" Foreground="{DynamicResource ControlForeground}"
+             SizeChanged="UserControl_SizeChanged"
              Loaded="UserControl_Loaded">
+    <!--<UserControl.Resources>
+        <SolidColorBrush x:Key="ControlBackground" Color="#FFE3E3E3" />
+        <SolidColorBrush x:Key="ControlForeground" Color="#FF444444" />
+    </UserControl.Resources>-->    
+    <UserControl.Resources>
+        <ResourceDictionary Source="Styles.xaml" />
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="24"></RowDefinition>

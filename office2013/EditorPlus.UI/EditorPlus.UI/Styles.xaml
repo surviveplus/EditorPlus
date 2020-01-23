@@ -2,9 +2,12 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Net.Surviveplus.EditorPlus.UI">
 
+    <SolidColorBrush x:Key="ControlBackground" Color="#FFE3E3E3" />
+    <SolidColorBrush x:Key="ControlForeground" Color="#FF444444" />
+
     <Style TargetType="Button">
-        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrush}}" />
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrush}}" />
+        <Setter Property="Background" Value="{DynamicResource ControlBackground}" />
+        <Setter Property="Foreground" Value="{DynamicResource ControlForeground}" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.ControlLightBrush}}" />
         
         <Setter Property="Margin" Value="0 0 5 0" />
