@@ -5,8 +5,57 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OfficeThemeSample"
         mc:Ignorable="d"
-        Title="MainWindow" Height="200" Width="400">
+        Title="MainWindow" Height="200" Width="400"
+        >
+        <!-- Hack:  DataContext="{Binding Source={x:Static local:OfficeTheme.Current}}" can work only first time of DataTrigger.-->
+    <Window.Style>
+        <Style TargetType="Window">
+            <Setter Property="Background" Value="White"></Setter>
+            <Setter Property="Foreground" Value="Black"></Setter>
+
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Theme}"  >
+                    <DataTrigger.Value>
+                        <local:Theme>Colorful</local:Theme>
+                    </DataTrigger.Value>
+                    <Setter Property="Background" Value="#e6e6e6"></Setter>
+                    <Setter Property="Foreground" Value="#444444"></Setter>
+                </DataTrigger>
+
+                <DataTrigger Binding="{Binding Theme}"  >
+                    <DataTrigger.Value>
+                        <local:Theme>DarkGray</local:Theme>
+                    </DataTrigger.Value>
+                    <Setter Property="Background" Value="#666666"></Setter>
+                    <Setter Property="Foreground" Value="White"></Setter>
+                </DataTrigger>
+
+                <DataTrigger Binding="{Binding Theme}"  >
+                    <DataTrigger.Value>
+                        <local:Theme>Black</local:Theme>
+                    </DataTrigger.Value>
+                    <Setter Property="Background" Value="#262626"></Setter>
+                    <Setter Property="Foreground" Value="White"></Setter>
+                </DataTrigger>
+
+            </Style.Triggers>
+
+        </Style>
+    </Window.Style>
     <Window.Resources>
+        <Style TargetType="RadioButton">
+            <Setter Property="Margin" Value="5 0 5 0" ></Setter>
+
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Theme}"  >
+                    <DataTrigger.Value>
+                        <local:Theme>Black</local:Theme>
+                    </DataTrigger.Value>
+                    <Setter Property="Foreground" Value="White"></Setter>
+                </DataTrigger>
+
+            </Style.Triggers>
+        </Style>
         <Style TargetType="Button" >
             <Setter Property="Margin" Value="5 0 5 0" ></Setter>
             <Setter Property="Padding" Value="5 0 5 0" ></Setter>
@@ -52,6 +101,18 @@
 
                 </Setter.Value>
             </Setter>
+
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Theme}"  >
+                    <DataTrigger.Value>
+                        <local:Theme>Black</local:Theme>
+                    </DataTrigger.Value>
+                    <Setter Property="Background" Value="Black"></Setter>
+                    <Setter Property="Foreground" Value="White"></Setter>
+                </DataTrigger>
+
+            </Style.Triggers>
+
         </Style>
         
         <Style TargetType="ToggleButton" >
@@ -107,8 +168,10 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-            <RadioButton>White</RadioButton>
-            <RadioButton>Black</RadioButton>
+            <RadioButton Tag="{x:Static local:Theme.Colorful}" Checked="ThemeRadioButton_Checked">Colorful</RadioButton>
+            <RadioButton Tag="{x:Static local:Theme.DarkGray}" Checked="ThemeRadioButton_Checked">Dark Gray</RadioButton>
+            <RadioButton Tag="{x:Static local:Theme.White}" Checked="ThemeRadioButton_Checked">White</RadioButton>
+            <RadioButton Tag="{x:Static local:Theme.Black}"  Checked="ThemeRadioButton_Checked">Black</RadioButton>
         </StackPanel>
         
         <StackPanel  Grid.Row="1" Orientation="Horizontal">

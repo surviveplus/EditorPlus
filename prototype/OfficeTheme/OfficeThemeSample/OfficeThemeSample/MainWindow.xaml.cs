@@ -23,6 +23,23 @@ namespace OfficeThemeSample
         public MainWindow()
         {
             InitializeComponent();
+
         }
-    }
-}
+
+        private void ThemeRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            var radio = sender as RadioButton;
+            if( radio?.IsChecked == true )
+            {
+
+                // Hack: DataTrigger can read binding property on only first time.
+                // If value of property is changed, we must reset datacontext of binding. 
+                // INotifyPropertyChanged can't solve this problem.
+                this.DataContext = null;
+                OfficeTheme.Current.Theme = (Theme)radio.Tag;
+                this.DataContext = OfficeTheme.Current;
+            }
+
+        } // end sub
+    } // end class
+} // end namespace
