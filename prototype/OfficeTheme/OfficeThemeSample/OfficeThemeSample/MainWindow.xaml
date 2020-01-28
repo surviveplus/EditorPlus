@@ -10,16 +10,7 @@
         >
         <!-- Hack:  DataContext="{Binding Source={x:Static local:OfficeTheme.Current}}" can work only first time of DataTrigger.-->
     <Window.Resources>
-
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles\Styles.xaml" />
-                <ResourceDictionary Source="Styles\ButtonStyles.xaml" />
-                <ResourceDictionary Source="Styles\RadioButtonStyles.xaml" />
-                <ResourceDictionary Source="Styles\ToggleButtonStyles.xaml" />
-                <ResourceDictionary Source="Styles\WindowStyles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
+        <ResourceDictionary Source="Styles\Styles.xaml" />
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
