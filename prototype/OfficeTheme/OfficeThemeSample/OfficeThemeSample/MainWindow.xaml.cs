@@ -23,7 +23,6 @@ namespace OfficeThemeSample
         public MainWindow()
         {
             InitializeComponent();
-
         }
 
         private void ThemeRadioButton_Checked(object sender, RoutedEventArgs e)
