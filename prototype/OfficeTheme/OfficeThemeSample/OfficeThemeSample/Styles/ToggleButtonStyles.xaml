@@ -6,9 +6,10 @@
         <Setter Property="Margin" Value="5 0 5 0" ></Setter>
         <Setter Property="Padding" Value="5 0 5 0" ></Setter>
 
-        <Setter Property="Background" Value="White"></Setter>
-        <Setter Property="Foreground" Value="Black"></Setter>
-        <Setter Property="BorderBrush" Value="Transparent"></Setter>
+        <!-- #region Theme = Colorful -->
+        <Setter Property="Background" Value="#fdfdfd"></Setter>
+        <Setter Property="Foreground" Value="#444444"></Setter>
+        <Setter Property="BorderBrush" Value="#ababab"></Setter>
 
         <Setter Property="Template">
             <Setter.Value>
@@ -32,8 +33,9 @@
                             <Setter Property="Foreground" Value="Black"></Setter>
                         </Trigger>
                         <Trigger Property="ToggleButton.IsChecked" Value="True">
-                            <Setter Property="Background" TargetName="border" Value="#6FFFA000"/>
+                            <Setter Property="Background" TargetName="border" Value="#3FFFA000"/>
                             <Setter Property="BorderBrush" TargetName="border" Value="#9FFFA000"/>
+                            <Setter Property="Foreground" Value="Black"></Setter>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <!--<Setter Property="Background" TargetName="border" Value="#FFF4F4F4"/>-->
@@ -47,6 +49,43 @@
 
             </Setter.Value>
         </Setter>
+        <!-- #endregion -->
+
+        <Style.Triggers>
+            <!-- #region Theme = DarkGray -->
+            <DataTrigger Binding="{Binding Theme}"  >
+                <DataTrigger.Value>
+                    <local:Theme>DarkGray</local:Theme>
+                </DataTrigger.Value>
+                <Setter Property="Background" Value="#d4d4d4"></Setter>
+                <Setter Property="Foreground" Value="#262626"></Setter>
+                <Setter Property="BorderBrush" Value="#ababab"></Setter>
+            </DataTrigger>
+            <!-- #endregion -->
+
+            <!-- #region Theme = Black -->
+            <DataTrigger Binding="{Binding Theme}"  >
+                <DataTrigger.Value>
+                    <local:Theme>Black</local:Theme>
+                </DataTrigger.Value>
+                <Setter Property="Background" Value="#363636"></Setter>
+                <Setter Property="Foreground" Value="#f0f0f0"></Setter>
+                <Setter Property="BorderBrush" Value="#686868"></Setter>
+            </DataTrigger>
+            <!-- #endregion -->
+
+            <!-- #region Theme = White -->
+            <DataTrigger Binding="{Binding Theme}"  >
+                <DataTrigger.Value>
+                    <local:Theme>White</local:Theme>
+                </DataTrigger.Value>
+                <Setter Property="Background" Value="#fdfdfd"></Setter>
+                <Setter Property="Foreground" Value="#444444"></Setter>
+                <Setter Property="BorderBrush" Value="#ababab"></Setter>
+            </DataTrigger>
+            <!-- #endregion -->
+
+        </Style.Triggers>
     </Style>
 
 </ResourceDictionary>
