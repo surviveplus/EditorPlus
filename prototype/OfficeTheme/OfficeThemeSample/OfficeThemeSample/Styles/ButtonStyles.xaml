@@ -23,7 +23,7 @@
                             <Setter Property="Background" TargetName="border" Value="#fdfdfd"/>
                             <Setter Property="BorderBrush" TargetName="border" Value="#e1e1e1"/>
                             <Setter Property="Foreground" Value="#b1b1b1"></Setter>
-                        </Trigger>                        
+                        </Trigger>
                         <Trigger Property="Button.IsDefaulted" Value="True">
                             <Setter Property="BorderThickness" Value="2" />
                             <Setter Property="Padding" Value="4 0 4 0" />
@@ -37,14 +37,8 @@
                         <Trigger Property="IsPressed" Value="True">
                             <Setter Property="Background" TargetName="border" Value="#f5ba9d"/>
                             <Setter Property="BorderBrush" TargetName="border" Value="#dc5939"/>
-                            <Setter Property="Foreground" Value="Black"></Setter>
+                            <Setter Property="Foreground" Value="#444444"></Setter>
                         </Trigger>
-                        <Trigger Property="ToggleButton.IsChecked" Value="True">
-                            <Setter Property="Background" TargetName="border" Value="#3FFFA000"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="#9FFFA000"/>
-                            <Setter Property="Foreground" Value="Black"></Setter>
-                        </Trigger>
-
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
 
@@ -83,19 +77,13 @@
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter Property="Background" TargetName="border" Value="#fce4dc"/>
                                     <Setter Property="BorderBrush" TargetName="border" Value="#f5ba9d"/>
-                                    <Setter Property="Foreground" Value="#444444"></Setter>
+                                    <Setter Property="Foreground" Value="#262626"></Setter>
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="True">
                                     <Setter Property="Background" TargetName="border" Value="#f5ba9d"/>
                                     <Setter Property="BorderBrush" TargetName="border" Value="#dc5939"/>
-                                    <Setter Property="Foreground" Value="Black"></Setter>
+                                    <Setter Property="Foreground" Value="#444444"></Setter>
                                 </Trigger>
-                                <Trigger Property="ToggleButton.IsChecked" Value="True">
-                                    <Setter Property="Background" TargetName="border" Value="#3FFFA000"/>
-                                    <Setter Property="BorderBrush" TargetName="border" Value="#9FFFA000"/>
-                                    <Setter Property="Foreground" Value="Black"></Setter>
-                                </Trigger>
-
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
 
@@ -142,12 +130,6 @@
                                     <Setter Property="BorderBrush" TargetName="border" Value="#ff5630"/>
                                     <Setter Property="Foreground" Value="#ffffff"></Setter>
                                 </Trigger>
-                                <Trigger Property="ToggleButton.IsChecked" Value="True">
-                                    <Setter Property="Background" TargetName="border" Value="#3FFFA000"/>
-                                    <Setter Property="BorderBrush" TargetName="border" Value="#9FFFA000"/>
-                                    <Setter Property="Foreground" Value="Black"></Setter>
-                                </Trigger>
-
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
 
@@ -192,12 +174,7 @@
                                 <Trigger Property="IsPressed" Value="True">
                                     <Setter Property="Background" TargetName="border" Value="#f5ba9d"/>
                                     <Setter Property="BorderBrush" TargetName="border" Value="#dc5939"/>
-                                    <Setter Property="Foreground" Value="Black"></Setter>
-                                </Trigger>
-                                <Trigger Property="ToggleButton.IsChecked" Value="True">
-                                    <Setter Property="Background" TargetName="border" Value="#3FFFA000"/>
-                                    <Setter Property="BorderBrush" TargetName="border" Value="#9FFFA000"/>
-                                    <Setter Property="Foreground" Value="Black"></Setter>
+                                    <Setter Property="Foreground" Value="#444444"></Setter>
                                 </Trigger>
 
                             </ControlTemplate.Triggers>

@@ -27,9 +27,9 @@
         
         <StackPanel  Grid.Row="1" Orientation="Horizontal">
             <Button IsDefault="True">Hello</Button>
-            <ToggleButton>World</ToggleButton>
             <Button IsEnabled="False">Good</Button>
             <Button>Job</Button>
+            <ToggleButton>World</ToggleButton>
         </StackPanel>
     </Grid>
 </Window>
