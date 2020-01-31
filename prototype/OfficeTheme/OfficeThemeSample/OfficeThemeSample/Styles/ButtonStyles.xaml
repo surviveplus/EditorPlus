@@ -24,13 +24,13 @@
                             <Setter Property="BorderBrush"  Value="#b7472a"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" TargetName="border" Value="#9FFFA000"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="#FFFFA000"/>
-                            <Setter Property="Foreground" Value="Black"></Setter>
+                            <Setter Property="Background" TargetName="border" Value="#fce4dc"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="#f5ba9d"/>
+                            <Setter Property="Foreground" Value="#444444"></Setter>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Background" TargetName="border" Value="#F0FFA000"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="#FFFFA000"/>
+                            <Setter Property="Background" TargetName="border" Value="#f5ba9d"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="#dc5939"/>
                             <Setter Property="Foreground" Value="Black"></Setter>
                         </Trigger>
                         <Trigger Property="ToggleButton.IsChecked" Value="True">
@@ -39,9 +39,9 @@
                             <Setter Property="Foreground" Value="Black"></Setter>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Background" TargetName="border" Value="#FFFFFFFF"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="Transparent"/>
-                            <Setter Property="Opacity" Value="0.5"/>
+                            <Setter Property="Background" TargetName="border" Value="#fdfdfd"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="#e1e1e1"/>
+                            <Setter Property="Foreground" Value="#b1b1b1"></Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
