@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:OfficeThemeSample">
     <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="AccentColorStyles.xaml" />
         <ResourceDictionary Source="ButtonStyles.xaml" />
         <ResourceDictionary Source="RadioButtonStyles.xaml" />
         <ResourceDictionary Source="ToggleButtonStyles.xaml" />

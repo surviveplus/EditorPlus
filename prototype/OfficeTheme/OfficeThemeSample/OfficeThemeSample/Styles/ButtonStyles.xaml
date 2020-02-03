@@ -27,16 +27,16 @@
                         <Trigger Property="Button.IsDefaulted" Value="True">
                             <Setter Property="BorderThickness" Value="2" />
                             <Setter Property="Padding" Value="4 0 4 0" />
-                            <Setter Property="BorderBrush"  Value="#b7472a"/>
+                            <Setter Property="BorderBrush"  Value="{DynamicResource Accent-White-IsDefaulted-BorderBrush}"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" TargetName="border" Value="#fce4dc"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="#f5ba9d"/>
+                            <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-White-IsMouseOver-Background}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-WHite-IsMouseOver-BorderBrush}"/>
                             <Setter Property="Foreground" Value="#444444"></Setter>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Background" TargetName="border" Value="#f5ba9d"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="#dc5939"/>
+                            <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-White-IsPressed-Background}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-White-IsPressed-BorderBrush}"/>
                             <Setter Property="Foreground" Value="#444444"></Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -75,13 +75,13 @@
                                     <Setter Property="BorderBrush"  Value="#ffffff"/>
                                 </Trigger>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" TargetName="border" Value="#fce4dc"/>
-                                    <Setter Property="BorderBrush" TargetName="border" Value="#f5ba9d"/>
+                                    <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-White-IsMouseOver-Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-WHite-IsMouseOver-BorderBrush}"/>
                                     <Setter Property="Foreground" Value="#262626"></Setter>
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="True">
-                                    <Setter Property="Background" TargetName="border" Value="#f5ba9d"/>
-                                    <Setter Property="BorderBrush" TargetName="border" Value="#dc5939"/>
+                                    <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-White-IsPressed-Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-White-IsPressed-BorderBrush}"/>
                                     <Setter Property="Foreground" Value="#444444"></Setter>
                                 </Trigger>
                             </ControlTemplate.Triggers>
@@ -121,13 +121,13 @@
                                     <Setter Property="BorderBrush"  Value="#ffffff"/>
                                 </Trigger>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" TargetName="border" Value="#b83b1d"/>
-                                    <Setter Property="BorderBrush" TargetName="border" Value="#d24726"/>
+                                    <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-Black-IsMouseOver-Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-Black-IsMouseOver-BorderBrush}"/>
                                     <Setter Property="Foreground" Value="#ffffff"></Setter>
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="True">
-                                    <Setter Property="Background" TargetName="border" Value="#d24726"/>
-                                    <Setter Property="BorderBrush" TargetName="border" Value="#ff5630"/>
+                                    <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-Black-IsPressed-Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-Black-IsPressed-BorderBrush}"/>
                                     <Setter Property="Foreground" Value="#ffffff"></Setter>
                                 </Trigger>
                             </ControlTemplate.Triggers>
@@ -164,16 +164,16 @@
                                 <Trigger Property="Button.IsDefaulted" Value="True">
                                     <Setter Property="BorderThickness" Value="2" />
                                     <Setter Property="Padding" Value="4 0 4 0" />
-                                    <Setter Property="BorderBrush"  Value="#b7472a"/>
+                                    <Setter Property="BorderBrush"  Value="{DynamicResource Accent-White-IsDefaulted-BorderBrush}"/>
                                 </Trigger>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" TargetName="border" Value="#fce4dc"/>
-                                    <Setter Property="BorderBrush" TargetName="border" Value="#f5ba9d"/>
+                                    <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-White-IsMouseOver-Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-WHite-IsMouseOver-BorderBrush}"/>
                                     <Setter Property="Foreground" Value="#444444"></Setter>
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="True">
-                                    <Setter Property="Background" TargetName="border" Value="#f5ba9d"/>
-                                    <Setter Property="BorderBrush" TargetName="border" Value="#dc5939"/>
+                                    <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-White-IsPressed-Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-White-IsPressed-BorderBrush}"/>
                                     <Setter Property="Foreground" Value="#444444"></Setter>
                                 </Trigger>
 

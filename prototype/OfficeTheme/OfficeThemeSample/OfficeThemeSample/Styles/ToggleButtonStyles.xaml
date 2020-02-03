@@ -27,21 +27,21 @@
                         <Trigger Property="Button.IsDefaulted" Value="True">
                             <Setter Property="BorderThickness" Value="2" />
                             <Setter Property="Padding" Value="4 0 4 0" />
-                            <Setter Property="BorderBrush"  Value="#b7472a"/>
+                            <Setter Property="BorderBrush"  Value="{DynamicResource Accent-White-IsDefaulted-BorderBrush}"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" TargetName="border" Value="#fce4dc"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="#f5ba9d"/>
+                            <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-White-IsMouseOver-Background}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-WHite-IsMouseOver-BorderBrush}"/>
                             <Setter Property="Foreground" Value="#444444"></Setter>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Background" TargetName="border" Value="#f5ba9d"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="#dc5939"/>
+                            <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-White-IsPressed-Background}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-White-IsPressed-BorderBrush}"/>
                             <Setter Property="Foreground" Value="#444444"></Setter>
                         </Trigger>
                         <Trigger Property="ToggleButton.IsChecked" Value="True">
-                            <Setter Property="Background" TargetName="border" Value="#f5ba9d"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="#dc5939"/>
+                            <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-White-IsPressed-Background}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-White-IsPressed-BorderBrush}"/>
                             <Setter Property="Foreground" Value="#444444"></Setter>
                         </Trigger>
                         <MultiTrigger>
@@ -49,8 +49,8 @@
                                 <Condition Property="IsMouseOver" Value="True" />
                                 <Condition Property="ToggleButton.IsChecked" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="Background" TargetName="border" Value="#F4C4AE"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="#DE6345"/>
+                            <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-White-IsCheckedMoserOver-Background}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-White-IsCheckedMoserOver-BorderBrush}"/>
                             <Setter Property="Foreground" Value="#444444"></Setter>
                         </MultiTrigger>
                         <MultiTrigger>
@@ -58,8 +58,8 @@
                                 <Condition Property="IsPressed" Value="True" />
                                 <Condition Property="ToggleButton.IsChecked" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="Background" TargetName="border" Value="#F7A67E"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="#CE5537"/>
+                            <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-White-IsCheckedPressed-Background}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-White-IsCheckedPre4ssed-BorderBrush}"/>
                             <Setter Property="Foreground" Value="#444444"></Setter>
                         </MultiTrigger>
 
@@ -99,18 +99,18 @@
                                     <Setter Property="BorderBrush"  Value="#ffffff"/>
                                 </Trigger>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" TargetName="border" Value="#fce4dc"/>
-                                    <Setter Property="BorderBrush" TargetName="border" Value="#f5ba9d"/>
+                                    <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-White-IsMouseOver-Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-WHite-IsMouseOver-BorderBrush}"/>
                                     <Setter Property="Foreground" Value="#262626"></Setter>
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="True">
-                                    <Setter Property="Background" TargetName="border" Value="#f5ba9d"/>
-                                    <Setter Property="BorderBrush" TargetName="border" Value="#dc5939"/>
+                                    <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-White-IsPressed-Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-White-IsPressed-BorderBrush}"/>
                                     <Setter Property="Foreground" Value="#444444"></Setter>
                                 </Trigger>
                                 <Trigger Property="ToggleButton.IsChecked" Value="True">
-                                    <Setter Property="Background" TargetName="border" Value="#f5ba9d"/>
-                                    <Setter Property="BorderBrush" TargetName="border" Value="#dc5939"/>
+                                    <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-White-IsPressed-Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-White-IsPressed-BorderBrush}"/>
                                     <Setter Property="Foreground" Value="#444444"></Setter>
                                 </Trigger>
                                 <MultiTrigger>
@@ -118,8 +118,8 @@
                                         <Condition Property="IsMouseOver" Value="True" />
                                         <Condition Property="ToggleButton.IsChecked" Value="True" />
                                     </MultiTrigger.Conditions>
-                                    <Setter Property="Background" TargetName="border" Value="#F4C4AE"/>
-                                    <Setter Property="BorderBrush" TargetName="border" Value="#DE6345"/>
+                                    <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-White-IsCheckedMoserOver-Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-White-IsCheckedMoserOver-BorderBrush}"/>
                                     <Setter Property="Foreground" Value="#444444"></Setter>
                                 </MultiTrigger>
                                 <MultiTrigger>
@@ -127,8 +127,8 @@
                                         <Condition Property="IsPressed" Value="True" />
                                         <Condition Property="ToggleButton.IsChecked" Value="True" />
                                     </MultiTrigger.Conditions>
-                                    <Setter Property="Background" TargetName="border" Value="#F7A67E"/>
-                                    <Setter Property="BorderBrush" TargetName="border" Value="#CE5537"/>
+                                    <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-White-IsCheckedPressed-Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-White-IsCheckedPre4ssed-BorderBrush}"/>
                                     <Setter Property="Foreground" Value="#444444"></Setter>
                                 </MultiTrigger>
 
@@ -169,18 +169,18 @@
                                     <Setter Property="BorderBrush"  Value="#ffffff"/>
                                 </Trigger>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" TargetName="border" Value="#b83b1d"/>
-                                    <Setter Property="BorderBrush" TargetName="border" Value="#d24726"/>
+                                    <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-Black-IsMouseOver-Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-Black-IsMouseOver-BorderBrush}"/>
                                     <Setter Property="Foreground" Value="#ffffff"></Setter>
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="True">
-                                    <Setter Property="Background" TargetName="border" Value="#d24726"/>
-                                    <Setter Property="BorderBrush" TargetName="border" Value="#ff5630"/>
+                                    <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-Black-IsPressed-Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-Black-IsPressed-BorderBrush}"/>
                                     <Setter Property="Foreground" Value="#ffffff"></Setter>
                                 </Trigger>
                                 <Trigger Property="ToggleButton.IsChecked" Value="True">
-                                    <Setter Property="Background" TargetName="border" Value="#d24726"/>
-                                    <Setter Property="BorderBrush" TargetName="border" Value="#ff5630"/>
+                                    <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-Black-IsPressed-Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-Black-IsPressed-BorderBrush}"/>
                                     <Setter Property="Foreground" Value="#ffffff"></Setter>
                                 </Trigger>
 
@@ -189,8 +189,8 @@
                                         <Condition Property="IsMouseOver" Value="True" />
                                         <Condition Property="ToggleButton.IsChecked" Value="True" />
                                     </MultiTrigger.Conditions>
-                                    <Setter Property="Background" TargetName="border" Value="#E95B39"/>
-                                    <Setter Property="BorderBrush" TargetName="border" Value="#ff5630"/>
+                                    <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-Black-IsCheckedMoserOver-Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-Black-IsCheckedMoserOver-BorderBrush}"/>
                                     <Setter Property="Foreground" Value="#ffffff"></Setter>
                                 </MultiTrigger>
                                 <MultiTrigger>
@@ -198,8 +198,8 @@
                                         <Condition Property="IsPressed" Value="True" />
                                         <Condition Property="ToggleButton.IsChecked" Value="True" />
                                     </MultiTrigger.Conditions>
-                                    <Setter Property="Background" TargetName="border" Value="#D4401D"/>
-                                    <Setter Property="BorderBrush" TargetName="border" Value="#ff5630"/>
+                                    <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-Black-IsCheckedPressed-Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-Black-IsCheckedPre4ssed-BorderBrush}"/>
                                     <Setter Property="Foreground" Value="#ffffff"></Setter>
                                 </MultiTrigger>
                             </ControlTemplate.Triggers>
@@ -236,21 +236,21 @@
                                 <Trigger Property="Button.IsDefaulted" Value="True">
                                     <Setter Property="BorderThickness" Value="2" />
                                     <Setter Property="Padding" Value="4 0 4 0" />
-                                    <Setter Property="BorderBrush"  Value="#b7472a"/>
+                                    <Setter Property="BorderBrush"  Value="{DynamicResource}"/>
                                 </Trigger>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" TargetName="border" Value="#fce4dc"/>
-                                    <Setter Property="BorderBrush" TargetName="border" Value="#f5ba9d"/>
+                                    <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-White-IsMouseOver-Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-WHite-IsMouseOver-BorderBrush}"/>
                                     <Setter Property="Foreground" Value="#444444"></Setter>
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="True">
-                                    <Setter Property="Background" TargetName="border" Value="#f5ba9d"/>
-                                    <Setter Property="BorderBrush" TargetName="border" Value="#dc5939"/>
+                                    <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-White-IsPressed-Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-White-IsPressed-BorderBrush}"/>
                                     <Setter Property="Foreground" Value="#444444"></Setter>
                                 </Trigger>
                                 <Trigger Property="ToggleButton.IsChecked" Value="True">
-                                    <Setter Property="Background" TargetName="border" Value="#f5ba9d"/>
-                                    <Setter Property="BorderBrush" TargetName="border" Value="#dc5939"/>
+                                    <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-White-IsPressed-Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-White-IsPressed-BorderBrush}"/>
                                     <Setter Property="Foreground" Value="#444444"></Setter>
                                 </Trigger>
                                 <MultiTrigger>
@@ -258,8 +258,8 @@
                                         <Condition Property="IsMouseOver" Value="True" />
                                         <Condition Property="ToggleButton.IsChecked" Value="True" />
                                     </MultiTrigger.Conditions>
-                                    <Setter Property="Background" TargetName="border" Value="#F4C4AE"/>
-                                    <Setter Property="BorderBrush" TargetName="border" Value="#DE6345"/>
+                                    <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-White-IsCheckedMoserOver-Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-White-IsCheckedMoserOver-BorderBrush}"/>
                                     <Setter Property="Foreground" Value="#444444"></Setter>
                                 </MultiTrigger>
                                 <MultiTrigger>
@@ -267,8 +267,8 @@
                                         <Condition Property="IsPressed" Value="True" />
                                         <Condition Property="ToggleButton.IsChecked" Value="True" />
                                     </MultiTrigger.Conditions>
-                                    <Setter Property="Background" TargetName="border" Value="#F7A67E"/>
-                                    <Setter Property="BorderBrush" TargetName="border" Value="#CE5537"/>
+                                    <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-White-IsCheckedPressed-Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-White-IsCheckedPre4ssed-BorderBrush}"/>
                                     <Setter Property="Foreground" Value="#444444"></Setter>
                                 </MultiTrigger>
 
