@@ -59,7 +59,7 @@
                                 <Condition Property="ToggleButton.IsChecked" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-White-IsCheckedPressed-Background}"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-White-IsCheckedPre4ssed-BorderBrush}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-White-IsCheckedPressed-BorderBrush}"/>
                             <Setter Property="Foreground" Value="#444444"></Setter>
                         </MultiTrigger>
 
@@ -128,7 +128,7 @@
                                         <Condition Property="ToggleButton.IsChecked" Value="True" />
                                     </MultiTrigger.Conditions>
                                     <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-White-IsCheckedPressed-Background}"/>
-                                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-White-IsCheckedPre4ssed-BorderBrush}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-White-IsCheckedPressed-BorderBrush}"/>
                                     <Setter Property="Foreground" Value="#444444"></Setter>
                                 </MultiTrigger>
 
@@ -268,7 +268,7 @@
                                         <Condition Property="ToggleButton.IsChecked" Value="True" />
                                     </MultiTrigger.Conditions>
                                     <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-White-IsCheckedPressed-Background}"/>
-                                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-White-IsCheckedPre4ssed-BorderBrush}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-White-IsCheckedPressed-BorderBrush}"/>
                                     <Setter Property="Foreground" Value="#444444"></Setter>
                                 </MultiTrigger>
 

@@ -22,6 +22,6 @@
     <SolidColorBrush x:Key="Accent-White-IsCheckedMoserOver-Background" Color="#F4C4AE" />
     <SolidColorBrush x:Key="Accent-White-IsCheckedMoserOver-BorderBrush" Color="#DE6345" />
     <SolidColorBrush x:Key="Accent-White-IsCheckedPressed-Background" Color="#F7A67E" />
-    <SolidColorBrush x:Key="Accent-White-IsCheckedPre4ssed-BorderBrush" Color="#CE5537" />
+    <SolidColorBrush x:Key="Accent-White-IsCheckedPressed-BorderBrush" Color="#CE5537" />
 
 </ResourceDictionary>

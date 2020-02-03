@@ -29,7 +29,8 @@
             <RadioButton  Tag="{x:Static local:AccentColors.Outlook}"  Checked="AccentColorsRadioButton_Checked">Outlook</RadioButton>
             <RadioButton  Tag="{x:Static local:AccentColors.Word}"  Checked="AccentColorsRadioButton_Checked">Word</RadioButton>
             <RadioButton  Tag="{x:Static local:AccentColors.Excel}"  Checked="AccentColorsRadioButton_Checked">Excel</RadioButton>
-            <RadioButton  Tag="{x:Static local:AccentColors.PowerPoint}"  Checked="AccentColorsRadioButton_Checked">Power Point</RadioButton>
+            <RadioButton  Tag="{x:Static local:AccentColors.PowerPoint}"  Checked="AccentColorsRadioButton_Checked">PowerPoint</RadioButton>
+            <RadioButton  Tag="{x:Static local:AccentColors.Project}"  Checked="AccentColorsRadioButton_Checked">Project</RadioButton>
         </StackPanel>
         
         <StackPanel  Grid.Row="2" Orientation="Horizontal">
