@@ -16,6 +16,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
@@ -24,8 +25,14 @@
             <RadioButton Tag="{x:Static local:Theme.White}" Checked="ThemeRadioButton_Checked">White</RadioButton>
             <RadioButton Tag="{x:Static local:Theme.Black}"  Checked="ThemeRadioButton_Checked">Black</RadioButton>
         </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center">
+            <RadioButton  Tag="{x:Static local:AccentColors.Outlook}"  Checked="AccentColorsRadioButton_Checked">Outlook</RadioButton>
+            <RadioButton  Tag="{x:Static local:AccentColors.Word}"  Checked="AccentColorsRadioButton_Checked">Word</RadioButton>
+            <RadioButton  Tag="{x:Static local:AccentColors.Excel}"  Checked="AccentColorsRadioButton_Checked">Excel</RadioButton>
+            <RadioButton  Tag="{x:Static local:AccentColors.PowerPoint}"  Checked="AccentColorsRadioButton_Checked">Power Point</RadioButton>
+        </StackPanel>
         
-        <StackPanel  Grid.Row="1" Orientation="Horizontal">
+        <StackPanel  Grid.Row="2" Orientation="Horizontal">
             <Button IsDefault="True">Hello</Button>
             <Button IsEnabled="False">Good</Button>
             <Button>Job</Button>

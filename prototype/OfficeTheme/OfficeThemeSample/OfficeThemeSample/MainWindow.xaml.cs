@@ -40,5 +40,10 @@ namespace OfficeThemeSample
             }
 
         } // end sub
+
+        private void AccentColorsRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            this.Resources.Apply((AccentColors)(sender as RadioButton)?.Tag);
+        }
     } // end class
 } // end namespace

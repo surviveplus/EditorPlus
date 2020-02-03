@@ -29,7 +29,6 @@ namespace OfficeThemeSample
         } // end property 
 
         public event PropertyChangedEventHandler PropertyChanged;
-
     }
 
     public enum Theme {

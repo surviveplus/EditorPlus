@@ -94,6 +94,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OfficeAccentColor.cs" />
     <Compile Include="OfficeTheme.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
