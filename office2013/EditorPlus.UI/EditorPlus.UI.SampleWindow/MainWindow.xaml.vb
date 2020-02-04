@@ -1,26 +1,66 @@
 ﻿Class MainWindow
-    Private Sub Window_Loaded(sender As Object, e As RoutedEventArgs)
 
 
-        AddHandler Me.layer.Refresh,
-            Sub(sender2, e2)
+    Private openedWindows As New List(Of Window)
 
-                Dim items As New List(Of LayerTreeItem)
+    Private Sub LayerButton_Click(sender As Object, e As RoutedEventArgs)
 
-                Dim root As New LayerTreeItem With {.Text = "Slide"}
-                items.Add(root)
+        Dim w As New LayerWindow()
 
-                Dim item1 As New LayerTreeItem With {.Text = "👁 Item 1"}
-                items.Add(item1)
+        If TypeOf w Is IHasUsercontrol Then
+            With CType(w, IHasUsercontrol)
+                .MainUserControl.DataContext = OfficeThemeModel.Current
+                .MainUserControl.Resources.Apply(OfficeAccentColor.Current)
+            End With
+        End If
 
-                Dim item2 As New LayerTreeItem With {.Text = "👁 📁 Item 2"}
-                item2.IsExpanded = True
-                items.Add(item2)
+        w.Show()
+        Me.openedWindows.Add(w)
 
-                Dim item21 As New LayerTreeItem With {.Text = "👁 Item 2-1"}
-                item2.Children.Add(item21)
+    End Sub
 
-                e2.Items = items
-            End Sub
+    Private Sub InsertTextButton_Click(sender As Object, e As RoutedEventArgs)
+        Dim w As New InsertTextWindow()
+
+        If TypeOf w Is IHasUsercontrol Then
+            With CType(w, IHasUsercontrol)
+                .MainUserControl.DataContext = OfficeThemeModel.Current
+                .MainUserControl.Resources.Apply(OfficeAccentColor.Current)
+            End With
+        End If
+
+        w.Show()
+        Me.openedWindows.Add(w)
+    End Sub
+
+    Private Sub ThemeRadioButton_Checked(sender As Object, e As RoutedEventArgs)
+
+        Dim radio As RadioButton = sender
+
+        For Each w In Me.openedWindows
+            If TypeOf w Is IHasUsercontrol Then
+                CType(w, IHasUsercontrol).MainUserControl.DataContext = Nothing
+            End If
+        Next w
+
+        OfficeThemeModel.Current.Theme = CType(radio.Tag, Theme)
+
+        For Each w In Me.openedWindows
+            If TypeOf w Is IHasUsercontrol Then
+                CType(w, IHasUsercontrol).MainUserControl.DataContext = OfficeThemeModel.Current
+            End If
+        Next w
+    End Sub
+
+    Private Sub AccentColorsRadioButton_Checked(sender As Object, e As RoutedEventArgs)
+
+        Dim radio As RadioButton = sender
+        OfficeAccentColor.Current = CType(radio.Tag, AccentColors)
+        For Each w In Me.openedWindows
+            If TypeOf w Is IHasUsercontrol Then
+                CType(w, IHasUsercontrol).MainUserControl.Resources.Apply(OfficeAccentColor.Current)
+            End If
+        Next w
+
     End Sub
 End Class

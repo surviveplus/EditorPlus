@@ -4,16 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EditorPlus.UI"
+            Style="{DynamicResource ResourceKey=UserControlStyle}"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300"  Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
+             d:DesignHeight="300" d:DesignWidth="300">
 
     <UserControl.Resources>
-
-        <Style TargetType="Button" >
+        <!--<Style TargetType="Button" >
             <Setter Property="Margin" Value="0 0 5 0" />
             <Setter Property="Padding" Value="10 0 10 0" />
-        </Style>
-
+        </Style>-->
+        <ResourceDictionary Source="Styles\Styles.xaml" />
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>

@@ -53,25 +53,8 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Surviveplus.WpfLocalization, Version=1.0.4.2, Culture=neutral, PublicKeyToken=8bef33aba4cdebf4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Surviveplus.WpfLocalization.1.0.4.2\lib\net45\Surviveplus.WpfLocalization.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Xaml">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OfficeAccentColor.vb" />
     <Compile Include="BulkAddItems.xaml.vb">
       <DependentUpon>BulkAddItems.xaml</DependentUpon>
     </Compile>
@@ -86,64 +69,12 @@
       <DependentUpon>Replace.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BindableBase.vb" />
-    <Page Include="BulkAddItems.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="BulkTaskItems.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="InsertSerialNumber.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="InsertText.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Compile Include="InsertSerialNumber.xaml.vb">
       <DependentUpon>InsertSerialNumber.xaml</DependentUpon>
     </Compile>
     <Compile Include="InsertText.xaml.vb">
       <DependentUpon>InsertText.xaml</DependentUpon>
     </Compile>
-    <Page Include="Layer.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Replace.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Styles.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Styles\AccentColorStyles.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Styles\ButtonStyles.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Styles\RadioButtonStyles.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Styles\Styles.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Styles\ToggleButtonStyles.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Styles\WindowStyles.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Import Include="System.Threading.Tasks" />
@@ -198,4 +129,28 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <ItemGroup>
+    <ReferencePath Include="C:\Users\shinichi.koga\source\repos\EditorPlus\office2013\EditorPlus.Core\EditorPlus.Core\bin\Debug\EditorPlus.Core.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\PresentationCore.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\PresentationFramework.dll" />
+    <ReferencePath Include="C:\Users\shinichi.koga\source\repos\EditorPlus\office2013\EditorPlus.UI\packages\Surviveplus.WpfLocalization.1.0.4.2\lib\net45\Surviveplus.WpfLocalization.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Core.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Data.DataSetExtensions.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Data.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Net.Http.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Xaml.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Xml.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Xml.Linq.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\WindowsBase.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="C:\Users\shinichi.koga\source\repos\EditorPlus\office2013\EditorPlus.UI\EditorPlus.UI\obj\Debug\BulkAddItems.g.vb" />
+    <Compile Include="C:\Users\shinichi.koga\source\repos\EditorPlus\office2013\EditorPlus.UI\EditorPlus.UI\obj\Debug\BulkTaskItems.g.vb" />
+    <Compile Include="C:\Users\shinichi.koga\source\repos\EditorPlus\office2013\EditorPlus.UI\EditorPlus.UI\obj\Debug\InsertSerialNumber.g.vb" />
+    <Compile Include="C:\Users\shinichi.koga\source\repos\EditorPlus\office2013\EditorPlus.UI\EditorPlus.UI\obj\Debug\InsertText.g.vb" />
+    <Compile Include="C:\Users\shinichi.koga\source\repos\EditorPlus\office2013\EditorPlus.UI\EditorPlus.UI\obj\Debug\Layer.g.vb" />
+    <Compile Include="C:\Users\shinichi.koga\source\repos\EditorPlus\office2013\EditorPlus.UI\EditorPlus.UI\obj\Debug\Replace.g.vb" />
+    <Compile Include="C:\Users\shinichi.koga\source\repos\EditorPlus\office2013\EditorPlus.UI\EditorPlus.UI\obj\Debug\GeneratedInternalTypeHelper.g.vb" />
+  </ItemGroup>
 </Project>

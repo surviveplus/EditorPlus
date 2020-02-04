@@ -164,17 +164,7 @@ Public Class Layer
     End Sub
 
 
-    Public Sub ApplyTheme()
-
-        ControlTeheme.Apply(OfficeTheme.Current)
-        Me.Resources("ControlBackground") = ControlTeheme.Control.Background
-        Me.Resources("ControlForeground") = ControlTeheme.Control.Foreground
-
-    End Sub
-
     Private Sub UserControl_SizeChanged(sender As Object, e As SizeChangedEventArgs)
-        Me.ApplyTheme()
-
     End Sub
 End Class
 

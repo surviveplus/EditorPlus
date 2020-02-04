@@ -16,7 +16,8 @@ Public Class EditorPlusOutlookRibbon
 
         If Me.bulkAddTasksPane Is Nothing Then
 
-            Dim c = New BulkTaskItems
+            Dim c = New BulkTaskItems With {.DataContext = OfficeThemeModel.Current}
+            c.Resources.Apply(OfficeAccentColor.Current)
             AddHandler c.AddButtonClick,
                 Sub(sender2, e2)
 

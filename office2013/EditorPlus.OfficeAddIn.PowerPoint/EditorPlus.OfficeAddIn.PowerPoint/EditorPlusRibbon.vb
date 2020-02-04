@@ -11,7 +11,6 @@ Imports Net.Surviveplus.SakuraMacaron.OfficeAddIn.UI
 Public Class EditorPlusRibbon
 
     Private Sub EditorPlusRibbon_Load(ByVal sender As System.Object, ByVal e As RibbonUIEventArgs) Handles MyBase.Load
-
     End Sub
 
     Private insertTextPane As ElementControlPane(Of InsertText)
@@ -21,7 +20,8 @@ Public Class EditorPlusRibbon
 
         If Me.insertTextPane Is Nothing Then
 
-            Dim c = New InsertText
+            Dim c = New InsertText With {.DataContext = OfficeThemeModel.Current}
+            c.Resources.Apply(OfficeAccentColor.Current)
             Dim updateFavorites =
                 Sub()
                     c.Favorites = From f In Me.insertTextFavorites.GetFavorites() Select New InsertTextFavorite With {.Text = f}
@@ -52,7 +52,8 @@ Public Class EditorPlusRibbon
 
         If Me.insertSerialNumberPane Is Nothing Then
 
-            Dim c = New InsertSerialNumber()
+            Dim c = New InsertSerialNumber With {.DataContext = OfficeThemeModel.Current}
+            c.Resources.Apply(OfficeAccentColor.Current)
             AddHandler c.InsertButtonClick,
                 Sub(sender2, e2)
 
@@ -171,7 +172,8 @@ Public Class EditorPlusRibbon
 
         If Me.layerPane Is Nothing Then
 
-            Dim c = New Layer
+            Dim c = New Layer With {.DataContext = OfficeThemeModel.Current}
+            c.Resources.Apply(OfficeAccentColor.Current)
             AddHandler c.Refresh,
                 Sub(sender2, e2)
                     Dim d As New List(Of UI.LayerTreeItem)

@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:EditorPlus.UI">
+
+    <SolidColorBrush x:Key="Accent-Black-IsMouseOver-Background" Color="#b83b1d" />
+    <SolidColorBrush x:Key="Accent-Black-IsMouseOver-BorderBrush" Color="#d24726" />
+    <SolidColorBrush x:Key="Accent-Black-IsPressed-Background" Color="#d24726" />
+    <SolidColorBrush x:Key="Accent-Black-IsPressed-BorderBrush" Color="#ff5630" />
+
+    <SolidColorBrush x:Key="Accent-Black-IsCheckedMoserOver-Background" Color="#E95B39" />
+    <SolidColorBrush x:Key="Accent-Black-IsCheckedMoserOver-BorderBrush" Color="#ff5630" />
+    <SolidColorBrush x:Key="Accent-Black-IsCheckedPressed-Background" Color="#D4401D" />
+    <SolidColorBrush x:Key="Accent-Black-IsCheckedPre4ssed-BorderBrush" Color="#ff5630" />
+
+    <SolidColorBrush x:Key="Accent-White-IsDefaulted-BorderBrush" Color="#b7472a" />
+    
+    <SolidColorBrush x:Key="Accent-White-IsMouseOver-Background" Color="#fce4dc" />
+    <SolidColorBrush x:Key="Accent-WHite-IsMouseOver-BorderBrush" Color="#f5ba9d" />
+    <SolidColorBrush x:Key="Accent-White-IsPressed-Background" Color="#f5ba9d" />
+    <SolidColorBrush x:Key="Accent-White-IsPressed-BorderBrush" Color="#dc5939" />
+
+    <SolidColorBrush x:Key="Accent-White-IsCheckedMoserOver-Background" Color="#F4C4AE" />
+    <SolidColorBrush x:Key="Accent-White-IsCheckedMoserOver-BorderBrush" Color="#DE6345" />
+    <SolidColorBrush x:Key="Accent-White-IsCheckedPressed-Background" Color="#F7A67E" />
+    <SolidColorBrush x:Key="Accent-White-IsCheckedPressed-BorderBrush" Color="#CE5537" />
+
+</ResourceDictionary>

@@ -9,7 +9,6 @@ Imports Net.Surviveplus.SakuraMacaron.OfficeAddIn.UI
 Public Class EditorPlusRibbon
 
     Private Sub EditorPlusRibbon_Load(ByVal sender As System.Object, ByVal e As RibbonUIEventArgs) Handles MyBase.Load
-
     End Sub
 
     Private insertTextToolWindow As ElementControlToolWindow(Of InsertText)
@@ -18,7 +17,8 @@ Public Class EditorPlusRibbon
     Private Sub InsertTextButton_Click(sender As Object, e As RibbonControlEventArgs) Handles InsertTextButton.Click
 
         If Me.insertTextToolWindow Is Nothing Then
-            Dim c = New InsertText With {.LineButtonVisible = False}
+            Dim c = New InsertText With {.LineButtonVisible = False, .DataContext = OfficeThemeModel.Current}
+            c.Resources.Apply(OfficeAccentColor.Current)
             Dim updateFavorites =
                 Sub()
                     c.Favorites = From f In Me.insertTextFavorites.GetFavorites() Select New InsertTextFavorite With {.Text = f}
@@ -46,7 +46,8 @@ Public Class EditorPlusRibbon
     Private Sub Button1_Click(sender As Object, e As RibbonControlEventArgs) Handles Button1.Click
 
         If Me.insertSerialNumberToolWindow Is Nothing Then
-            Dim c = New InsertSerialNumber With {.LineButtonVisible = False}
+            Dim c = New InsertSerialNumber With {.LineButtonVisible = False, .DataContext = OfficeThemeModel.Current}
+            c.Resources.Apply(OfficeAccentColor.Current)
             AddHandler c.InsertButtonClick,
                 Sub(sender2, e2)
 

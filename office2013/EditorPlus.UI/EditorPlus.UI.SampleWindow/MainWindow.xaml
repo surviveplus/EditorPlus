@@ -6,11 +6,37 @@
         xmlns:local="clr-namespace:EditorPlus.UI.SampleWindow"
         xmlns:UI="clr-namespace:EditorPlus.UI;assembly=EditorPlus.UI" x:Class="MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
-    Loaded="Window_Loaded">
-    <Grid>
+        Title="MainWindow" Height="250" Width="380">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter  Property="Margin" Value="5 5 5 5"/>
+            <Setter  Property="Padding" Value="10 5 10 5"/>
+        </Style>
+        <Style TargetType="RadioButton">
+            <Setter  Property="Margin" Value="5 5 5 5"/>
+        </Style>
+    </Window.Resources>
+    <StackPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+            <RadioButton Tag="{x:Static UI:Theme.Colorful}" Checked="ThemeRadioButton_Checked">Colorful</RadioButton>
+            <RadioButton Tag="{x:Static UI:Theme.DarkGray}" Checked="ThemeRadioButton_Checked">Dark Gray</RadioButton>
+            <RadioButton Tag="{x:Static UI:Theme.White}" Checked="ThemeRadioButton_Checked">White</RadioButton>
+            <RadioButton Tag="{x:Static UI:Theme.Black}"  Checked="ThemeRadioButton_Checked">Black</RadioButton>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+            <RadioButton  Tag="{x:Static UI:AccentColors.Outlook}"  Checked="AccentColorsRadioButton_Checked">Outlook</RadioButton>
+            <RadioButton  Tag="{x:Static UI:AccentColors.Word}"  Checked="AccentColorsRadioButton_Checked">Word</RadioButton>
+            <RadioButton  Tag="{x:Static UI:AccentColors.Excel}"  Checked="AccentColorsRadioButton_Checked">Excel</RadioButton>
+            <RadioButton  Tag="{x:Static UI:AccentColors.PowerPoint}"  Checked="AccentColorsRadioButton_Checked">PowerPoint</RadioButton>
+            <RadioButton  Tag="{x:Static UI:AccentColors.Project}"  Checked="AccentColorsRadioButton_Checked">Project</RadioButton>
+        </StackPanel>
+        
+        <StackPanel Height="40" Orientation="Horizontal">
+            <Button x:Name="InsertTextButton" Click="InsertTextButton_Click">Insert Text</Button>
+            <Button x:Name="LayerButton" Click="LayerButton_Click"> Layer </Button>
+        </StackPanel>
 
-        <UI:Layer x:Name="layer" />
 
-    </Grid>
+
+    </StackPanel>
 </Window>

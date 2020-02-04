@@ -1,0 +1,127 @@
+﻿Public Enum AccentColors
+    Outlook
+    Word
+    Excel
+    PowerPoint
+    Project
+End Enum
+
+
+Public Module ResourceDictionaryExtensions
+
+    <Runtime.CompilerServices.Extension()>
+    Public Sub Apply(ByVal this As ResourceDictionary, ByVal accent As AccentColors)
+        If this Is Nothing Then Throw New ArgumentNullException("this")
+
+        Dim a = If(OfficeAccentColor.Palette.ContainsKey(accent), accent, AccentColors.PowerPoint)
+        For Each kvp In OfficeAccentColor.Palette(a)
+            this(kvp.Key) = New SolidColorBrush(CType(ColorConverter.ConvertFromString(kvp.Value), Color))
+        Next kvp
+    End Sub
+
+End Module
+
+
+Public Class OfficeAccentColor
+
+    Public Shared Property Current As AccentColors = AccentColors.PowerPoint
+
+    Public Shared ReadOnly Property Palette As Dictionary(Of AccentColors, Dictionary(Of String, String)) = New Dictionary(Of AccentColors, Dictionary(Of String, String)) From {
+            {AccentColors.Outlook, New Dictionary(Of String, String) From {
+                {"Accent-Black-IsMouseOver-Background", "#0072c6"},
+                {"Accent-Black-IsMouseOver-BorderBrush", "#0090f7"},
+                {"Accent-Black-IsPressed-Background", "#0067b0"},
+                {"Accent-Black-IsPressed-BorderBrush", "#0072c6"},
+                {"Accent-Black-IsCheckedMoserOver-Background", "#038BEC"},
+                {"Accent-Black-IsCheckedMoserOver-BorderBrush", "#0072c6"},
+                {"Accent-Black-IsCheckedPressed-Background", "#035D9D"},
+                {"Accent-Black-IsCheckedPre4ssed-BorderBrush", "#0072c6"},
+                {"Accent-White-IsDefaulted-BorderBrush", "#106ebe"},
+                {"Accent-White-IsMouseOver-Background", "#cde6f7"},
+                {"Accent-WHite-IsMouseOver-BorderBrush", "#92c0e0"},
+                {"Accent-White-IsPressed-Background", "#92c0e0"},
+                {"Accent-White-IsPressed-BorderBrush", "#2a8dd4"},
+                {"Accent-White-IsCheckedMoserOver-Background", "#A1CDEC"},
+                {"Accent-White-IsCheckedMoserOver-BorderBrush", "#33A2F1"},
+                {"Accent-White-IsCheckedPressed-Background", "#88B3D1"},
+                {"Accent-White-IsCheckedPressed-BorderBrush", "#2580C1"}
+            }},
+            {AccentColors.Word, New Dictionary(Of String, String) From {
+                {"Accent-Black-IsMouseOver-Background", "#2b579a"},
+                {"Accent-Black-IsMouseOver-BorderBrush", "#3973cc"},
+                {"Accent-Black-IsPressed-Background", "#19478a"},
+                {"Accent-Black-IsPressed-BorderBrush", "#2b579a"},
+                {"Accent-Black-IsCheckedMoserOver-Background", "#4B81CE"},
+                {"Accent-Black-IsCheckedMoserOver-BorderBrush", "#2b579a"},
+                {"Accent-Black-IsCheckedPressed-Background", "#2A5CA5"},
+                {"Accent-Black-IsCheckedPre4ssed-BorderBrush", "#2b579a"},
+                {"Accent-White-IsDefaulted-BorderBrush", "#2b579a"},
+                {"Accent-White-IsMouseOver-Background", "#d5e1f2"},
+                {"Accent-WHite-IsMouseOver-BorderBrush", "#a3bde3"},
+                {"Accent-White-IsPressed-Background", "#a3bde3"},
+                {"Accent-White-IsPressed-BorderBrush", "#3e6db5"},
+                {"Accent-White-IsCheckedMoserOver-Background", "#94B4E4"},
+                {"Accent-White-IsCheckedMoserOver-BorderBrush", "#4D80CE"},
+                {"Accent-White-IsCheckedPressed-Background", "#7DA5E1"},
+                {"Accent-White-IsCheckedPressed-BorderBrush", "#3863A5"}
+            }},
+            {AccentColors.Excel, New Dictionary(Of String, String) From {
+                {"Accent-Black-IsMouseOver-Background", "#217346"},
+                {"Accent-Black-IsMouseOver-BorderBrush", "#30a565"},
+                {"Accent-Black-IsPressed-Background", "#0a6332"},
+                {"Accent-Black-IsPressed-BorderBrush", "#217346"},
+                {"Accent-Black-IsCheckedMoserOver-Background", "#239D5A"},
+                {"Accent-Black-IsCheckedMoserOver-BorderBrush", "#217346"},
+                {"Accent-Black-IsCheckedPressed-Background", "#1B673E"},
+                {"Accent-Black-IsCheckedPre4ssed-BorderBrush", "#217346"},
+                {"Accent-White-IsDefaulted-BorderBrush", "#217346"},
+                {"Accent-White-IsMouseOver-Background", "#d3f0e0"},
+                {"Accent-WHite-IsMouseOver-BorderBrush", "#86bfa0"},
+                {"Accent-White-IsPressed-Background", "#86bfa0"},
+                {"Accent-White-IsPressed-BorderBrush", "#3f8159"},
+                {"Accent-White-IsCheckedMoserOver-Background", "#ABCEBB"},
+                {"Accent-White-IsCheckedMoserOver-BorderBrush", "#4DA06D"},
+                {"Accent-White-IsCheckedPressed-Background", "#6BA887"},
+                {"Accent-White-IsCheckedPressed-BorderBrush", "#378556"}
+            }},
+            {AccentColors.PowerPoint, New Dictionary(Of String, String) From {
+                {"Accent-Black-IsMouseOver-Background", "#b83b1d"},
+                {"Accent-Black-IsMouseOver-BorderBrush", "#d24726"},
+                {"Accent-Black-IsPressed-Background", "#d24726"},
+                {"Accent-Black-IsPressed-BorderBrush", "#ff5630"},
+                {"Accent-Black-IsCheckedMoserOver-Background", "#E95B39"},
+                {"Accent-Black-IsCheckedMoserOver-BorderBrush", "#ff5630"},
+                {"Accent-Black-IsCheckedPressed-Background", "#D4401D"},
+                {"Accent-Black-IsCheckedPre4ssed-BorderBrush", "#ff5630"},
+                {"Accent-White-IsDefaulted-BorderBrush", "#b7472a"},
+                {"Accent-White-IsMouseOver-Background", "#fce4dc"},
+                {"Accent-WHite-IsMouseOver-BorderBrush", "#f5ba9d"},
+                {"Accent-White-IsPressed-Background", "#f5ba9d"},
+                {"Accent-White-IsPressed-BorderBrush", "#dc5939"},
+                {"Accent-White-IsCheckedMoserOver-Background", "#F4C4AE"},
+                {"Accent-White-IsCheckedMoserOver-BorderBrush", "#DE6345"},
+                {"Accent-White-IsCheckedPressed-Background", "#F7A67E"},
+                {"Accent-White-IsCheckedPressed-BorderBrush", "#CE5537"}
+            }},
+            {AccentColors.Project, New Dictionary(Of String, String) From {
+                {"Accent-Black-IsMouseOver-Background", "#31752f"},
+                {"Accent-Black-IsMouseOver-BorderBrush", "#47a543"},
+                {"Accent-Black-IsPressed-Background", "#256323"},
+                {"Accent-Black-IsPressed-BorderBrush", "#31752f"},
+                {"Accent-Black-IsCheckedMoserOver-Background", "#50A84D"},
+                {"Accent-Black-IsCheckedMoserOver-BorderBrush", "#31752f"},
+                {"Accent-Black-IsCheckedPressed-Background", "#3B9238"},
+                {"Accent-Black-IsCheckedPre4ssed-BorderBrush", "#31752f"},
+                {"Accent-White-IsDefaulted-BorderBrush", "#31752f"},
+                {"Accent-White-IsMouseOver-Background", "#cfedce"},
+                {"Accent-WHite-IsMouseOver-BorderBrush", "#8bbf8a"},
+                {"Accent-White-IsPressed-Background", "#8bbf8a"},
+                {"Accent-White-IsPressed-BorderBrush", "#4c944a"},
+                {"Accent-White-IsCheckedMoserOver-Background", "#B2E1B1"},
+                {"Accent-White-IsCheckedMoserOver-BorderBrush", "#76C973"},
+                {"Accent-White-IsCheckedPressed-Background", "#79AE78"},
+                {"Accent-White-IsCheckedPressed-BorderBrush", "#40803E"}
+            }}
+    }
+
+End Class

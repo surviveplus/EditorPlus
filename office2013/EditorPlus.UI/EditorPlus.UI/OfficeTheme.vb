@@ -21,6 +21,13 @@ Public Class OfficeTheme
 
 End Class
 
+Public Class OfficeThemeModel
+
+    Public Shared Property Current As OfficeThemeModel = New OfficeThemeModel With {.Theme = OfficeTheme.Current}
+
+    Public Property Theme As Theme
+
+End Class
 
 Public Enum Theme
     Colorful = 0
@@ -62,7 +69,7 @@ Public Class ControlTeheme
 
             Case Theme.Black
                 With ControlTeheme.Control
-                    .Background = New SolidColorBrush(Color.FromArgb(&HFF, &H38, &H38, &H38)) '#383838
+                    .Background = New SolidColorBrush(Color.FromArgb(&HFF, &H26, &H26, &H26)) '#262626
                     .Foreground = New SolidColorBrush(Colors.White) 'white
                 End With
 

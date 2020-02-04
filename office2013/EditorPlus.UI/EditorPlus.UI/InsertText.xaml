@@ -5,18 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EditorPlus.UI"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}"
+            Style="{DynamicResource ResourceKey=UserControlStyle}"
+             d:DesignHeight="300" d:DesignWidth="300" 
              >
     <UserControl.Resources>
-        <Style TargetType="StackPanel">
+        <!--<Style TargetType="StackPanel">
         </Style>
         <Style TargetType="Button" >
             <Setter Property="Margin" Value="0 0 5 0" />
             <Setter Property="Padding" Value="10 0 10 0" />
-        </Style>
-       
-    </UserControl.Resources> 
-    
+        </Style>-->
+        <ResourceDictionary Source="Styles\Styles.xaml" />
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="68" />

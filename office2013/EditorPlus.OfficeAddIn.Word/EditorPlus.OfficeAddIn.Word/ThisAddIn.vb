@@ -6,7 +6,7 @@
         ThisAddIn.Current = Me
 
         System.Threading.Thread.CurrentThread.CurrentUICulture = New System.Globalization.CultureInfo(ThisAddIn.Current.Application.LanguageSettings.LanguageID(Office.MsoAppLanguageID.msoLanguageIDUI))
-
+        UI.OfficeAccentColor.Current = UI.AccentColors.Word
     End Sub
 
     Private Sub ThisAddIn_Shutdown() Handles Me.Shutdown

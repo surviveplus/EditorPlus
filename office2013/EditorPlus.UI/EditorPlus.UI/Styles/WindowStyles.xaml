@@ -1,0 +1,44 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:EditorPlus.UI">
+
+    <Style TargetType="UserControl" x:Key="UserControlStyle">
+        <!-- #region Theme = Colorful -->
+        <Setter Property="Background" Value="#e6e6e6"></Setter>
+        <Setter Property="Foreground" Value="#444444"></Setter>
+        <!-- #endregion -->
+
+        <Style.Triggers>
+            <!-- #region Theme = DarkGray -->
+            <DataTrigger Binding="{Binding Theme}"  >
+                <DataTrigger.Value>
+                    <local:Theme>DarkGray</local:Theme>
+                </DataTrigger.Value>
+                <Setter Property="Background" Value="#666666"></Setter>
+                <Setter Property="Foreground" Value="#ffffff"></Setter>
+            </DataTrigger>
+            <!-- #endregion -->
+
+            <!-- #region Theme = Black -->
+            <DataTrigger Binding="{Binding Theme}"  >
+                <DataTrigger.Value>
+                    <local:Theme>Black</local:Theme>
+                </DataTrigger.Value>
+                <Setter Property="Background" Value="#262626"></Setter>
+                <Setter Property="Foreground" Value="#f0f0f0"></Setter>
+            </DataTrigger>
+            <!-- #endregion -->
+
+            <!-- #region Theme = White -->
+            <DataTrigger Binding="{Binding Theme}"  >
+                <DataTrigger.Value>
+                    <local:Theme>White</local:Theme>
+                </DataTrigger.Value>
+                <Setter Property="Background" Value="#ffffff"></Setter>
+                <Setter Property="Foreground" Value="#444444"></Setter>
+            </DataTrigger>
+            <!-- #endregion -->
+
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>
