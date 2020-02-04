@@ -10,7 +10,7 @@
     <SolidColorBrush x:Key="Accent-Black-IsCheckedMoserOver-Background" Color="#E95B39" />
     <SolidColorBrush x:Key="Accent-Black-IsCheckedMoserOver-BorderBrush" Color="#ff5630" />
     <SolidColorBrush x:Key="Accent-Black-IsCheckedPressed-Background" Color="#D4401D" />
-    <SolidColorBrush x:Key="Accent-Black-IsCheckedPre4ssed-BorderBrush" Color="#ff5630" />
+    <SolidColorBrush x:Key="Accent-Black-IsCheckedPressed-BorderBrush" Color="#ff5630" />
 
     <SolidColorBrush x:Key="Accent-White-IsDefaulted-BorderBrush" Color="#b7472a" />
     

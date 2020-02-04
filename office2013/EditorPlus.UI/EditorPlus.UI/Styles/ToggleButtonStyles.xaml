@@ -199,7 +199,7 @@
                                         <Condition Property="ToggleButton.IsChecked" Value="True" />
                                     </MultiTrigger.Conditions>
                                     <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent-Black-IsCheckedPressed-Background}"/>
-                                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-Black-IsCheckedPre4ssed-BorderBrush}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent-Black-IsCheckedPressed-BorderBrush}"/>
                                     <Setter Property="Foreground" Value="#ffffff"></Setter>
                                 </MultiTrigger>
                             </ControlTemplate.Triggers>
