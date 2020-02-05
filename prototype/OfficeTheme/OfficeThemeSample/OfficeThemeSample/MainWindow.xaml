@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OfficeThemeSample"
         mc:Ignorable="d"
-        Title="MainWindow" Height="200" Width="400"
+        Title="MainWindow" Height="250" Width="400"
         Style="{DynamicResource ResourceKey=WindowStyle}"
         >
         <!-- Hack:  DataContext="{Binding Source={x:Static local:OfficeTheme.Current}}" can work only first time of DataTrigger.-->
@@ -17,6 +17,8 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
@@ -38,6 +40,17 @@
             <Button IsEnabled="False">Good</Button>
             <Button>Job</Button>
             <ToggleButton>World</ToggleButton>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Center">
+            <CheckBox IsChecked="True">Checked</CheckBox>
+            <CheckBox IsChecked="False">Not Checked</CheckBox>
+            <CheckBox IsChecked="{x:Null}" IsThreeState="True">Mixed</CheckBox>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Orientation="Horizontal" VerticalAlignment="Center">
+            <CheckBox IsEnabled="False" IsChecked="True">Checked</CheckBox>
+            <CheckBox IsEnabled="False" IsChecked="False">Not Checked</CheckBox>
+            <CheckBox IsEnabled="False" IsChecked="{x:Null}" IsThreeState="True">Mixed</CheckBox>
         </StackPanel>
     </Grid>
 </Window>

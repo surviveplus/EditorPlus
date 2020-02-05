@@ -5,6 +5,7 @@
         <ResourceDictionary Source="AccentColorStyles.xaml" />
         <ResourceDictionary Source="ButtonStyles.xaml" />
         <ResourceDictionary Source="RadioButtonStyles.xaml" />
+        <ResourceDictionary Source="CheckBoxStyles.xaml" />
         <ResourceDictionary Source="ToggleButtonStyles.xaml" />
         <ResourceDictionary Source="WindowStyles.xaml" />
     </ResourceDictionary.MergedDictionaries>
