@@ -33,6 +33,7 @@
         
         <StackPanel Height="40" Orientation="Horizontal">
             <Button x:Name="InsertTextButton" Click="InsertTextButton_Click">Insert Text</Button>
+            <Button x:Name="InsertNumberButton" Click="InsertNumberButton_Click">Insert Number</Button>
             <Button x:Name="LayerButton" Click="LayerButton_Click"> Layer </Button>
         </StackPanel>
 

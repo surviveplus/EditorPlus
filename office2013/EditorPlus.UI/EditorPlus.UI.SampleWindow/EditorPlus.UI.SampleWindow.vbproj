@@ -68,6 +68,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="InsertNumberWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="InsertTextWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -85,6 +89,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="IHasUsercontrol.vb" />
+    <Compile Include="InsertNumberWindow.xaml.vb">
+      <DependentUpon>InsertNumberWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="InsertTextWindow.xaml.vb">
       <DependentUpon>InsertTextWindow.xaml</DependentUpon>
     </Compile>
