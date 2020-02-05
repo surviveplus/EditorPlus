@@ -237,6 +237,7 @@
                                 <Trigger Property="IsEnabled" Value="True">
                                     <Setter TargetName="EnabledLayer" Property="Visibility" Value="Visible" />
                                     <Setter TargetName="DisabledLayer" Property="Visibility" Value="Collapsed" />
+                                    <Setter Property="Foreground" Value="#444444"></Setter>
                                 </Trigger>
                                 <Trigger Property="IsEnabled" Value="False">
                                     <Setter TargetName="EnabledLayer" Property="Visibility" Value="Collapsed" />
