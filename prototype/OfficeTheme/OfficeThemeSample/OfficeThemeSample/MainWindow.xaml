@@ -19,6 +19,7 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
@@ -51,6 +52,10 @@
             <CheckBox IsEnabled="False" IsChecked="True">Checked</CheckBox>
             <CheckBox IsEnabled="False" IsChecked="False">Not Checked</CheckBox>
             <CheckBox IsEnabled="False" IsChecked="{x:Null}" IsThreeState="True">Mixed</CheckBox>
+        </StackPanel>
+        <StackPanel Grid.Row="5" Orientation="Horizontal" VerticalAlignment="Center">
+            <RadioButton IsEnabled="False" IsChecked="True">Checked</RadioButton>
+            <RadioButton IsEnabled="False" IsChecked="False">Not Checked</RadioButton>
         </StackPanel>
     </Grid>
 </Window>
