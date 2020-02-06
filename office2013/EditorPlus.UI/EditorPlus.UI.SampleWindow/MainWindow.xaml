@@ -35,6 +35,7 @@
             <Button x:Name="InsertTextButton" Click="InsertTextButton_Click">Insert Text</Button>
             <Button x:Name="InsertNumberButton" Click="InsertNumberButton_Click">Insert Number</Button>
             <Button x:Name="LayerButton" Click="LayerButton_Click"> Layer </Button>
+            <Button x:Name="ReplaceButton" Click="ReplaceButton_Click">Replace</Button>
         </StackPanel>
 
 
