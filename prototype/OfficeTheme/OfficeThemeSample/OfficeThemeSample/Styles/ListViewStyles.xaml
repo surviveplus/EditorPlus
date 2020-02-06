@@ -1,0 +1,378 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:OfficeThemeSample">
+
+    <Style TargetType="Thumb" x:Key="GridViewColumnHeaderGripper">
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="BorderBrush" Value="Transparent"></Setter>
+        <Setter Property="Width" Value="18" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Border Padding="{TemplateBinding Padding}" Background="Transparent">
+                        <Rectangle HorizontalAlignment="Center" Width="1" Fill="{TemplateBinding Background}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="GridViewColumnHeader">
+        <!-- #region Theme = Colorful -->
+        <Setter Property="Foreground" Value="#444444"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="GridViewColumnHeader">
+                    <Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver" />
+                                <VisualState x:Name="Pressed" />
+                                <VisualState x:Name="Disabled" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Border x:Name="HeaderBorder" BorderThickness="1,1,1,1" Padding="2,0,2,0" BorderBrush="#ababab" Background="#fdfdfd" Margin="0 0 -1 0" >
+                            <ContentPresenter x:Name="HeaderContent" Margin="0,0,0,1" RecognizesAccessKey="True"
+                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </Border>
+                        <Thumb x:Name="PART_HeaderGripper"  HorizontalAlignment="Right" Margin="0,0,-9,0" Style="{StaticResource GridViewColumnHeaderGripper}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="HeaderBorder" Value="{DynamicResource Accent-White-IsMouseOver-Background}"/>
+                            <Setter Property="BorderBrush" TargetName="HeaderBorder" Value="{DynamicResource Accent-WHite-IsMouseOver-BorderBrush}"/>
+                            <Setter Property="Foreground" Value="#444444"></Setter>
+                            <Setter Property="Margin" Value="1,0,1,0"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" TargetName="HeaderBorder" Value="{DynamicResource Accent-White-IsPressed-Background}"/>
+                            <Setter Property="BorderBrush" TargetName="HeaderBorder" Value="{DynamicResource Accent-White-IsPressed-BorderBrush}"/>
+                            <Setter Property="Foreground" Value="#444444"></Setter>
+                        </Trigger>                        
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+
+        <!-- #endregion -->
+
+        <Style.Triggers>
+            <!-- #region Theme = DarkGray -->
+            <DataTrigger Binding="{Binding Theme}"  >
+                <DataTrigger.Value>
+                    <local:Theme>DarkGray</local:Theme>
+                </DataTrigger.Value>
+                <Setter Property="Foreground" Value="#262626"></Setter>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="GridViewColumnHeader">
+                            <Grid>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal" />
+                                        <VisualState x:Name="MouseOver" />
+                                        <VisualState x:Name="Pressed" />
+                                        <VisualState x:Name="Disabled" />
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <Border x:Name="HeaderBorder" BorderThickness="1,1,1,1" Padding="2,0,2,0" BorderBrush="#ababab" Background="#fdfdfd" Margin="0 0 -1 0" >
+                                    <ContentPresenter x:Name="HeaderContent" Margin="0,0,0,1" RecognizesAccessKey="True"
+                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                </Border>
+                                <Thumb x:Name="PART_HeaderGripper"  HorizontalAlignment="Right" Margin="0,0,-9,0" Style="{StaticResource GridViewColumnHeaderGripper}"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" TargetName="HeaderBorder" Value="{DynamicResource Accent-White-IsMouseOver-Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="HeaderBorder" Value="{DynamicResource Accent-WHite-IsMouseOver-BorderBrush}"/>
+                                    <Setter Property="Foreground" Value="#262626"></Setter>
+                                    <Setter Property="Margin" Value="1,0,1,0"></Setter>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background" TargetName="HeaderBorder" Value="{DynamicResource Accent-White-IsPressed-Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="HeaderBorder" Value="{DynamicResource Accent-White-IsPressed-BorderBrush}"/>
+                                    <Setter Property="Foreground" Value="#444444"></Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+
+            </DataTrigger>
+            <!-- #endregion -->
+
+            <!-- #region Theme = Black -->
+            <DataTrigger Binding="{Binding Theme}"  >
+                <DataTrigger.Value>
+                    <local:Theme>Black</local:Theme>
+                </DataTrigger.Value>
+                <Setter Property="Foreground" Value="#f0f0f0"></Setter>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="GridViewColumnHeader">
+                            <Grid>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal" />
+                                        <VisualState x:Name="MouseOver" />
+                                        <VisualState x:Name="Pressed" />
+                                        <VisualState x:Name="Disabled" />
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <Border x:Name="HeaderBorder" BorderThickness="1,1,1,1" Padding="2,0,2,0" BorderBrush="#686868" Background="#363636" Margin="0 0 -1 0" >
+                                    <ContentPresenter x:Name="HeaderContent" Margin="0,0,0,1" RecognizesAccessKey="True"
+                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                </Border>
+                                <Thumb x:Name="PART_HeaderGripper"  HorizontalAlignment="Right" Margin="0,0,-9,0" Style="{StaticResource GridViewColumnHeaderGripper}"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" TargetName="HeaderBorder" Value="{DynamicResource Accent-Black-IsMouseOver-Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="HeaderBorder" Value="{DynamicResource Accent-Black-IsMouseOver-BorderBrush}"/>
+                                    <Setter Property="Foreground" Value="#ffffff"></Setter>
+                                    <Setter Property="Margin" Value="1,0,1,0"></Setter>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background" TargetName="HeaderBorder" Value="{DynamicResource Accent-Black-IsPressed-Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="HeaderBorder" Value="{DynamicResource Accent-Black-IsPressed-BorderBrush}"/>
+                                    <Setter Property="Foreground" Value="#ffffff"></Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+
+            </DataTrigger>
+            <!-- #endregion -->
+
+            <!-- #region Theme = White -->
+            <DataTrigger Binding="{Binding Theme}"  >
+                <DataTrigger.Value>
+                    <local:Theme>White</local:Theme>
+                </DataTrigger.Value>
+                <Setter Property="Foreground" Value="#444444"></Setter>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="GridViewColumnHeader">
+                            <Grid>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal" />
+                                        <VisualState x:Name="MouseOver" />
+                                        <VisualState x:Name="Pressed" />
+                                        <VisualState x:Name="Disabled" />
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <Border x:Name="HeaderBorder" BorderThickness="1,1,1,1" Padding="2,0,2,0" BorderBrush="#ababab" Background="#fdfdfd" Margin="0 0 -1 0" >
+                                    <ContentPresenter x:Name="HeaderContent" Margin="0,0,0,1" RecognizesAccessKey="True"
+                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                </Border>
+                                <Thumb x:Name="PART_HeaderGripper"  HorizontalAlignment="Right" Margin="0,0,-9,0" Style="{StaticResource GridViewColumnHeaderGripper}"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" TargetName="HeaderBorder" Value="{DynamicResource Accent-White-IsMouseOver-Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="HeaderBorder" Value="{DynamicResource Accent-WHite-IsMouseOver-BorderBrush}"/>
+                                    <Setter Property="Foreground" Value="#444444"></Setter>
+                                    <Setter Property="Margin" Value="1,0,1,0"></Setter>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background" TargetName="HeaderBorder" Value="{DynamicResource Accent-White-IsPressed-Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="HeaderBorder" Value="{DynamicResource Accent-White-IsPressed-BorderBrush}"/>
+                                    <Setter Property="Foreground" Value="#444444"></Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+
+            </DataTrigger>
+            <!-- #endregion -->
+        </Style.Triggers>
+    </Style>
+    
+    <Style TargetType="ListView">
+        <!-- #region Theme = Colorful -->
+        <Setter Property="Background" Value="#e6e6e6"></Setter>
+        <Setter Property="Foreground" Value="#444444"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="BorderBrush" Value="Transparent"></Setter>
+
+        <!-- #endregion -->
+
+        <Style.Triggers>
+            <!-- #region Theme = DarkGray -->
+            <DataTrigger Binding="{Binding Theme}"  >
+                <DataTrigger.Value>
+                    <local:Theme>DarkGray</local:Theme>
+                </DataTrigger.Value>
+                <Setter Property="Background" Value="#666666"></Setter>
+                <Setter Property="Foreground" Value="#ffffff"></Setter>
+            </DataTrigger>
+            <!-- #endregion -->
+
+            <!-- #region Theme = Black -->
+            <DataTrigger Binding="{Binding Theme}"  >
+                <DataTrigger.Value>
+                    <local:Theme>Black</local:Theme>
+                </DataTrigger.Value>
+                <Setter Property="Background" Value="#262626"></Setter>
+                <Setter Property="Foreground" Value="#f0f0f0"></Setter>
+            </DataTrigger>
+            <!-- #endregion -->
+
+            <!-- #region Theme = White -->
+            <DataTrigger Binding="{Binding Theme}"  >
+                <DataTrigger.Value>
+                    <local:Theme>White</local:Theme>
+                </DataTrigger.Value>
+                <Setter Property="Background" Value="#ffffff"></Setter>
+                <Setter Property="Foreground" Value="#444444"></Setter>
+            </DataTrigger>
+            <!-- #endregion -->
+
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="ListViewItem">
+
+        <Setter Property="Margin" Value="2 0 0 0"/>
+        <!-- #region Theme = Colorful -->
+        <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Border x:Name="Border" Padding="2" SnapsToDevicePixels="true" Background="Transparent">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver" />
+                                <VisualState x:Name="Disabled" />
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="SelectionStates">
+                                <VisualState x:Name="Unselected" />
+                                <VisualState x:Name="Selected" />
+                                <VisualState x:Name="SelectedUnfocused" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <GridViewRowPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="Border" Value="{DynamicResource Accent-White-IsMouseOver-Background}"/>
+                            <Setter Property="BorderBrush" TargetName="Border" Value="{DynamicResource Accent-WHite-IsMouseOver-BorderBrush}"/>
+                            <Setter Property="Foreground" Value="#444444"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" TargetName="Border" Value="{DynamicResource Accent-White-IsPressed-Background}"/>
+                            <Setter Property="BorderBrush" TargetName="Border" Value="{DynamicResource Accent-White-IsPressed-BorderBrush}"/>
+                            <Setter Property="Foreground" Value="#444444"></Setter>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                                <Condition Property="IsSelected" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" TargetName="Border" Value="{DynamicResource Accent-White-IsCheckedMoserOver-Background}"/>
+                            <Setter Property="BorderBrush" TargetName="Border" Value="{DynamicResource Accent-White-IsCheckedMoserOver-BorderBrush}"/>
+                            <Setter Property="Foreground" Value="#444444"></Setter>
+                        </MultiTrigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <!-- #endregion -->
+
+        <Style.Triggers>
+            <!-- #region Theme = DarkGray -->
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ItemsControl}, Path=DataContext.Theme}"  >
+                <DataTrigger.Value>
+                    <local:Theme>DarkGray</local:Theme>
+                </DataTrigger.Value>
+
+                <!-- same as Colorful -->
+            </DataTrigger>
+            <!-- #endregion -->
+
+            <!-- #region Theme = Black -->
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource  FindAncestor,AncestorType=ItemsControl}, Path=DataContext.Theme}"  >
+                <DataTrigger.Value>
+                    <local:Theme>Black</local:Theme>
+                </DataTrigger.Value>
+                <Setter Property="SnapsToDevicePixels" Value="true" />
+                <Setter Property="OverridesDefaultStyle" Value="true" />
+
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ListBoxItem">
+                            <Border x:Name="Border" Padding="2" SnapsToDevicePixels="true" Background="Transparent">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal" />
+                                        <VisualState x:Name="MouseOver" />
+                                        <VisualState x:Name="Disabled" />
+                                    </VisualStateGroup>
+                                    <VisualStateGroup x:Name="SelectionStates">
+                                        <VisualState x:Name="Unselected" />
+                                        <VisualState x:Name="Selected" />
+                                        <VisualState x:Name="SelectedUnfocused" />
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <GridViewRowPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            </Border>
+
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" TargetName="Border" Value="{DynamicResource Accent-Black-IsMouseOver-Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="Border" Value="{DynamicResource Accent-Black-IsMouseOver-BorderBrush}"/>
+                                    <Setter Property="Foreground" Value="#ffffff"></Setter>
+                                </Trigger>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" TargetName="Border" Value="{DynamicResource Accent-Black-IsPressed-Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="Border" Value="{DynamicResource Accent-Black-IsPressed-BorderBrush}"/>
+                                    <Setter Property="Foreground" Value="#ffffff"></Setter>
+                                </Trigger>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="IsMouseOver" Value="True" />
+                                        <Condition Property="IsSelected" Value="True" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="Background" TargetName="Border" Value="{DynamicResource Accent-Black-IsCheckedMoserOver-Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="Border" Value="{DynamicResource Accent-Black-IsCheckedMoserOver-BorderBrush}"/>
+                                    <Setter Property="Foreground" Value="#ffffff"></Setter>
+                                </MultiTrigger>
+
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+
+            </DataTrigger>
+            <!-- #endregion -->
+
+            <!-- #region Theme = White -->
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource  FindAncestor, AncestorType=ItemsControl}, Path=DataContext.Theme}"  >
+                <DataTrigger.Value>
+                    <local:Theme>White</local:Theme>
+                </DataTrigger.Value>
+
+                <!-- same as Colorful -->
+            </DataTrigger>
+            <!-- #endregion -->
+
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

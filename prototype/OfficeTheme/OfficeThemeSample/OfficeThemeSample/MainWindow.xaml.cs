@@ -23,6 +23,11 @@ namespace OfficeThemeSample
         public MainWindow()
         {
             InitializeComponent();
+
+            var sample = from a in new int[] { 0, 1, 2, 3 }
+                       select new { Text1 = $"Item {a}", Text2 = $"Value {a}" };
+
+            this.sampleListView.ItemsSource = sample;
         }
 
         private void ThemeRadioButton_Checked(object sender, RoutedEventArgs e)

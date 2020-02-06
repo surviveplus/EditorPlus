@@ -8,6 +8,6 @@
         mc:Ignorable="d"
         Title="InsertTextWindow" Height="400" Width="350">
     <Grid>
-        <UI:InsertText x:Name="insertText" />
+        <UI:InsertText x:Name="insertText" InsertButtonClick="insertText_InsertButtonClick" />
     </Grid>
 </Window>

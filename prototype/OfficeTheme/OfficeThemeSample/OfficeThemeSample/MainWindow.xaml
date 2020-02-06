@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OfficeThemeSample"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="400"
+        Title="MainWindow" Height="450" Width="400"
         Style="{DynamicResource ResourceKey=WindowStyle}"
         >
         <!-- Hack:  DataContext="{Binding Source={x:Static local:OfficeTheme.Current}}" can work only first time of DataTrigger.-->
@@ -21,6 +21,7 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
+            <RowDefinition Height="100"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
@@ -37,7 +38,7 @@
             <RadioButton  Tag="{x:Static local:AccentColors.Project}"  Checked="AccentColorsRadioButton_Checked">Project</RadioButton>
         </StackPanel>
         
-        <StackPanel  Grid.Row="2" Orientation="Horizontal">
+        <StackPanel  Grid.Row="2" Orientation="Horizontal" Margin="5 0 0 0">
             <Button IsDefault="True">Hello</Button>
             <Button IsEnabled="False">Good</Button>
             <Button>Job</Button>
@@ -63,5 +64,13 @@
             <TextBox  Margin="5 1 5 1" Width="100" IsReadOnly="True">Read Only</TextBox>
             <TextBox  Margin="5 1 5 1" Width="100" IsEnabled="False">Disabled</TextBox>
         </StackPanel>
+        <ListView Grid.Row="7" Margin="5 1 5 1" x:Name="sampleListView">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Header 1" DisplayMemberBinding="{Binding Text1}" Width="100"  />
+                    <GridViewColumn Header="Header 2" DisplayMemberBinding="{Binding Text2}" Width="150"  />
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

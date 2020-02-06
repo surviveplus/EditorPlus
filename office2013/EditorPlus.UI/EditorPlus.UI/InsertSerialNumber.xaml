@@ -9,10 +9,6 @@
              d:DesignHeight="300" d:DesignWidth="300">
 
     <UserControl.Resources>
-        <!--<Style TargetType="Button" >
-            <Setter Property="Margin" Value="0 0 5 0" />
-            <Setter Property="Padding" Value="10 0 10 0" />
-        </Style>-->
         <ResourceDictionary Source="Styles\Styles.xaml" />
     </UserControl.Resources>
     <Grid>
@@ -30,13 +26,13 @@
         </StackPanel>
         <CheckBox x:Name="SkipIfStartedOrEndWithTextCheckBox" x:Uid="SkipIfStartedOrEndWithTextCheckBox" Content="Skip if started/end with text" ToolTip="Skip if started/end with text"   Grid.Row="0" Margin="0 48 0 0" />
 
-        <Grid Margin="0,0,0,5" Height="30" Grid.Row="1">
+        <Grid Margin="0,0,0,5"  Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <TextBlock x:Uid="StartNumber" TextWrapping="Wrap" Text="開始値:" VerticalAlignment="Top" Margin="0,5,10,0" HorizontalAlignment="Right"/>
-            <TextBox x:Name="StartNumberBox" TextWrapping="Wrap" Text="1" Margin="10,0" Grid.Column="1"/>
+            <TextBox x:Name="StartNumberBox" TextWrapping="Wrap" Text="1"  Margin="0 0 5 0" Grid.Column="1"/>
         </Grid>
         <Grid Margin="0" Height="30" Grid.Row="2">
             <Grid.ColumnDefinitions>
