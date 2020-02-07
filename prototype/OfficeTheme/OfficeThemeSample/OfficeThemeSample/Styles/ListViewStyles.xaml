@@ -203,7 +203,7 @@
     
     <Style TargetType="ListView">
         <!-- #region Theme = Colorful -->
-        <Setter Property="Background" Value="#e6e6e6"></Setter>
+        <Setter Property="Background" Value="#eeeeee"></Setter>
         <Setter Property="Foreground" Value="#444444"></Setter>
         <Setter Property="BorderThickness" Value="0"></Setter>
         <Setter Property="BorderBrush" Value="Transparent"></Setter>

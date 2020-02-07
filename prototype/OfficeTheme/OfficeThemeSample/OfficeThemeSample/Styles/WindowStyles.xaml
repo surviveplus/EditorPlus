@@ -4,7 +4,7 @@
 
     <Style TargetType="Window" x:Key="WindowStyle">
         <!-- #region Theme = Colorful -->
-        <Setter Property="Background" Value="#e6e6e6"></Setter>
+        <Setter Property="Background" Value="#eeeeee"></Setter>
         <Setter Property="Foreground" Value="#444444"></Setter>
         <!-- #endregion -->
 

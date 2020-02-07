@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:EditorPlus.UI">
-    
+
     <Style TargetType="Thumb" x:Key="GridViewColumnHeaderGripper">
         <Setter Property="Background" Value="Transparent"></Setter>
         <Setter Property="BorderBrush" Value="Transparent"></Setter>
@@ -203,7 +203,7 @@
 
     <Style TargetType="ListView">
         <!-- #region Theme = Colorful -->
-        <Setter Property="Background" Value="#e6e6e6"></Setter>
+        <Setter Property="Background" Value="#eeeeee"></Setter>
         <Setter Property="Foreground" Value="#444444"></Setter>
         <Setter Property="BorderThickness" Value="0"></Setter>
         <Setter Property="BorderBrush" Value="Transparent"></Setter>
