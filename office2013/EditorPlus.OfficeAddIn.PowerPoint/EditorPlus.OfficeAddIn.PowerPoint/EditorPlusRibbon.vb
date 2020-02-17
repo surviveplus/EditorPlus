@@ -148,7 +148,7 @@ Public Class EditorPlusRibbon
     Private Sub ReplaceObjectNamesButton_Click(sender As Object, e As RibbonControlEventArgs) Handles ReplaceObjectNamesButton.Click
 
         If Me.replacePane Is Nothing Then
-            Dim c = New Replace()
+            Dim c = New Replace With {.DataContext = OfficeThemeModel.Current}
             AddHandler c.RepaceButtonClick,
                 Sub(sender2, e2)
                     For Each targetSlide As Slide In ThisAddIn.Current.Application.ActiveWindow.Selection.SlideRange
@@ -159,7 +159,7 @@ Public Class EditorPlusRibbon
                 End Sub
 
             Me.replacePane = New ElementControlPane(Of Replace)(c)
-            Me.replacePane.Pane = ThisAddIn.Current.CustomTaskPanes.Add(Me.replacePane.Control, "Replace Worksheet Names", ThisAddIn.Current.Application.ActiveWindow)
+            Me.replacePane.Pane = ThisAddIn.Current.CustomTaskPanes.Add(Me.replacePane.Control, "Replace Object Names", ThisAddIn.Current.Application.ActiveWindow)
             Me.replacePane.Pane.Width = 350
         End If
 
