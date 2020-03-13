@@ -54,6 +54,7 @@
         Me.CopyNoLineBreakTextButton = Me.Factory.CreateRibbonButton
         Me.Group1 = Me.Factory.CreateRibbonGroup
         Me.TopMostToggleButton = Me.Factory.CreateRibbonToggleButton
+        Me.NavigationButton = Me.Factory.CreateRibbonButton
         Me.EditorPlusTab.SuspendLayout()
         Me.EditSelectionGroup.SuspendLayout()
         Me.Group2.SuspendLayout()
@@ -96,6 +97,7 @@
         'Group2
         '
         Me.Group2.Items.Add(Me.LayerButton)
+        Me.Group2.Items.Add(Me.NavigationButton)
         Me.Group2.Label = "Objects"
         Me.Group2.Name = "Group2"
         '
@@ -147,6 +149,11 @@
         Me.TopMostToggleButton.ShowImage = True
         Me.TopMostToggleButton.SuperTip = "Keep this window on top. Always."
         '
+        'NavigationButton
+        '
+        Me.NavigationButton.Label = "Navigation"
+        Me.NavigationButton.Name = "NavigationButton"
+        '
         'EditorPlusRibbon
         '
         Me.Name = "EditorPlusRibbon"
@@ -181,6 +188,7 @@
     Friend WithEvents ReplaceObjectNamesButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents Group2 As Microsoft.Office.Tools.Ribbon.RibbonGroup
     Friend WithEvents LayerButton As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents NavigationButton As Microsoft.Office.Tools.Ribbon.RibbonButton
 End Class
 
 Partial Class ThisRibbonCollection

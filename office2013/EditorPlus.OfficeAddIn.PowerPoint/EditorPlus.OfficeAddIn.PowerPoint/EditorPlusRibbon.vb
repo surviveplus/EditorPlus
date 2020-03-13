@@ -1,4 +1,5 @@
 ﻿Imports System.Diagnostics
+Imports System.Windows
 Imports EditorPlus.AI
 Imports EditorPlus.Core
 Imports EditorPlus.UI
@@ -359,6 +360,42 @@ Public Class EditorPlusRibbon
 
         Me.layerPane?.Show()
 
+    End Sub
+
+    Private navigationPane As ElementControlPane(Of Navigation)
+
+    Private Sub NavigationButton_Click(sender As Object, e As RibbonControlEventArgs) Handles NavigationButton.Click
+
+        If Me.navigationPane Is Nothing Then
+            Dim c = New Navigation With {.DataContext = OfficeThemeModel.Current}
+            AddHandler c.Click,
+                Sub(sender2, e2)
+                    Dim w = ThisAddIn.Current.Application.ActiveWindow
+
+                    w.ScrollIntoView(e2.Position.X, e2.Position.Y, 1, 1)
+                End Sub
+
+            Dim refreshSize =
+                Sub()
+                    Dim w = ThisAddIn.Current.Application.ActiveWindow
+                    Dim setup = w.Presentation.PageSetup
+                    Dim size As New Size(setup.SlideWidth, setup.SlideHeight)
+                    c.PageSize = size
+                End Sub
+
+            refreshSize()
+
+            AddHandler ThisAddIn.Current.Application.SlideSelectionChanged,
+                Sub(SldRange As SlideRange)
+                    refreshSize()
+                End Sub
+
+            Me.navigationPane = New ElementControlPane(Of Navigation)(c)
+            Me.navigationPane.Pane = ThisAddIn.Current.CustomTaskPanes.Add(Me.navigationPane.Control, "Navigation", ThisAddIn.Current.Application.ActiveWindow)
+            Me.navigationPane.Pane.Width = 300
+        End If
+
+        Me.navigationPane?.Show()
     End Sub
 End Class
 

@@ -71,6 +71,9 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Navigation.xaml.vb">
+      <DependentUpon>Navigation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="OfficeAccentColor.vb" />
     <Compile Include="BulkAddItems.xaml.vb">
       <DependentUpon>BulkAddItems.xaml</DependentUpon>
@@ -109,6 +112,10 @@
       <DependentUpon>InsertText.xaml</DependentUpon>
     </Compile>
     <Page Include="Layer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Navigation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
