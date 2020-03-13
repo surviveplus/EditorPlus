@@ -371,8 +371,7 @@ Public Class EditorPlusRibbon
             AddHandler c.Click,
                 Sub(sender2, e2)
                     Dim w = ThisAddIn.Current.Application.ActiveWindow
-
-                    w.ScrollIntoView(e2.Position.X, e2.Position.Y, 1, 1)
+                    w.ScrollIntoView(e2.Position.X - 50, e2.Position.Y - 50, 100, 100)
                 End Sub
 
             Dim refreshSize =
