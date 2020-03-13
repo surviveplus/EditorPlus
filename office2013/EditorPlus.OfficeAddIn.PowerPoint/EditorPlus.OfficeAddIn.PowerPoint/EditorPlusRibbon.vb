@@ -362,11 +362,12 @@ Public Class EditorPlusRibbon
 
     End Sub
 
-    Private navigationPane As ElementControlPane(Of Navigation)
+    Private navigationPanes As New Dictionary(Of DocumentWindow, ElementControlPane(Of Navigation))
+
 
     Private Sub NavigationButton_Click(sender As Object, e As RibbonControlEventArgs) Handles NavigationButton.Click
 
-        If Me.navigationPane Is Nothing Then
+        If Me.navigationPanes.ContainsKey(ThisAddIn.Current.Application.ActiveWindow) = False Then
             Dim c = New Navigation With {.DataContext = OfficeThemeModel.Current}
             AddHandler c.Click,
                 Sub(sender2, e2)
@@ -389,12 +390,13 @@ Public Class EditorPlusRibbon
                     refreshSize()
                 End Sub
 
-            Me.navigationPane = New ElementControlPane(Of Navigation)(c)
-            Me.navigationPane.Pane = ThisAddIn.Current.CustomTaskPanes.Add(Me.navigationPane.Control, "Navigation", ThisAddIn.Current.Application.ActiveWindow)
-            Me.navigationPane.Pane.Width = 300
+            Dim p = New ElementControlPane(Of Navigation)(c)
+            Me.navigationPanes.Add(ThisAddIn.Current.Application.ActiveWindow, p)
+            p.Pane = ThisAddIn.Current.CustomTaskPanes.Add(p.Control, "Navigation", ThisAddIn.Current.Application.ActiveWindow)
+            p.Pane.Width = 300
         End If
 
-        Me.navigationPane?.Show()
+        Me.navigationPanes(ThisAddIn.Current.Application.ActiveWindow).Show()
     End Sub
 End Class
 
