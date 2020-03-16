@@ -30,7 +30,10 @@ Public Class Navigation
     Public Event Click As EventHandler(Of NavigationClickEventArgs)
 
     Private Sub pageFrame_MouseDown(sender As Object, e As MouseButtonEventArgs)
+        RaiseClickEvent()
+    End Sub
 
+    Private Sub RaiseClickEvent()
         Dim realPosition = Mouse.GetPosition(Me.pageFrame)
         Dim pagePosition = New Point(
             Me.PageSize.Width * realPosition.X / Me.pageFrame.RenderSize.Width,
@@ -41,16 +44,10 @@ Public Class Navigation
 
     Private Sub pageFrame_MouseMove(sender As Object, e As MouseEventArgs)
         If e.LeftButton = MouseButtonState.Pressed Then
-
-            Dim realPosition = Mouse.GetPosition(Me.pageFrame)
-            Dim pagePosition = New Point(
-            Me.PageSize.Width * realPosition.X / Me.pageFrame.RenderSize.Width,
-            Me.PageSize.Height * realPosition.Y / Me.pageFrame.RenderSize.Height)
-
-            RaiseEvent Click(Me, New NavigationClickEventArgs With {.Position = pagePosition})
-
+            RaiseClickEvent()
         End If
     End Sub
+
 End Class
 
 Public Class NavigationClickEventArgs

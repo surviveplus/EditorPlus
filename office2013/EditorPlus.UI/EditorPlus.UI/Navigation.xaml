@@ -10,8 +10,8 @@
     <UserControl.Resources>
         <ResourceDictionary Source="Styles\Styles.xaml" />
     </UserControl.Resources>
-    <Grid>
-        <Viewbox Margin="5 5 5 5">
+    <Grid MouseDown="pageFrame_MouseDown" MouseMove="pageFrame_MouseMove" Background="Transparent">
+        <Viewbox Margin="10 10 10 10">
             <Rectangle x:Name="pageFrame" Width="297" Height="210" Stroke="Black" Fill="White" 
                        MouseDown="pageFrame_MouseDown" MouseMove="pageFrame_MouseMove"></Rectangle>
         </Viewbox>
