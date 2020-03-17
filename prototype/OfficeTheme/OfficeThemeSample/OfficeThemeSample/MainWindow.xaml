@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OfficeThemeSample"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="400"
+        Title="MainWindow" Height="650" Width="400"
         Style="{DynamicResource ResourceKey=WindowStyle}"
         >
         <!-- Hack:  DataContext="{Binding Source={x:Static local:OfficeTheme.Current}}" can work only first time of DataTrigger.-->
@@ -21,6 +21,7 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
+            <RowDefinition Height="100"/>
             <RowDefinition Height="100"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -72,5 +73,16 @@
                 </GridView>
             </ListView.View>
         </ListView>
+
+        <TreeView Grid.Row="8" Margin="5 1 5 1" x:Name="sampleTreeView">
+            <TreeViewItem Header="Item1" IsExpanded="True">
+                <TreeViewItem Header="Item 2-1" />
+                <TreeViewItem Header="Item 2-2" IsExpanded="True">
+                    <TreeViewItem Header="Item 3-1" />
+                    <TreeViewItem Header="Item 3-2" />
+                </TreeViewItem>
+                <TreeViewItem Header="Item 2-3" />
+            </TreeViewItem>
+        </TreeView>
     </Grid>
 </Window>

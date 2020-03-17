@@ -24,7 +24,7 @@ namespace OfficeThemeSample
         {
             InitializeComponent();
 
-            var sample = from a in new int[] { 0, 1, 2, 3 }
+            var sample = from a in new int[] { 0, 1, 2, 3, 4, 5, 6 }
                        select new { Text1 = $"Item {a}", Text2 = $"Value {a}" };
 
             this.sampleListView.ItemsSource = sample;
