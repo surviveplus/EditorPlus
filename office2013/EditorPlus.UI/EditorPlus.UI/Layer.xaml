@@ -41,17 +41,13 @@
         </TextBox>-->
         <TreeView x:Name="layers" Grid.Row="2" SelectedItemChanged="layers_SelectedItemChanged">
             <TreeView.Resources>
-                <Style TargetType="TreeViewItem">
+                <Style TargetType="TreeViewItem" BasedOn="{StaticResource {x:Type TreeViewItem}}">
                     <Setter Property="IsExpanded" Value="{Binding Path=IsExpanded, Mode=TwoWay}"></Setter>
                 </Style>
             </TreeView.Resources>
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate DataType="local:LayerTreeItem"  ItemsSource="{Binding Children}" >
-                    <Grid>
-                        <Rectangle Fill="White" Margin="-1 0 0 0"></Rectangle>
-                        <Rectangle Fill="Orange" Visibility="{Binding SelectedIsVisibile}"></Rectangle>
-                        <TextBlock Text="{Binding Text}" LineHeight="24" FontSize="12" Tag="{Binding Own}"  MouseDown="TextBlock_MouseDown" />
-                    </Grid>
+                    <TextBlock Text="{Binding Text}" LineHeight="24" FontSize="12" Tag="{Binding Own}"  MouseDown="TextBlock_MouseDown" />
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>
