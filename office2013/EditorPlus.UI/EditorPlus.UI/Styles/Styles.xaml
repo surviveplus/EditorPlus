@@ -6,8 +6,9 @@
         <ResourceDictionary Source="ButtonStyles.xaml" />
         <ResourceDictionary Source="CheckBoxStyles.xaml" />
         <ResourceDictionary Source="ListViewStyles.xaml" />
-        <ResourceDictionary Source="ScrollBarStyles.xaml" />
+        <ResourceDictionary Source="ProgressBarStyles.xaml" />
         <ResourceDictionary Source="RadioButtonStyles.xaml" />
+        <ResourceDictionary Source="ScrollBarStyles.xaml" />
         <ResourceDictionary Source="TextBoxStyles.xaml" />
         <ResourceDictionary Source="TreeViewStyles.xaml" />
         <ResourceDictionary Source="ToggleButtonStyles.xaml" />
