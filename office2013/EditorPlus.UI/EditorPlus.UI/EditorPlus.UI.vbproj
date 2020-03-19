@@ -71,6 +71,9 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Layer2.xaml.vb">
+      <DependentUpon>Layer2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Navigation.xaml.vb">
       <DependentUpon>Navigation.xaml</DependentUpon>
     </Compile>
@@ -112,6 +115,10 @@
       <DependentUpon>InsertText.xaml</DependentUpon>
     </Compile>
     <Page Include="Layer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Layer2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

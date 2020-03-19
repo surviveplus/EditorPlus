@@ -1,4 +1,5 @@
-﻿Imports System.Windows.Threading
+﻿Imports System.ComponentModel
+Imports System.Windows.Threading
 
 Public Class Layer
 
@@ -80,6 +81,7 @@ Public Class Layer
 
         Me.DoEvents()
 
+        'Me.layers.ItemsSource = If(e2.Items, Nothing)
         Me.layers.ItemsSource = If(e2.Items Is Nothing, Nothing, From item In e2.Items Where item.IsVisible)
         Me.selected = newSelected
 
@@ -180,7 +182,25 @@ Public Class LayerTreeItem
 
     Public Property Parent As LayerTreeItem
     Public Property Children As New List(Of LayerTreeItem)
+
     Public Property IsVisible As Boolean
+        Get
+            Return _IsVisible
+        End Get
+        Set
+            Me.SetProperty(Me._IsVisible, Value)
+            Me.Visibility = If(Me.IsVisible, Visibility.Visible, Visibility.Collapsed)
+        End Set
+    End Property
+
+    Public Property Visibility As Visibility
+        Get
+            Return _Visibility
+        End Get
+        Set
+            Me.SetProperty(Me._Visibility, Value)
+        End Set
+    End Property
 
     Private valueOfIsSelected As Boolean
     Public Property IsSelected As Boolean
@@ -230,6 +250,9 @@ Public Class LayerTreeItem
     End Property
 
     Private isExpandedValue As Boolean
+    Private _IsVisible As Boolean
+    Private _Visibility As Visibility
+
     Public Property IsExpanded() As Boolean
         Get
             Return isExpandedValue
