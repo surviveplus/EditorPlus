@@ -19,7 +19,7 @@ Public Class Layer2
 
 #End Region
 
-    Private Sub FilterByKeywerd()
+    Private Sub FilterByKeyword()
 
         Dim keywords =
             (From s In Me.SearchKeywordBox.Text.Split(" ")
@@ -48,11 +48,18 @@ Public Class Layer2
             filter(Me.Items)
 
             view.Filter = Function(item As LayerTreeItem2) item.IsVisibleByFilter
+            Me.clearButton.Visibility = Visibility.Visible
         Else
             view.Filter = Function(item) True
+            Me.clearButton.Visibility = Visibility.Collapsed
         End If
 
 
+    End Sub
+
+    Private Sub ClearFilterKeyword()
+        Me.SearchKeywordBox.Text = String.Empty
+        Me.FilterByKeyword()
     End Sub
 
 #Region " Event Handlers "
@@ -62,15 +69,21 @@ Public Class Layer2
     End Sub
 
     Private Sub clearButton_Click(sender As Object, e As RoutedEventArgs)
-
+        Me.ClearFilterKeyword()
     End Sub
 
     Private Sub refreshButton_Click(sender As Object, e As RoutedEventArgs)
-        Me.FilterByKeywerd()
+        Me.FilterByKeyword()
     End Sub
 
     Private Sub SearchKeywordBox_KeyDown(sender As Object, e As KeyEventArgs)
 
+        If e.Key = Key.Enter Then
+            Me.FilterByKeyword()
+
+        ElseIf e.Key = Key.Escape Then
+            Me.ClearFilterKeyword()
+        End If
     End Sub
 
     Private Sub layers_SelectedItemChanged(sender As Object, e As RoutedPropertyChangedEventArgs(Of Object))
