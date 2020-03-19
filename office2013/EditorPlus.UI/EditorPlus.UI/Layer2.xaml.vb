@@ -28,29 +28,46 @@ Public Class Layer2
              Where Not String.IsNullOrWhiteSpace(keyword)
              Select keyword).ToList()
 
-        Dim view = CollectionViewSource.GetDefaultView(Me.Items)
+        Dim updateViewFilter As Action(Of Predicate(Of Object), IEnumerable(Of LayerTreeItem2)) =
+                Sub(f, items)
+                    Dim view = CollectionViewSource.GetDefaultView(items)
+                    view.Filter = f
+
+                    For Each a In (From b In items Select b.Children)
+                        updateViewFilter(f, a)
+                    Next
+                End Sub
 
         If keywords.Count() > 0 Then
-            Dim filter As Action(Of IEnumerable(Of LayerTreeItem2)) =
-            Sub(items)
-                If items Is Nothing Then Return
 
-                For Each item In items
-                    item.IsVisibleByFilter = (From s In keywords Where item.Text.ToLower().Contains(s)).Count = keywords.Count
-
-                    If item.IsVisibleByFilter AndAlso item.Parent IsNot Nothing Then
-                        item.Parent.IsVisibleByFilter = True
-                        item.Parent.IsExpanded = True
+            Dim updateParentIsVisible As Action(Of LayerTreeItem2) =
+                Sub(parent)
+                    parent.IsVisibleByFilter = True
+                    parent.IsExpanded = True
+                    If parent.Parent IsNot Nothing Then
+                        updateParentIsVisible(parent.Parent)
                     End If
-                    filter(item.Children)
-                Next
-            End Sub
+                End Sub
+
+            Dim filter As Action(Of IEnumerable(Of LayerTreeItem2)) =
+                Sub(items)
+                    If items Is Nothing Then Return
+
+                    For Each item In items
+                        item.IsVisibleByFilter = (From s In keywords Where item.Text.ToLower().Contains(s)).Count = keywords.Count
+
+                        If item.IsVisibleByFilter AndAlso item.Parent IsNot Nothing Then
+                            updateParentIsVisible(item.Parent)
+                        End If
+                        filter(item.Children)
+                    Next
+                End Sub
             filter(Me.Items)
 
-            view.Filter = Function(item As LayerTreeItem2) item.IsVisibleByFilter
+            updateViewFilter(Function(item As LayerTreeItem2) item.IsVisibleByFilter, Me.Items)
             Me.clearButton.Visibility = Visibility.Visible
         Else
-            view.Filter = Function(item) True
+            updateViewFilter(Function(item) True, Me.Items)
             Me.clearButton.Visibility = Visibility.Collapsed
         End If
 

@@ -22,11 +22,15 @@ Public Class LayerWindow
         items.Add(item1)
 
         Dim item2 As New LayerTreeItem2 With {.Text = "👁 📁 Item 2 summer"}
-        item2.IsExpanded = True
         items.Add(item2)
 
         Dim item21 As New LayerTreeItem2 With {.Text = "👁 Item 2-1 winter", .Parent = item2}
+        item2.IsExpanded = True
         item2.Children.Add(item21)
+
+        Dim item211 As New LayerTreeItem2 With {.Text = "👁 Item 2-1-1 xmas", .Parent = item21}
+        item21.IsExpanded = True
+        item21.Children.Add(item211)
 
 
 
