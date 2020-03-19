@@ -39,7 +39,7 @@
                 </Style>
             </TreeView.Resources>
             <TreeView.ItemTemplate>
-                <HierarchicalDataTemplate DataType="local:LayerTreeItem"  ItemsSource="{Binding Children}" >
+                <HierarchicalDataTemplate DataType="local:LayerTreeItem2"  ItemsSource="{Binding Children}" >
                     <TextBlock Text="{Binding Text}" LineHeight="24" FontSize="12" Tag="{Binding Own}"  />
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>

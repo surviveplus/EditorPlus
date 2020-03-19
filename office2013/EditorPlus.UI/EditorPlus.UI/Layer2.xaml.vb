@@ -17,6 +17,7 @@ Public Class Layer2
         End Set
     End Property
 
+
 #End Region
 
     Private Sub FilterByKeyword()
@@ -35,13 +36,12 @@ Public Class Layer2
                 If items Is Nothing Then Return
 
                 For Each item In items
-                    If keywords.Count = 0 Then
-                        item.IsVisibleByFilter = True
-                    Else
-                        item.IsVisibleByFilter = (From s In keywords Where item.Text.ToLower().Contains(s)).Count = keywords.Count
-                    End If
+                    item.IsVisibleByFilter = (From s In keywords Where item.Text.ToLower().Contains(s)).Count = keywords.Count
 
-                    If item.IsVisibleByFilter AndAlso item.Parent IsNot Nothing Then item.Parent.IsVisibleByFilter = True
+                    If item.IsVisibleByFilter AndAlso item.Parent IsNot Nothing Then
+                        item.Parent.IsVisibleByFilter = True
+                        item.Parent.IsExpanded = True
+                    End If
                     filter(item.Children)
                 Next
             End Sub
@@ -107,6 +107,8 @@ Public Class LayerTreeItem2
 
     Private _IsExpanded As Boolean
     Private _Filtered As Boolean
+    Private _IsMacthed As Boolean
+    Private _VisibilityByIsMatched As Visibility
     Public Property Parent As LayerTreeItem2
 
     Public ReadOnly Property Own As LayerTreeItem2

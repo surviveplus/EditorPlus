@@ -149,7 +149,7 @@
 
         <Style.Triggers>
             <!-- #region Theme = DarkGray -->
-            <DataTrigger Binding="{Binding Theme}"  >
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource  FindAncestor,AncestorType=UserControl}, Path=DataContext.Theme}"  >
                 <DataTrigger.Value>
                     <local:Theme>DarkGray</local:Theme>
                 </DataTrigger.Value>
@@ -191,7 +191,7 @@
             <!-- #endregion -->
 
             <!-- #region Theme = Black -->
-            <DataTrigger Binding="{Binding Theme}"  >
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource  FindAncestor,AncestorType=UserControl}, Path=DataContext.Theme}"  >
                 <DataTrigger.Value>
                     <local:Theme>Black</local:Theme>
                 </DataTrigger.Value>
@@ -233,7 +233,7 @@
             <!-- #endregion -->
 
             <!-- #region Theme = White -->
-            <DataTrigger Binding="{Binding Theme}"  >
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource  FindAncestor,AncestorType=UserControl}, Path=DataContext.Theme}"  >
                 <DataTrigger.Value>
                     <local:Theme>White</local:Theme>
                 </DataTrigger.Value>
