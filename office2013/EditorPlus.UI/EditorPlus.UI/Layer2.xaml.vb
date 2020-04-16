@@ -113,6 +113,7 @@ Public Class Layer2
 
 
     Private Sub TreeViewItem_MouseLeftButtonUp(sender As Object, e As MouseButtonEventArgs)
+
         Dim item As TreeViewItem = sender
         Dim newItem As LayerTreeItem2 = item.DataContext
 
@@ -163,6 +164,7 @@ Public Class Layer2
 
     Public Event SelectedObjectsChanged As EventHandler(Of LayerItemsEventArgs)
 
+
 End Class
 
 Public Class LayerItemsEventArgs
@@ -176,8 +178,16 @@ End Class
 Public Class LayerTreeItem2
     Inherits BindableBase
 
-    Private _IsExpanded As Boolean
-    Private _ObjectIsSelected As Boolean
+    Public Overrides Function ToString() As String
+
+        Dim v As String = If(ObjectIsVisible, "👁", "-")
+
+
+        Return $"{v} {Me.Text}"
+
+    End Function
+
+
     Public Property Parent As LayerTreeItem2
 
     Public ReadOnly Property Own As LayerTreeItem2
@@ -190,6 +200,8 @@ Public Class LayerTreeItem2
 
     Public Property Text As String
 
+    Private _IsExpanded As Boolean
+
     Public Property IsExpanded As Boolean
         Get
             Return _IsExpanded
@@ -201,6 +213,8 @@ Public Class LayerTreeItem2
 
     Friend Property IsVisibleByFilter As Boolean
 
+    Private _ObjectIsSelected As Boolean
+
     Public Property ObjectIsSelected As Boolean
         Get
             Return _ObjectIsSelected
@@ -209,4 +223,16 @@ Public Class LayerTreeItem2
             Me.SetProperty(_ObjectIsSelected, Value)
         End Set
     End Property
+
+    Private _ObjectIsVisible As Boolean = True
+
+    Public Property ObjectIsVisible As Boolean
+        Get
+            Return _ObjectIsVisible
+        End Get
+        Set
+            Me.SetProperty(_ObjectIsVisible, Value)
+        End Set
+    End Property
+
 End Class

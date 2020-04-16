@@ -13,6 +13,8 @@
         <ResourceDictionary Source="TreeViewStyles.xaml" />
         <ResourceDictionary Source="ToggleButtonStyles.xaml" />
         <ResourceDictionary Source="WindowStyles.xaml" />
+
+        <ResourceDictionary Source="ObjectVisibileCheckBoxStyles.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

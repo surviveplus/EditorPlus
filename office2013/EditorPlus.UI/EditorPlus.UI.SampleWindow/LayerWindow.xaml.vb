@@ -21,17 +21,17 @@ Public Class LayerWindow
         Dim root As New LayerTreeItem2 With {.Text = "Slide"}
         items.Add(root)
 
-        Dim item1 As New LayerTreeItem2 With {.Text = "👁 Item 1 spring"}
+        Dim item1 As New LayerTreeItem2 With {.Text = "Item 1 spring"}
         items.Add(item1)
 
-        Dim item2 As New LayerTreeItem2 With {.Text = "👁 📁 Item 2 summer"}
+        Dim item2 As New LayerTreeItem2 With {.Text = "📁 Item 2 summer"}
         items.Add(item2)
 
-        Dim item21 As New LayerTreeItem2 With {.Text = "👁 Item 2-1 winter", .Parent = item2}
+        Dim item21 As New LayerTreeItem2 With {.Text = "Item 2-1 winter", .Parent = item2}
         item2.IsExpanded = True
         item2.Children.Add(item21)
 
-        Dim item211 As New LayerTreeItem2 With {.Text = "👁 Item 2-1-1 xmas", .Parent = item21}
+        Dim item211 As New LayerTreeItem2 With {.Text = "Item 2-1-1 xmas", .Parent = item21}
         item21.IsExpanded = True
         item21.Children.Add(item211)
 
@@ -42,7 +42,7 @@ Public Class LayerWindow
 
         Debug.WriteLine($"layer_SelectedObjectsChanged : {DateTime.Now.ToString()}")
         For Each item In e.Items
-            Debug.WriteLine(item.Text)
+            Debug.WriteLine(item.ToString())
         Next
         Debug.WriteLine("")
 
@@ -75,7 +75,7 @@ Public Class LayerWindow
 
         Me.layer.SuppressEvents = True
 
-        Dim newItem As New LayerTreeItem2 With {.Text = $"👁 Item {Me.testNumber}"}
+        Dim newItem As New LayerTreeItem2 With {.Text = $"Item {Me.testNumber}"}
         newItem.ObjectIsSelected = True
         Me.TestItems.Add(newItem)
 

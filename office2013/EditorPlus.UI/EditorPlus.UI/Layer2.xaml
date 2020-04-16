@@ -43,11 +43,14 @@
                 <HierarchicalDataTemplate DataType="local:LayerTreeItem2"  ItemsSource="{Binding Children}" >
                     <Grid Tag="{Binding Own}" >
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="25" />
+                            <ColumnDefinition Width="20" />
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <CheckBox Grid.Column="0" Width="30" IsChecked="{Binding ObjectIsSelected}" Checked="CheckBox_Checked"></CheckBox>
-                        <TextBlock Grid.Column="1" Text="{Binding Text}" LineHeight="24" FontSize="12" Tag="{Binding Own}" />
+                        <CheckBox Grid.Column="0" Width="25" IsChecked="{Binding ObjectIsSelected}" Checked="CheckBox_Checked"></CheckBox>
+                        <CheckBox Grid.Column="1"  Width="20"  IsChecked="{Binding ObjectIsVisible}" Style="{DynamicResource ObjectVisibleCheckbox}">
+                        </CheckBox>
+                        <TextBlock Grid.Column="2" Text="{Binding Text}" Height="22" FontSize="12" Tag="{Binding Own}" Margin="5 5 0 0" />
                     </Grid>
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>

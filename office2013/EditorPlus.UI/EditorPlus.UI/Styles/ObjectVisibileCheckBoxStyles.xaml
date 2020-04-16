@@ -1,0 +1,190 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:EditorPlus.UI">
+    
+    <Style TargetType="CheckBox"  x:Key="ObjectVisibleCheckbox">
+
+        <!-- #region Theme = Colorful -->
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <BulletDecorator>
+                        <BulletDecorator.Bullet>
+                            <Grid>
+                                <Rectangle x:Name="CheckBoxFrame" Width="20" Height="14" HorizontalAlignment="Left" VerticalAlignment="Center" Fill="#fdfdfd" Stroke="#ababab" StrokeThickness="1"/>
+                                <Grid x:Name="IsChecedLayer" Width="20" Height="14">
+                                    <TextBlock Foreground="#444444" HorizontalAlignment="Center" VerticalAlignment="Center">👁</TextBlock>
+                                </Grid>
+                                <Grid x:Name="IsNotChecedLayer" Width="20" Height="14">
+                                    <TextBlock Foreground="#444444"  HorizontalAlignment="Center" VerticalAlignment="Center">-</TextBlock>
+                                </Grid>
+                            </Grid>
+                        </BulletDecorator.Bullet>
+                        <BulletDecorator.Child>
+                            <ContentPresenter/>
+                        </BulletDecorator.Child>
+                    </BulletDecorator>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="IsChecedLayer" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="IsNotChecedLayer" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter TargetName="IsChecedLayer" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="IsNotChecedLayer" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="CheckBoxFrame" Property="Fill" Value="{DynamicResource Accent-White-IsMouseOver-Background}"/>
+                            <Setter TargetName="CheckBoxFrame" Property="Stroke" Value="{DynamicResource Accent-WHite-IsMouseOver-BorderBrush}"/>
+                            <Setter Property="Foreground" Value="#444444"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <!-- #endregion -->
+
+        <Style.Triggers>
+            <!-- #region Theme = DarkGray -->
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource  FindAncestor,AncestorType=UserControl}, Path=DataContext.Theme}"  >
+                <DataTrigger.Value>
+                    <local:Theme>DarkGray</local:Theme>
+                </DataTrigger.Value>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="CheckBox">
+                            <BulletDecorator>
+                                <BulletDecorator.Bullet>
+                                    <Grid>
+                                        <Rectangle x:Name="CheckBoxFrame" Width="20" Height="14" HorizontalAlignment="Left" VerticalAlignment="Center" Fill="#363636" Stroke="#252525" StrokeThickness="1"/>
+                                        <Grid x:Name="IsChecedLayer" Width="20" Height="14">
+                                            <TextBlock Foreground="#ffffff" HorizontalAlignment="Center" VerticalAlignment="Center">👁</TextBlock>
+                                        </Grid>
+                                        <Grid x:Name="IsNotChecedLayer" Width="20" Height="14">
+                                            <TextBlock Foreground="#ffffff"  HorizontalAlignment="Center" VerticalAlignment="Center">-</TextBlock>
+                                        </Grid>
+                                    </Grid>
+                                </BulletDecorator.Bullet>
+                                <BulletDecorator.Child>
+                                    <ContentPresenter/>
+                                </BulletDecorator.Child>
+                            </BulletDecorator>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter TargetName="IsChecedLayer" Property="Visibility" Value="Visible" />
+                                    <Setter TargetName="IsNotChecedLayer" Property="Visibility" Value="Collapsed" />
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="False">
+                                    <Setter TargetName="IsChecedLayer" Property="Visibility" Value="Collapsed" />
+                                    <Setter TargetName="IsNotChecedLayer" Property="Visibility" Value="Visible" />
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="CheckBoxFrame" Property="Fill" Value="{DynamicResource Accent-Black-IsMouseOver-Background}"/>
+                                    <Setter TargetName="CheckBoxFrame" Property="Stroke" Value="{DynamicResource Accent-Black-IsMouseOver-BorderBrush}"/>
+                                    <Setter Property="Foreground" Value="#ffffff"></Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+            <!-- #endregion -->
+
+            <!-- #region Theme = Black -->
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource  FindAncestor,AncestorType=UserControl}, Path=DataContext.Theme}"  >
+                <DataTrigger.Value>
+                    <local:Theme>Black</local:Theme>
+                </DataTrigger.Value>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="CheckBox">
+                            <BulletDecorator>
+                                <BulletDecorator.Bullet>
+                                    <Grid>
+                                        <Rectangle x:Name="CheckBoxFrame" Width="20" Height="14" HorizontalAlignment="Left" VerticalAlignment="Center" Fill="#363636" Stroke="#686868" StrokeThickness="1"/>
+                                        <Grid x:Name="IsChecedLayer" Width="20" Height="14">
+                                            <TextBlock Foreground="#f0f0f0" HorizontalAlignment="Center" VerticalAlignment="Center">👁</TextBlock>
+                                        </Grid>
+                                        <Grid x:Name="IsNotChecedLayer" Width="20" Height="14">
+                                            <TextBlock Foreground="#f0f0f0"  HorizontalAlignment="Center" VerticalAlignment="Center">-</TextBlock>
+                                        </Grid>
+                                    </Grid>
+                                </BulletDecorator.Bullet>
+                                <BulletDecorator.Child>
+                                    <ContentPresenter/>
+                                </BulletDecorator.Child>
+                            </BulletDecorator>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter TargetName="IsChecedLayer" Property="Visibility" Value="Visible" />
+                                    <Setter TargetName="IsNotChecedLayer" Property="Visibility" Value="Collapsed" />
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="False">
+                                    <Setter TargetName="IsChecedLayer" Property="Visibility" Value="Collapsed" />
+                                    <Setter TargetName="IsNotChecedLayer" Property="Visibility" Value="Visible" />
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="CheckBoxFrame" Property="Fill" Value="{DynamicResource Accent-Black-IsMouseOver-Background}"/>
+                                    <Setter TargetName="CheckBoxFrame" Property="Stroke" Value="{DynamicResource Accent-Black-IsMouseOver-BorderBrush}"/>
+                                    <Setter Property="Foreground" Value="#ffffff"></Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+            <!-- #endregion -->
+
+            <!-- #region Theme = White -->
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource  FindAncestor,AncestorType=UserControl}, Path=DataContext.Theme}"  >
+                <DataTrigger.Value>
+                    <local:Theme>White</local:Theme>
+                </DataTrigger.Value>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="CheckBox">
+                            <BulletDecorator>
+                                <BulletDecorator.Bullet>
+                                    <Grid>
+                                        <Rectangle x:Name="CheckBoxFrame" Width="20" Height="14" HorizontalAlignment="Left" VerticalAlignment="Center" Fill="#fdfdfd" Stroke="#ababab" StrokeThickness="1"/>
+                                        <Grid x:Name="IsChecedLayer" Width="20" Height="14">
+                                            <TextBlock Foreground="#444444" HorizontalAlignment="Center" VerticalAlignment="Center">👁</TextBlock>
+                                        </Grid>
+                                        <Grid x:Name="IsNotChecedLayer" Width="20" Height="14">
+                                            <TextBlock Foreground="#444444"  HorizontalAlignment="Center" VerticalAlignment="Center">-</TextBlock>
+                                        </Grid>
+                                    </Grid>
+                                </BulletDecorator.Bullet>
+                                <BulletDecorator.Child>
+                                    <ContentPresenter/>
+                                </BulletDecorator.Child>
+                            </BulletDecorator>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter TargetName="IsChecedLayer" Property="Visibility" Value="Visible" />
+                                    <Setter TargetName="IsNotChecedLayer" Property="Visibility" Value="Collapsed" />
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="False">
+                                    <Setter TargetName="IsChecedLayer" Property="Visibility" Value="Collapsed" />
+                                    <Setter TargetName="IsNotChecedLayer" Property="Visibility" Value="Visible" />
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="CheckBoxFrame" Property="Fill" Value="{DynamicResource Accent-White-IsMouseOver-Background}"/>
+                                    <Setter TargetName="CheckBoxFrame" Property="Stroke" Value="{DynamicResource Accent-WHite-IsMouseOver-BorderBrush}"/>
+                                    <Setter Property="Foreground" Value="#444444"></Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+            <!-- #endregion -->
+
+        </Style.Triggers>
+    </Style>
+    
+</ResourceDictionary>
