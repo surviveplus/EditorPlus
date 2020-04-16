@@ -20,7 +20,10 @@ Public Class Layer2
 
 #End Region
 
+    Private doingFilterByKeyword As Boolean
+
     Private Sub FilterByKeyword()
+        Me.doingFilterByKeyword = True
 
         Dim keywords =
             (From s In Me.SearchKeywordBox.Text.Split(" ")
@@ -71,6 +74,7 @@ Public Class Layer2
             Me.clearButton.Visibility = Visibility.Collapsed
         End If
 
+        Me.doingFilterByKeyword = False
 
     End Sub
 
@@ -103,9 +107,6 @@ Public Class Layer2
         End If
     End Sub
 
-    Private Sub layers_SelectedItemChanged(sender As Object, e As RoutedPropertyChangedEventArgs(Of Object))
-
-    End Sub
 
     Private Sub HideButton_Click(sender As Object, e As RoutedEventArgs)
 
@@ -114,6 +115,35 @@ Public Class Layer2
     Private Sub ShowButton_Click(sender As Object, e As RoutedEventArgs)
 
     End Sub
+
+
+    Private Sub TreeViewItem_MouseLeftButtonUp(sender As Object, e As MouseButtonEventArgs)
+
+        If Not Me.doingFilterByKeyword Then
+
+            Dim item As TreeViewItem = sender
+            Dim newItem As LayerTreeItem2 = item.DataContext
+
+            Dim controlKey As Boolean = CBool((Keyboard.Modifiers And ModifierKeys.Control) = ModifierKeys.Control)
+            If Not controlKey Then
+                Dim updateObjectIsSelected As Action(Of IEnumerable(Of LayerTreeItem2)) =
+                Sub(items)
+                    For Each c As LayerTreeItem2 In items
+                        If c IsNot newItem Then
+                            c.ObjectIsSelected = False
+                        End If
+                        updateObjectIsSelected(c.Children)
+                    Next
+                End Sub
+
+                updateObjectIsSelected(Me.Items)
+            End If
+
+            newItem.ObjectIsSelected = True
+            e.Handled = True
+        End If
+    End Sub
+
 #End Region
 
 End Class
@@ -126,6 +156,7 @@ Public Class LayerTreeItem2
     Private _Filtered As Boolean
     Private _IsMacthed As Boolean
     Private _VisibilityByIsMatched As Visibility
+    Private _ObjectIsSelected As Boolean
     Public Property Parent As LayerTreeItem2
 
     Public ReadOnly Property Own As LayerTreeItem2
@@ -149,4 +180,12 @@ Public Class LayerTreeItem2
 
     Friend Property IsVisibleByFilter As Boolean
 
+    Public Property ObjectIsSelected As Boolean
+        Get
+            Return _ObjectIsSelected
+        End Get
+        Set
+            Me.SetProperty(_ObjectIsSelected, Value)
+        End Set
+    End Property
 End Class

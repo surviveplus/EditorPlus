@@ -32,15 +32,23 @@
             <Button Grid.Column="2" x:Name="refreshButton" Click="refreshButton_Click">🔎</Button>
         </Grid>
         <ProgressBar x:Name="progrressBar"  Grid.Row="2" Height="2" VerticalAlignment="Top" Visibility="Collapsed" IsIndeterminate="True"></ProgressBar>
-        <TreeView x:Name="layers" Grid.Row="2" SelectedItemChanged="layers_SelectedItemChanged">
+        <TreeView x:Name="layers" Grid.Row="2">
             <TreeView.Resources>
                 <Style TargetType="TreeViewItem" BasedOn="{StaticResource {x:Type TreeViewItem}}">
                     <Setter Property="IsExpanded" Value="{Binding Path=IsExpanded, Mode=TwoWay}"></Setter>
+                    <EventSetter Event="MouseLeftButtonUp" Handler="TreeViewItem_MouseLeftButtonUp" />
                 </Style>
             </TreeView.Resources>
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate DataType="local:LayerTreeItem2"  ItemsSource="{Binding Children}" >
-                    <TextBlock Text="{Binding Text}" LineHeight="24" FontSize="12" Tag="{Binding Own}"  />
+                    <Grid Tag="{Binding Own}" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox Grid.Column="0" Width="30" IsChecked="{Binding ObjectIsSelected}"></CheckBox>
+                        <TextBlock Grid.Column="1" Text="{Binding Text}" LineHeight="24" FontSize="12" Tag="{Binding Own}" />
+                    </Grid>
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>
