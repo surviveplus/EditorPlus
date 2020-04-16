@@ -17,6 +17,7 @@ Public Class Layer2
         End Set
     End Property
 
+    Public Property SuppressEvents As Boolean
 
 #End Region
 
@@ -132,23 +133,19 @@ Public Class Layer2
         newItem.ObjectIsSelected = True
         e.Handled = True
 
-        Me.RaiseSelectedObjectsChanged()
     End Sub
 
     Private Sub CheckBox_Checked(sender As Object, e As RoutedEventArgs)
         Me.RaiseSelectedObjectsChanged()
     End Sub
 
-    Private Sub CheckBox_Unchecked(sender As Object, e As RoutedEventArgs)
-        Me.RaiseSelectedObjectsChanged()
-    End Sub
-
 #End Region
 
     Private Sub RaiseSelectedObjectsChanged()
+        If Not Me.SuppressEvents Then
 
-        Dim selectedItem As New List(Of LayerTreeItem2)
-        Dim pickupObjectIsSelected As Action(Of IEnumerable(Of LayerTreeItem2)) =
+            Dim selectedItem As New List(Of LayerTreeItem2)
+            Dim pickupObjectIsSelected As Action(Of IEnumerable(Of LayerTreeItem2)) =
             Sub(items)
                 For Each c As LayerTreeItem2 In items
                     If c.ObjectIsSelected Then
@@ -157,9 +154,11 @@ Public Class Layer2
                     pickupObjectIsSelected(c.Children)
                 Next
             End Sub
-        pickupObjectIsSelected(Me.Items)
+            pickupObjectIsSelected(Me.Items)
 
-        RaiseEvent SelectedObjectsChanged(Me, New LayerItemsEventArgs With {.Items = selectedItem})
+            RaiseEvent SelectedObjectsChanged(Me, New LayerItemsEventArgs With {.Items = selectedItem})
+        End If
+
     End Sub
 
     Public Event SelectedObjectsChanged As EventHandler(Of LayerItemsEventArgs)

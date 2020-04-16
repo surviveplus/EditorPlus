@@ -46,7 +46,7 @@
                             <ColumnDefinition Width="30" />
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <CheckBox Grid.Column="0" Width="30" IsChecked="{Binding ObjectIsSelected}" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"></CheckBox>
+                        <CheckBox Grid.Column="0" Width="30" IsChecked="{Binding ObjectIsSelected}" Checked="CheckBox_Checked"></CheckBox>
                         <TextBlock Grid.Column="1" Text="{Binding Text}" LineHeight="24" FontSize="12" Tag="{Binding Own}" />
                     </Grid>
                 </HierarchicalDataTemplate>

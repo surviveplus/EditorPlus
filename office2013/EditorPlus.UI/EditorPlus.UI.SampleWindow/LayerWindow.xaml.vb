@@ -9,11 +9,13 @@ Public Class LayerWindow
         End Get
     End Property
 
-    Private Sub Window_Loaded(sender As Object, e As RoutedEventArgs)
+    Private TestItems As ObservableCollection(Of LayerTreeItem2)
 
+    Private Sub Window_Loaded(sender As Object, e As RoutedEventArgs)
 
         Dim items As New ObservableCollection(Of LayerTreeItem2)
         Me.layer.Items = items
+        Me.TestItems = items
 
         Dim root As New LayerTreeItem2 With {.Text = "Slide"}
         items.Add(root)
@@ -32,56 +34,37 @@ Public Class LayerWindow
         item21.IsExpanded = True
         item21.Children.Add(item211)
 
-
-
-        'AddHandler Me.layer.Refresh,
-        '    Sub(sender2, e2)
-
-        '        Dim items As New List(Of LayerTreeItem)
-
-        '        Dim root As New LayerTreeItem With {.Text = "Slide"}
-        '        items.Add(root)
-
-        '        Dim item1 As New LayerTreeItem With {.Text = "👁 Item 1"}
-        '        items.Add(item1)
-
-        '        Dim item2 As New LayerTreeItem With {.Text = "👁 📁 Item 2"}
-        '        item2.IsExpanded = True
-        '        items.Add(item2)
-
-        '        Dim item21 As New LayerTreeItem With {.Text = "👁 Item 2-1"}
-        '        item2.Children.Add(item21)
-
-        '        e2.Items = items
-        '    End Sub
-
-        'AddHandler Me.layer.HideItems,
-        '    Sub(sender2, e2)
-
-        '        For Each item As LayerTreeItem In e2.Items
-        '            item.IsVisible = False
-        '        Next item
-
-        '    End Sub
-
-        'AddHandler Me.layer.ShowItems,
-        '    Sub(sender2, e2)
-
-        '        For Each item As LayerTreeItem In e2.Items
-        '            item.IsVisible = True
-        '        Next item
-
-        '    End Sub
-
     End Sub
 
     Private Sub layer_SelectedObjectsChanged(sender As Object, e As LayerItemsEventArgs)
 
-        Debug.WriteLine("layer_SelectedObjectsChanged : ")
+        Debug.WriteLine($"layer_SelectedObjectsChanged : {DateTime.Now.ToString()}")
         For Each item In e.Items
             Debug.WriteLine(item.Text)
         Next
         Debug.WriteLine("")
+
+    End Sub
+
+    Private Sub TestSelectionChange_Click(sender As Object, e As RoutedEventArgs)
+
+        Me.layer.SuppressEvents = True
+
+        Dim newSelectedItem = (From a In Me.TestItems.Skip(1) Where Not a.ObjectIsSelected).FirstOrDefault()
+        newSelectedItem.ObjectIsSelected = True
+
+        Dim changeObjectIsSelected As Action(Of IEnumerable(Of LayerTreeItem2)) =
+            Sub(items)
+                For Each c As LayerTreeItem2 In items
+                    If c IsNot newSelectedItem Then
+                        c.ObjectIsSelected = False
+                    End If
+                    changeObjectIsSelected(c.Children)
+                Next
+            End Sub
+        changeObjectIsSelected(Me.TestItems)
+
+        Me.layer.SuppressEvents = False
 
     End Sub
 End Class
