@@ -10,6 +10,7 @@ Public Class LayerWindow
     End Property
 
     Private TestItems As ObservableCollection(Of LayerTreeItem2)
+    Private testNumber As Integer
 
     Private Sub Window_Loaded(sender As Object, e As RoutedEventArgs)
 
@@ -34,6 +35,7 @@ Public Class LayerWindow
         item21.IsExpanded = True
         item21.Children.Add(item211)
 
+        Me.testNumber = 2
     End Sub
 
     Private Sub layer_SelectedObjectsChanged(sender As Object, e As LayerItemsEventArgs)
@@ -57,6 +59,30 @@ Public Class LayerWindow
             Sub(items)
                 For Each c As LayerTreeItem2 In items
                     If c IsNot newSelectedItem Then
+                        c.ObjectIsSelected = False
+                    End If
+                    changeObjectIsSelected(c.Children)
+                Next
+            End Sub
+        changeObjectIsSelected(Me.TestItems)
+
+        Me.layer.SuppressEvents = False
+
+    End Sub
+
+    Private Sub TestAdd_Click(sender As Object, e As RoutedEventArgs)
+        Me.testNumber += 1
+
+        Me.layer.SuppressEvents = True
+
+        Dim newItem As New LayerTreeItem2 With {.Text = $"👁 Item {Me.testNumber}"}
+        newItem.ObjectIsSelected = True
+        Me.TestItems.Add(newItem)
+
+        Dim changeObjectIsSelected As Action(Of IEnumerable(Of LayerTreeItem2)) =
+            Sub(items)
+                For Each c As LayerTreeItem2 In items
+                    If c IsNot newItem Then
                         c.ObjectIsSelected = False
                     End If
                     changeObjectIsSelected(c.Children)

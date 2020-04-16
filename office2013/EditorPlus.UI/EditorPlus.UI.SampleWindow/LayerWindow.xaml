@@ -16,8 +16,9 @@
         <UI:Layer2 x:Name="layer" SelectedObjectsChanged="layer_SelectedObjectsChanged" />
 
         <StackPanel Orientation="Horizontal"  Grid.Row="1">
-            <TextBlock Margin="10 10 10 10">Test: </TextBlock>
+            <TextBlock Margin="5 5  10 0" >Test: </TextBlock>
             <Button x:Name="TestSelectionChange"  Padding="5 5 5 5" Click="TestSelectionChange_Click">Change Selection</Button>
+            <Button x:Name="TestAdd" Padding="5 5 5 5" Margin="5 0 0 0 " Click="TestAdd_Click">Add</Button>
         </StackPanel>
     </Grid>
 </Window>
