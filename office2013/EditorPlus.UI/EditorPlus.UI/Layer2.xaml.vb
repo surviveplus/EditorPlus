@@ -1,4 +1,5 @@
 ﻿Imports System.Collections.ObjectModel
+Imports System.Windows.Threading
 
 Public Class Layer2
 
@@ -19,7 +20,38 @@ Public Class Layer2
 
     Public Property SuppressEvents As Boolean
 
+    Private _ProgrressBarVisible As Boolean
+
+    Public Property ProgrressBarVisible As Boolean
+        Get
+            Return _ProgrressBarVisible
+        End Get
+        Set
+            _ProgrressBarVisible = Value
+            If _ProgrressBarVisible Then
+                Me.progrressBar.Visibility = Visibility.Visible
+            Else
+                Me.progrressBar.Visibility = Visibility.Collapsed
+            End If
+        End Set
+    End Property
+
+
 #End Region
+
+    Public Sub DoEvents()
+        Dim frame As New DispatcherFrame()
+        Dispatcher.CurrentDispatcher.BeginInvoke(
+            DispatcherPriority.Background,
+            Function(o)
+                CType(o, DispatcherFrame).Continue = False
+                Return Nothing
+            End Function,
+            frame
+        )
+        Dispatcher.PushFrame(frame)
+
+    End Sub
 
     Private Sub FilterByKeyword()
         Dim keywords =
@@ -105,9 +137,43 @@ Public Class Layer2
 
     Private Sub HideButton_Click(sender As Object, e As RoutedEventArgs)
 
+        Dim selectedItem As New List(Of LayerTreeItem2)
+        Dim pickupObjectIsSelected As Action(Of IEnumerable(Of LayerTreeItem2)) =
+            Sub(items)
+                For Each c As LayerTreeItem2 In items
+                    If c.ObjectIsSelected Then
+                        selectedItem.Add(c)
+                    End If
+                    pickupObjectIsSelected(c.Children)
+                Next
+            End Sub
+        pickupObjectIsSelected(Me.Items)
+
+        For Each item In selectedItem
+            item.ObjectIsVisible = False
+            RaiseEvent ObjectVisibleChanged(Me, New LayerItemEventArgs With {.Item = item})
+        Next
+
     End Sub
 
     Private Sub ShowButton_Click(sender As Object, e As RoutedEventArgs)
+
+        Dim selectedItem As New List(Of LayerTreeItem2)
+        Dim pickupObjectIsSelected As Action(Of IEnumerable(Of LayerTreeItem2)) =
+            Sub(items)
+                For Each c As LayerTreeItem2 In items
+                    If c.ObjectIsSelected Then
+                        selectedItem.Add(c)
+                    End If
+                    pickupObjectIsSelected(c.Children)
+                Next
+            End Sub
+        pickupObjectIsSelected(Me.Items)
+
+        For Each item In selectedItem
+            item.ObjectIsVisible = True
+            RaiseEvent ObjectVisibleChanged(Me, New LayerItemEventArgs With {.Item = item})
+        Next
 
     End Sub
 
@@ -207,6 +273,7 @@ Public Class LayerTreeItem2
 
     End Function
 
+    Public Property Shape As Object
 
     Public Property Parent As LayerTreeItem2
 

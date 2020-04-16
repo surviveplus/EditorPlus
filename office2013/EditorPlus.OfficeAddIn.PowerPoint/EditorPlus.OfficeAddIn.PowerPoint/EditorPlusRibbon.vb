@@ -1,4 +1,5 @@
-﻿Imports System.Diagnostics
+﻿Imports System.Collections.ObjectModel
+Imports System.Diagnostics
 Imports System.Windows
 Imports EditorPlus.AI
 Imports EditorPlus.Core
@@ -167,198 +168,179 @@ Public Class EditorPlusRibbon
         Me.replacePane?.Show()
     End Sub
 
-    Private layerPane As ElementControlPane(Of Layer)
+    Private layerPanes As New Dictionary(Of DocumentWindow, ElementControlPane(Of Layer2))
+
+
 
     Private Sub LayerButton_Click(sender As Object, e As RibbonControlEventArgs) Handles LayerButton.Click
 
-        If Me.layerPane Is Nothing Then
+        If Not Me.layerPanes.ContainsKey(ThisAddIn.Current.Application.ActiveWindow) Then
 
-            Dim c = New Layer With {.DataContext = OfficeThemeModel.Current}
+            Dim c = New Layer2 With {.DataContext = OfficeThemeModel.Current}
             c.Resources.Apply(OfficeAccentColor.Current)
-            AddHandler c.Refresh,
-                Sub(sender2, e2)
-                    Dim d As New List(Of UI.LayerTreeItem)
 
-                    Dim w = ThisAddIn.Current.Application.ActiveWindow
-                    Dim setup = w.Presentation.PageSetup
-                    Dim size As New System.Drawing.Size(setup.SlideWidth, setup.SlideHeight)
+            Dim recreateAllItems As Action =
+                Sub()
+                    c.SuppressEvents = True
+                    c.ProgrressBarVisible = True
+                    c.Items = Nothing
+                    c.DoEvents()
 
-                    Dim counter As Integer = 0
+                    Dim items As New ObservableCollection(Of LayerTreeItem2)
 
                     For Each targetSlide As Slide In ThisAddIn.Current.Application.ActiveWindow.Selection.SlideRange
-                        d.Add(New LayerTreeItem With {.Text = targetSlide.Name + " (slide)"})
+                        items.Add(New LayerTreeItem2 With {.Text = targetSlide.Name & " (slide)"})
 
-                        Dim items =
-                            From item In targetSlide.Shapes.ToEnumerable(Of Shape)
-                            Order By item.ZOrderPosition Descending
-                            Select item
+                        Dim counter As Integer = 0
+                        Dim checkShapes As Action(Of LayerTreeItem2, IEnumerable(Of Shape)) =
+                            Sub(parent, shapes)
+                                For Each item As Shape In shapes
 
-
-                        Dim g As Action(Of LayerTreeItem, IEnumerable(Of Shape))
-                        g = Sub(parent As LayerTreeItem, s As IEnumerable(Of Shape))
-                                For Each item As Shape In s
+                                    counter += 1
+                                    If counter Mod 10 Then c.DoEvents()
                                     Dim isGroup As Boolean = CType(item.Type = Microsoft.Office.Core.MsoShapeType.msoGroup, Boolean)
-
 
                                     Dim text As String = ""
                                     Try
                                         text = item?.TextFrame2?.TextRange?.Text?.Split(vbCr).FirstOrDefault()
                                         text = " ''" & Strings.Left(text, 30) & "''"
-
-                                    Catch ex As Exception
+                                    Catch
+                                        text = ""
                                     End Try
 
-
-                                    Dim newItem As New LayerTreeItem(parent) With {.Text =
-                                        If(item.Visible, "👁", "-") &
-                                        If(isGroup, "📁", " ") &
-                                        item.Name &
-                                        text,
-                                        .Shape = item
+                                    Dim newItem As New LayerTreeItem2 With {
+                                        .Shape = item,
+                                        .Parent = parent,
+                                        .ObjectIsVisible = item.Visible,
+                                        .Text = If(isGroup, "📁", " ") & item.Name & text
                                     }
 
-                                    If ThisAddIn.Current.Application.ActiveWindow.Selection.Type = PpSelectionType.ppSelectionShapes OrElse
-                                    ThisAddIn.Current.Application.ActiveWindow.Selection.Type = PpSelectionType.ppSelectionText Then
-                                        For Each selectedShape As Shape In ThisAddIn.Current.Application.ActiveWindow.Selection.ShapeRange
-                                            If item Is selectedShape Then
-                                                newItem.IsSelected = True
-                                                Exit For
-                                            End If
-                                        Next
+                                    If (ThisAddIn.Current.Application.ActiveWindow.Selection.Type = PpSelectionType.ppSelectionShapes OrElse
+                                        ThisAddIn.Current.Application.ActiveWindow.Selection.Type = PpSelectionType.ppSelectionText) AndAlso
+                                        (From a In ThisAddIn.Current.Application.ActiveWindow.Selection.ShapeRange Where item Is a).Any() Then
+
+                                        newItem.ObjectIsSelected = True
                                     End If
 
                                     If parent Is Nothing Then
-                                        d.Add(newItem)
+                                        items.Add(newItem)
                                     Else
                                         parent.Children.Add(newItem)
                                     End If
-                                    counter += 1
-                                    If counter Mod 10 Then e2.DoEvents.Invoke()
 
                                     If isGroup Then
-                                        g(newItem, item.GroupItems.ToEnumerable(Of Shape))
+                                        checkShapes(newItem, item.GroupItems.ToEnumerable(Of Shape))
                                     End If
                                 Next
                             End Sub
 
-                        g(Nothing, items)
+                        Dim topLevelShapes =
+                            From item In targetSlide.Shapes.ToEnumerable(Of Shape)
+                            Order By item.ZOrderPosition Descending
+                            Select item
 
-                    Next
-                    e2.Items = d
+                        checkShapes(Nothing, topLevelShapes)
+                    Next targetSlide
+
+                    c.Items = items
+                    c.ProgrressBarVisible = False
+                    c.SuppressEvents = False
                 End Sub
 
-            AddHandler c.SelectionChanged,
-                Sub(sender2, e2)
+            Dim refreshObjectsAreSelected As Func(Of Boolean) =
+                Function()
+                    Dim result As Boolean = False
+                    c.SuppressEvents = True
+                    Dim changeObjectIsSelected As Action(Of IEnumerable(Of LayerTreeItem2)) =
+                        Sub(items)
+                            For Each item As LayerTreeItem2 In items
+                                Dim s As Shape = item.Shape
+                                If s IsNot Nothing Then
+                                    If (ThisAddIn.Current.Application.ActiveWindow.Selection.Type = PpSelectionType.ppSelectionShapes OrElse
+                                        ThisAddIn.Current.Application.ActiveWindow.Selection.Type = PpSelectionType.ppSelectionText) AndAlso
+                                        (From a In ThisAddIn.Current.Application.ActiveWindow.Selection.ShapeRange Where s Is a).Any() Then
 
+                                        item.ObjectIsSelected = True
+                                        result = True
+                                    Else
+                                        item.ObjectIsSelected = False
+                                    End If
 
-
-                    Dim g As Action(Of IEnumerable(Of LayerTreeItem))
-                    g = Sub(s As IEnumerable(Of LayerTreeItem))
-
-                            For Each item As LayerTreeItem In s
-                                g(item.Children)
-
-                                item.IsSelected = False
-                                If ThisAddIn.Current.Application.ActiveWindow.Selection.Type = PpSelectionType.ppSelectionShapes OrElse
-                                    ThisAddIn.Current.Application.ActiveWindow.Selection.Type = PpSelectionType.ppSelectionText Then
-                                    For Each selectedShape As Shape In ThisAddIn.Current.Application.ActiveWindow.Selection.ShapeRange
-                                        If item.Shape Is selectedShape Then
-                                            item.IsSelected = True
-                                            'Exit For
-                                        End If
-                                    Next
+                                    ' TODO: refresh name text
+                                    item.ObjectIsVisible = s.Visible
                                 End If
 
+                                changeObjectIsSelected(item.Children)
                             Next
                         End Sub
+                    changeObjectIsSelected(c.Items)
 
-                    g(e2.Items)
+                    c.SuppressEvents = False
+                    Return result
+                End Function
 
-                End Sub
-
-
-
-            AddHandler c.SelectedItemChanged,
-                Sub(sender3, e3)
-
-                    Dim item = e3.Item
-
-                    If item?.Shape IsNot Nothing Then
-                        Dim shape As Shape = CType(item.Shape, Shape)
-                        Dim w = ThisAddIn.Current.Application.ActiveWindow
-
-                        Try
-                            If Not shape.Visible Then
-                                shape.Visible = Microsoft.Office.Core.MsoTriState.msoTrue
-                            End If
-                            shape.Select(If(e3.MustReplaceSelection, Microsoft.Office.Core.MsoTriState.msoTrue, Microsoft.Office.Core.MsoTriState.msoFalse))
-                        Catch ex As Exception
-                        End Try
-                        w.ScrollIntoView(shape.Left, shape.Top, shape.Width, shape.Height)
-                    End If
-
-                End Sub
-
-            AddHandler c.ShowItems,
-                Sub(sender2, e2)
-                    For Each item In e2.Items
-                        If item?.Shape IsNot Nothing Then
-                            Dim shape As Shape = CType(item.Shape, Shape)
-                            If Not shape.Visible Then shape.Visible = True
-                        End If
-                    Next
-                End Sub
-
-            AddHandler c.HideItems,
-                Sub(sender2, e2)
-                    For Each item In e2.Items
-                        If item?.Shape IsNot Nothing Then
-                            Dim shape As Shape = CType(item.Shape, Shape)
-                            If shape.Visible Then shape.Visible = False
-                        End If
-                    Next
-                End Sub
-            Dim mustUpdate As Boolean = False
-            Dim lastEditShape As Shape = Nothing
-            AddHandler ThisAddIn.Current.Application.WindowSelectionChange,
-                Sub(Sel As Selection)
-                    If Sel.Type = PpSelectionType.ppSelectionText Then
-                        Dim shape As Shape = Sel.ShapeRange(1)
-                        'If shape.Type = Microsoft.Office.Core.MsoShapeType.msoPlaceholder Then
-                        If lastEditShape IsNot Nothing AndAlso
-                            lastEditShape IsNot shape Then
-
-                            mustUpdate = True
-                        End If
-                        lastEditShape = shape
-                        'End If
-
-                    Else
-                        If lastEditShape IsNot Nothing Then
-                            mustUpdate = True
-                        End If
-                    End If
-
-                    If mustUpdate Then
-                        c.Update()
-                        mustUpdate = False
-                    Else
-                        c.RefreshSelection()
-
-                    End If
-                End Sub
 
             AddHandler ThisAddIn.Current.Application.SlideSelectionChanged,
                 Sub(SldRange As SlideRange)
-                    c.Update()
+                    recreateAllItems()
                 End Sub
 
-            Me.layerPane = New ElementControlPane(Of Layer)(c)
-            Me.layerPane.Pane = ThisAddIn.Current.CustomTaskPanes.Add(Me.layerPane.Control, "Show Objects", ThisAddIn.Current.Application.ActiveWindow)
-            Me.layerPane.Pane.Width = 350
+            AddHandler ThisAddIn.Current.Application.WindowSelectionChange,
+                Sub(Sel As Selection)
+                    If Not refreshObjectsAreSelected() Then
+                        recreateAllItems()
+                    End If
+                End Sub
+
+            AddHandler c.SelectedObjectsChanged,
+                Sub(sender3, e3)
+
+                    Dim mustReplaceSelection As Boolean = True
+                    Dim selectShape As Action(Of LayerTreeItem2) =
+                        Sub(item)
+
+                            If item?.Shape IsNot Nothing Then
+                                Dim shape As Shape = CType(item.Shape, Shape)
+                                Dim w = ThisAddIn.Current.Application.ActiveWindow
+
+                                Try
+                                    'If Not shape.Visible Then
+                                    '    shape.Visible = Microsoft.Office.Core.MsoTriState.msoTrue
+                                    'End If
+                                    shape.Select(If(mustReplaceSelection, Microsoft.Office.Core.MsoTriState.msoTrue, Microsoft.Office.Core.MsoTriState.msoFalse))
+                                    mustReplaceSelection = False
+                                Catch ex As Exception
+                                End Try
+                                w.ScrollIntoView(shape.Left, shape.Top, shape.Width, shape.Height)
+                            End If
+                        End Sub
+
+                    For Each item In e3.Items
+                        selectShape(item)
+                    Next item
+
+                End Sub
+
+            AddHandler c.ObjectVisibleChanged,
+                Sub(sender2, e2)
+                    c.SuppressEvents = True
+                    Dim s As Shape = e2.Item.Shape
+                    If s IsNot Nothing Then
+                        s.Visible = e2.Item.ObjectIsVisible
+                    End If
+                    c.SuppressEvents = False
+                End Sub
+
+            Dim p As New ElementControlPane(Of Layer2)(c)
+            Me.layerPanes.Add(ThisAddIn.Current.Application.ActiveWindow, p)
+            p.Pane = ThisAddIn.Current.CustomTaskPanes.Add(p.Control, "Show Objects", ThisAddIn.Current.Application.ActiveWindow)
+            p.Pane.Width = 350
+
+            Me.layerPanes(ThisAddIn.Current.Application.ActiveWindow).Show()
+            recreateAllItems()
         End If
 
-        Me.layerPane?.Show()
+        Me.layerPanes(ThisAddIn.Current.Application.ActiveWindow).Show()
 
     End Sub
 
@@ -367,7 +349,7 @@ Public Class EditorPlusRibbon
 
     Private Sub NavigationButton_Click(sender As Object, e As RibbonControlEventArgs) Handles NavigationButton.Click
 
-        If Me.navigationPanes.ContainsKey(ThisAddIn.Current.Application.ActiveWindow) = False Then
+        If Not Me.navigationPanes.ContainsKey(ThisAddIn.Current.Application.ActiveWindow) Then
             Dim c = New Navigation With {.DataContext = OfficeThemeModel.Current}
             AddHandler c.Click,
                 Sub(sender2, e2)

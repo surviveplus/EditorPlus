@@ -31,7 +31,6 @@
             <Button Grid.Column="1" x:Name="clearButton" Click="clearButton_Click" Background="Transparent" BorderThickness="0" Margin="1 1 1 1" Foreground="{Binding ElementName=SearchKeywordBox, Path=Foreground}" Visibility="Collapsed">✖</Button>
             <Button Grid.Column="2" x:Name="refreshButton" Click="refreshButton_Click">🔎</Button>
         </Grid>
-        <ProgressBar x:Name="progrressBar"  Grid.Row="2" Height="2" VerticalAlignment="Top" Visibility="Collapsed" IsIndeterminate="True"></ProgressBar>
         <TreeView x:Name="layers" Grid.Row="2">
             <TreeView.Resources>
                 <Style TargetType="TreeViewItem" BasedOn="{StaticResource {x:Type TreeViewItem}}">
@@ -57,5 +56,6 @@
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>
+        <ProgressBar x:Name="progrressBar"  Grid.Row="2" Height="2" VerticalAlignment="Top" Visibility="Collapsed" IsIndeterminate="True"></ProgressBar>
     </Grid>
 </UserControl>
