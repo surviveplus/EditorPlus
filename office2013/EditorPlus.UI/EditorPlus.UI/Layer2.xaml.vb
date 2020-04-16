@@ -20,11 +20,7 @@ Public Class Layer2
 
 #End Region
 
-    Private doingFilterByKeyword As Boolean
-
     Private Sub FilterByKeyword()
-        Me.doingFilterByKeyword = True
-
         Dim keywords =
             (From s In Me.SearchKeywordBox.Text.Split(" ")
              Let keyword = s.Trim().ToLower()
@@ -74,8 +70,6 @@ Public Class Layer2
             Me.clearButton.Visibility = Visibility.Collapsed
         End If
 
-        Me.doingFilterByKeyword = False
-
     End Sub
 
     Private Sub ClearFilterKeyword()
@@ -118,33 +112,64 @@ Public Class Layer2
 
 
     Private Sub TreeViewItem_MouseLeftButtonUp(sender As Object, e As MouseButtonEventArgs)
+        Dim item As TreeViewItem = sender
+        Dim newItem As LayerTreeItem2 = item.DataContext
 
-        If Not Me.doingFilterByKeyword Then
-
-            Dim item As TreeViewItem = sender
-            Dim newItem As LayerTreeItem2 = item.DataContext
-
-            Dim controlKey As Boolean = CBool((Keyboard.Modifiers And ModifierKeys.Control) = ModifierKeys.Control)
-            If Not controlKey Then
-                Dim updateObjectIsSelected As Action(Of IEnumerable(Of LayerTreeItem2)) =
-                Sub(items)
-                    For Each c As LayerTreeItem2 In items
-                        If c IsNot newItem Then
-                            c.ObjectIsSelected = False
-                        End If
-                        updateObjectIsSelected(c.Children)
-                    Next
-                End Sub
-
-                updateObjectIsSelected(Me.Items)
-            End If
-
-            newItem.ObjectIsSelected = True
-            e.Handled = True
+        Dim controlKey As Boolean = CBool((Keyboard.Modifiers And ModifierKeys.Control) = ModifierKeys.Control)
+        If Not controlKey Then
+            Dim updateObjectIsSelected As Action(Of IEnumerable(Of LayerTreeItem2)) =
+                    Sub(items)
+                        For Each c As LayerTreeItem2 In items
+                            If c IsNot newItem Then
+                                c.ObjectIsSelected = False
+                            End If
+                            updateObjectIsSelected(c.Children)
+                        Next
+                    End Sub
+            updateObjectIsSelected(Me.Items)
         End If
+
+        newItem.ObjectIsSelected = True
+        e.Handled = True
+
+        Me.RaiseSelectedObjectsChanged()
+    End Sub
+
+    Private Sub CheckBox_Checked(sender As Object, e As RoutedEventArgs)
+        Me.RaiseSelectedObjectsChanged()
+    End Sub
+
+    Private Sub CheckBox_Unchecked(sender As Object, e As RoutedEventArgs)
+        Me.RaiseSelectedObjectsChanged()
     End Sub
 
 #End Region
+
+    Private Sub RaiseSelectedObjectsChanged()
+
+        Dim selectedItem As New List(Of LayerTreeItem2)
+        Dim pickupObjectIsSelected As Action(Of IEnumerable(Of LayerTreeItem2)) =
+            Sub(items)
+                For Each c As LayerTreeItem2 In items
+                    If c.ObjectIsSelected Then
+                        selectedItem.Add(c)
+                    End If
+                    pickupObjectIsSelected(c.Children)
+                Next
+            End Sub
+        pickupObjectIsSelected(Me.Items)
+
+        RaiseEvent SelectedObjectsChanged(Me, New LayerItemsEventArgs With {.Items = selectedItem})
+    End Sub
+
+    Public Event SelectedObjectsChanged As EventHandler(Of LayerItemsEventArgs)
+
+End Class
+
+Public Class LayerItemsEventArgs
+    Inherits EventArgs
+
+    Public Property Items As IEnumerable(Of LayerTreeItem2)
 
 End Class
 
@@ -153,9 +178,6 @@ Public Class LayerTreeItem2
     Inherits BindableBase
 
     Private _IsExpanded As Boolean
-    Private _Filtered As Boolean
-    Private _IsMacthed As Boolean
-    Private _VisibilityByIsMatched As Visibility
     Private _ObjectIsSelected As Boolean
     Public Property Parent As LayerTreeItem2
 

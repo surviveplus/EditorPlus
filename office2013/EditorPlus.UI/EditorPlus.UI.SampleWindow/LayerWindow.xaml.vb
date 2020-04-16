@@ -74,4 +74,14 @@ Public Class LayerWindow
         '    End Sub
 
     End Sub
+
+    Private Sub layer_SelectedObjectsChanged(sender As Object, e As LayerItemsEventArgs)
+
+        Debug.WriteLine("layer_SelectedObjectsChanged : ")
+        For Each item In e.Items
+            Debug.WriteLine(item.Text)
+        Next
+        Debug.WriteLine("")
+
+    End Sub
 End Class

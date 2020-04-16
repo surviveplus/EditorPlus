@@ -9,7 +9,7 @@
         Title="LayerWindow" Height="450" Width="300"
         Loaded="Window_Loaded">
     <Grid>
-        <UI:Layer2 x:Name="layer" />
+        <UI:Layer2 x:Name="layer" SelectedObjectsChanged="layer_SelectedObjectsChanged" />
 
     </Grid>
 </Window>
