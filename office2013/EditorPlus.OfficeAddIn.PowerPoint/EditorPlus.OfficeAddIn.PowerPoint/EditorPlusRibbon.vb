@@ -287,7 +287,9 @@ Public Class EditorPlusRibbon
 
             AddHandler ThisAddIn.Current.Application.WindowSelectionChange,
                 Sub(Sel As Selection)
-                    If Not refreshObjectsAreSelected() Then
+                    If Not refreshObjectsAreSelected() AndAlso
+                        Sel.Type = PpSelectionType.ppSelectionShapes Then
+
                         recreateAllItems()
                     End If
                 End Sub
