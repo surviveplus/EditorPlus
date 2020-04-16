@@ -14,6 +14,7 @@ Public Class LayerWindow
 
     Private Sub Window_Loaded(sender As Object, e As RoutedEventArgs)
 
+        Me.layer.SuppressEvents = True
         Dim items As New ObservableCollection(Of LayerTreeItem2)
         Me.layer.Items = items
         Me.TestItems = items
@@ -35,6 +36,8 @@ Public Class LayerWindow
         item21.IsExpanded = True
         item21.Children.Add(item211)
 
+        Me.layer.SuppressEvents = False
+
         Me.testNumber = 2
     End Sub
 
@@ -46,6 +49,21 @@ Public Class LayerWindow
         Next
         Debug.WriteLine("")
 
+    End Sub
+
+    Private Sub layer_VisibleObjectsChanged(sender As Object, e As LayerItemsEventArgs)
+
+        Debug.WriteLine($"layer_VisibleObjectsChanged : {DateTime.Now.ToString()}")
+        For Each item In e.Items
+            Debug.WriteLine(item.ToString())
+        Next
+        Debug.WriteLine("")
+    End Sub
+
+    Private Sub layer_ObjectVisibleChanged(sender As Object, e As LayerItemEventArgs)
+        Debug.WriteLine($"layer_ObjectVisibleChanged : {DateTime.Now.ToString()}")
+        Debug.WriteLine(e.Item.ToString())
+        Debug.WriteLine("")
     End Sub
 
     Private Sub TestSelectionChange_Click(sender As Object, e As RoutedEventArgs)
@@ -93,4 +111,6 @@ Public Class LayerWindow
         Me.layer.SuppressEvents = False
 
     End Sub
+
+
 End Class

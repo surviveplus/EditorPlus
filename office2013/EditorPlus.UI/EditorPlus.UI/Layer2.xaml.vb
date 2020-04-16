@@ -136,10 +136,13 @@ Public Class Layer2
 
     End Sub
 
-    Private Sub CheckBox_Checked(sender As Object, e As RoutedEventArgs)
+    Private Sub ObjectIsSelectedCheckBox_Checked(sender As Object, e As RoutedEventArgs)
         Me.RaiseSelectedObjectsChanged()
     End Sub
 
+    Private Sub ObjectIsVisibleCheckBox_Click(sender As Object, e As RoutedEventArgs)
+        RaiseObjectVisibleChanged(sender)
+    End Sub
 #End Region
 
     Private Sub RaiseSelectedObjectsChanged()
@@ -164,6 +167,17 @@ Public Class Layer2
 
     Public Event SelectedObjectsChanged As EventHandler(Of LayerItemsEventArgs)
 
+    Private Sub RaiseObjectVisibleChanged(c As CheckBox)
+        If Not Me.SuppressEvents Then
+            Dim g As Grid = c.Parent
+            Dim t As TextBlock = g.FindName("MainText")
+            RaiseEvent ObjectVisibleChanged(Me, New LayerItemEventArgs With {.Item = t.Tag})
+        End If
+
+    End Sub
+
+    Public Event ObjectVisibleChanged As EventHandler(Of LayerItemEventArgs)
+
 
 End Class
 
@@ -174,6 +188,12 @@ Public Class LayerItemsEventArgs
 
 End Class
 
+Public Class LayerItemEventArgs
+    Inherits EventArgs
+
+    Public Property Item As LayerTreeItem2
+
+End Class
 
 Public Class LayerTreeItem2
     Inherits BindableBase

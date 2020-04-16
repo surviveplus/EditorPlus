@@ -13,7 +13,7 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="30"></RowDefinition>
         </Grid.RowDefinitions>
-        <UI:Layer2 x:Name="layer" SelectedObjectsChanged="layer_SelectedObjectsChanged" />
+        <UI:Layer2 x:Name="layer" SelectedObjectsChanged="layer_SelectedObjectsChanged" ObjectVisibleChanged="layer_ObjectVisibleChanged"/>
 
         <StackPanel Orientation="Horizontal"  Grid.Row="1">
             <TextBlock Margin="5 5  10 0" >Test: </TextBlock>

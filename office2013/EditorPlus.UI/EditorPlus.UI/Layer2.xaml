@@ -47,10 +47,12 @@
                             <ColumnDefinition Width="20" />
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <CheckBox Grid.Column="0" Width="25" IsChecked="{Binding ObjectIsSelected}" Checked="CheckBox_Checked"></CheckBox>
-                        <CheckBox Grid.Column="1"  Width="20"  IsChecked="{Binding ObjectIsVisible}" Style="{DynamicResource ObjectVisibleCheckbox}">
+                        <CheckBox x:Name="ObjectIsSelectedCheckBox" Grid.Column="0" Width="25" IsChecked="{Binding ObjectIsSelected}" 
+                                  Checked="ObjectIsSelectedCheckBox_Checked"></CheckBox>
+                        <CheckBox x:Name="ObjectIsVisibleCheckBox" Grid.Column="1"  Width="20"  IsChecked="{Binding ObjectIsVisible}" 
+                                  Style="{DynamicResource ObjectVisibleCheckbox}" Click="ObjectIsVisibleCheckBox_Click">
                         </CheckBox>
-                        <TextBlock Grid.Column="2" Text="{Binding Text}" Height="22" FontSize="12" Tag="{Binding Own}" Margin="5 5 0 0" />
+                        <TextBlock x:Name="MainText" Grid.Column="2" Text="{Binding Text}" Height="22" FontSize="12" Tag="{Binding Own}" Margin="5 5 0 0" />
                     </Grid>
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
