@@ -283,13 +283,13 @@ Public Class EditorPlusRibbon
                     Return result
                 End Function
 
-
-            AddHandler ThisAddIn.Current.Application.SlideSelectionChanged,
+            Dim slideSelectionChanged As EApplication_SlideSelectionChangedEventHandler =
                 Sub(SldRange As SlideRange)
                     recreateAllItems()
                 End Sub
+            AddHandler ThisAddIn.Current.Application.SlideSelectionChanged, slideSelectionChanged
 
-            AddHandler ThisAddIn.Current.Application.WindowSelectionChange,
+            Dim windowSelectionChange As EApplication_WindowSelectionChangeEventHandler =
                 Sub(Sel As Selection)
                     If Not refreshObjectsAreSelected() AndAlso
                         Sel.Type = PpSelectionType.ppSelectionShapes Then
@@ -297,6 +297,7 @@ Public Class EditorPlusRibbon
                         recreateAllItems()
                     End If
                 End Sub
+            AddHandler ThisAddIn.Current.Application.WindowSelectionChange, windowSelectionChange
 
             AddHandler c.SelectedObjectsChanged,
                 Sub(sender3, e3)
@@ -341,6 +342,17 @@ Public Class EditorPlusRibbon
             Me.layerPanes.Add(ThisAddIn.Current.Application.ActiveWindow, p)
             p.Pane = ThisAddIn.Current.CustomTaskPanes.Add(p.Control, "Show Objects", ThisAddIn.Current.Application.ActiveWindow)
             p.Pane.Width = 350
+            AddHandler p.Pane.VisibleChanged,
+            Sub()
+                If Not p.Pane.Visible Then
+                    RemoveHandler ThisAddIn.Current.Application.SlideSelectionChanged, slideSelectionChanged
+                    RemoveHandler ThisAddIn.Current.Application.WindowSelectionChange, windowSelectionChange
+
+                    Me.layerPanes.Remove(ThisAddIn.Current.Application.ActiveWindow)
+                    p.Control.Dispose()
+                    p.Pane.Dispose()
+                End If
+            End Sub
 
             Me.layerPanes(ThisAddIn.Current.Application.ActiveWindow).Show()
             recreateAllItems()
