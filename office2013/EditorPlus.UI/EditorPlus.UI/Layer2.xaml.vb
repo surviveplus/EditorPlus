@@ -103,7 +103,9 @@ Public Class Layer2
                     If items Is Nothing Then Return
 
                     For Each item In items
-                        item.IsVisibleByFilter = (From s In keywords Where item.Text.ToLower().Contains(s)).Count = keywords.Count
+                        item.IsVisibleByFilter =
+                        ((From s In keywords Where item.SearchTargetText?.IndexOf(s, StringComparison.CurrentCultureIgnoreCase) >= 0).Count = keywords.Count) OrElse
+                        ((From s In keywords Where item.Name?.IndexOf(s, StringComparison.CurrentCultureIgnoreCase) >= 0).Count = keywords.Count)
 
                         If item.IsVisibleByFilter AndAlso item.Parent IsNot Nothing Then
                             updateParentIsVisible(item.Parent)
@@ -302,7 +304,22 @@ Public Class LayerTreeItem2
 
     Public Property Children As New ObservableCollection(Of LayerTreeItem2)
 
+    Private _Text As String
+
     Public Property Text As String
+        Get
+            Return _Text
+        End Get
+        Set
+            Me.SetProperty(_Text, Value)
+        End Set
+    End Property
+
+    Public Property SearchTargetText As String
+
+    Public Property Name As String
+
+    Public Property IsGroup As Boolean
 
     Private _IsExpanded As Boolean
 

@@ -196,7 +196,7 @@ Public Class EditorPlusRibbon
                     End If
 
                     For Each targetSlide As Slide In ThisAddIn.Current.Application.ActiveWindow.Selection.SlideRange
-                        items.Add(New LayerTreeItem2 With {.Text = targetSlide.Name & " (slide)"})
+                        items.Add(New LayerTreeItem2 With {.Text = targetSlide.Name & " (slide)", .Name = targetSlide.Name.ToLower()})
 
                         Dim counter As Integer = 0
                         Dim checkShapes As Action(Of LayerTreeItem2, IEnumerable(Of Shape)) =
@@ -210,10 +210,14 @@ Public Class EditorPlusRibbon
                                     End If
                                     Dim isGroup As Boolean = CType(item.Type = Microsoft.Office.Core.MsoShapeType.msoGroup, Boolean)
 
+                                    Dim searchTargetText = ""
                                     Dim text As String = ""
                                     Try
-                                        text = item?.TextFrame2?.TextRange?.Text?.Split(vbCr).FirstOrDefault()
-                                        text = " ''" & Strings.Left(text, 30) & "''"
+                                        searchTargetText = item?.TextFrame2?.TextRange?.Text
+                                        If Not String.IsNullOrWhiteSpace(searchTargetText) Then
+                                            text = searchTargetText?.Replace(vbVerticalTab, vbCr).Split(vbCr).FirstOrDefault()
+                                            text = " : " & Strings.Left(text, 30)
+                                        End If
                                     Catch
                                         text = ""
                                     End Try
@@ -222,7 +226,10 @@ Public Class EditorPlusRibbon
                                         .Shape = item,
                                         .Parent = parent,
                                         .ObjectIsVisible = item.Visible,
-                                        .Text = If(isGroup, "📁", " ") & item.Name & text
+                                        .Text = If(isGroup, "📁", " ") & item.Name & text,
+                                        .Name = item.Name,
+                                        .IsGroup = isGroup,
+                                        .SearchTargetText = searchTargetText
                                     }
 
                                     If selection IsNot Nothing Then
@@ -308,8 +315,25 @@ Public Class EditorPlusRibbon
                                         item.ObjectIsSelected = False
                                     End If
 
-                                    ' TODO: refresh name text
                                     item.ObjectIsVisible = s.Visible
+
+                                    ' refresh name and text (selected visible shape only)
+                                    If item.ObjectIsSelected AndAlso item.ObjectIsVisible Then
+                                        Dim searchTargetText = ""
+                                        Dim text As String = ""
+                                        Try
+                                            searchTargetText = s?.TextFrame2?.TextRange?.Text
+                                            If Not String.IsNullOrWhiteSpace(searchTargetText) Then
+                                                text = searchTargetText?.Replace(vbVerticalTab, vbCr).Split(vbCr).FirstOrDefault()
+                                                text = " : " & Strings.Left(text, 30)
+                                            End If
+                                        Catch
+                                            text = ""
+                                        End Try
+                                        item.Text = If(item.IsGroup, "📁", " ") & s.Name & text
+                                        item.Name = s.Name
+                                        item.SearchTargetText = searchTargetText
+                                    End If
                                 End If
 
                                 changeObjectIsSelected(item.Children)

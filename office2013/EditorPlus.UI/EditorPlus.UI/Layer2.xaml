@@ -32,7 +32,7 @@
             <Button Grid.Column="1" x:Name="clearButton" Click="clearButton_Click" Background="Transparent" BorderThickness="0" Margin="1 1 1 1" Foreground="{Binding ElementName=SearchKeywordBox, Path=Foreground}" Visibility="Collapsed">✖</Button>
             <Button Grid.Column="2" x:Name="refreshButton" Click="refreshButton_Click">🔎</Button>
         </Grid>
-        <TreeView x:Name="layers" Grid.Row="2">
+        <TreeView x:Name="layers" Grid.Row="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <TreeView.Resources>
                 <Style TargetType="TreeViewItem" BasedOn="{StaticResource {x:Type TreeViewItem}}">
                     <Setter Property="IsExpanded" Value="{Binding Path=IsExpanded, Mode=TwoWay}"></Setter>
@@ -41,7 +41,7 @@
             </TreeView.Resources>
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate DataType="local:LayerTreeItem2"  ItemsSource="{Binding Children}" >
-                    <Grid Tag="{Binding Own}" >
+                    <Grid Tag="{Binding Own}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="25" />
                             <ColumnDefinition Width="20" />
@@ -52,7 +52,7 @@
                         <CheckBox x:Name="ObjectIsVisibleCheckBox" Grid.Column="1"  Width="20"  IsChecked="{Binding ObjectIsVisible}" 
                                   Style="{DynamicResource ObjectVisibleCheckbox}" Click="ObjectIsVisibleCheckBox_Click">
                         </CheckBox>
-                        <TextBlock x:Name="MainText" Grid.Column="2" Text="{Binding Text}" Height="22" FontSize="12" Tag="{Binding Own}" Margin="5 5 0 0" />
+                        <TextBlock x:Name="MainText" Grid.Column="2" Text="{Binding Text}" Height="22" FontSize="12" Tag="{Binding Own}" Margin="5 5 0 0"  TextTrimming="CharacterEllipsis"/>
                     </Grid>
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
