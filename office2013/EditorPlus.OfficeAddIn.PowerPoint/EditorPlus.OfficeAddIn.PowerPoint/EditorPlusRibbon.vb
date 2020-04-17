@@ -183,6 +183,7 @@ Public Class EditorPlusRibbon
                 Sub()
                     c.SuppressEvents = True
                     c.ProgrressBarVisible = True
+                    c.UpdateProgressValue()
                     c.Items = Nothing
                     c.DoEvents()
 
@@ -197,7 +198,10 @@ Public Class EditorPlusRibbon
                                 For Each item As Shape In shapes
 
                                     counter += 1
-                                    If counter Mod 10 Then c.DoEvents()
+                                    If counter Mod 10 Then
+                                        'c.DoEvents()
+                                        c.UpdateProgressValue()
+                                    End If
                                     Dim isGroup As Boolean = CType(item.Type = Microsoft.Office.Core.MsoShapeType.msoGroup, Boolean)
 
                                     Dim text As String = ""

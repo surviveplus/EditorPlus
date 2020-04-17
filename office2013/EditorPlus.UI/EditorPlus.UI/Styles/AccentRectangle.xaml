@@ -1,0 +1,40 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:EditorPlus.UI">
+
+    <Style TargetType="Rectangle" x:Key="AccentRectangle">
+        <!-- #region Theme = Colorful -->
+        <Setter Property="Fill" Value="{DynamicResource Accent-White-IsCheckedMoserOver-Background}"></Setter>
+        <!-- #endregion -->
+
+        <Style.Triggers>
+            <!-- #region Theme = DarkGray -->
+            <DataTrigger Binding="{Binding Theme}"  >
+                <DataTrigger.Value>
+                    <local:Theme>DarkGray</local:Theme>
+                </DataTrigger.Value>
+                <Setter Property="Fill" Value="{DynamicResource Accent-Black-IsCheckedMoserOver-Background}"></Setter>
+            </DataTrigger>
+            <!-- #endregion -->
+
+            <!-- #region Theme = Black -->
+            <DataTrigger Binding="{Binding Theme}"  >
+                <DataTrigger.Value>
+                    <local:Theme>Black</local:Theme>
+                </DataTrigger.Value>
+                <Setter Property="Fill" Value="{DynamicResource Accent-Black-IsCheckedMoserOver-Background}"></Setter>
+            </DataTrigger>
+            <!-- #endregion -->
+
+            <!-- #region Theme = White -->
+            <DataTrigger Binding="{Binding Theme}"  >
+                <DataTrigger.Value>
+                    <local:Theme>White</local:Theme>
+                </DataTrigger.Value>
+                <Setter Property="Fill" Value="{DynamicResource Accent-White-IsCheckedMoserOver-Background}"></Setter>
+            </DataTrigger>
+            <!-- #endregion -->
+
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

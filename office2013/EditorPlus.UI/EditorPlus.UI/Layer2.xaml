@@ -1,14 +1,15 @@
-﻿<UserControl x:Class="Layer2"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:EditorPlus.UI"
-             mc:Ignorable="d" 
-             d:DesignHeight="150" d:DesignWidth="300"
-            Style="{DynamicResource ResourceKey=UserControlStyle}"
-             Loaded="UserControl_Loaded">
-    <UserControl.Resources>
+﻿<UserControl 
+    x:Class="Layer2"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:EditorPlus.UI"
+    mc:Ignorable="d" 
+    d:DesignHeight="150" d:DesignWidth="300"
+    Style="{DynamicResource ResourceKey=UserControlStyle}"
+    Loaded="UserControl_Loaded">
+<UserControl.Resources>
         <ResourceDictionary Source="Styles\Styles.xaml" />
     </UserControl.Resources>
     <Grid>
@@ -56,6 +57,9 @@
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>
-        <ProgressBar x:Name="progrressBar"  Grid.Row="2" Height="2" VerticalAlignment="Top" Visibility="Collapsed" IsIndeterminate="True"></ProgressBar>
+        <StackPanel x:Name="progrressBar"  Grid.Row="2" Height="2" VerticalAlignment="Top" Visibility="Collapsed"  Background="Gray" Orientation="Horizontal">
+            <Rectangle x:Name="progressValue" Width="100"></Rectangle>
+            <Rectangle Width="100" Style="{DynamicResource AccentRectangle}"></Rectangle>
+        </StackPanel>
     </Grid>
 </UserControl>

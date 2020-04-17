@@ -39,6 +39,23 @@ Public Class Layer2
 
 #End Region
 
+    Private progressCounter As Integer = 0
+
+    Public Sub UpdateProgressValue()
+
+        ' Alternative Progress Bar
+        ' ProgressBar cannot work in Office Addin, so this code emulate progress-bar by using Rectangle.
+        ' The value is not automatically changed. Call this method to change the value.
+
+        Me.progressCounter += 1
+        If Me.progressCounter > 10 Then progressCounter = 0
+
+        Dim max = Me.progrressBar.ActualWidth
+        If max < 100 Then max = 150
+        Dim value = (max - 100) / 10 * Me.progressCounter
+        Me.progressValue.Width = value
+    End Sub
+
     Public Sub DoEvents()
         Dim frame As New DispatcherFrame()
         Dispatcher.CurrentDispatcher.BeginInvoke(

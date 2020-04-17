@@ -15,6 +15,8 @@ Public Class LayerWindow
     Private Sub Window_Loaded(sender As Object, e As RoutedEventArgs)
 
         Me.layer.SuppressEvents = True
+        Me.layer.UpdateProgressValue()
+        Me.layer.ProgrressBarVisible = True
         Dim items As New ObservableCollection(Of LayerTreeItem2)
         Me.layer.Items = items
         Me.TestItems = items
@@ -36,6 +38,7 @@ Public Class LayerWindow
         item21.IsExpanded = True
         item21.Children.Add(item211)
 
+        Me.layer.ProgrressBarVisible = False
         Me.layer.SuppressEvents = False
 
         Me.testNumber = 2
@@ -69,6 +72,8 @@ Public Class LayerWindow
     Private Sub TestSelectionChange_Click(sender As Object, e As RoutedEventArgs)
 
         Me.layer.SuppressEvents = True
+        Me.layer.UpdateProgressValue()
+        Me.layer.ProgrressBarVisible = True
 
         Dim newSelectedItem = (From a In Me.TestItems.Skip(1) Where Not a.ObjectIsSelected).FirstOrDefault()
         newSelectedItem.ObjectIsSelected = True
@@ -84,6 +89,7 @@ Public Class LayerWindow
             End Sub
         changeObjectIsSelected(Me.TestItems)
 
+        Me.layer.ProgrressBarVisible = False
         Me.layer.SuppressEvents = False
 
     End Sub
@@ -92,6 +98,8 @@ Public Class LayerWindow
         Me.testNumber += 1
 
         Me.layer.SuppressEvents = True
+        Me.layer.UpdateProgressValue()
+        Me.layer.ProgrressBarVisible = True
 
         Dim newItem As New LayerTreeItem2 With {.Text = $"Item {Me.testNumber}"}
         newItem.ObjectIsSelected = True
@@ -108,6 +116,7 @@ Public Class LayerWindow
             End Sub
         changeObjectIsSelected(Me.TestItems)
 
+        Me.layer.ProgrressBarVisible = False
         Me.layer.SuppressEvents = False
 
     End Sub

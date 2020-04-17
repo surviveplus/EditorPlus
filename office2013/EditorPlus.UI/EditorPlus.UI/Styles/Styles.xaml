@@ -15,6 +15,7 @@
         <ResourceDictionary Source="WindowStyles.xaml" />
 
         <ResourceDictionary Source="ObjectVisibileCheckBoxStyles.xaml" />
+        <ResourceDictionary Source="AccentRectangle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>
