@@ -189,6 +189,12 @@ Public Class EditorPlusRibbon
 
                     Dim items As New ObservableCollection(Of LayerTreeItem2)
 
+                    Dim selection As Selection = Nothing
+                    If (ThisAddIn.Current.Application.ActiveWindow.Selection.Type = PpSelectionType.ppSelectionShapes OrElse
+                         ThisAddIn.Current.Application.ActiveWindow.Selection.Type = PpSelectionType.ppSelectionText) Then
+                        selection = ThisAddIn.Current.Application.ActiveWindow.Selection
+                    End If
+
                     For Each targetSlide As Slide In ThisAddIn.Current.Application.ActiveWindow.Selection.SlideRange
                         items.Add(New LayerTreeItem2 With {.Text = targetSlide.Name & " (slide)"})
 
@@ -219,11 +225,24 @@ Public Class EditorPlusRibbon
                                         .Text = If(isGroup, "📁", " ") & item.Name & text
                                     }
 
-                                    If (ThisAddIn.Current.Application.ActiveWindow.Selection.Type = PpSelectionType.ppSelectionShapes OrElse
-                                        ThisAddIn.Current.Application.ActiveWindow.Selection.Type = PpSelectionType.ppSelectionText) AndAlso
-                                        (From a In ThisAddIn.Current.Application.ActiveWindow.Selection.ShapeRange Where item Is a).Any() Then
+                                    If selection IsNot Nothing Then
+                                        If selection.HasChildShapeRange Then
+                                            If (From a In selection.ChildShapeRange.ToEnumerable(Of Shape) Where item Is a).Any() Then
 
-                                        newItem.ObjectIsSelected = True
+                                                newItem.ObjectIsSelected = True
+                                            Else
+                                                newItem.ObjectIsSelected = False
+                                            End If
+                                        Else
+                                            If (From a In selection.ShapeRange.ToEnumerable(Of Shape) Where item Is a).Any() Then
+
+                                                newItem.ObjectIsSelected = True
+                                            Else
+                                                newItem.ObjectIsSelected = False
+                                            End If
+                                        End If
+                                    Else
+                                        newItem.ObjectIsSelected = False
                                     End If
 
                                     If parent Is Nothing Then
@@ -251,21 +270,40 @@ Public Class EditorPlusRibbon
                     c.SuppressEvents = False
                 End Sub
 
-            Dim refreshObjectsAreSelected As Func(Of Boolean) =
-                Function()
+            Dim refreshObjectsAreSelected As Func(Of Selection, Boolean) =
+                Function(selection)
                     Dim result As Boolean = False
                     c.SuppressEvents = True
+
+                    If selection Is Nothing AndAlso
+                    (ThisAddIn.Current.Application.ActiveWindow.Selection.Type = PpSelectionType.ppSelectionShapes OrElse
+                     ThisAddIn.Current.Application.ActiveWindow.Selection.Type = PpSelectionType.ppSelectionText) Then
+                        selection = ThisAddIn.Current.Application.ActiveWindow.Selection
+                    End If
+
                     Dim changeObjectIsSelected As Action(Of IEnumerable(Of LayerTreeItem2)) =
                         Sub(items)
                             For Each item As LayerTreeItem2 In items
                                 Dim s As Shape = item.Shape
                                 If s IsNot Nothing Then
-                                    If (ThisAddIn.Current.Application.ActiveWindow.Selection.Type = PpSelectionType.ppSelectionShapes OrElse
-                                        ThisAddIn.Current.Application.ActiveWindow.Selection.Type = PpSelectionType.ppSelectionText) AndAlso
-                                        (From a In ThisAddIn.Current.Application.ActiveWindow.Selection.ShapeRange Where s Is a).Any() Then
+                                    If selection IsNot Nothing Then
+                                        If selection.HasChildShapeRange Then
+                                            If (From a In selection.ChildShapeRange.ToEnumerable(Of Shape) Where s Is a).Any() Then
 
-                                        item.ObjectIsSelected = True
-                                        result = True
+                                                result = True
+                                                item.ObjectIsSelected = True
+                                            Else
+                                                item.ObjectIsSelected = False
+                                            End If
+                                        Else
+                                            If (From a In selection.ShapeRange.ToEnumerable(Of Shape) Where s Is a).Any() Then
+
+                                                result = True
+                                                item.ObjectIsSelected = True
+                                            Else
+                                                item.ObjectIsSelected = False
+                                            End If
+                                        End If
                                     Else
                                         item.ObjectIsSelected = False
                                     End If
@@ -285,15 +323,22 @@ Public Class EditorPlusRibbon
 
             Dim windowSelectionChange As EApplication_WindowSelectionChangeEventHandler =
                 Sub(Sel As Selection)
+
+                    Debug.WriteLine($"windowSelectionChange {DateTime.Now.ToString()}")
+                    Debug.WriteLine($"HasChildShapeRange= {Sel.HasChildShapeRange}")
+                    If Sel.HasChildShapeRange Then
+                        Debug.WriteLine($"ChildShapeRange.Count= {Sel.ChildShapeRange.Count}")
+                    End If
+
                     If Sel.Type = PpSelectionType.ppSelectionShapes Then
-                        If Not refreshObjectsAreSelected() Then
+                        If Not refreshObjectsAreSelected(Sel) Then
                             recreateAllItems()
                         End If
 
                     ElseIf Sel.Type = PpSelectionType.ppSelectionSlides Then
                         recreateAllItems()
                     Else
-                        refreshObjectsAreSelected()
+                        refreshObjectsAreSelected(Nothing)
                     End If
 
                 End Sub
