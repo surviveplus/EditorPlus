@@ -283,19 +283,19 @@ Public Class EditorPlusRibbon
                     Return result
                 End Function
 
-            Dim slideSelectionChanged As EApplication_SlideSelectionChangedEventHandler =
-                Sub(SldRange As SlideRange)
-                    recreateAllItems()
-                End Sub
-            AddHandler ThisAddIn.Current.Application.SlideSelectionChanged, slideSelectionChanged
-
             Dim windowSelectionChange As EApplication_WindowSelectionChangeEventHandler =
                 Sub(Sel As Selection)
-                    If Not refreshObjectsAreSelected() AndAlso
-                        Sel.Type = PpSelectionType.ppSelectionShapes Then
+                    If Sel.Type = PpSelectionType.ppSelectionShapes Then
+                        If Not refreshObjectsAreSelected() Then
+                            recreateAllItems()
+                        End If
 
+                    ElseIf Sel.Type = PpSelectionType.ppSelectionSlides Then
                         recreateAllItems()
+                    Else
+                        refreshObjectsAreSelected()
                     End If
+
                 End Sub
             AddHandler ThisAddIn.Current.Application.WindowSelectionChange, windowSelectionChange
 
@@ -345,7 +345,6 @@ Public Class EditorPlusRibbon
             AddHandler p.Pane.VisibleChanged,
             Sub()
                 If Not p.Pane.Visible Then
-                    RemoveHandler ThisAddIn.Current.Application.SlideSelectionChanged, slideSelectionChanged
                     RemoveHandler ThisAddIn.Current.Application.WindowSelectionChange, windowSelectionChange
 
                     Me.layerPanes.Remove(ThisAddIn.Current.Application.ActiveWindow)
