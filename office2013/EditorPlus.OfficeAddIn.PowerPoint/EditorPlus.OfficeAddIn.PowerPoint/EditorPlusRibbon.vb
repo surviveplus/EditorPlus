@@ -12,6 +12,11 @@ Imports Net.Surviveplus.SakuraMacaron.OfficeAddIn.UI
 
 Public Class EditorPlusRibbon
 
+    Private Class MustRecreateItemsException
+        Inherits Exception
+
+    End Class
+
     Private Sub EditorPlusRibbon_Load(ByVal sender As System.Object, ByVal e As RibbonUIEventArgs) Handles MyBase.Load
     End Sub
 
@@ -179,13 +184,13 @@ Public Class EditorPlusRibbon
             Dim c = New Layer2 With {.DataContext = OfficeThemeModel.Current}
             c.Resources.Apply(OfficeAccentColor.Current)
 
-            Dim recreateAllItems As Action =
-                Sub()
+            Dim recreateAllItems As Action(Of Boolean) =
+                Sub(canDoEvents)
                     c.SuppressEvents = True
                     c.ProgrressBarVisible = True
                     c.UpdateProgressValue()
                     c.Items = Nothing
-                    c.DoEvents()
+                    If canDoEvents Then c.DoEvents()
 
                     Dim items As New ObservableCollection(Of LayerTreeItem2)
 
@@ -196,16 +201,15 @@ Public Class EditorPlusRibbon
                     End If
 
                     For Each targetSlide As Slide In ThisAddIn.Current.Application.ActiveWindow.Selection.SlideRange
-                        items.Add(New LayerTreeItem2 With {.Text = targetSlide.Name & " (slide)", .Name = targetSlide.Name.ToLower()})
+                        items.Add(New LayerTreeItem2 With {.Text = targetSlide.Name & " (slide)", .Name = targetSlide.Name})
 
                         Dim counter As Integer = 0
                         Dim checkShapes As Action(Of LayerTreeItem2, IEnumerable(Of Shape)) =
                             Sub(parent, shapes)
-                                For Each item As Shape In shapes
+                                For Each item As Shape In (From a In shapes Order By a.ZOrderPosition Descending)
 
                                     counter += 1
                                     If counter Mod 10 Then
-                                        'c.DoEvents()
                                         c.UpdateProgressValue()
                                     End If
                                     Dim isGroup As Boolean = CType(item.Type = Microsoft.Office.Core.MsoShapeType.msoGroup, Boolean)
@@ -229,6 +233,7 @@ Public Class EditorPlusRibbon
                                         .Text = If(isGroup, "📁", " ") & item.Name & text,
                                         .Name = item.Name,
                                         .IsGroup = isGroup,
+                                        .ZOrderPosition = item.ZOrderPosition,
                                         .SearchTargetText = searchTargetText
                                     }
 
@@ -293,6 +298,11 @@ Public Class EditorPlusRibbon
                             For Each item As LayerTreeItem2 In items
                                 Dim s As Shape = item.Shape
                                 If s IsNot Nothing Then
+
+                                    If s.ZOrderPosition <> item.ZOrderPosition Then
+                                        Throw New MustRecreateItemsException()
+                                    End If
+
                                     If selection IsNot Nothing Then
                                         If selection.HasChildShapeRange Then
                                             If (From a In selection.ChildShapeRange.ToEnumerable(Of Shape) Where s Is a).Any() Then
@@ -354,16 +364,21 @@ Public Class EditorPlusRibbon
                         Debug.WriteLine($"ChildShapeRange.Count= {Sel.ChildShapeRange.Count}")
                     End If
 
-                    If Sel.Type = PpSelectionType.ppSelectionShapes Then
-                        If Not refreshObjectsAreSelected(Sel) Then
-                            recreateAllItems()
+                    Try
+                        If Sel.Type = PpSelectionType.ppSelectionShapes Then
+                            If Not refreshObjectsAreSelected(Sel) Then
+                                recreateAllItems(False)
+                            End If
+
+                        ElseIf Sel.Type = PpSelectionType.ppSelectionSlides Then
+                            recreateAllItems(True)
+                        Else
+                            refreshObjectsAreSelected(Nothing)
                         End If
 
-                    ElseIf Sel.Type = PpSelectionType.ppSelectionSlides Then
-                        recreateAllItems()
-                    Else
-                        refreshObjectsAreSelected(Nothing)
-                    End If
+                    Catch ex As MustRecreateItemsException
+                        recreateAllItems(False)
+                    End Try
 
                 End Sub
             AddHandler ThisAddIn.Current.Application.WindowSelectionChange, windowSelectionChange
@@ -407,6 +422,71 @@ Public Class EditorPlusRibbon
                     c.SuppressEvents = False
                 End Sub
 
+            AddHandler c.BringForwardButtonClick,
+                Sub(sender2, e2)
+                    c.SuppressEvents = True
+                    For Each item In (From a In e2.Items Order By a.ZOrderPosition Descending)
+                        Dim s As Shape = item.Shape
+                        If s IsNot Nothing Then
+                            s.ZOrder(Microsoft.Office.Core.MsoZOrderCmd.msoBringForward)
+                        End If
+                    Next
+                    recreateAllItems(False)
+                    c.SuppressEvents = False
+                End Sub
+
+            AddHandler c.BringToFrontButtonClick,
+                Sub(sender2, e2)
+                    c.SuppressEvents = True
+                    For Each item In (From a In e2.Items Order By a.ZOrderPosition)
+                        Dim s As Shape = item.Shape
+                        If s IsNot Nothing Then
+                            s.ZOrder(Microsoft.Office.Core.MsoZOrderCmd.msoBringToFront)
+                        End If
+                    Next
+                    recreateAllItems(False)
+                    c.SuppressEvents = False
+                End Sub
+
+            AddHandler c.BringForwardButtonClick,
+                Sub(sender2, e2)
+                    c.SuppressEvents = True
+                    For Each item In (From a In e2.Items Order By a.ZOrderPosition)
+                        Dim s As Shape = item.Shape
+                        If s IsNot Nothing Then
+                            s.ZOrder(Microsoft.Office.Core.MsoZOrderCmd.msoBringForward)
+                        End If
+                    Next
+                    recreateAllItems(False)
+                    c.SuppressEvents = False
+                End Sub
+
+            AddHandler c.SendBackwardButtonClick,
+                Sub(sender2, e2)
+                    c.SuppressEvents = True
+                    For Each item In (From a In e2.Items Order By a.ZOrderPosition)
+                        Dim s As Shape = item.Shape
+                        If s IsNot Nothing Then
+                            s.ZOrder(Microsoft.Office.Core.MsoZOrderCmd.msoSendBackward)
+                        End If
+                    Next
+                    recreateAllItems(False)
+                    c.SuppressEvents = False
+                End Sub
+
+            AddHandler c.SendToBackButtonClick,
+                Sub(sender2, e2)
+                    c.SuppressEvents = True
+                    For Each item In (From a In e2.Items Order By a.ZOrderPosition Descending)
+                        Dim s As Shape = item.Shape
+                        If s IsNot Nothing Then
+                            s.ZOrder(Microsoft.Office.Core.MsoZOrderCmd.msoSendToBack)
+                        End If
+                    Next
+                    recreateAllItems(False)
+                    c.SuppressEvents = False
+                End Sub
+
             Dim p As New ElementControlPane(Of Layer2)(c)
             Me.layerPanes.Add(ThisAddIn.Current.Application.ActiveWindow, p)
             p.Pane = ThisAddIn.Current.CustomTaskPanes.Add(p.Control, "Show Objects", ThisAddIn.Current.Application.ActiveWindow)
@@ -423,7 +503,7 @@ Public Class EditorPlusRibbon
             End Sub
 
             Me.layerPanes(ThisAddIn.Current.Application.ActiveWindow).Show()
-            recreateAllItems()
+            recreateAllItems(True)
         End If
 
         Me.layerPanes(ThisAddIn.Current.Application.ActiveWindow).Show()

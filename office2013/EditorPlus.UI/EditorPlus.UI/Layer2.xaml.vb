@@ -228,27 +228,66 @@ Public Class Layer2
     Private Sub ObjectIsVisibleCheckBox_Click(sender As Object, e As RoutedEventArgs)
         RaiseObjectVisibleChanged(sender)
     End Sub
+
+    Private Sub BringToFrontButton_Click(sender As Object, e As RoutedEventArgs)
+
+        If Not Me.SuppressEvents Then
+            Dim selectedItem As List(Of LayerTreeItem2) = PickupSelectedItem()
+            RaiseEvent BringToFrontButtonClick(Me, New LayerItemsEventArgs With {.Items = selectedItem})
+        End If
+
+    End Sub
+
+    Private Sub BringForwardButton_Click(sender As Object, e As RoutedEventArgs)
+
+        If Not Me.SuppressEvents Then
+            Dim selectedItem As List(Of LayerTreeItem2) = PickupSelectedItem()
+            RaiseEvent BringForwardButtonClick(Me, New LayerItemsEventArgs With {.Items = selectedItem})
+        End If
+
+    End Sub
+
+    Private Sub SendBackwardButton_Click(sender As Object, e As RoutedEventArgs)
+
+        If Not Me.SuppressEvents Then
+            Dim selectedItem As List(Of LayerTreeItem2) = PickupSelectedItem()
+            RaiseEvent SendBackwardButtonClick(Me, New LayerItemsEventArgs With {.Items = selectedItem})
+        End If
+
+    End Sub
+
+    Private Sub SendToBackButton_Click(sender As Object, e As RoutedEventArgs)
+
+        If Not Me.SuppressEvents Then
+            Dim selectedItem As List(Of LayerTreeItem2) = PickupSelectedItem()
+            RaiseEvent SendToBackButtonClick(Me, New LayerItemsEventArgs With {.Items = selectedItem})
+        End If
+
+    End Sub
 #End Region
 
     Private Sub RaiseSelectedObjectsChanged()
         If Not Me.SuppressEvents Then
-
-            Dim selectedItem As New List(Of LayerTreeItem2)
-            Dim pickupObjectIsSelected As Action(Of IEnumerable(Of LayerTreeItem2)) =
-            Sub(items)
-                For Each c As LayerTreeItem2 In items
-                    If c.ObjectIsSelected Then
-                        selectedItem.Add(c)
-                    End If
-                    pickupObjectIsSelected(c.Children)
-                Next
-            End Sub
-            pickupObjectIsSelected(Me.Items)
-
+            Dim selectedItem As List(Of LayerTreeItem2) = PickupSelectedItem()
             RaiseEvent SelectedObjectsChanged(Me, New LayerItemsEventArgs With {.Items = selectedItem})
         End If
 
     End Sub
+
+    Private Function PickupSelectedItem() As List(Of LayerTreeItem2)
+        Dim selectedItem As New List(Of LayerTreeItem2)
+        Dim pickupObjectIsSelected As Action(Of IEnumerable(Of LayerTreeItem2)) =
+        Sub(items)
+            For Each c As LayerTreeItem2 In items
+                If c.ObjectIsSelected Then
+                    selectedItem.Add(c)
+                End If
+                pickupObjectIsSelected(c.Children)
+            Next
+        End Sub
+        pickupObjectIsSelected(Me.Items)
+        Return selectedItem
+    End Function
 
     Public Event SelectedObjectsChanged As EventHandler(Of LayerItemsEventArgs)
 
@@ -263,6 +302,10 @@ Public Class Layer2
 
     Public Event ObjectVisibleChanged As EventHandler(Of LayerItemEventArgs)
 
+    Public Event BringForwardButtonClick As EventHandler(Of LayerItemsEventArgs)
+    Public Event BringToFrontButtonClick As EventHandler(Of LayerItemsEventArgs)
+    Public Event SendBackwardButtonClick As EventHandler(Of LayerItemsEventArgs)
+    Public Event SendToBackButtonClick As EventHandler(Of LayerItemsEventArgs)
 
 End Class
 
@@ -320,6 +363,8 @@ Public Class LayerTreeItem2
     Public Property Name As String
 
     Public Property IsGroup As Boolean
+
+    Public Property ZOrderPosition As Integer
 
     Private _IsExpanded As Boolean
 
