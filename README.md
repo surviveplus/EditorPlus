@@ -8,7 +8,7 @@ Some of text editor extensions, Format Text, Insert Serial Numbers and others fo
 
 ## Features (For Office Outlook, Word, Excel, PowerPoint, Project)
 
-![Show Objects (PowerPoint)](HowToUse/images-Office-en/image1-powerpoint-ShowObjects.png)
+![Show Objects (PowerPoint)](HowToUse/images-Office-en/image1-powerpoint-ShowObjectsAndNavigation.png)
 
 ### [ Items ] Ribbon Commands
 - Bulk Add Tasks (Outlook)
