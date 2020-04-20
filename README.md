@@ -2,11 +2,14 @@
 ![EditorPlus](ResourceSources/EditorPlus-95.png)
 Some of text editor extensions, Format Text, Insert Serial Numbers and others for Microsoft Office and Visual Studio.
 
-- [Download For Office 2016, 2013](https://github.com/surviveplus/EditorPlus/releases)
+- [Download For Office (Windows Desktop 365, 2019, 2016, 2013)](https://github.com/surviveplus/EditorPlus/releases)
 - [Download For Visual Studio 2017, 2019](https://marketplace.visualstudio.com/items?itemName=SHIN-ICHIKOGA.EditorPlusforVisualStudio2017)
 - [Download For Visual Studio 2015](https://marketplace.visualstudio.com/items?itemName=SHIN-ICHIKOGA.EditorPlus)
 
 ## Features (For Office Outlook, Word, Excel, PowerPoint, Project)
+
+![Show Objects (PowerPoint)](HowToUse/images-Office-en/image1-powerpoint-ShowObjects.png)
+
 ### [ Items ] Ribbon Commands
 - Bulk Add Tasks (Outlook)
 ### [ Edit Selection ] Ribbon Commands
@@ -17,8 +20,9 @@ Some of text editor extensions, Format Text, Insert Serial Numbers and others fo
 - ![Insert Serial Number](HowToUse/icons/InsertNumbers.png) Insert Serial Number (Outlook, Word, Excel, PowerPoint, Project)
 - ![Insert Now](HowToUse/icons/InsertNow.png) Insert Now (Excel)
 - ![Trim End](HowToUse/icons/TrimEnd.png) Trim End (Excel)
-### [ Items ] Ribbon Commands
+### [ Objects ] Ribbon Commands
 - Show Objects (PowerPoint)
+- Navigation (PowerPoint)
 ### [ Name ] Ribbon Commands
 - Replace Worksheet Names (Excel)
 - Replace Object Names (PowerPoint)
@@ -29,6 +33,9 @@ Some of text editor extensions, Format Text, Insert Serial Numbers and others fo
 - ![Always on Top](HowToUse/icons/AlwaysOnTop.png) Always on Top (Outlook, Word, Excel, PowerPoint, Project)
 
 ## Features (For Visual Studio)
+
+![Insert Serial Number and Insert Text](HowToUse/images-VS-en/image8-vseditorplus.png)
+
 ### [ FILE ] Menu Commands
 - ![Create New Working Text File](HowToUse/icons/CreateNewWorkingTextFile.png) Create New Working Text File 
 - ![Open Folder for the Active File](HowToUse/icons/OpenFolderfortheActiveFile.png) Open Folder for the Active File 
@@ -45,9 +52,10 @@ Some of text editor extensions, Format Text, Insert Serial Numbers and others fo
 - ![Insert Serial Number](HowToUse/icons/InsertNumbers.png) Insert Serial Number 
 
 ## Installation & How to use
-See [HowToUse-VS-en.md](HowToUse/HowToUse-VS-en.md)
 
-## Screen Captures
-![Show Objects (PowerPoint)](HowToUse/images-Office-en/image1-powerpoint-ShowObjects.png)
-![Insert Serial Number and Insert Text](HowToUse/images-VS-en/image7-4-mix.png)
-![Format Text](HowToUse/images-VS-en/image5-2-InsertFormat.png)
+## Office add-in
+- Download from [Releases](https://github.com/surviveplus/EditorPlus/releases) page.
+
+## Visual Studio add-in
+ - Download from Marketplace (Microsoft web page).
+ - See [HowToUse-VS-en.md](HowToUse/HowToUse-VS-en.md)
