@@ -12,8 +12,8 @@ Imports System.Security
 <Assembly: AssemblyTitle("EditorPlus.OfficeAddIn.Outlook")> 
 <Assembly: AssemblyDescription("")> 
 <Assembly: AssemblyCompany("")> 
-<Assembly: AssemblyProduct("EditorPlus.OfficeAddIn.Outlook")> 
-<Assembly: AssemblyCopyright("Copyright ©  2018")> 
+<Assembly: AssemblyProduct("EditorPlus.OfficeAddIn.Outlook")>
+<Assembly: AssemblyCopyright("Copyright ©  2018~2020")>
 <Assembly: AssemblyTrademark("")> 
 
 ' ComVisible を false に設定すると、その型はこのアセンブリ内で COM コンポーネントから 
@@ -35,7 +35,7 @@ Imports System.Security
 ' 既定値にすることもできます。
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.7.3")>
+<Assembly: AssemblyVersion("1.0.9.4")>
 '<Assembly: AssemblyFileVersion("1.0.0.0")> 
 
 Friend Module DesignTimeConstants
