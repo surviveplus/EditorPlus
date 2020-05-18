@@ -5,6 +5,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Styles/ButtonStyles.xaml" />
         <ResourceDictionary Source="Styles/CheckBoxStyles.xaml" />
+        <ResourceDictionary Source="Styles/RadioButtonStyles.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="Label">
@@ -12,9 +13,6 @@
     </Style>
     <Style TargetType="TextBox">
         <Setter Property="Background" Value="{DynamicResource VsBrush.Window}" />
-        <Setter Property="Foreground" Value="{DynamicResource VsBrush.WindowText}" />
-    </Style>
-    <Style TargetType="RadioButton">
         <Setter Property="Foreground" Value="{DynamicResource VsBrush.WindowText}" />
     </Style>
 
