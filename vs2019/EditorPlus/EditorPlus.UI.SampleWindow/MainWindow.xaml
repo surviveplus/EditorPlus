@@ -1,0 +1,22 @@
+﻿<Window x:Class="EditorPlus.UI.SampleWindow.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EditorPlus.UI.SampleWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="600" Closed="Window_Closed">
+    <StackPanel>
+        <StackPanel Height="40" Margin="0,0,0,10" Orientation="Horizontal"  >
+            <Button x:Name="CurrentUICultureButton" Width="250" Click="CurrentUICultureButton_Click" Margin="0,0,10,0">CurrentUICulture : ja-JP</Button>
+            <Button x:Name="ExecutableButton" Click="ExecutableButton_Click" Content="Executable" Width="100" Margin="0,0,10,0"/>
+            <RadioButton x:Name="BuleRadio" Margin="0,0,10,0" Checked="BuleRadio_Checked">Blue</RadioButton>
+            <RadioButton x:Name="LightRadio" Margin="0,0,10,0" Checked="LightRadio_Checked">Light</RadioButton>
+            <RadioButton x:Name="DarkRadio" Margin="0,0,10,0" Checked="DarkRadio_Checked" IsChecked="True">Dark</RadioButton>
+        </StackPanel>
+        <Button x:Name="AboutButton" Height="40" Margin="0,0,0,5" Click="AboutButton_Click">About ...</Button>
+        <Button x:Name="TextFormatButton" Height="40"  Margin="0,0,0,5" Click="TextFormatButton_Click" >Text Format ...</Button>
+        <Button x:Name="InsertTextButton" Height="40"  Margin="0,0,0,5" Click="InsertTextButton_Click"  >Insert Text ...</Button>
+        <Button x:Name="InsertSerialNumberButton" Height="40"  Margin="0,0,0,5" Click="InsertSerialNumberButton_Click" >Insert Serial Number ...</Button>
+    </StackPanel>
+</Window>

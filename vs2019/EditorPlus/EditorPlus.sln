@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.13
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditorPlus", "EditorPlus\EditorPlus.csproj", "{8061C524-5EE1-49E0-B1CE-A8180D1871BE}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditorPlus.UI", "EditorPlus.UI\EditorPlus.UI.csproj", "{1D3F2B9C-8DCA-4F37-B161-60A109E59204}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Surviveplus.TextMacro", "Surviveplus.TextMacro\Surviveplus.TextMacro.csproj", "{D52AC8B6-DDA8-4AC2-AF9A-966F1C8C396A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditorPlus.UI.SampleWindow", "EditorPlus.UI.SampleWindow\EditorPlus.UI.SampleWindow.csproj", "{C490D1D1-62E5-4765-AF87-7083E6E737C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{D52AC8B6-DDA8-4AC2-AF9A-966F1C8C396A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D52AC8B6-DDA8-4AC2-AF9A-966F1C8C396A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D52AC8B6-DDA8-4AC2-AF9A-966F1C8C396A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C490D1D1-62E5-4765-AF87-7083E6E737C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C490D1D1-62E5-4765-AF87-7083E6E737C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C490D1D1-62E5-4765-AF87-7083E6E737C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C490D1D1-62E5-4765-AF87-7083E6E737C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
