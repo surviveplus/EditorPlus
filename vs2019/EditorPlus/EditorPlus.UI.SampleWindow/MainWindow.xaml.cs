@@ -74,7 +74,7 @@ namespace EditorPlus.UI.SampleWindow
             c.Executed += (s2, e2) =>
             {
                 var c2 = s2 as TextFormat;
-                MessageBox.Show(c2.Text);
+                //MessageBox.Show(c2.Text);
             };
 
             // メインウィンドウの Executable ボタンと連動して、ボタンの有効・無効を切り替えます。
@@ -101,14 +101,14 @@ namespace EditorPlus.UI.SampleWindow
             c.InsertToHeadExecuted += (s2, e2) =>
             {
                 var c2 = s2 as InsertText;
-                MessageBox.Show("行頭挿入 / スキップ:" + c2.Skip.ToString() + "\r\n" + "\r\n" + c2.Text);
+                //MessageBox.Show("行頭挿入 / スキップ:" + c2.Skip.ToString() + "\r\n" + "\r\n" + c2.Text);
             };
 
             // ボタンが押されたら、Text プロパティを表示してみます。
             c.InsertToEndExecuted += (s2, e2) =>
             {
                 var c2 = s2 as InsertText;
-                MessageBox.Show("行末挿入  / スキップ:" + c2.Skip.ToString() + "\r\n" + "\r\n" + c2.Text);
+                //MessageBox.Show("行末挿入  / スキップ:" + c2.Skip.ToString() + "\r\n" + "\r\n" + c2.Text);
             };
 
             // メインウィンドウの Executable ボタンと連動して、ボタンの有効・無効を切り替えます。
@@ -147,32 +147,27 @@ namespace EditorPlus.UI.SampleWindow
             w.Show();
         }
 
+
         private void UpdateResoures(ToolWindow w)
         {
+            var key = ThemeColors.Theme.Blue;
             if (this.BuleRadio.IsChecked.Value)
             {
-                w.Resources[VsBrushes.WindowKey] = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
-                w.Resources[VsBrushes.WindowTextKey] = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
-                w.Resources[VsBrushes.ButtonFaceKey] = new SolidColorBrush(Color.FromArgb(255, 240, 240, 240));
-                w.Resources[VsBrushes.ButtonTextKey] = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
-                w.Resources[VsBrushes.ButtonShadowKey] = new SolidColorBrush(Color.FromArgb(255, 160, 160, 160));
+                key = ThemeColors.Theme.Blue;
             }
             else if (this.LightRadio.IsChecked.Value)
             {
-                w.Resources[VsBrushes.WindowKey] = new SolidColorBrush(Color.FromArgb(255, 245, 245, 245));
-                w.Resources[VsBrushes.WindowTextKey] = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
-                w.Resources[VsBrushes.ButtonFaceKey] = new SolidColorBrush(Color.FromArgb(255, 204, 206, 219));
-                w.Resources[VsBrushes.ButtonTextKey] = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
-                w.Resources[VsBrushes.ButtonShadowKey] = new SolidColorBrush(Color.FromArgb(255, 204, 206, 219));
+                key = ThemeColors.Theme.Light;
             }
             else if (this.DarkRadio.IsChecked.Value)
             {
-                w.Resources[VsBrushes.WindowKey] = new SolidColorBrush(Color.FromArgb(255, 37, 37, 38));
-                w.Resources[VsBrushes.WindowTextKey] = new SolidColorBrush(Color.FromArgb(255, 241, 241, 241));
-                w.Resources[VsBrushes.ButtonFaceKey] = new SolidColorBrush(Color.FromArgb(255, 63, 63, 70));
-                w.Resources[VsBrushes.ButtonTextKey] = new SolidColorBrush(Color.FromArgb(255, 241, 241, 241));
-                w.Resources[VsBrushes.ButtonShadowKey] = new SolidColorBrush(Color.FromArgb(255, 63, 63, 70));
+                key = ThemeColors.Theme.Dark;
             }
+            foreach (var kvp in ThemeColors.pallete[key])
+            {
+                w.Resources[kvp.Key] = new SolidColorBrush((Color)ColorConverter.ConvertFromString(kvp.Value));
+            }
+
         }
 
         private List<ToolWindow> toolWindows = new List<ToolWindow>();

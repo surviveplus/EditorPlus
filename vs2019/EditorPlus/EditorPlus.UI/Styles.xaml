@@ -2,11 +2,15 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Net.Surviveplus.EditorPlus.UI">
 
-    <Style TargetType="Button">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Styles/ButtonStyles.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--<Style TargetType="Button">
         <Setter Property="Background" Value="{DynamicResource VsBrush.ButtonFace}" />
         <Setter Property="Foreground" Value="{DynamicResource VsBrush.ButtonText}" />
         <Setter Property="BorderBrush" Value="{DynamicResource VsBrush.ButtonShadow}" />
-    </Style>
+    </Style>-->
     <Style TargetType="Label">
         <Setter Property="Foreground" Value="{DynamicResource VsBrush.WindowText}" />
     </Style>
