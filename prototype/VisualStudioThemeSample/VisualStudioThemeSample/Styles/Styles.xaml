@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="ButtonStyles.xaml" />
+        <ResourceDictionary Source="CheckBoxStyles.xaml" />
+        <ResourceDictionary Source="ListViewStyles.xaml" />
+        <ResourceDictionary Source="ProgressBarStyles.xaml" />
+        <ResourceDictionary Source="RadioButtonStyles.xaml" />
+        <ResourceDictionary Source="ScrollBarStyles.xaml" />
+        <ResourceDictionary Source="TextBoxStyles.xaml" />
+        <ResourceDictionary Source="ToggleButtonStyles.xaml" />
+        <ResourceDictionary Source="WindowStyles.xaml" />
+        <ResourceDictionary Source="TreeViewStyles.xaml" />
+        <!--<ResourceDictionary Source="AccentColorStyles.xaml" />
+        -->
+    </ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>

@@ -1,0 +1,81 @@
+﻿<Window x:Class="VisualStudioThemeSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VisualStudioThemeSample"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="400"
+         Style="{DynamicResource ResourceKey=WindowStyle}">
+    <Window.Resources>
+        <ResourceDictionary Source="Styles/Styles.xaml" />
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+            <RadioButton Tag="{x:Static local:Theme.Blue}" Checked="ThemeRadioButton_Checked">Blue</RadioButton>
+            <RadioButton Tag="{x:Static local:Theme.Light}" Checked="ThemeRadioButton_Checked">Light</RadioButton>
+            <RadioButton Tag="{x:Static local:Theme.Dark}" Checked="ThemeRadioButton_Checked" IsChecked="True">Dark</RadioButton>
+        </StackPanel>
+
+        <StackPanel  Grid.Row="2" Orientation="Horizontal" Margin="5 0 0 0">
+            <Button IsDefault="True">Hello</Button>
+            <Button IsEnabled="False">Good</Button>
+            <Button>Job</Button>
+            <ToggleButton>World</ToggleButton>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Center">
+            <CheckBox IsChecked="True">Checked</CheckBox>
+            <CheckBox IsChecked="False">Not Checked</CheckBox>
+            <CheckBox IsChecked="{x:Null}" IsThreeState="True">Mixed</CheckBox>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Orientation="Horizontal" VerticalAlignment="Center">
+            <CheckBox IsEnabled="False" IsChecked="True">Checked</CheckBox>
+            <CheckBox IsEnabled="False" IsChecked="False">Not Checked</CheckBox>
+            <CheckBox IsEnabled="False" IsChecked="{x:Null}" IsThreeState="True">Mixed</CheckBox>
+        </StackPanel>
+        <StackPanel Grid.Row="5" Orientation="Horizontal" VerticalAlignment="Center">
+            <RadioButton IsEnabled="False" IsChecked="True">Checked</RadioButton>
+            <RadioButton IsEnabled="False" IsChecked="False">Not Checked</RadioButton>
+        </StackPanel>
+        <StackPanel Grid.Row="6" Orientation="Horizontal" VerticalAlignment="Center">
+            <TextBox  Margin="5 1 5 1" Width="100">Text</TextBox>
+            <TextBox  Margin="5 1 5 1" Width="100" IsReadOnly="True">Read Only</TextBox>
+            <TextBox  Margin="5 1 5 1" Width="100" IsEnabled="False">Disabled</TextBox>
+        </StackPanel>
+        <ListView Grid.Row="7" Margin="5 1 5 1" x:Name="sampleListView">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Header 1" DisplayMemberBinding="{Binding Text1}" Width="100"  />
+                    <GridViewColumn Header="Header 2" DisplayMemberBinding="{Binding Text2}" Width="150"  />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TreeView Grid.Row="8" Margin="5 1 5 1" x:Name="sampleTreeView">
+            <TreeViewItem Header="Item1" IsExpanded="True">
+                <TreeViewItem Header="Item 2-1" />
+                <TreeViewItem Header="Item 2-2" IsExpanded="True">
+                    <TreeViewItem Header="Item 3-1" />
+                    <TreeViewItem Header="Item 3-2" />
+                </TreeViewItem>
+                <TreeViewItem Header="Item 2-3" />
+            </TreeViewItem>
+        </TreeView>
+
+        <ProgressBar x:Name="progrressBar"  Grid.Row="9" Height="2" VerticalAlignment="Top"  IsIndeterminate="True" />
+
+    </Grid>
+</Window>
