@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="56c6c02c-1679-4aea-8aee-af0b64d9c887" Version="1.0.8.8" Language="en-US" Publisher="SHIN-ICHI KOGA" />
+        <Identity Id="56c6c02c-1679-4aea-8aee-af0b64d9c887" Version="1.0.9.9" Language="en-US" Publisher="SHIN-ICHI KOGA" />
         <DisplayName>EditorPlus (2017, 2019)</DisplayName>
         <Description xml:space="preserve">Some of text editor extensions, Format Text, Insert Serial Numbers and others, are userd in Surviveplus.net Developer Team.</Description>
         <MoreInfo>https://github.com/surviveplus/EditorPlus</MoreInfo>
