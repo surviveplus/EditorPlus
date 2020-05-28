@@ -185,6 +185,65 @@ Public Class EditorPlusRibbon
             Dim c = New Layer2 With {.DataContext = OfficeThemeModel.Current}
             c.Resources.Apply(OfficeAccentColor.Current)
 
+            ' Navigation
+
+            Dim setImage =
+                Sub()
+                    Dim path = System.IO.Path.GetTempFileName()
+                    Dim slide As Slide
+                    Try
+                        slide = ThisAddIn.Current.Application.ActiveWindow.Selection.SlideRange.ToEnumerable(Of Slide).FirstOrDefault()
+                    Catch
+                        slide = Nothing
+                    End Try
+                    If slide IsNot Nothing Then
+                        slide.Export(FileName:=path, FilterName:="png", ScaleWidth:=c.PageSize.Width, ScaleHeight:=c.PageSize.Height)
+
+                        Using s As New System.IO.MemoryStream(System.IO.File.ReadAllBytes(path))
+                            Dim b As New WriteableBitmap(BitmapFrame.Create(s))
+                            c.SetPreviewImage(b)
+                        End Using
+
+                        Try
+                            System.IO.File.Delete(path)
+                        Catch ex As Exception
+                        End Try
+                    End If
+                End Sub
+
+            AddHandler c.Click,
+                Sub(sender2, e2)
+                    Dim w = ThisAddIn.Current.Application.ActiveWindow
+
+                    Try
+                        w.ScrollIntoView(e2.Position.X - 50, e2.Position.Y - 50, 100, 100)
+
+                    Catch
+                        ThisAddIn.Current.Application.ActiveWindow.Selection.SlideRange.ToEnumerable(Of Slide).FirstOrDefault?.Shapes.ToEnumerable(Of Shape).FirstOrDefault?.Select()
+                        w.ScrollIntoView(e2.Position.X - 50, e2.Position.Y - 50, 100, 100)
+                    End Try
+                End Sub
+
+            Dim refreshSize =
+                Sub()
+                    Dim w = ThisAddIn.Current.Application.ActiveWindow
+                    Dim setup = w.Presentation.PageSetup
+                    Dim size As New Size(setup.SlideWidth, setup.SlideHeight)
+                    c.PageSize = size
+                End Sub
+
+            refreshSize()
+            setImage()
+
+            AddHandler ThisAddIn.Current.Application.SlideSelectionChanged,
+                Sub(SldRange As SlideRange)
+                    refreshSize()
+                    setImage()
+                End Sub
+
+
+            ' Layer
+
             Dim recreateAllItems As Action(Of Boolean) =
                 Sub(canDoEvents)
                     c.SuppressEvents = True
@@ -281,6 +340,8 @@ Public Class EditorPlusRibbon
                     c.Items = items
                     c.ProgrressBarVisible = False
                     c.SuppressEvents = False
+
+                    setImage()
                 End Sub
 
             Dim refreshObjectsAreSelected As Func(Of Selection, Boolean) =
@@ -411,6 +472,7 @@ Public Class EditorPlusRibbon
                         selectShape(item)
                     Next item
 
+                    setImage()
                 End Sub
 
             AddHandler c.ObjectVisibleChanged,
@@ -421,6 +483,8 @@ Public Class EditorPlusRibbon
                         s.Visible = e2.Item.ObjectIsVisible
                     End If
                     c.SuppressEvents = False
+
+                    setImage()
                 End Sub
 
             AddHandler c.BringForwardButtonClick,
@@ -488,9 +552,11 @@ Public Class EditorPlusRibbon
                     c.SuppressEvents = False
                 End Sub
 
+
+
             Dim p As New ElementControlPane(Of Layer2)(c)
             Me.layerPanes.Add(ThisAddIn.Current.Application.ActiveWindow, p)
-            p.Pane = ThisAddIn.Current.CustomTaskPanes.Add(p.Control, "Show Objects", ThisAddIn.Current.Application.ActiveWindow)
+            p.Pane = ThisAddIn.Current.CustomTaskPanes.Add(p.Control, "Objects Navigation", ThisAddIn.Current.Application.ActiveWindow)
             p.Pane.Width = 350
             AddHandler p.Pane.VisibleChanged,
             Sub()

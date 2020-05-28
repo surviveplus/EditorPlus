@@ -54,8 +54,8 @@ Public Class Navigation
 
 End Class
 
-Public Class NavigationClickEventArgs
-    Inherits EventArgs
+'Public Class NavigationClickEventArgs
+'    Inherits EventArgs
 
-    Public Property Position As Point
-End Class
+'    Public Property Position As Point
+'End Class

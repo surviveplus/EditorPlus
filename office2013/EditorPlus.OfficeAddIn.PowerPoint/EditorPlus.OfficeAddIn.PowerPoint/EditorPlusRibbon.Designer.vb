@@ -47,6 +47,7 @@
         Me.InsertSerialNumberButton = Me.Factory.CreateRibbonButton
         Me.Group2 = Me.Factory.CreateRibbonGroup
         Me.LayerButton = Me.Factory.CreateRibbonButton
+        Me.NavigationButton = Me.Factory.CreateRibbonButton
         Me.NameGroup = Me.Factory.CreateRibbonGroup
         Me.ReplaceObjectNamesButton = Me.Factory.CreateRibbonButton
         Me.ClipboardGroup = Me.Factory.CreateRibbonGroup
@@ -54,7 +55,6 @@
         Me.CopyNoLineBreakTextButton = Me.Factory.CreateRibbonButton
         Me.Group1 = Me.Factory.CreateRibbonGroup
         Me.TopMostToggleButton = Me.Factory.CreateRibbonToggleButton
-        Me.NavigationButton = Me.Factory.CreateRibbonButton
         Me.EditorPlusTab.SuspendLayout()
         Me.EditSelectionGroup.SuspendLayout()
         Me.Group2.SuspendLayout()
@@ -103,8 +103,14 @@
         '
         'LayerButton
         '
-        Me.LayerButton.Label = "Show Objects"
+        Me.LayerButton.Label = "Objects Navigation"
         Me.LayerButton.Name = "LayerButton"
+        '
+        'NavigationButton
+        '
+        Me.NavigationButton.Label = "Navigation"
+        Me.NavigationButton.Name = "NavigationButton"
+        Me.NavigationButton.Visible = False
         '
         'NameGroup
         '
@@ -148,11 +154,6 @@
         Me.TopMostToggleButton.ScreenTip = "Always on Top"
         Me.TopMostToggleButton.ShowImage = True
         Me.TopMostToggleButton.SuperTip = "Keep this window on top. Always."
-        '
-        'NavigationButton
-        '
-        Me.NavigationButton.Label = "Navigation"
-        Me.NavigationButton.Name = "NavigationButton"
         '
         'EditorPlusRibbon
         '

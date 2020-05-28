@@ -6,64 +6,87 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:local="clr-namespace:EditorPlus.UI"
     mc:Ignorable="d" 
-    d:DesignHeight="150" d:DesignWidth="300"
+    d:DesignHeight="400" d:DesignWidth="300"
     Style="{DynamicResource ResourceKey=UserControlStyle}"
     Loaded="UserControl_Loaded">
 <UserControl.Resources>
         <ResourceDictionary Source="Styles\Styles.xaml" />
     </UserControl.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="34"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition ></RowDefinition>
+            <RowDefinition MinHeight="100" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition MinHeight="100"  MaxHeight="300" Height="200"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Margin="0 5 0 5">
-            <Button x:Name="ShowButton" Padding="10 0 10 0" Margin="0 0 5 0" Click="ShowButton_Click">Show</Button>
-            <Button x:Name="HideButton" Padding="10 0 10 0" Margin="0 0 5 0" Click="HideButton_Click">Hide</Button>
-            <Button x:Name="BringToFrontButton" Click="BringToFrontButton_Click"><TextBlock><TextBlock.LayoutTransform><RotateTransform Angle="90"/></TextBlock.LayoutTransform>|&lt;</TextBlock></Button>
-            <Button x:Name="BringForwardButton" Click="BringForwardButton_Click"><TextBlock><TextBlock.LayoutTransform><RotateTransform Angle="90"/></TextBlock.LayoutTransform>&lt;</TextBlock></Button>
-            <Button x:Name="SendBackwardButton" Click="SendBackwardButton_Click"><TextBlock><TextBlock.LayoutTransform><RotateTransform Angle="90"/></TextBlock.LayoutTransform>&gt;</TextBlock></Button>
-            <Button x:Name="SendToBackButton" Click="SendToBackButton_Click"><TextBlock><TextBlock.LayoutTransform><RotateTransform Angle="90"/></TextBlock.LayoutTransform>&gt;|</TextBlock></Button>
-        </StackPanel>
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition Width="40" />
-                <ColumnDefinition Width="40" />
-            </Grid.ColumnDefinitions>
-            <TextBox Grid.ColumnSpan="2" x:Name="SearchKeywordBox" VerticalContentAlignment="Center" KeyDown="SearchKeywordBox_KeyDown"   />
-            <Button Grid.Column="1" x:Name="clearButton" Click="clearButton_Click" Background="Transparent" BorderThickness="0" Margin="1 1 1 1" Foreground="{Binding ElementName=SearchKeywordBox, Path=Foreground}" Visibility="Collapsed">✖</Button>
-            <Button Grid.Column="2" x:Name="refreshButton" Click="refreshButton_Click">🔎</Button>
+
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="34"></RowDefinition>
+                <RowDefinition Height="32"></RowDefinition>
+                <RowDefinition ></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 5">
+                <Button x:Name="ShowButton" Padding="10 0 10 0" Margin="0 0 5 0" Click="ShowButton_Click">Show</Button>
+                <Button x:Name="HideButton" Padding="10 0 10 0" Margin="0 0 5 0" Click="HideButton_Click">Hide</Button>
+                <Button x:Name="BringToFrontButton" Click="BringToFrontButton_Click"><TextBlock><TextBlock.LayoutTransform><RotateTransform Angle="90"/></TextBlock.LayoutTransform>|&lt;</TextBlock></Button>
+                <Button x:Name="BringForwardButton" Click="BringForwardButton_Click"><TextBlock><TextBlock.LayoutTransform><RotateTransform Angle="90"/></TextBlock.LayoutTransform>&lt;</TextBlock></Button>
+                <Button x:Name="SendBackwardButton" Click="SendBackwardButton_Click"><TextBlock><TextBlock.LayoutTransform><RotateTransform Angle="90"/></TextBlock.LayoutTransform>&gt;</TextBlock></Button>
+                <Button x:Name="SendToBackButton" Click="SendToBackButton_Click"><TextBlock><TextBlock.LayoutTransform><RotateTransform Angle="90"/></TextBlock.LayoutTransform>&gt;|</TextBlock></Button>
+            </StackPanel>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="40" />
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.ColumnSpan="2" x:Name="SearchKeywordBox" VerticalContentAlignment="Center" KeyDown="SearchKeywordBox_KeyDown"   />
+                <Button Grid.Column="1" x:Name="clearButton" Click="clearButton_Click" Background="Transparent" BorderThickness="0" Margin="1 1 1 1" Foreground="{Binding ElementName=SearchKeywordBox, Path=Foreground}" Visibility="Collapsed">✖</Button>
+                <Button Grid.Column="2" x:Name="refreshButton" Click="refreshButton_Click">🔎</Button>
+            </Grid>
+            <TreeView x:Name="layers" Grid.Row="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <TreeView.Resources>
+                    <Style TargetType="TreeViewItem" BasedOn="{StaticResource {x:Type TreeViewItem}}">
+                        <Setter Property="IsExpanded" Value="{Binding Path=IsExpanded, Mode=TwoWay}"></Setter>
+                        <EventSetter Event="MouseLeftButtonUp" Handler="TreeViewItem_MouseLeftButtonUp" />
+                    </Style>
+                </TreeView.Resources>
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate DataType="local:LayerTreeItem2"  ItemsSource="{Binding Children}" >
+                        <Grid Tag="{Binding Own}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="25" />
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <CheckBox x:Name="ObjectIsSelectedCheckBox" Grid.Column="0" Width="25" IsChecked="{Binding ObjectIsSelected}" 
+                                      Checked="ObjectIsSelectedCheckBox_Checked"></CheckBox>
+                            <CheckBox x:Name="ObjectIsVisibleCheckBox" Grid.Column="1"  Width="20"  IsChecked="{Binding ObjectIsVisible}" 
+                                      Style="{DynamicResource ObjectVisibleCheckbox}" Click="ObjectIsVisibleCheckBox_Click">
+                            </CheckBox>
+                            <TextBlock x:Name="MainText" Grid.Column="2" Text="{Binding Text}" Height="22" FontSize="12" Tag="{Binding Own}" Margin="5 5 0 0"  TextTrimming="CharacterEllipsis"/>
+                        </Grid>
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+            <StackPanel x:Name="progrressBar"  Grid.Row="2" Height="2" VerticalAlignment="Top" Visibility="Collapsed"  Background="Gray" Orientation="Horizontal">
+                <Rectangle x:Name="progressValue" Width="100"></Rectangle>
+                <Rectangle Width="100" Style="{DynamicResource AccentRectangle}"></Rectangle>
+            </StackPanel>
         </Grid>
-        <TreeView x:Name="layers" Grid.Row="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-            <TreeView.Resources>
-                <Style TargetType="TreeViewItem" BasedOn="{StaticResource {x:Type TreeViewItem}}">
-                    <Setter Property="IsExpanded" Value="{Binding Path=IsExpanded, Mode=TwoWay}"></Setter>
-                    <EventSetter Event="MouseLeftButtonUp" Handler="TreeViewItem_MouseLeftButtonUp" />
-                </Style>
-            </TreeView.Resources>
-            <TreeView.ItemTemplate>
-                <HierarchicalDataTemplate DataType="local:LayerTreeItem2"  ItemsSource="{Binding Children}" >
-                    <Grid Tag="{Binding Own}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="25" />
-                            <ColumnDefinition Width="20" />
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <CheckBox x:Name="ObjectIsSelectedCheckBox" Grid.Column="0" Width="25" IsChecked="{Binding ObjectIsSelected}" 
-                                  Checked="ObjectIsSelectedCheckBox_Checked"></CheckBox>
-                        <CheckBox x:Name="ObjectIsVisibleCheckBox" Grid.Column="1"  Width="20"  IsChecked="{Binding ObjectIsVisible}" 
-                                  Style="{DynamicResource ObjectVisibleCheckbox}" Click="ObjectIsVisibleCheckBox_Click">
-                        </CheckBox>
-                        <TextBlock x:Name="MainText" Grid.Column="2" Text="{Binding Text}" Height="22" FontSize="12" Tag="{Binding Own}" Margin="5 5 0 0"  TextTrimming="CharacterEllipsis"/>
-                    </Grid>
-                </HierarchicalDataTemplate>
-            </TreeView.ItemTemplate>
-        </TreeView>
-        <StackPanel x:Name="progrressBar"  Grid.Row="2" Height="2" VerticalAlignment="Top" Visibility="Collapsed"  Background="Gray" Orientation="Horizontal">
-            <Rectangle x:Name="progressValue" Width="100"></Rectangle>
-            <Rectangle Width="100" Style="{DynamicResource AccentRectangle}"></Rectangle>
-        </StackPanel>
+
+        <GridSplitter Grid.Row="1"   HorizontalAlignment="Stretch" Height="5" Background="#50505050" BorderBrush="Transparent" />
+
+        <Grid Grid.Row="2" MouseDown="pageFrame_MouseDown" MouseMove="pageFrame_MouseMove" Background="Transparent">
+            <Viewbox Margin="10 10 10 10">
+                <Grid x:Name="pageFrame" Width="297" Height="210" >
+                    <Rectangle Stroke="Black" Fill="White" 
+                           MouseDown="pageFrame_MouseDown" MouseMove="pageFrame_MouseMove"></Rectangle>
+                    <Image x:Name="previewImage">
+
+                    </Image>
+                </Grid>
+            </Viewbox>
+        </Grid>
     </Grid>
 </UserControl>
