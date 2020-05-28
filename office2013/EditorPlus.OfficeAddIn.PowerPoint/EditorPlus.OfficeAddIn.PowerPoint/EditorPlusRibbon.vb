@@ -518,6 +518,31 @@ Public Class EditorPlusRibbon
 
         If Not Me.navigationPanes.ContainsKey(ThisAddIn.Current.Application.ActiveWindow) Then
             Dim c = New Navigation With {.DataContext = OfficeThemeModel.Current}
+
+            Dim setImage =
+                Sub()
+                    Dim path = System.IO.Path.GetTempFileName()
+                    Dim slide As Slide
+                    Try
+                        slide = ThisAddIn.Current.Application.ActiveWindow.Selection.SlideRange.ToEnumerable(Of Slide).FirstOrDefault()
+                    Catch
+                        slide = Nothing
+                    End Try
+                    If slide IsNot Nothing Then
+                        slide.Export(FileName:=path, FilterName:="png", ScaleWidth:=c.PageSize.Width, ScaleHeight:=c.PageSize.Height)
+
+                        Using s As New System.IO.MemoryStream(System.IO.File.ReadAllBytes(path))
+                            Dim b As New WriteableBitmap(BitmapFrame.Create(s))
+                            c.SetPreviewImage(b)
+                        End Using
+
+                        Try
+                            System.IO.File.Delete(path)
+                        Catch ex As Exception
+                        End Try
+                    End If
+                End Sub
+
             AddHandler c.Click,
                 Sub(sender2, e2)
                     Dim w = ThisAddIn.Current.Application.ActiveWindow
@@ -529,7 +554,6 @@ Public Class EditorPlusRibbon
                         ThisAddIn.Current.Application.ActiveWindow.Selection.SlideRange.ToEnumerable(Of Slide).FirstOrDefault?.Shapes.ToEnumerable(Of Shape).FirstOrDefault?.Select()
                         w.ScrollIntoView(e2.Position.X - 50, e2.Position.Y - 50, 100, 100)
                     End Try
-
                 End Sub
 
             Dim refreshSize =
@@ -541,25 +565,12 @@ Public Class EditorPlusRibbon
                 End Sub
 
             refreshSize()
-
-            Dim setImage =
-                Sub()
-                    Dim path = System.IO.Path.GetTempFileName()
-
-                    Dim slide = ThisAddIn.Current.Application.ActiveWindow.Selection.SlideRange.ToEnumerable(Of Slide).FirstOrDefault()
-                    slide.Export(FileName:=path, FilterName:="png")
-
-                    Using s As New System.IO.MemoryStream(System.IO.File.ReadAllBytes(path))
-                        Dim b As New WriteableBitmap(BitmapFrame.Create(s))
-                        c.SetPreviewImage(b)
-                    End Using
-                End Sub
-
             setImage()
 
             AddHandler ThisAddIn.Current.Application.SlideSelectionChanged,
                 Sub(SldRange As SlideRange)
                     refreshSize()
+                    setImage()
                 End Sub
 
             Dim p = New ElementControlPane(Of Navigation)(c)
