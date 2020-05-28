@@ -12,8 +12,13 @@
     </UserControl.Resources>
     <Grid MouseDown="pageFrame_MouseDown" MouseMove="pageFrame_MouseMove" Background="Transparent">
         <Viewbox Margin="10 10 10 10">
-            <Rectangle x:Name="pageFrame" Width="297" Height="210" Stroke="Black" Fill="White" 
-                       MouseDown="pageFrame_MouseDown" MouseMove="pageFrame_MouseMove"></Rectangle>
+            <Grid x:Name="pageFrame" Width="297" Height="210" >
+                <Rectangle Stroke="Black" Fill="White" 
+                           MouseDown="pageFrame_MouseDown" MouseMove="pageFrame_MouseMove"></Rectangle>
+                <Image x:Name="previewImage">
+                    
+                </Image>
+            </Grid>
         </Viewbox>
     </Grid>
 </UserControl>

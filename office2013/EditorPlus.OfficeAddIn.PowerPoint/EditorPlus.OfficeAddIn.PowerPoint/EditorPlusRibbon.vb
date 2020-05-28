@@ -1,6 +1,7 @@
 ﻿Imports System.Collections.ObjectModel
 Imports System.Diagnostics
 Imports System.Windows
+Imports System.Windows.Media.Imaging
 Imports EditorPlus.AI
 Imports EditorPlus.Core
 Imports EditorPlus.UI
@@ -528,6 +529,7 @@ Public Class EditorPlusRibbon
                         ThisAddIn.Current.Application.ActiveWindow.Selection.SlideRange.ToEnumerable(Of Slide).FirstOrDefault?.Shapes.ToEnumerable(Of Shape).FirstOrDefault?.Select()
                         w.ScrollIntoView(e2.Position.X - 50, e2.Position.Y - 50, 100, 100)
                     End Try
+
                 End Sub
 
             Dim refreshSize =
@@ -539,6 +541,21 @@ Public Class EditorPlusRibbon
                 End Sub
 
             refreshSize()
+
+            Dim setImage =
+                Sub()
+                    Dim path = System.IO.Path.GetTempFileName()
+
+                    Dim slide = ThisAddIn.Current.Application.ActiveWindow.Selection.SlideRange.ToEnumerable(Of Slide).FirstOrDefault()
+                    slide.Export(FileName:=path, FilterName:="png")
+
+                    Using s As New System.IO.MemoryStream(System.IO.File.ReadAllBytes(path))
+                        Dim b As New WriteableBitmap(BitmapFrame.Create(s))
+                        c.SetPreviewImage(b)
+                    End Using
+                End Sub
+
+            setImage()
 
             AddHandler ThisAddIn.Current.Application.SlideSelectionChanged,
                 Sub(SldRange As SlideRange)

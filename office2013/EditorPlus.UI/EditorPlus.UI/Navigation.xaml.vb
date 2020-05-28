@@ -48,6 +48,10 @@ Public Class Navigation
         End If
     End Sub
 
+    Public Sub SetPreviewImage(bitmap As WriteableBitmap)
+        Me.previewImage.Source = bitmap
+    End Sub
+
 End Class
 
 Public Class NavigationClickEventArgs
