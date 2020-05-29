@@ -647,6 +647,26 @@ Public Class EditorPlusRibbon
 
         Me.navigationPanes(ThisAddIn.Current.Application.ActiveWindow).Show()
     End Sub
+
+    Private Sub CopyNotesButton_Click(sender As Object, e As RibbonControlEventArgs) Handles CopyNotesButton.Click
+
+        Try
+            Dim notes = From slide In ThisAddIn.Current.Application.ActiveWindow.Selection.SlideRange.ToEnumerable(Of Slide)
+                        Select slide.NotesPage.Shapes.Placeholders(2).TextFrame.TextRange.Text
+
+            Dim texts As New StringBuilder
+            For Each n As String In notes
+                texts.AppendLine(n)
+                texts.AppendLine()
+            Next
+
+            System.Windows.Forms.Clipboard.SetText(texts.ToString())
+
+        Catch ex As Exception
+            MessageBox.Show("Can not copy Notes." + vbCrLf + ex.Message, "Copy Notes ERROR", MessageBoxButton.OK, MessageBoxImage.Error)
+        End Try
+
+    End Sub
 End Class
 
 ''' <summary>

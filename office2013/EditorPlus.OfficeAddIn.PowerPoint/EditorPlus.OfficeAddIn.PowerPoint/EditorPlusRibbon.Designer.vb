@@ -1,7 +1,7 @@
 ﻿Partial Class EditorPlusRibbon
     Inherits Microsoft.Office.Tools.Ribbon.RibbonBase
 
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Public Sub New(ByVal container As System.ComponentModel.IContainer)
         MyClass.New()
 
@@ -12,7 +12,7 @@
 
     End Sub
 
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Public Sub New()
         MyBase.New(Globals.Factory.GetRibbonFactory())
 
@@ -22,7 +22,7 @@
     End Sub
 
     'Component は、コンポーネント一覧に後処理を実行するために dispose をオーバーライドします。
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -39,7 +39,7 @@
     'メモ: 以下のプロシージャはコンポーネント デザイナーで必要です。
     'コンポーネント デザイナーを使って変更できます。
     'コード エディターを使って変更しないでください。
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.EditorPlusTab = Me.Factory.CreateRibbonTab
         Me.EditSelectionGroup = Me.Factory.CreateRibbonGroup
@@ -55,6 +55,7 @@
         Me.CopyNoLineBreakTextButton = Me.Factory.CreateRibbonButton
         Me.Group1 = Me.Factory.CreateRibbonGroup
         Me.TopMostToggleButton = Me.Factory.CreateRibbonToggleButton
+        Me.CopyNotesButton = Me.Factory.CreateRibbonButton
         Me.EditorPlusTab.SuspendLayout()
         Me.EditSelectionGroup.SuspendLayout()
         Me.Group2.SuspendLayout()
@@ -127,6 +128,7 @@
         '
         Me.ClipboardGroup.Items.Add(Me.CopyTextButton)
         Me.ClipboardGroup.Items.Add(Me.CopyNoLineBreakTextButton)
+        Me.ClipboardGroup.Items.Add(Me.CopyNotesButton)
         Me.ClipboardGroup.Label = "Clipboard"
         Me.ClipboardGroup.Name = "ClipboardGroup"
         '
@@ -154,6 +156,11 @@
         Me.TopMostToggleButton.ScreenTip = "Always on Top"
         Me.TopMostToggleButton.ShowImage = True
         Me.TopMostToggleButton.SuperTip = "Keep this window on top. Always."
+        '
+        'CopyNotesButton
+        '
+        Me.CopyNotesButton.Label = "Copy Notes"
+        Me.CopyNotesButton.Name = "CopyNotesButton"
         '
         'EditorPlusRibbon
         '
@@ -190,6 +197,7 @@
     Friend WithEvents Group2 As Microsoft.Office.Tools.Ribbon.RibbonGroup
     Friend WithEvents LayerButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents NavigationButton As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents CopyNotesButton As Microsoft.Office.Tools.Ribbon.RibbonButton
 End Class
 
 Partial Class ThisRibbonCollection
