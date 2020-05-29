@@ -45,17 +45,18 @@
         Me.EditSelectionGroup = Me.Factory.CreateRibbonGroup
         Me.InsertTextButton = Me.Factory.CreateRibbonButton
         Me.InsertSerialNumberButton = Me.Factory.CreateRibbonButton
+        Me.CopyNotesButton = Me.Factory.CreateRibbonButton
+        Me.CopyTextSplitButton = Me.Factory.CreateRibbonSplitButton
+        Me.CopyTextButton = Me.Factory.CreateRibbonButton
+        Me.CopyNoLineBreakTextButton = Me.Factory.CreateRibbonButton
         Me.Group2 = Me.Factory.CreateRibbonGroup
         Me.LayerButton = Me.Factory.CreateRibbonButton
         Me.NavigationButton = Me.Factory.CreateRibbonButton
         Me.NameGroup = Me.Factory.CreateRibbonGroup
         Me.ReplaceObjectNamesButton = Me.Factory.CreateRibbonButton
-        Me.CopyTextButton = Me.Factory.CreateRibbonButton
-        Me.CopyNoLineBreakTextButton = Me.Factory.CreateRibbonButton
-        Me.CopyNotesButton = Me.Factory.CreateRibbonButton
+        Me.ChangeSlideNameButton = Me.Factory.CreateRibbonButton
         Me.Group1 = Me.Factory.CreateRibbonGroup
         Me.TopMostToggleButton = Me.Factory.CreateRibbonToggleButton
-        Me.CopyTextSplitButton = Me.Factory.CreateRibbonSplitButton
         Me.EditorPlusTab.SuspendLayout()
         Me.EditSelectionGroup.SuspendLayout()
         Me.Group2.SuspendLayout()
@@ -95,6 +96,30 @@
         Me.InsertSerialNumberButton.Name = "InsertSerialNumberButton"
         Me.InsertSerialNumberButton.ShowImage = True
         '
+        'CopyNotesButton
+        '
+        Me.CopyNotesButton.Label = "Copy Notes"
+        Me.CopyNotesButton.Name = "CopyNotesButton"
+        '
+        'CopyTextSplitButton
+        '
+        Me.CopyTextSplitButton.Items.Add(Me.CopyTextButton)
+        Me.CopyTextSplitButton.Items.Add(Me.CopyNoLineBreakTextButton)
+        Me.CopyTextSplitButton.Label = "Copy Text"
+        Me.CopyTextSplitButton.Name = "CopyTextSplitButton"
+        '
+        'CopyTextButton
+        '
+        Me.CopyTextButton.Label = "Copy Text"
+        Me.CopyTextButton.Name = "CopyTextButton"
+        Me.CopyTextButton.ShowImage = True
+        '
+        'CopyNoLineBreakTextButton
+        '
+        Me.CopyNoLineBreakTextButton.Label = "Copy No Line break Text"
+        Me.CopyNoLineBreakTextButton.Name = "CopyNoLineBreakTextButton"
+        Me.CopyNoLineBreakTextButton.ShowImage = True
+        '
         'Group2
         '
         Me.Group2.Items.Add(Me.LayerButton)
@@ -116,6 +141,7 @@
         'NameGroup
         '
         Me.NameGroup.Items.Add(Me.ReplaceObjectNamesButton)
+        Me.NameGroup.Items.Add(Me.ChangeSlideNameButton)
         Me.NameGroup.Label = "Name"
         Me.NameGroup.Name = "NameGroup"
         '
@@ -124,22 +150,10 @@
         Me.ReplaceObjectNamesButton.Label = "Replace Object Names"
         Me.ReplaceObjectNamesButton.Name = "ReplaceObjectNamesButton"
         '
-        'CopyTextButton
+        'ChangeSlideNameButton
         '
-        Me.CopyTextButton.Label = "Copy Text"
-        Me.CopyTextButton.Name = "CopyTextButton"
-        Me.CopyTextButton.ShowImage = True
-        '
-        'CopyNoLineBreakTextButton
-        '
-        Me.CopyNoLineBreakTextButton.Label = "Copy No Line break Text"
-        Me.CopyNoLineBreakTextButton.Name = "CopyNoLineBreakTextButton"
-        Me.CopyNoLineBreakTextButton.ShowImage = True
-        '
-        'CopyNotesButton
-        '
-        Me.CopyNotesButton.Label = "Copy Notes"
-        Me.CopyNotesButton.Name = "CopyNotesButton"
+        Me.ChangeSlideNameButton.Label = "Change Slide Name"
+        Me.ChangeSlideNameButton.Name = "ChangeSlideNameButton"
         '
         'Group1
         '
@@ -155,13 +169,6 @@
         Me.TopMostToggleButton.ScreenTip = "Always on Top"
         Me.TopMostToggleButton.ShowImage = True
         Me.TopMostToggleButton.SuperTip = "Keep this window on top. Always."
-        '
-        'CopyTextSplitButton
-        '
-        Me.CopyTextSplitButton.Items.Add(Me.CopyTextButton)
-        Me.CopyTextSplitButton.Items.Add(Me.CopyNoLineBreakTextButton)
-        Me.CopyTextSplitButton.Label = "Copy Text"
-        Me.CopyTextSplitButton.Name = "CopyTextSplitButton"
         '
         'EditorPlusRibbon
         '
@@ -197,6 +204,7 @@
     Friend WithEvents NavigationButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents CopyNotesButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents CopyTextSplitButton As Microsoft.Office.Tools.Ribbon.RibbonSplitButton
+    Friend WithEvents ChangeSlideNameButton As Microsoft.Office.Tools.Ribbon.RibbonButton
 End Class
 
 Partial Class ThisRibbonCollection

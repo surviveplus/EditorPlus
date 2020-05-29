@@ -674,6 +674,19 @@ Public Class EditorPlusRibbon
     Private Sub CopyTextSplitButton_Click(sender As Object, e As RibbonControlEventArgs) Handles CopyTextSplitButton.Click
         CopyText()
     End Sub
+
+    Private Sub ChangeSlideNameButton_Click(sender As Object, e As RibbonControlEventArgs) Handles ChangeSlideNameButton.Click
+
+        Dim s = ThisAddIn.Current.Application.ActiveWindow.Selection.SlideRange.ToEnumerable(Of Slide).FirstOrDefault()
+        Dim name = s.Name
+        Dim newText = InputBox($"Input new name of [{name}]", "Change Slide Name", name)
+        If Not String.IsNullOrWhiteSpace(newText) Then
+            s.Name = newText
+
+            ' TODO: refresh Object Navigation slide name
+        End If
+
+    End Sub
 End Class
 
 ''' <summary>
