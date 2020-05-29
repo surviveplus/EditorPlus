@@ -45,6 +45,8 @@
                     <Button.Content>...</Button.Content>
                     <Button.ContextMenu>
                         <ContextMenu x:Name="LayerMenu">
+                            <MenuItem Header="Refresh" Click="RefreshMenu_Click" />
+                            <Separator />
                             <MenuItem Header="Change Name" Click="ChangeNameMenu_Click" />
                         </ContextMenu>
                     </Button.ContextMenu>

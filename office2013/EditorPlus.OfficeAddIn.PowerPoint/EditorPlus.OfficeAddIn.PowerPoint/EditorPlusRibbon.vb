@@ -238,12 +238,19 @@ Public Class EditorPlusRibbon
             refreshSize()
             setImage()
 
-            AddHandler ThisAddIn.Current.Application.SlideSelectionChanged,
+            Dim slideSelectionChanged As EApplication_SlideSelectionChangedEventHandler =
                 Sub(SldRange As SlideRange)
                     refreshSize()
                     setImage()
                 End Sub
+            AddHandler ThisAddIn.Current.Application.SlideSelectionChanged, slideSelectionChanged
 
+            Dim afterShapeSizeChange As EApplication_AfterShapeSizeChangeEventHandler =
+                Sub()
+                    setImage()
+                End Sub
+
+            AddHandler ThisAddIn.Current.Application.AfterShapeSizeChange, afterShapeSizeChange
 
             ' Layer
 
@@ -344,8 +351,6 @@ Public Class EditorPlusRibbon
                     c.Items = items
                     c.ProgrressBarVisible = False
                     c.SuppressEvents = False
-
-                    setImage()
                 End Sub
 
             Dim refreshObjectsAreSelected As Func(Of Selection, Boolean) =
@@ -359,6 +364,7 @@ Public Class EditorPlusRibbon
                         selection = ThisAddIn.Current.Application.ActiveWindow.Selection
                     End If
 
+                    Dim textIsChanged As Boolean = False
                     Dim changeObjectIsSelected As Action(Of IEnumerable(Of LayerTreeItem2)) =
                         Sub(items)
                             For Each item As LayerTreeItem2 In items
@@ -369,6 +375,7 @@ Public Class EditorPlusRibbon
                                         Throw New MustRecreateItemsException()
                                     End If
 
+                                    Dim objectIsSelectedOld As Boolean = item.ObjectIsSelected
                                     If selection IsNot Nothing Then
                                         If selection.HasChildShapeRange Then
                                             If (From a In selection.ChildShapeRange.ToEnumerable(Of Shape) Where s Is a).Any() Then
@@ -394,7 +401,7 @@ Public Class EditorPlusRibbon
                                     item.ObjectIsVisible = s.Visible
 
                                     ' refresh name and text (selected visible shape only)
-                                    If item.ObjectIsSelected AndAlso item.ObjectIsVisible Then
+                                    If objectIsSelectedOld OrElse (item.ObjectIsSelected AndAlso item.ObjectIsVisible) Then
                                         Dim searchTargetText = ""
                                         Dim text As String = ""
                                         Try
@@ -406,9 +413,14 @@ Public Class EditorPlusRibbon
                                         Catch
                                             text = ""
                                         End Try
-                                        item.Text = If(item.IsGroup, "📁", " ") & s.Name & text
+                                        Dim newText = If(item.IsGroup, "📁", " ") & s.Name & text
+                                        item.Text = newText
                                         item.Name = s.Name
-                                        item.SearchTargetText = searchTargetText
+
+                                        If item.SearchTargetText <> searchTargetText Then
+                                            item.SearchTargetText = searchTargetText
+                                            textIsChanged = True
+                                        End If
                                     End If
                                 End If
 
@@ -417,6 +429,7 @@ Public Class EditorPlusRibbon
                         End Sub
                     changeObjectIsSelected(c.Items)
 
+                    If textIsChanged Then setImage()
                     c.SuppressEvents = False
                     Return result
                 End Function
@@ -475,8 +488,6 @@ Public Class EditorPlusRibbon
                     For Each item In e3.Items
                         selectShape(item)
                     Next item
-
-                    setImage()
                 End Sub
 
             AddHandler c.ObjectVisibleChanged,
@@ -571,6 +582,12 @@ Public Class EditorPlusRibbon
                     recreateAllItems(False)
                 End Sub
 
+            AddHandler c.RefreshButtonClicked,
+                Sub(sender2, e2)
+                    recreateAllItems(False)
+                    setImage()
+                End Sub
+
             Dim p As New ElementControlPane(Of Layer2)(c)
             Me.layerPanes.Add(ThisAddIn.Current.Application.ActiveWindow, p)
             p.Pane = ThisAddIn.Current.CustomTaskPanes.Add(p.Control, "Objects Navigation", ThisAddIn.Current.Application.ActiveWindow)
@@ -579,6 +596,8 @@ Public Class EditorPlusRibbon
             Sub()
                 If Not p.Pane.Visible Then
                     RemoveHandler ThisAddIn.Current.Application.WindowSelectionChange, windowSelectionChange
+                    RemoveHandler ThisAddIn.Current.Application.SlideSelectionChanged, slideSelectionChanged
+                    RemoveHandler ThisAddIn.Current.Application.AfterShapeSizeChange, afterShapeSizeChange
 
                     Me.layerPanes.Remove(ThisAddIn.Current.Application.ActiveWindow)
                     p.Control.Dispose()

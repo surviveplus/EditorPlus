@@ -269,7 +269,20 @@ Public Class Layer2
         RaiseSelectedObjectsNameChanged()
     End Sub
 
+    Private Sub MenuButton_Click(sender As Object, e As RoutedEventArgs)
+        Me.LayerMenu.PlacementTarget = Me.MenuButton
+        Me.LayerMenu.Placement = Primitives.PlacementMode.Bottom
+        Me.LayerMenu.IsOpen = Not Me.LayerMenu.IsOpen
+    End Sub
+
+    Private Sub RefreshMenu_Click(sender As Object, e As RoutedEventArgs)
+        RaiseEvent RefreshButtonClicked(Me, EventArgs.Empty)
+    End Sub
+
 #End Region
+
+    Public Event RefreshButtonClicked As EventHandler(Of EventArgs)
+
 
     Private Sub RaiseSelectedObjectsChanged()
         If Not Me.SuppressEvents Then
@@ -364,12 +377,6 @@ Public Class Layer2
         If e.LeftButton = MouseButtonState.Pressed Then
             RaiseClickEvent()
         End If
-    End Sub
-
-    Private Sub MenuButton_Click(sender As Object, e As RoutedEventArgs)
-        Me.LayerMenu.PlacementTarget = Me.MenuButton
-        Me.LayerMenu.Placement = Primitives.PlacementMode.Bottom
-        Me.LayerMenu.IsOpen = Not Me.LayerMenu.IsOpen
     End Sub
 
 #End Region
