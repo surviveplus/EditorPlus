@@ -26,14 +26,30 @@
                 <RowDefinition Height="32"></RowDefinition>
                 <RowDefinition ></RowDefinition>
             </Grid.RowDefinitions>
-            <StackPanel Orientation="Horizontal" Margin="0 5 0 5">
-                <Button x:Name="ShowButton" Padding="10 0 10 0" Margin="0 0 5 0" Click="ShowButton_Click">Show</Button>
-                <Button x:Name="HideButton" Padding="10 0 10 0" Margin="0 0 5 0" Click="HideButton_Click">Hide</Button>
-                <Button x:Name="BringToFrontButton" Click="BringToFrontButton_Click"><TextBlock><TextBlock.LayoutTransform><RotateTransform Angle="90"/></TextBlock.LayoutTransform>|&lt;</TextBlock></Button>
-                <Button x:Name="BringForwardButton" Click="BringForwardButton_Click"><TextBlock><TextBlock.LayoutTransform><RotateTransform Angle="90"/></TextBlock.LayoutTransform>&lt;</TextBlock></Button>
-                <Button x:Name="SendBackwardButton" Click="SendBackwardButton_Click"><TextBlock><TextBlock.LayoutTransform><RotateTransform Angle="90"/></TextBlock.LayoutTransform>&gt;</TextBlock></Button>
-                <Button x:Name="SendToBackButton" Click="SendToBackButton_Click"><TextBlock><TextBlock.LayoutTransform><RotateTransform Angle="90"/></TextBlock.LayoutTransform>&gt;|</TextBlock></Button>
-            </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="32"/>
+                </Grid.ColumnDefinitions>
+               
+                <StackPanel Orientation="Horizontal" Margin="0 5 0 5">
+                    <Button x:Name="ShowButton" Padding="10 0 10 0" Margin="0 0 5 0" Click="ShowButton_Click">Show</Button>
+                    <Button x:Name="HideButton" Padding="10 0 10 0" Margin="0 0 5 0" Click="HideButton_Click">Hide</Button>
+                    <Button x:Name="BringToFrontButton" Click="BringToFrontButton_Click"><TextBlock><TextBlock.LayoutTransform><RotateTransform Angle="90"/></TextBlock.LayoutTransform>|&lt;</TextBlock></Button>
+                    <Button x:Name="BringForwardButton" Click="BringForwardButton_Click"><TextBlock><TextBlock.LayoutTransform><RotateTransform Angle="90"/></TextBlock.LayoutTransform>&lt;</TextBlock></Button>
+                    <Button x:Name="SendBackwardButton" Click="SendBackwardButton_Click"><TextBlock><TextBlock.LayoutTransform><RotateTransform Angle="90"/></TextBlock.LayoutTransform>&gt;</TextBlock></Button>
+                    <Button x:Name="SendToBackButton" Click="SendToBackButton_Click"><TextBlock><TextBlock.LayoutTransform><RotateTransform Angle="90"/></TextBlock.LayoutTransform>&gt;|</TextBlock></Button>
+
+                </StackPanel>
+                <Button Grid.Column="1" x:Name="MenuButton" Margin="0 5 5 5"  Click="MenuButton_Click">
+                    <Button.Content>...</Button.Content>
+                    <Button.ContextMenu>
+                        <ContextMenu x:Name="LayerMenu">
+                            <MenuItem Header="Change Name" Click="ChangeNameMenu_Click" />
+                        </ContextMenu>
+                    </Button.ContextMenu>
+                </Button>
+            </Grid>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>

@@ -366,6 +366,12 @@ Public Class Layer2
         End If
     End Sub
 
+    Private Sub MenuButton_Click(sender As Object, e As RoutedEventArgs)
+        Me.LayerMenu.PlacementTarget = Me.MenuButton
+        Me.LayerMenu.Placement = Primitives.PlacementMode.Bottom
+        Me.LayerMenu.IsOpen = Not Me.LayerMenu.IsOpen
+    End Sub
+
 #End Region
 
 End Class
