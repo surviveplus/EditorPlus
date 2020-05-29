@@ -71,6 +71,9 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExportSlides.xaml.vb">
+      <DependentUpon>ExportSlides.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Layer2.xaml.vb">
       <DependentUpon>Layer2.xaml</DependentUpon>
     </Compile>
@@ -97,6 +100,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BulkTaskItems.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExportSlides.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

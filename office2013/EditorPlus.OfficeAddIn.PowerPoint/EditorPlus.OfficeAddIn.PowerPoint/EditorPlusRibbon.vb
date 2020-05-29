@@ -616,7 +616,7 @@ Public Class EditorPlusRibbon
     Private navigationPanes As New Dictionary(Of DocumentWindow, ElementControlPane(Of Navigation))
 
 
-    Private Sub NavigationButton_Click(sender As Object, e As RibbonControlEventArgs) Handles NavigationButton.Click
+    Private Sub NavigationButton_Click(sender As Object, e As RibbonControlEventArgs)
 
         If Not Me.navigationPanes.ContainsKey(ThisAddIn.Current.Application.ActiveWindow) Then
             Dim c = New Navigation With {.DataContext = OfficeThemeModel.Current}
@@ -756,6 +756,81 @@ Public Class EditorPlusRibbon
         End If
     End Sub
 
+    Private exportSlidesPanes As New Dictionary(Of DocumentWindow, ElementControlPane(Of ExportSlides))
+
+    Private Sub ExportSlidesButton_Click(sender As Object, e As RibbonControlEventArgs) Handles ExportSlidesButton.Click
+
+        If Not Me.exportSlidesPanes.ContainsKey(ThisAddIn.Current.Application.ActiveWindow) Then
+
+            Dim m = New ExportSlidesModel With {.Theme = OfficeThemeModel.Current.Theme}
+            Dim c = New ExportSlides With {.DataContext = m}
+            c.Resources.Apply(OfficeAccentColor.Current)
+
+            AddHandler c.SaveFilesButtonClick,
+                Sub(sender2, e3)
+
+                    Dim folder As New IO.DirectoryInfo(IO.Path.Combine(
+                                                       ThisAddIn.Current.Application.ActivePresentation.Path,
+                                                       IO.Path.GetFileNameWithoutExtension(ThisAddIn.Current.Application.ActivePresentation.Name)))
+                    If Not folder.Exists Then
+                        folder.Create()
+                        folder.Refresh()
+                    End If
+
+
+                    Dim targets = From slide In If(
+                                      m.TargetIsSelection,
+                                      ThisAddIn.Current.Application.ActiveWindow.Selection.SlideRange.ToEnumerable(Of Slide),
+                                      ThisAddIn.Current.Application.ActivePresentation.Slides.ToEnumerable(Of Slide))
+                                  Select New With {
+                                      .Name = If(m.FileNameIsSlideName, slide.Name, "Slide" & slide.SlideNumber),
+                                      .Slide = slide,
+                                      .Notes = slide.NotesPage.Shapes.Placeholders(2).TextFrame.TextRange.Text}
+
+                    If m.TargetIsWithoutHidden Then
+                        targets = targets.Where(Function(s) Not s.Slide.SlideShowTransition.Hidden)
+                    End If
+
+                    Dim w = ThisAddIn.Current.Application.ActiveWindow
+                    Dim setup = w.Presentation.PageSetup
+                    Dim size As New Size(setup.SlideWidth, setup.SlideHeight)
+                    Dim pngSize = New Size(m.Width, size.Height * m.Width / size.Width)
+
+                    For Each t In targets
+
+                        If m.SaveSlideImage Then
+                            Dim filename = t.Name + ".png"
+                            Dim file As New System.IO.FileInfo(System.IO.Path.Combine(folder.FullName, filename))
+
+                            t.Slide.Export(FileName:=file.FullName, FilterName:="png", ScaleWidth:=pngSize.Width, ScaleHeight:=pngSize.Height)
+                        End If
+
+                        If m.SaveNotes Then
+                            Dim filename = t.Name + ".txt"
+                            Dim file As New System.IO.FileInfo(System.IO.Path.Combine(folder.FullName, filename))
+
+                            IO.File.WriteAllText(file.FullName, t.Notes, Encoding.UTF8)
+                        End If
+                    Next
+                End Sub
+
+            Dim p As New ElementControlPane(Of ExportSlides)(c)
+            Me.exportSlidesPanes.Add(ThisAddIn.Current.Application.ActiveWindow, p)
+            p.Pane = ThisAddIn.Current.CustomTaskPanes.Add(p.Control, "Export Slides", ThisAddIn.Current.Application.ActiveWindow)
+            p.Pane.Width = 300
+            AddHandler p.Pane.VisibleChanged,
+                Sub()
+                    If Not p.Pane.Visible Then
+                        Me.exportSlidesPanes.Remove(ThisAddIn.Current.Application.ActiveWindow)
+                        p.Control.Dispose()
+                        p.Pane.Dispose()
+                    End If
+                End Sub
+        End If
+
+        Me.exportSlidesPanes(ThisAddIn.Current.Application.ActiveWindow).Show()
+
+    End Sub
 End Class
 
 ''' <summary>

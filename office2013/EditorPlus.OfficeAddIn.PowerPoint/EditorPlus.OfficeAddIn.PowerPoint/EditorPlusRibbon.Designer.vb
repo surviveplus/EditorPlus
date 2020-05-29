@@ -51,7 +51,7 @@
         Me.CopyNoLineBreakTextButton = Me.Factory.CreateRibbonButton
         Me.Group2 = Me.Factory.CreateRibbonGroup
         Me.LayerButton = Me.Factory.CreateRibbonButton
-        Me.NavigationButton = Me.Factory.CreateRibbonButton
+        Me.ExportSlidesButton = Me.Factory.CreateRibbonButton
         Me.NameGroup = Me.Factory.CreateRibbonGroup
         Me.ReplaceObjectNamesButton = Me.Factory.CreateRibbonButton
         Me.ChangeSlideNameButton = Me.Factory.CreateRibbonButton
@@ -123,7 +123,7 @@
         'Group2
         '
         Me.Group2.Items.Add(Me.LayerButton)
-        Me.Group2.Items.Add(Me.NavigationButton)
+        Me.Group2.Items.Add(Me.ExportSlidesButton)
         Me.Group2.Label = "Objects"
         Me.Group2.Name = "Group2"
         '
@@ -132,11 +132,10 @@
         Me.LayerButton.Label = "Objects Navigation"
         Me.LayerButton.Name = "LayerButton"
         '
-        'NavigationButton
+        'ExportSlidesButton
         '
-        Me.NavigationButton.Label = "Navigation"
-        Me.NavigationButton.Name = "NavigationButton"
-        Me.NavigationButton.Visible = False
+        Me.ExportSlidesButton.Label = "Export Slides"
+        Me.ExportSlidesButton.Name = "ExportSlidesButton"
         '
         'NameGroup
         '
@@ -201,10 +200,10 @@
     Friend WithEvents ReplaceObjectNamesButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents Group2 As Microsoft.Office.Tools.Ribbon.RibbonGroup
     Friend WithEvents LayerButton As Microsoft.Office.Tools.Ribbon.RibbonButton
-    Friend WithEvents NavigationButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents CopyNotesButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents CopyTextSplitButton As Microsoft.Office.Tools.Ribbon.RibbonSplitButton
     Friend WithEvents ChangeSlideNameButton As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents ExportSlidesButton As Microsoft.Office.Tools.Ribbon.RibbonButton
 End Class
 
 Partial Class ThisRibbonCollection
