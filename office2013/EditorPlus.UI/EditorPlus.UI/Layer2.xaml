@@ -68,6 +68,11 @@
                         </Grid>
                     </HierarchicalDataTemplate>
                 </TreeView.ItemTemplate>
+                <TreeView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem x:Name="ChangeNameMenu" Header="Change Name" Click="ChangeNameMenu_Click" />
+                    </ContextMenu>
+                </TreeView.ContextMenu>
             </TreeView>
             <StackPanel x:Name="progrressBar"  Grid.Row="2" Height="2" VerticalAlignment="Top" Visibility="Collapsed"  Background="Gray" Orientation="Horizontal">
                 <Rectangle x:Name="progressValue" Width="100"></Rectangle>

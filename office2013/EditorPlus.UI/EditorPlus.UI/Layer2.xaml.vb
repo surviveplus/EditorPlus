@@ -264,6 +264,11 @@ Public Class Layer2
         End If
 
     End Sub
+
+    Private Sub ChangeNameMenu_Click(sender As Object, e As RoutedEventArgs)
+        RaiseSelectedObjectsNameChanged()
+    End Sub
+
 #End Region
 
     Private Sub RaiseSelectedObjectsChanged()
@@ -308,6 +313,16 @@ Public Class Layer2
     Public Event SendToBackButtonClick As EventHandler(Of LayerItemsEventArgs)
 
 
+    Public Event SelectedObjectsNameChanged As EventHandler(Of LayerItemsEventArgs)
+
+    Private Sub RaiseSelectedObjectsNameChanged()
+        If Not Me.SuppressEvents Then
+            Dim selectedItem As List(Of LayerTreeItem2) = PickupSelectedItem()
+            RaiseEvent SelectedObjectsNameChanged(Me, New LayerItemsEventArgs With {.Items = selectedItem})
+        End If
+    End Sub
+
+
     Private valueOfPageSize As Size
 
     Public Property PageSize() As Size
@@ -350,6 +365,7 @@ Public Class Layer2
             RaiseClickEvent()
         End If
     End Sub
+
 #End Region
 
 End Class
@@ -379,6 +395,8 @@ Public Class LayerTreeItem2
         Return $"{v} {Me.Text}"
 
     End Function
+
+    Public Property Slide As Object
 
     Public Property Shape As Object
 

@@ -264,7 +264,7 @@ Public Class EditorPlusRibbon
                     End If
 
                     For Each targetSlide As Slide In ThisAddIn.Current.Application.ActiveWindow.Selection.SlideRange
-                        items.Add(New LayerTreeItem2 With {.Text = targetSlide.Name & " (slide)", .Name = targetSlide.Name})
+                        items.Add(New LayerTreeItem2 With {.Slide = targetSlide, .Text = targetSlide.Name & " (slide)", .Name = targetSlide.Name})
 
                         Dim counter As Integer = 0
                         Dim checkShapes As Action(Of LayerTreeItem2, IEnumerable(Of Shape)) =
@@ -290,6 +290,7 @@ Public Class EditorPlusRibbon
                                     End Try
 
                                     Dim newItem As New LayerTreeItem2 With {
+                                        .Slide = targetSlide,
                                         .Shape = item,
                                         .Parent = parent,
                                         .ObjectIsVisible = item.Visible,
@@ -555,7 +556,20 @@ Public Class EditorPlusRibbon
                     c.SuppressEvents = False
                 End Sub
 
+            AddHandler c.SelectedObjectsNameChanged,
+                Sub(sender2, e2)
 
+                    For Each item As LayerTreeItem2 In e2.Items
+                        If item.Shape IsNot Nothing Then
+                            ChangeShapeName(item.Shape)
+
+                        ElseIf item.Slide IsNot Nothing Then
+                            ChangeSlideName(item.Slide)
+                        End If
+                    Next
+
+                    recreateAllItems(False)
+                End Sub
 
             Dim p As New ElementControlPane(Of Layer2)(c)
             Me.layerPanes.Add(ThisAddIn.Current.Application.ActiveWindow, p)
@@ -677,16 +691,52 @@ Public Class EditorPlusRibbon
 
     Private Sub ChangeSlideNameButton_Click(sender As Object, e As RibbonControlEventArgs) Handles ChangeSlideNameButton.Click
 
-        Dim s = ThisAddIn.Current.Application.ActiveWindow.Selection.SlideRange.ToEnumerable(Of Slide).FirstOrDefault()
+
+        For Each s As Slide In (
+            From a In ThisAddIn.Current.Application.ActiveWindow.Selection.SlideRange.ToEnumerable(Of Slide)
+            Order By a.SlideIndex)
+
+            ChangeSlideName(s)
+        Next
+
+        ' TODO: refresh Object Navigation slide name
+
+    End Sub
+
+    Private Shared Sub ChangeSlideName(s As Slide)
         Dim name = s.Name
         Dim newText = InputBox($"Input new name of [{name}]", "Change Slide Name", name)
         If Not String.IsNullOrWhiteSpace(newText) Then
-            s.Name = newText
-
-            ' TODO: refresh Object Navigation slide name
+            Try
+                s.Name = newText
+            Catch ex As Exception
+                MessageBox.Show("Can not change this slide name." + vbCrLf + ex.Message, "Change Slide Name ERROR", MessageBoxButton.OK, MessageBoxImage.Error)
+            End Try
         End If
+    End Sub
+
+    Private Sub ChangeShapeNameButton_Click(sender As Object, e As RibbonControlEventArgs)
+
+        For Each item As Shape In ThisAddIn.Current.Application.ActiveWindow.Selection.ShapeRange
+            ChangeShapeName(item)
+        Next
+        ' TODO: refresh Object Navigation slide name
 
     End Sub
+
+    Private Shared Sub ChangeShapeName(s As Shape)
+        Dim name = s.Name
+        Dim newText = InputBox($"Input new name of [{name}]", "Change Shape Name", name)
+        If Not String.IsNullOrWhiteSpace(newText) Then
+            Try
+                s.Name = newText
+            Catch ex As Exception
+                MessageBox.Show("Can not change this shape name." + vbCrLf + ex.Message, "Change Shape Name ERROR", MessageBoxButton.OK, MessageBoxImage.Error)
+            End Try
+
+        End If
+    End Sub
+
 End Class
 
 ''' <summary>
