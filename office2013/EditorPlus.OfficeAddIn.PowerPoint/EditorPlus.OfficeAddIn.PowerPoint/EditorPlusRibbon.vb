@@ -77,7 +77,11 @@ Public Class EditorPlusRibbon
         Me.insertSerialNumberPane?.Show()
     End Sub
     Private Sub CopyTextButton_Click(sender As Object, e As RibbonControlEventArgs) Handles CopyTextButton.Click
+        CopyText()
 
+    End Sub
+
+    Private Shared Sub CopyText()
         Dim text As New StringBuilder
         Dim macaron As New PowerPointMacaron(ThisAddIn.Current.Application)
         macaron.ReplaceSelectionText(
@@ -87,7 +91,6 @@ Public Class EditorPlusRibbon
             End Sub)
 
         System.Windows.Forms.Clipboard.SetText(text.ToString())
-
     End Sub
 
     Private Sub CopyNoLineBreakTextButton_Click(sender As Object, e As RibbonControlEventArgs) Handles CopyNoLineBreakTextButton.Click
@@ -666,6 +669,10 @@ Public Class EditorPlusRibbon
             MessageBox.Show("Can not copy Notes." + vbCrLf + ex.Message, "Copy Notes ERROR", MessageBoxButton.OK, MessageBoxImage.Error)
         End Try
 
+    End Sub
+
+    Private Sub CopyTextSplitButton_Click(sender As Object, e As RibbonControlEventArgs) Handles CopyTextSplitButton.Click
+        CopyText()
     End Sub
 End Class
 

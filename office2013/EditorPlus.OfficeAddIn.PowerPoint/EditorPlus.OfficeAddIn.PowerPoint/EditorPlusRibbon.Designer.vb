@@ -50,17 +50,16 @@
         Me.NavigationButton = Me.Factory.CreateRibbonButton
         Me.NameGroup = Me.Factory.CreateRibbonGroup
         Me.ReplaceObjectNamesButton = Me.Factory.CreateRibbonButton
-        Me.ClipboardGroup = Me.Factory.CreateRibbonGroup
         Me.CopyTextButton = Me.Factory.CreateRibbonButton
         Me.CopyNoLineBreakTextButton = Me.Factory.CreateRibbonButton
+        Me.CopyNotesButton = Me.Factory.CreateRibbonButton
         Me.Group1 = Me.Factory.CreateRibbonGroup
         Me.TopMostToggleButton = Me.Factory.CreateRibbonToggleButton
-        Me.CopyNotesButton = Me.Factory.CreateRibbonButton
+        Me.CopyTextSplitButton = Me.Factory.CreateRibbonSplitButton
         Me.EditorPlusTab.SuspendLayout()
         Me.EditSelectionGroup.SuspendLayout()
         Me.Group2.SuspendLayout()
         Me.NameGroup.SuspendLayout()
-        Me.ClipboardGroup.SuspendLayout()
         Me.Group1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -69,7 +68,6 @@
         Me.EditorPlusTab.Groups.Add(Me.EditSelectionGroup)
         Me.EditorPlusTab.Groups.Add(Me.Group2)
         Me.EditorPlusTab.Groups.Add(Me.NameGroup)
-        Me.EditorPlusTab.Groups.Add(Me.ClipboardGroup)
         Me.EditorPlusTab.Groups.Add(Me.Group1)
         Me.EditorPlusTab.Label = "Editor Plus"
         Me.EditorPlusTab.Name = "EditorPlusTab"
@@ -78,7 +76,9 @@
         '
         Me.EditSelectionGroup.Items.Add(Me.InsertTextButton)
         Me.EditSelectionGroup.Items.Add(Me.InsertSerialNumberButton)
-        Me.EditSelectionGroup.Label = "Edit Selection"
+        Me.EditSelectionGroup.Items.Add(Me.CopyNotesButton)
+        Me.EditSelectionGroup.Items.Add(Me.CopyTextSplitButton)
+        Me.EditSelectionGroup.Label = "Selection"
         Me.EditSelectionGroup.Name = "EditSelectionGroup"
         '
         'InsertTextButton
@@ -124,23 +124,22 @@
         Me.ReplaceObjectNamesButton.Label = "Replace Object Names"
         Me.ReplaceObjectNamesButton.Name = "ReplaceObjectNamesButton"
         '
-        'ClipboardGroup
-        '
-        Me.ClipboardGroup.Items.Add(Me.CopyTextButton)
-        Me.ClipboardGroup.Items.Add(Me.CopyNoLineBreakTextButton)
-        Me.ClipboardGroup.Items.Add(Me.CopyNotesButton)
-        Me.ClipboardGroup.Label = "Clipboard"
-        Me.ClipboardGroup.Name = "ClipboardGroup"
-        '
         'CopyTextButton
         '
         Me.CopyTextButton.Label = "Copy Text"
         Me.CopyTextButton.Name = "CopyTextButton"
+        Me.CopyTextButton.ShowImage = True
         '
         'CopyNoLineBreakTextButton
         '
         Me.CopyNoLineBreakTextButton.Label = "Copy No Line break Text"
         Me.CopyNoLineBreakTextButton.Name = "CopyNoLineBreakTextButton"
+        Me.CopyNoLineBreakTextButton.ShowImage = True
+        '
+        'CopyNotesButton
+        '
+        Me.CopyNotesButton.Label = "Copy Notes"
+        Me.CopyNotesButton.Name = "CopyNotesButton"
         '
         'Group1
         '
@@ -157,10 +156,12 @@
         Me.TopMostToggleButton.ShowImage = True
         Me.TopMostToggleButton.SuperTip = "Keep this window on top. Always."
         '
-        'CopyNotesButton
+        'CopyTextSplitButton
         '
-        Me.CopyNotesButton.Label = "Copy Notes"
-        Me.CopyNotesButton.Name = "CopyNotesButton"
+        Me.CopyTextSplitButton.Items.Add(Me.CopyTextButton)
+        Me.CopyTextSplitButton.Items.Add(Me.CopyNoLineBreakTextButton)
+        Me.CopyTextSplitButton.Label = "Copy Text"
+        Me.CopyTextSplitButton.Name = "CopyTextSplitButton"
         '
         'EditorPlusRibbon
         '
@@ -175,8 +176,6 @@
         Me.Group2.PerformLayout()
         Me.NameGroup.ResumeLayout(False)
         Me.NameGroup.PerformLayout()
-        Me.ClipboardGroup.ResumeLayout(False)
-        Me.ClipboardGroup.PerformLayout()
         Me.Group1.ResumeLayout(False)
         Me.Group1.PerformLayout()
         Me.ResumeLayout(False)
@@ -186,7 +185,6 @@
     Friend WithEvents EditorPlusTab As Microsoft.Office.Tools.Ribbon.RibbonTab
     Friend WithEvents EditSelectionGroup As Microsoft.Office.Tools.Ribbon.RibbonGroup
     Friend WithEvents InsertTextButton As Microsoft.Office.Tools.Ribbon.RibbonButton
-    Friend WithEvents ClipboardGroup As Microsoft.Office.Tools.Ribbon.RibbonGroup
     Friend WithEvents CopyTextButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents CopyNoLineBreakTextButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents InsertSerialNumberButton As Microsoft.Office.Tools.Ribbon.RibbonButton
@@ -198,6 +196,7 @@
     Friend WithEvents LayerButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents NavigationButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents CopyNotesButton As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents CopyTextSplitButton As Microsoft.Office.Tools.Ribbon.RibbonSplitButton
 End Class
 
 Partial Class ThisRibbonCollection
