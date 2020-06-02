@@ -190,6 +190,8 @@ Public Class EditorPlusRibbon
 
             ' Navigation
 
+
+
             Dim setImage =
                 Sub()
                     Dim path = System.IO.Path.GetTempFileName()
@@ -212,6 +214,24 @@ Public Class EditorPlusRibbon
                         Catch ex As Exception
                         End Try
                     End If
+
+                End Sub
+
+            Dim timer = New System.Windows.Threading.DispatcherTimer With {.Interval = TimeSpan.FromSeconds(2)}
+            AddHandler timer.Tick,
+                Sub()
+                    timer.Stop()
+                    setImage()
+                End Sub
+
+            Dim setImageDelay =
+                Sub()
+                    timer.Start()
+                End Sub
+
+            AddHandler c.MouseDown,
+                Sub(sender2, e2)
+                    setImageDelay()
                 End Sub
 
             AddHandler c.Click,
@@ -429,7 +449,7 @@ Public Class EditorPlusRibbon
                         End Sub
                     changeObjectIsSelected(c.Items)
 
-                    If textIsChanged Then setImage()
+                    If textIsChanged Then setImageDelay()
                     c.SuppressEvents = False
                     Return result
                 End Function
@@ -595,6 +615,7 @@ Public Class EditorPlusRibbon
             AddHandler p.Pane.VisibleChanged,
             Sub()
                 If Not p.Pane.Visible Then
+                    timer.Stop()
                     RemoveHandler ThisAddIn.Current.Application.WindowSelectionChange, windowSelectionChange
                     RemoveHandler ThisAddIn.Current.Application.SlideSelectionChanged, slideSelectionChanged
                     RemoveHandler ThisAddIn.Current.Application.AfterShapeSizeChange, afterShapeSizeChange

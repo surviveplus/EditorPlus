@@ -367,9 +367,12 @@ Public Class Layer2
         Me.previewImage.Source = bitmap
     End Sub
 
+    Public Event MouseDown As EventHandler(Of EventArgs)
+
 #Region " Event Handlers (Navigation) "
 
     Private Sub pageFrame_MouseDown(sender As Object, e As MouseButtonEventArgs)
+        RaiseEvent MouseDown(sender, EventArgs.Empty)
         RaiseClickEvent()
     End Sub
 
