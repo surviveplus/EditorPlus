@@ -102,5 +102,25 @@ Public Class ExportSlidesModel
         End Set
     End Property
 
+    Private _SaveShapeGroupImage As Boolean = False
 
+    Property SaveShapeGroupImage As Boolean
+        Get
+            Return _SaveShapeGroupImage
+        End Get
+        Set
+            Me.SetProperty(_SaveShapeGroupImage, Value)
+        End Set
+    End Property
+
+    Private _GroupNameIncludes As String
+
+    Property GroupNameIncludes As String
+        Get
+            Return _GroupNameIncludes
+        End Get
+        Set
+            Me.SetProperty(_GroupNameIncludes, Value)
+        End Set
+    End Property
 End Class

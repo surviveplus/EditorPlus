@@ -31,6 +31,11 @@
 
         <CheckBox VerticalAlignment="Center" Margin="5 15 10 5"  IsChecked="{Binding SaveNotes}">Save Notes (.txt file)</CheckBox>
 
+        <CheckBox VerticalAlignment="Center" Margin="5 15 10 5" IsChecked="{Binding SaveShapeGroupImage}" >Save Shape Group Image (.png file)</CheckBox>
+        <StackPanel Orientation="Horizontal" Margin="0 0 0 5" >
+            <TextBlock Margin="10 0 5 0" VerticalAlignment="Center">Group Name includes :</TextBlock>
+            <TextBox Width="150" Text="{Binding GroupNameIncludes}"></TextBox>
+        </StackPanel>
 
         <Button x:Name="SaveFilesButton" Margin="5 10 5 0" Height="30" Click="SaveFilesButton_Click">Save files</Button>
         

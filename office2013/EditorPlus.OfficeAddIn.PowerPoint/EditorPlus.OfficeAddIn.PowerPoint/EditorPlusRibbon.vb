@@ -832,6 +832,34 @@ Public Class EditorPlusRibbon
 
                             IO.File.WriteAllText(file.FullName, t.Notes, Encoding.UTF8)
                         End If
+
+
+                        If m.SaveShapeGroupImage AndAlso Not String.IsNullOrWhiteSpace(m.GroupNameIncludes) Then
+                            Dim groupNameIncludes = m.GroupNameIncludes.Trim()
+
+                            For Each item As Shape In (From a In t.Slide.Shapes.ToEnumerable(Of Shape) Order By a.ZOrderPosition Descending)
+                                Dim isGroup As Boolean = CType(item.Type = Microsoft.Office.Core.MsoShapeType.msoGroup, Boolean)
+                                If isGroup Then
+                                    Dim groupName = item.Name
+                                    If groupName.IndexOf(groupNameIncludes, StringComparison.OrdinalIgnoreCase) >= 0 Then
+                                        Dim filename = $"{t.Name}-{groupName}.png"
+                                        Dim file As New System.IO.FileInfo(System.IO.Path.Combine(folder.FullName, filename))
+
+                                        Try
+                                            t.Slide.Select()
+                                            item.Select()
+                                            Dim shapeRange As Object = ThisAddIn.Current.Application.ActiveWindow.Selection.ShapeRange
+                                            shapeRange.Export(PathName:=file, Filter:=PpShapeFormat.ppShapeFormatPNG, ExportMode:=PpExportMode.ppRelativeToSlide)
+                                        Catch ex As Exception
+                                            ' TODO: ex
+                                        End Try
+
+                                    End If
+                                End If
+                            Next item
+
+                        End If
+
                     Next
                 End Sub
 
