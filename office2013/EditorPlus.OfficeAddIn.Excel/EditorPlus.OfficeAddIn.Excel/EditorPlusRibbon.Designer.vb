@@ -54,6 +54,7 @@
         Me.ReplaceWorksheetNamesButton = Me.Factory.CreateRibbonButton
         Me.ClipboardGroup = Me.Factory.CreateRibbonGroup
         Me.CopyNoLineBreakTextButton = Me.Factory.CreateRibbonButton
+        Me.CopyAsJsonButton = Me.Factory.CreateRibbonButton
         Me.WindowGroup = Me.Factory.CreateRibbonGroup
         Me.TopMostToggleButton = Me.Factory.CreateRibbonToggleButton
         Me.EditorPlus.SuspendLayout()
@@ -152,6 +153,7 @@
         'ClipboardGroup
         '
         Me.ClipboardGroup.Items.Add(Me.CopyNoLineBreakTextButton)
+        Me.ClipboardGroup.Items.Add(Me.CopyAsJsonButton)
         Me.ClipboardGroup.Label = "Clipboard"
         Me.ClipboardGroup.Name = "ClipboardGroup"
         '
@@ -159,6 +161,11 @@
         '
         Me.CopyNoLineBreakTextButton.Label = "Copy No Line break Text"
         Me.CopyNoLineBreakTextButton.Name = "CopyNoLineBreakTextButton"
+        '
+        'CopyAsJsonButton
+        '
+        Me.CopyAsJsonButton.Label = "Copy Table As JSON"
+        Me.CopyAsJsonButton.Name = "CopyAsJsonButton"
         '
         'WindowGroup
         '
@@ -209,6 +216,7 @@
     Friend WithEvents TopMostToggleButton As Microsoft.Office.Tools.Ribbon.RibbonToggleButton
     Friend WithEvents NameGroup As Microsoft.Office.Tools.Ribbon.RibbonGroup
     Friend WithEvents ReplaceWorksheetNamesButton As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents CopyAsJsonButton As Microsoft.Office.Tools.Ribbon.RibbonButton
 End Class
 
 Partial Class ThisRibbonCollection

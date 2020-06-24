@@ -1,4 +1,5 @@
-﻿Imports EditorPlus.AI
+﻿Imports System.Diagnostics
+Imports EditorPlus.AI
 Imports EditorPlus.Core
 Imports EditorPlus.UI
 Imports Microsoft.Office.Interop.Excel
@@ -257,4 +258,81 @@ Public Class EditorPlusRibbon
         Me.replacePane?.Show()
 
     End Sub
+
+    Private Sub CopyAsJsonButton_Click(sender As Object, e As RibbonControlEventArgs) Handles CopyAsJsonButton.Click
+
+
+        Dim table = ThisAddIn.Current.Application.ActiveCell.ListObject
+        If table IsNot Nothing Then
+
+            Dim list As New List(Of Dictionary(Of String, Object))
+
+            ' key = Column Index, value = Column Name
+            Dim columns =
+                (From column In table.ListColumns.ToEnumerable(Of ListColumn)
+                 Select New With {.ColumnIndex = column.Range.Column, .Name = column.Name}
+                    ).ToDictionary(Of String, String)(Function(item) item.ColumnIndex, Function(item) item.Name)
+
+            For Each row As ListRow In table.ListRows
+                Dim rowDictionary As New Dictionary(Of String, Object)
+                For Each cell As Range In row.Range
+                    Dim column = columns(cell.Column)
+                    Dim value = cell.Text
+                    If Not String.IsNullOrWhiteSpace(value) Then
+
+                        Dim decimalValue As Decimal
+                        Dim longValue As Long
+                        If value.ToString().Contains(".") AndAlso
+                            Decimal.TryParse(value, decimalValue) AndAlso
+                            value.ToString() = decimalValue.ToString() Then
+
+                            rowDictionary.Add(column, decimalValue)
+
+                        ElseIf Long.TryParse(value, longValue) AndAlso
+                            value.ToString() = longValue.ToString() Then
+
+                            rowDictionary.Add(column, longValue)
+
+                        Else
+                            rowDictionary.Add(column, value)
+                        End If
+                    End If
+                Next
+                If rowDictionary.Count > 0 Then
+                    list.Add(rowDictionary)
+                End If
+            Next
+
+            Dim json = Newtonsoft.Json.JsonConvert.SerializeObject(list)
+            'Debug.WriteLine(json)
+            System.Windows.Forms.Clipboard.SetText(json)
+
+        End If
+
+    End Sub
 End Class
+
+''' <summary>
+''' Static class which is defined extension methods for Object.
+''' </summary>
+''' <remarks></remarks>
+Public Module IEnumerableExtensions
+
+    ''' <summary>
+    ''' Return the IEnumerable&lt;T&gt; for a classic collection that do not implement IEnumerable&lt;T&gt; but it is possible to be set on foreach.
+    ''' </summary>
+    ''' <typeparam name="T">The type of this elements.</typeparam>
+    ''' <param name="this">The instance of the type which is added this extension method. Set a null reference (Nothing in Visual Basic), to return empty IEnumerable&lt;T&gt;.</param>
+    ''' <returns>Return the IEnumerable&lt;T&gt;.</returns>
+    ''' <remarks></remarks>
+    <Runtime.CompilerServices.Extension()>
+    Public Iterator Function ToEnumerable(Of T)(ByVal this As Object) As IEnumerable(Of T)
+        If this IsNot Nothing Then
+
+            For Each item As T In this
+                Yield item
+            Next
+        End If
+    End Function
+
+End Module
