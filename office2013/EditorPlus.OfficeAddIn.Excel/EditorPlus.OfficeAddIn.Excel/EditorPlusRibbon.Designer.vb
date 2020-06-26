@@ -57,6 +57,7 @@
         Me.CopyAsJsonButton = Me.Factory.CreateRibbonButton
         Me.WindowGroup = Me.Factory.CreateRibbonGroup
         Me.TopMostToggleButton = Me.Factory.CreateRibbonToggleButton
+        Me.FillViaHtmlColorButton = Me.Factory.CreateRibbonButton
         Me.EditorPlus.SuspendLayout()
         Me.EditSelectionGroup.SuspendLayout()
         Me.NameGroup.SuspendLayout()
@@ -82,6 +83,7 @@
         Me.EditSelectionGroup.Items.Add(Me.InsertSerialNumberButton)
         Me.EditSelectionGroup.Items.Add(Me.InsertNowButton)
         Me.EditSelectionGroup.Items.Add(Me.TrimEndButton)
+        Me.EditSelectionGroup.Items.Add(Me.FillViaHtmlColorButton)
         Me.EditSelectionGroup.Label = "Edit Selection"
         Me.EditSelectionGroup.Name = "EditSelectionGroup"
         '
@@ -182,6 +184,11 @@
         Me.TopMostToggleButton.ShowImage = True
         Me.TopMostToggleButton.SuperTip = "Keep this window on top. Always."
         '
+        'FillViaHtmlColorButton
+        '
+        Me.FillViaHtmlColorButton.Label = "Fill via HTML color"
+        Me.FillViaHtmlColorButton.Name = "FillViaHtmlColorButton"
+        '
         'EditorPlusRibbon
         '
         Me.Name = "EditorPlusRibbon"
@@ -217,6 +224,7 @@
     Friend WithEvents NameGroup As Microsoft.Office.Tools.Ribbon.RibbonGroup
     Friend WithEvents ReplaceWorksheetNamesButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents CopyAsJsonButton As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents FillViaHtmlColorButton As Microsoft.Office.Tools.Ribbon.RibbonButton
 End Class
 
 Partial Class ThisRibbonCollection

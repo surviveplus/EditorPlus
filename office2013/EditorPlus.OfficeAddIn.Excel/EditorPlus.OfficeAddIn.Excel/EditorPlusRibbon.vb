@@ -310,6 +310,19 @@ Public Class EditorPlusRibbon
         End If
 
     End Sub
+
+    Private Sub FillViaHtmlColorButton_Click(sender As Object, e As RibbonControlEventArgs) Handles FillViaHtmlColorButton.Click
+
+        For Each cell As Range In ThisAddIn.Current.Application.Selection
+            Try
+                Dim color = System.Drawing.ColorTranslator.FromHtml(cell.Text)
+                cell.Interior.Color = RGB(color.R, color.G, color.B)
+
+            Catch ex As Exception
+            End Try
+        Next
+
+    End Sub
 End Class
 
 ''' <summary>
