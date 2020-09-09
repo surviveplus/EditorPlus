@@ -50,6 +50,7 @@
         Me.InsertSerialNumberButton = Me.Factory.CreateRibbonButton
         Me.InsertNowButton = Me.Factory.CreateRibbonButton
         Me.TrimEndButton = Me.Factory.CreateRibbonButton
+        Me.FillViaHtmlColorButton = Me.Factory.CreateRibbonButton
         Me.NameGroup = Me.Factory.CreateRibbonGroup
         Me.ReplaceWorksheetNamesButton = Me.Factory.CreateRibbonButton
         Me.ClipboardGroup = Me.Factory.CreateRibbonGroup
@@ -57,7 +58,6 @@
         Me.CopyAsJsonButton = Me.Factory.CreateRibbonButton
         Me.WindowGroup = Me.Factory.CreateRibbonGroup
         Me.TopMostToggleButton = Me.Factory.CreateRibbonToggleButton
-        Me.FillViaHtmlColorButton = Me.Factory.CreateRibbonButton
         Me.EditorPlus.SuspendLayout()
         Me.EditSelectionGroup.SuspendLayout()
         Me.NameGroup.SuspendLayout()
@@ -100,9 +100,9 @@
         'IncrementActiveButton
         '
         Me.IncrementActiveButton.Image = Global.EditorPlus.OfficeAddIn.Excel.My.Resources.Resources.IncrementActiveIcon
-        Me.IncrementActiveButton.Label = "Increment Active cell"
+        Me.IncrementActiveButton.Label = "Increment Active cell / shape"
         Me.IncrementActiveButton.Name = "IncrementActiveButton"
-        Me.IncrementActiveButton.ScreenTip = "Increment Active cell"
+        Me.IncrementActiveButton.ScreenTip = "Increment Active cells or shapes"
         Me.IncrementActiveButton.ShowImage = True
         '
         'IncrementMaxButton
@@ -140,6 +140,11 @@
         Me.TrimEndButton.Label = "Trim End"
         Me.TrimEndButton.Name = "TrimEndButton"
         Me.TrimEndButton.ShowImage = True
+        '
+        'FillViaHtmlColorButton
+        '
+        Me.FillViaHtmlColorButton.Label = "Fill via HTML color"
+        Me.FillViaHtmlColorButton.Name = "FillViaHtmlColorButton"
         '
         'NameGroup
         '
@@ -183,11 +188,6 @@
         Me.TopMostToggleButton.ScreenTip = "Always on Top"
         Me.TopMostToggleButton.ShowImage = True
         Me.TopMostToggleButton.SuperTip = "Keep this window on top. Always."
-        '
-        'FillViaHtmlColorButton
-        '
-        Me.FillViaHtmlColorButton.Label = "Fill via HTML color"
-        Me.FillViaHtmlColorButton.Name = "FillViaHtmlColorButton"
         '
         'EditorPlusRibbon
         '

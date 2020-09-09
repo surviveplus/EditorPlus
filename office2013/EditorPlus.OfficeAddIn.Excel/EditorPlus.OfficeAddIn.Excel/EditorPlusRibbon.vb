@@ -132,18 +132,46 @@ Public Class EditorPlusRibbon
 
     Private Sub IncrementActiveButton_Click(sender As Object, e As RibbonControlEventArgs) Handles IncrementActiveButton.Click
         Dim app = ThisAddIn.Current.Application
-        Dim target As Microsoft.Office.Interop.Excel.Range = app.Selection
 
-        Dim text As String = target.Text
-        Try
-            Dim newText = Core.EditorString.IncrementText(text)
-            If newText IsNot Nothing Then
-                target.Formula = newText
-            End If
 
-        Catch ex As Exception
-            MsgBox(My.Resources.Message1CannotIncrement, MsgBoxStyle.OkOnly Or MsgBoxStyle.Exclamation)
-        End Try
+        If TypeOf app.Selection Is Microsoft.Office.Interop.Excel.Range Then
+            Dim target As Microsoft.Office.Interop.Excel.Range = app.Selection
+
+            Try
+
+                For Each item As Range In target
+                    Dim text As String = item.Text
+                    Dim newText = Core.EditorString.IncrementText(text)
+                    If newText IsNot Nothing Then
+                        item.Formula = newText
+                    End If
+
+                Next
+
+
+            Catch ex As Exception
+                MsgBox(My.Resources.Message1CannotIncrement, MsgBoxStyle.OkOnly Or MsgBoxStyle.Exclamation)
+            End Try
+
+        Else
+            Try
+                For Each shape As Shape In app.Selection.ShapeRange
+                    Dim text As String = shape.TextFrame2.TextRange.Text
+                    Dim newText = Core.EditorString.IncrementText(text)
+                    If newText IsNot Nothing Then
+                        shape.TextFrame2.TextRange.Text = newText
+                    End If
+                Next
+
+            Catch ex As Exception
+                MsgBox(My.Resources.Message1CannotIncrement, MsgBoxStyle.OkOnly Or MsgBoxStyle.Exclamation)
+
+            End Try
+
+        End If
+
+
+
     End Sub
 
     Private Sub IncrementMaxButton_Click(sender As Object, e As RibbonControlEventArgs) Handles IncrementMaxButton.Click
