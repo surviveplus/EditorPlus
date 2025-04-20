@@ -13,7 +13,7 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SakuraMacaron.Core", "..\..
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Surviveplus.TextMacro", "..\..\vs2019\EditorPlus\Surviveplus.TextMacro\Surviveplus.TextMacro.csproj", "{D52AC8B6-DDA8-4AC2-AF9A-966F1C8C396A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Surviveplus.VsixExtensions", "..\..\vs2019\EditorPlus\Surviveplus.VsixExtensions\Surviveplus.VsixExtensions.csproj", "{6CE7E330-2721-4E1B-8F2D-E1321C57966A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Surviveplus.VsixExtensions", "Surviveplus.VsixExtensions\Surviveplus.VsixExtensions.csproj", "{6CE7E330-2721-4E1B-8F2D-E1321C57966A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,7 +93,6 @@ Global
 		{1D3F2B9C-8DCA-4F37-B161-60A109E59204} = {9FB5EFB7-EBE8-488E-A448-6892BE669D3C}
 		{DF2E20E1-9015-4D8D-9972-90374CADD658} = {9FB5EFB7-EBE8-488E-A448-6892BE669D3C}
 		{D52AC8B6-DDA8-4AC2-AF9A-966F1C8C396A} = {9FB5EFB7-EBE8-488E-A448-6892BE669D3C}
-		{6CE7E330-2721-4E1B-8F2D-E1321C57966A} = {9FB5EFB7-EBE8-488E-A448-6892BE669D3C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A6BFD3B7-EF2E-4595-BAF8-4C74C6C04621}

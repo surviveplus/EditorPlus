@@ -78,8 +78,13 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.0.32112.339" ExcludeAssets="runtime" />
-    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.6.2164" />
+    <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.0.32112.339" ExcludeAssets="runtime">
+      <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.6.2164">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources.en-US.resx">
@@ -115,7 +120,7 @@
       <Project>{d52ac8b6-dda8-4ac2-af9a-966f1c8c396a}</Project>
       <Name>Surviveplus.TextMacro</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\vs2019\EditorPlus\Surviveplus.VsixExtensions\Surviveplus.VsixExtensions.csproj">
+    <ProjectReference Include="..\Surviveplus.VsixExtensions\Surviveplus.VsixExtensions.csproj">
       <Project>{6ce7e330-2721-4e1b-8f2d-e1321c57966a}</Project>
       <Name>Surviveplus.VsixExtensions</Name>
     </ProjectReference>
