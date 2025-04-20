@@ -3,6 +3,7 @@
 ## Installation
 - Search and install in **Extensions and Update** of Visual Studio.
 - Otherwise download from Marketplace and double click EditorPlus.vsix file.
+  - [Download For Visual Studio 2022](https://marketplace.visualstudio.com/items?itemName=SHIN-ICHIKOGA.EditorPlusforVisualStudio2022)
   - [Download For Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=SHIN-ICHIKOGA.EditorPlusforVisualStudio2017)
   - [Download For Visual Studio 2015](https://marketplace.visualstudio.com/items?itemName=SHIN-ICHIKOGA.EditorPlus)
 
